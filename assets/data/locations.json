@@ -1,0 +1,131 @@
+[
+  {
+    "key": "Sudan",
+    "country": " Sudan",
+    "cities": [
+      "Khartoum",
+      "Omdurman",
+      "Sennar",
+      "Atbara",
+      "Dongola",
+      "Shendi",
+      "Kosti",
+      "Merowe",
+      "Singa",
+      "Port Sudan",
+      "Kassala",
+      "Al Manaqil",
+      "Al Qadarif",
+      "Nyala",
+      "Wad Madani",
+      "Al-Ubayyid",
+      "Ad-Damazin",
+      "Wadi Halfa"
+    ]
+  },
+  {
+    "key": "Saudi Arabia",
+    "country": " Saudi Arabia",
+    "cities": ["Riyadh", "Jeddah", "Mecca", "Medina", "Dammam"]
+  },
+  {
+    "key": "Egypt",
+    "country": " Egypt",
+    "cities": ["Cairo", "Alexandria", "Giza"]
+  },
+  {
+    "key": "Morocco",
+    "country": " Morocco",
+    "cities": ["Casablanca"]
+  },
+  {
+    "key": "Tunisia",
+    "country": " Tunisia",
+    "cities": ["Tunis"]
+  },
+  {
+    "key": "Algeria",
+    "country": " Algeria",
+    "cities": ["Algiers"]
+  },
+  {
+    "key": "Qatar",
+    "country": "Qatar",
+    "cities": ["Doha"]
+  },
+  {
+    "key": "UAE",
+    "country": "United Arab Emirates",
+    "cities": ["Dubai"]
+  },
+  {
+    "key": "Canada",
+    "country": "Canada",
+    "cities": ["Toronto", "Montreal"]
+  },
+  {
+    "key": "Malaysia",
+    "country": "Malaysia",
+    "cities": ["Kuala Lumpur", "Klang"]
+  },
+  {
+    "key": "Cyprus",
+    "country": "Cyprus",
+    "cities": ["Nicosia", "Limassol"]
+  },
+  {
+    "key": "Czechia",
+    "country": "Czechia",
+    "cities": ["Prague", "Brno"]
+  },
+  {
+    "key": "Turkey",
+    "country": "Turkey",
+    "cities": ["Istanbul", "Ankara"]
+  },
+  {
+    "key": "Jordan",
+    "country": "Jordan",
+    "cities": ["Amman", "Zarqa"]
+  },
+  {
+    "key": "Lebanon",
+    "country": "Lebanon",
+    "cities": ["Beirut", "Tripoli"]
+  },
+  {
+    "key": "USA",
+    "country": "United States",
+    "cities": ["New York", "Los Angeles", "Chicago"]
+  },
+  {
+    "key": "Kuwait",
+    "country": "Kuwait",
+    "cities": ["Kuwait City"]
+  },
+  {
+    "key": "Libya",
+    "country": "Libya",
+    "cities": ["Tripoli", "Benghazi"]
+  },
+  {
+    "key": "Oman",
+    "country": "Oman",
+    "cities": ["Muscat"]
+  },
+  {
+    "key": "Yemen",
+    "country": "Yemen",
+    "cities": ["Sana'a", "Aden", "Taiz"]
+  },
+  {
+    "key": "Iraq",
+    "country": "Iraq",
+    "cities": ["Baghdad", "Mosul", "Basra"]
+  },
+  {
+    "key": "Syria",
+    "country": "Syria",
+    "cities": ["Aleppo", "Damascus", "Homs"]
+  }
+]

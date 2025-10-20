@@ -1,15 +1,19 @@
 {
   "expo": {
-    "name": "Go",
-    "slug": "Go",
+    "name": "Thikra",
+    "slug": "Thikra",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "go",
+    "scheme": "Thikra",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "ExpoLocalization_supportsRTL": true
+      },
+      "bundleIdentifier": "com.amardev1.Thikra"
     },
     "android": {
       "adaptiveIcon": {
@@ -19,13 +23,34 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "package": "com.amardev1.Thikra"
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "bundler": "metro"
+    },
+    "extra": {
+      "supportsRTL": true,
+      "API_URL": "https://api.aladhan.com/v1/timingsByCity",
+      "router": {},
+      "eas": {
+        "projectId": "b2a39f7b-af82-47a2-ae74-bc9b38002778"
+      }
     },
     "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ],
+      "expo-localization",
       "expo-router",
       [
         "expo-splash-screen",
