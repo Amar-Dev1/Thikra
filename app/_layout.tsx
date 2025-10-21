@@ -16,12 +16,12 @@ import "./global.css";
 
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
-  // Enable RTL layout direction
-  I18nManager.forceRTL(true);
-
-  // Allow RTL on Android (optional, but recommended for consistent behavior)
+if(!I18nManager.isRTL){
   I18nManager.allowRTL(true);
+  I18nManager.forceRTL(true)
+}
+
+export default function RootLayout() {
 
   const [completedOnboarding, setCompletedOnboarding] = useState<
     boolean | null

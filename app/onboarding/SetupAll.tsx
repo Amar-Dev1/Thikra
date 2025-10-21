@@ -34,7 +34,6 @@ const SetupAll = () => {
   return (
     <SafeAreaView
       className={`flex-1 bg-primary px-5 py-3 flex flex-col justify-center items-center gap-5`}
-      style={{ direction: "rtl" }}
     >
       {loading && (
         <>

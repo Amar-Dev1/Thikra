@@ -10,6 +10,8 @@ import dua from "../assets/images/dua.png";
 import kabaaBg from "../assets/images/kabaaBg.png";
 // @ts-ignore
 import bell from "../assets/images/bell.png";
+// @ts-ignore
+import clouds from "../assets/images/clouds.png";
 
 
 export const images = {
@@ -18,5 +20,6 @@ export const images = {
   quranBg,
   dua,
   kabaaBg,
-  bell
+  bell,
+  clouds,
 };

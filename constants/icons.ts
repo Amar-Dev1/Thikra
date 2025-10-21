@@ -1,5 +1,6 @@
 import BellSvg from "../assets/icons/bell.svg";
 import ClockSvg from "../assets/icons/clock.svg";
+import ClothesSvg from "../assets/icons/clothes.svg";
 import ContactSvg from "../assets/icons/contact.svg";
 import CrossSvg from "../assets/icons/cross.svg";
 import DoneSvg from "../assets/icons/done.svg";
@@ -11,6 +12,7 @@ import KabaaSvg from "../assets/icons/kabaa.svg";
 import LocationSvg from "../assets/icons/location.svg";
 import MenuSvg from "../assets/icons/menu.svg";
 import MoonSvg from "../assets/icons/moon.svg";
+import NatureSvg from "../assets/icons/nature.svg";
 import NextSvg from "../assets/icons/next.svg";
 import PauseSvg from "../assets/icons/pause.svg";
 import PlaySvg from "../assets/icons/play.svg";
@@ -28,13 +30,11 @@ import TrashSvg from "../assets/icons/trash.svg";
 import TravelSvg from "../assets/icons/travel.svg";
 import UnSavedSvg from "../assets/icons/unsaved.svg";
 import WaterSvg from "../assets/icons/water.svg";
-import ClothesSvg from '../assets/icons/clothes.svg';
-import NatureSvg from '../assets/icons/nature.svg';
-
 
 export {
   BellSvg,
   ClockSvg,
+  ClothesSvg,
   ContactSvg,
   CrossSvg,
   DoneSvg,
@@ -46,6 +46,7 @@ export {
   LocationSvg,
   MenuSvg,
   MoonSvg,
+  NatureSvg,
   NextSvg,
   PauseSvg,
   PlayCircleSvg,
@@ -63,6 +64,4 @@ export {
   TravelSvg,
   UnSavedSvg,
   WaterSvg,
-  ClothesSvg,
-  NatureSvg
 };

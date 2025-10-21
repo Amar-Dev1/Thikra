@@ -10,9 +10,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import locations from "../../assets/data/locations.json";
 
+import BgWrapper from "@/components/BgWrapper";
 import { SelectList } from "react-native-dropdown-select-list";
 
 const AccessLocation = () => {
@@ -91,17 +91,17 @@ const AccessLocation = () => {
     }
   };
 
+  // @ts-ignore , i dont have time !
   const isReady = selectedCountry?.length > 0 && selectedCity?.length > 0;
 
   return (
-    <SafeAreaView
-      className={`flex-1 bg-bgColor px-5 py-3 ${loading && "justify-center items-center"}`}
-      style={{ direction: "rtl" }}
-    >
+    <BgWrapper containerStyle={`${loading && "justify-center items-center"}`}>
       {loading ? (
         <>
-        <ActivityIndicator color={"black"} size={"large"} />
-        <Text className="font-cairo-bold text-lg opacity-65">جار ضبط الموقع</Text>
+          <ActivityIndicator color={"black"} size={"large"} />
+          <Text className="font-cairo-bold text-lg opacity-65 mt-5">
+            جار ضبط الموقع
+          </Text>
         </>
       ) : (
         <>
@@ -114,7 +114,7 @@ const AccessLocation = () => {
 
           <View className="mt-8 gap-4">
             <TouchableOpacity
-              className="bg-primary p-5 rounded-2xl shadow-md border border-gray-100"
+              className="bg-primary p-5 rounded-2xl shadow-md border border-primary"
               onPress={locationAutoDetect}
             >
               <View className="flex-row gap-3">
@@ -134,7 +134,7 @@ const AccessLocation = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              className="bg-primary p-5 rounded-2xl shadow-md border border-gray-100"
+              className="bg-primary p-5 rounded-2xl shadow-md border border-primary"
               onPress={() => setExpandedCountry(!expandedCountry)}
             >
               <View className="flex-row gap-3 ">
@@ -182,9 +182,7 @@ const AccessLocation = () => {
               className={`bg-primary ${
                 !isReady ? "opacity-60" : "opacity-100"
               } rounded-2xl py-2 flex-1`}
-              disabled={
-                !isReady
-              }
+              disabled={!isReady}
               onPress={locationManualDetect}
             >
               <Text className="text-lg font-cairo-bold text-center">
@@ -203,7 +201,7 @@ const AccessLocation = () => {
           </View>
         </>
       )}
-    </SafeAreaView>
+    </BgWrapper>
   );
 };
 
