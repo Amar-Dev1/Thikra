@@ -21,7 +21,7 @@
     "id": 4,
     "title": "إشعاراتي",
     "image": "bell",
-    "route": "/MyNotifications"
+    "route": "/Settings/MyNotifications"
   },
   {
     "id": 5,

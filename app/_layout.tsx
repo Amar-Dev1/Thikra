@@ -94,7 +94,8 @@ export default function RootLayout() {
       <Stack screenOptions={{ statusBarHidden: true }}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="GreatNames" />
-        <Stack.Screen name="MyNotifications" />
+        <Stack.Screen name="MyNotification" />
+        <Stack.Screen name="Settings" />
         <Stack.Screen name="Dua" />
       </Stack>
     </SafeAreaProvider>

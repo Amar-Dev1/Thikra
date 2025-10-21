@@ -6,6 +6,7 @@ import { ILocation, IPrayerDetails } from "@/interfaces";
 import { convert24To12 } from "@/utils/convert24To12";
 import { getCurrentSalah } from "@/utils/getCurrentSalah";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -18,7 +19,7 @@ const Index = () => {
   );
 
   const [currentSalah, setCurrentSalah] = useState<IPrayerDetails | null>(null);
-  const [dailyAyah, setDailyAyah] = useState<string | null>(null);
+  const [randomAyah, setRandomAyah] = useState<string | null>(null);
   const [today, setToday] = useState<string | null>("");
   const [isFriday, setIsFriday] = useState<boolean>(false);
 
@@ -70,7 +71,7 @@ const Index = () => {
 
         let randomIndex = Math.floor(Math.random() * ayat.length);
         let randomAyah = ayat[randomIndex];
-        setDailyAyah(randomAyah.ayah);
+        setRandomAyah(randomAyah.ayah);
       } catch (e) {
         console.error("Faild to prepare data", e);
       }
@@ -106,7 +107,10 @@ const Index = () => {
     >
       <View className="flex-row justify-between items-center border-b-2 border-primary">
         <MainTitle title="الصفحة الرئيسية" />
-        <TouchableOpacity className="flex flex-row items-center gap-1 px-2 h-1/2 bg-primary rounded-xl">
+        <TouchableOpacity
+          className="flex flex-row items-center gap-1 px-2 h-1/2 bg-primary rounded-xl"
+          onPress={() => router.push("/Settings/EditLocation")}
+        >
           <Text className="font-bold">{currentLocation?.city || "N/A"}</Text>
           <LocationSvg width={30} />
         </TouchableOpacity>
@@ -181,6 +185,7 @@ const Index = () => {
                   {...card}
                   image={(images as any)[card.image]}
                   className="min-w-[31%] flex-1"
+                  route={card.route}
                 />
               ))}
             </View>
@@ -201,7 +206,6 @@ const Index = () => {
                   <TouchableOpacity
                     key={prayer.key}
                     className="flex flex-col items-center gap-2 "
-                    // onPress={() => setCurrentSalah({ ...currentSalah })}
                   >
                     <View
                       className={`w-3 h-3 ${
@@ -225,11 +229,9 @@ const Index = () => {
 
         <View className="mb-3">
           <View className="bg-primary py-4 px-5 rounded-2xl shadow-md">
-            <Text className="mb-2 text-md font-cairo-bold">
-              التذكرة اليومية
-            </Text>
+            <Text className="mb-2 text-md font-cairo-bold">تذكرة</Text>
             <Text className="text-md text- font-amiri-bold">
-              {dailyAyah ||
+              {randomAyah ||
                 "إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ تَتَنَزَّلُ عَلَيْهِمُ ٱلْمَلَٰٓئِكَةُ أَلَّا تَخَافُوا۟ وَلَا تَحْزَنُوا۟ وَأَبْشِرُوا۟ بِٱلْجَنَّةِ ٱلَّتِى كُنتُمْ تُوعَدُونَ"}
             </Text>
           </View>
