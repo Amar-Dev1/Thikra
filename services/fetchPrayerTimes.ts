@@ -1,11 +1,4 @@
-import constants from "expo-constants";
-
-const CONFIG = {
-  API_URL: constants.expoConfig?.extra?.API_URL,
-  HEADERS: {
-    accept: `application/json`,
-  },
-};
+import { CONFIG } from "./config";
 
 export const fetchPrayerTimes = async (
   city: string,

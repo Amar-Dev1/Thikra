@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import {
   ActivityIndicator,
   Alert,
+  ScrollView,
   Text,
   TouchableOpacity,
   View,
@@ -95,7 +96,7 @@ const AccessLocation = () => {
   const isReady = selectedCountry?.length > 0 && selectedCity?.length > 0;
 
   return (
-    <BgWrapper containerStyle={`${loading && "justify-center items-center"}`}>
+    <BgWrapper className={`${loading && "justify-center items-center"}`}>
       {loading ? (
         <>
           <ActivityIndicator color={"black"} size={"large"} />
@@ -105,81 +106,83 @@ const AccessLocation = () => {
         </>
       ) : (
         <>
-          <View className="flex-row items-center gap-2">
-            <Text className="font-cairo-bold text-3xl my-5">الموقع</Text>
-          </View>
-          <Text className="font-cairo text-xl opacity-65">
-            تفعيل الوصول للموقع ، لعرض مواقيت الصلاة بناءاً على موقعك الحالي
-          </Text>
+          <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
+            <View className="flex-row items-center gap-2">
+              <Text className="font-cairo-bold text-3xl my-5">الموقع</Text>
+            </View>
+            <Text className="font-cairo text-xl opacity-65">
+              تفعيل الوصول للموقع ، لعرض مواقيت الصلاة بناءاً على موقعك الحالي
+            </Text>
 
-          <View className="mt-8 gap-4">
-            <TouchableOpacity
-              className="bg-primary p-5 rounded-2xl shadow-md border border-primary"
-              onPress={locationAutoDetect}
-            >
-              <View className="flex-row gap-3">
-                <LocationSvg width={32} />
-                <View className="gap-2">
-                  <Text className="font-cairo-bold text-xl">
-                    تحديد الموقع تلقائياً{" "}
-                    <Text className="text-md font-cairo opacity-60">
-                      (موصى به)
+            <View className="mt-5 gap-4">
+              <TouchableOpacity
+                className="bg-primary p-5 rounded-2xl shadow-md border border-primary"
+                onPress={locationAutoDetect}
+              >
+                <View className="flex-row gap-3">
+                  <LocationSvg width={32} height={32} />
+                  <View className="gap-2 flex-1">
+                    <Text className="font-cairo-bold text-lg">
+                      تحديد الموقع تلقائياً{" "}
+                      <Text className="text-sm font-cairo opacity-60">
+                        (موصى به)
+                      </Text>
                     </Text>
-                  </Text>
-                  <Text className="font-cairo-bold text-sm opacity-55">
-                    سيتم تحديث مواقيت الصلاة تلقائياً
-                  </Text>
+                    <Text className="font-cairo-bold text-sm opacity-55">
+                      سيتم تحديث مواقيت الصلاة تلقائياً
+                    </Text>
+                  </View>
                 </View>
-              </View>
-            </TouchableOpacity>
+              </TouchableOpacity>
 
-            <TouchableOpacity
-              className="bg-primary p-5 rounded-2xl shadow-md border border-primary"
-              onPress={() => setExpandedCountry(!expandedCountry)}
-            >
-              <View className="flex-row gap-3 ">
-                <LocationSvg width={32} />
-                <View className="gap-2 flex-1">
-                  <Text className="font-cairo-bold text-xl">
-                    تحديد الموقع يدوياً
-                  </Text>
-                  <Text className="font-cairo-bold text-sm opacity-55">
-                    حدد البلد و المدينة يدوياً . عليك تحديث موقعك إذا غيرت
-                    المدينة
-                  </Text>
+              <TouchableOpacity
+                className="bg-primary p-5 rounded-2xl shadow-md border border-primary"
+                onPress={() => setExpandedCountry(!expandedCountry)}
+              >
+                <View className="flex-row gap-3 ">
+                  <LocationSvg width={32} height={32} />
+                  <View className="gap-2 flex-1">
+                    <Text className="font-cairo-bold text-lg">
+                      تحديد الموقع يدوياً
+                    </Text>
+                    <Text className="font-cairo-bold text-sm opacity-55">
+                      حدد البلد و المدينة يدوياً . عليك تحديث موقعك إذا غيرت
+                      المدينة
+                    </Text>
+                  </View>
                 </View>
-              </View>
-            </TouchableOpacity>
+              </TouchableOpacity>
 
-            {expandedCountry && (
-              <View className="mt-3">
-                <Text>اختار الدولة</Text>
-                <SelectList
-                  data={countries}
-                  setSelected={(value: string) => {
-                    setSelectedCountry(value);
-                    setExpandedCity(true);
-                  }}
-                  search={false}
-                />
-              </View>
-            )}
+              {expandedCountry && (
+                <View className="mt-3">
+                  <Text>اختار الدولة</Text>
+                  <SelectList
+                    data={countries}
+                    setSelected={(value: string) => {
+                      setSelectedCountry(value);
+                      setExpandedCity(true);
+                    }}
+                    search={false}
+                  />
+                </View>
+              )}
 
-            {expandedCity && (
-              <View className="mt-3">
-                <Text>اختار المدينة</Text>
-                <SelectList
-                  data={cities}
-                  setSelected={(value: string) => setSelectedCity(value)}
-                  search={false}
-                />
-              </View>
-            )}
-          </View>
+              {expandedCity && (
+                <View className={`mt-3 mb-3`}>
+                  <Text>اختار المدينة</Text>
+                  <SelectList
+                    data={cities}
+                    setSelected={(value: string) => setSelectedCity(value)}
+                    search={false}
+                  />
+                </View>
+              )}
+            </View>
+          </ScrollView>
 
           <View className="flex-row items-center mt-auto">
             <TouchableOpacity
-              className={`bg-primary ${
+              className={`bg-primary shadow-md ${
                 !isReady ? "opacity-60" : "opacity-100"
               } rounded-2xl py-2 flex-1`}
               disabled={!isReady}

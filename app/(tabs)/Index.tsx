@@ -7,6 +7,7 @@ import { ILocation, IPrayerDetails } from "@/interfaces";
 import { convert24To12 } from "@/utils/convert24To12";
 import { getCurrentSalah } from "@/utils/getCurrentSalah";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Notifications from "expo-notifications";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
@@ -73,6 +74,16 @@ const Index = () => {
         let randomAyah = ayat[randomIndex];
         setRandomAyah(randomAyah.ayah);
         // await AsyncStorage.setItem("onboardingCompleted", "false");
+
+        // Second, call scheduleNotificationAsync()
+        Notifications.scheduleNotificationAsync({
+          content: {
+            title: "زايلللي",
+            body: "قوموا إالى الصلاه",
+          },
+
+          trigger: null,
+        });
       } catch (e) {
         console.error("Faild to prepare data", e);
       }
@@ -104,27 +115,23 @@ const Index = () => {
   return (
     <BgWrapper>
       <View className="flex-1">
-        <View className="flex-row justify-between items-center border-b-2 border-primary">
+        <View className="flex-row justify-between items-center border-b-[.5px] border-gray-400">
           <MainTitle title="الصفحة الرئيسية" />
           <TouchableOpacity
-            className="flex flex-row items-center gap-1 px-2 h-1/2 bg-primary rounded-xl"
+            className="flex flex-row items-center gap-1 px-2 h-1/2 bg-primary rounded-xl shadow-md"
             onPress={() => router.push("/Settings/EditLocation")}
           >
             <Text className="font-bold">{currentLocation?.city || "N/A"}</Text>
             <LocationSvg width={30} />
           </TouchableOpacity>
         </View>
-
-        <ScrollView
-          scrollEnabled={true}
-          showsVerticalScrollIndicator={false}
-        >
+        <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
           <View className="flex-1 py-5">
             <View>
               <Text className="my-5 text-xl font-cairo-bold">
                 السلام عليكم ، أخي المسلم
               </Text>
-              <TouchableOpacity className="flex flex-row justify-between px-4 py-3 bg-primary rounded-2xl">
+              <TouchableOpacity className="flex flex-row justify-between px-4 py-3 bg-primary rounded-2xl shadow-md">
                 <View className="flex-col justify-center">
                   <Text
                     className="opacity-60 text-lg"
@@ -139,14 +146,8 @@ const Index = () => {
                     </Text>
                   </View>
                 </View>
-                <View className="flex-col items-center">
-                  <Text
-                    className="text-lg opacity-60"
-                    style={{ fontFamily: "Cairo-Bold" }}
-                  >
-                    {" "}
-                    {today}
-                  </Text>
+                <View className="flex-col items-center font-cairo text-xs">
+                  <Text className="text-lg opacity-60"> {today}</Text>
                   <Image source={images.mosque} className="size-32" />
                 </View>
               </TouchableOpacity>
@@ -215,7 +216,7 @@ const Index = () => {
                       <Text className="font-cairo-bold text-sm text-dark">
                         {prayer.name}
                       </Text>
-                      <Text className="text-sm font-cairo opacity-65">
+                      <Text className="text-xs font-cairo opacity-65">
                         {convert24To12(prayer.time)}
                       </Text>
                     </TouchableOpacity>
@@ -227,7 +228,9 @@ const Index = () => {
 
           <View className="mb-[65px]">
             <View className="bg-primary py-4 px-5 rounded-2xl shadow-md">
-              <Text className="mb-2 text-md font-cairo-bold">تذكرة</Text>
+              <Text className="mb-2 text-md font-cairo-bold">
+                الآية اليومية
+              </Text>
               <Text className="text-md text- font-amiri-bold">
                 {randomAyah ||
                   "إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ تَتَنَزَّلُ عَلَيْهِمُ ٱلْمَلَٰٓئِكَةُ أَلَّا تَخَافُوا۟ وَلَا تَحْزَنُوا۟ وَأَبْشِرُوا۟ بِٱلْجَنَّةِ ٱلَّتِى كُنتُمْ تُوعَدُونَ"}

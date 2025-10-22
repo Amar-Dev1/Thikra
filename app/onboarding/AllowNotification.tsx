@@ -22,6 +22,15 @@ const AllowNotification = () => {
           "لم يتم السماح",
           "لن نتمكن من إرسال التنبيهات لك إلا بعد السماح بالإشعارات."
         );
+        
+        Notifications.setNotificationHandler({
+          handleNotification: async () => ({
+            shouldPlaySound: true,
+            shouldSetBadge: false,
+            shouldShowBanner: true,
+            shouldShowList: true,
+          }),
+        });
 
         return;
       }

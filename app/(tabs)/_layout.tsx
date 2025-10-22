@@ -11,7 +11,15 @@ interface ITabIcon {
 
 const TabIcon = ({ focused, Icon, name }: ITabIcon) => {
   const iconColor = focused ? "#F5C97B" : "#FFFDF8";
-  return <Icon width={30} height={30} fill={iconColor} stroke={iconColor} />;
+  return (
+    <Icon
+      width={focused ? 30 : 28}
+      height={focused ? 30 : 28}
+      fill={iconColor}
+      stroke={iconColor}
+      className="transition-all"
+    />
+  );
 };
 
 const _layout = () => {
@@ -20,12 +28,12 @@ const _layout = () => {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarItemStyle: {
-          marginTop: 8,
+          paddingTop: 5,
         },
         tabBarStyle: {
-          backgroundColor: "#FFFDF8",
-          borderTopWidth: 0.5,
-          height: 80,
+          backgroundColor: "#faf7ef",
+          borderTopWidth: 1,
+          minHeight: 70,
           position: "absolute",
           overflow: "hidden",
           direction: "rtl",

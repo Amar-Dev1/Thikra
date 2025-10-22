@@ -3,9 +3,9 @@ export const convert24To12 = (time24: string) => {
 
   let period: string;
   if (hours >= 12) {
-    period = "PM";
+    period = "pm";
   } else {
-    period = "AM";
+    period = "am";
   }
 
   hours = hours % 12 || 12;

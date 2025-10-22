@@ -4,12 +4,12 @@ import {  Image, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 interface Props {
   children: React.ReactNode;
-  containerStyle?: string;
+  className?: string;
 }
 
-const BgWrapper = ({ children, containerStyle }: Props) => {
+const BgWrapper = ({ children, className }: Props) => {
   return (
-    <SafeAreaView className={`flex-1 px-5 py-3 ${containerStyle}`} style={{backgroundColor:'transparent'}}>
+    <SafeAreaView className={`flex-1 px-5 py-3 ${className}`} style={{backgroundColor:'transparent'}}>
      <View style={styles.bgWrap} pointerEvents="none">
       <Image
         source={images.clouds}

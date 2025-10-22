@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "Thikra",
+    "scheme": "thikra",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -38,6 +38,7 @@
     "extra": {
       "supportsRTL": true,
       "API_URL": "https://api.aladhan.com/v1/timingsByCity",
+      "ALL_QURAN_URL": "https://raw.githubusercontent.com/Amar-dev1",
       "router": {},
       "eas": {
         "projectId": "b2a39f7b-af82-47a2-ae74-bc9b38002778"
@@ -68,6 +69,7 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "owner": "amar-dev1"
   }
 }
