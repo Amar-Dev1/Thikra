@@ -6,7 +6,7 @@ import { SvgProps } from "react-native-svg";
 interface ITabIcon {
   focused: boolean;
   Icon: React.FC<SvgProps>;
-  name: string;
+  name?: string;
 }
 
 const TabIcon = ({ focused, Icon, name }: ITabIcon) => {
@@ -41,7 +41,7 @@ const _layout = () => {
       }}
     >
       <Tabs.Screen
-        name="Index"
+        name="index"
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -54,6 +54,7 @@ const _layout = () => {
         name="Quran"
         options={{
           headerShown: false,
+          tabBarStyle:{display:"none"},
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} Icon={QuranSvg} name="القرآن" />
           ),

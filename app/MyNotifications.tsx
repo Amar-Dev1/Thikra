@@ -1,12 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import BgWrapper from "@/components/BgWrapper";
+import React from "react";
+import { Text } from "react-native";
 
 const MyNotifications = () => {
   return (
-    <View>
+    <BgWrapper>
       <Text>MyNotifications</Text>
-    </View>
-  )
-}
+    </BgWrapper>
+  );
+};
 
-export default MyNotifications
+export default MyNotifications;

@@ -10,3 +10,11 @@ export interface IPrayerDetails {
   time: string;
   to: string;
 }
+
+export interface ISurah {
+  id: number;
+  name: string;
+  from: number;
+  to: number;
+  audio?: string;
+}

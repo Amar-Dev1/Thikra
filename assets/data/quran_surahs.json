@@ -1,0 +1,800 @@
+[
+  {
+    "id": 1,
+    "name": "الفاتحة",
+    "from": 1,
+    "to": 1,
+    "audio": "https://archive.org/download/1_20251025/1.mp3"
+  },
+  {
+    "id": 2,
+    "name": "البقرة",
+    "from": 2,
+    "to": 49,
+    "audio": "https://archive.org/download/1_20251025/2.mp3"
+  },
+  {
+    "id": 3,
+    "name": "آل عمران",
+    "from": 50,
+    "to": 76,
+    "audio": "https://archive.org/download/1_20251025/3.mp3"
+  },
+  {
+    "id": 4,
+    "name": "النساء",
+    "from": 77,
+    "to": 106,
+    "audio": "https://archive.org/download/1_20251025/4.mp3"
+  },
+  {
+    "id": 5,
+    "name": "المائدة",
+    "from": 106,
+    "to": 127,
+    "audio": "https://archive.org/download/1_20251025/5.mp3"
+  },
+  {
+    "id": 6,
+    "name": "الأنعام",
+    "from": 128,
+    "to": 150,
+    "audio": "https://archive.org/download/1_20251025/6.mp3"
+  },
+  {
+    "id": 7,
+    "name": "الأعراف",
+    "from": 151,
+    "to": 176,
+    "audio": "https://archive.org/download/1_20251025/7.mp3"
+  },
+  {
+    "id": 8,
+    "name": "الأنفال",
+    "from": 177,
+    "to": 186,
+    "audio": "https://archive.org/download/1_20251025/8.mp3"
+  },
+  {
+    "id": 9,
+    "name": "التوبة",
+    "from": 187,
+    "to": 207,
+    "audio": "https://archive.org/download/1_20251025/9.mp3"
+  },
+  {
+    "id": 10,
+    "name": "يونس",
+    "from": 208,
+    "to": 221,
+    "audio": "https://archive.org/download/1_20251025/10.mp3"
+  },
+  {
+    "id": 11,
+    "name": "هود",
+    "from": 221,
+    "to": 235,
+    "audio": "https://archive.org/download/1_20251025/11.mp3"
+  },
+  {
+    "id": 12,
+    "name": "يوسف",
+    "from": 235,
+    "to": 248,
+    "audio": "https://archive.org/download/1_20251025/12.mp3"
+  },
+  {
+    "id": 13,
+    "name": "الرعد",
+    "from": 249,
+    "to": 255,
+    "audio": "https://archive.org/download/1_20251025/13.mp3"
+  },
+  {
+    "id": 14,
+    "name": "إبراهيم",
+    "from": 255,
+    "to": 261,
+    "audio": "https://archive.org/download/1_20251025/14.mp3"
+  },
+  {
+    "id": 15,
+    "name": "الحجر",
+    "from": 262,
+    "to": 267,
+    "audio": "https://archive.org/download/1_20251025/15.mp3"
+  },
+  {
+    "id": 16,
+    "name": "النحل",
+    "from": 267,
+    "to": 281,
+    "audio": "https://archive.org/download/1_20251025/16.mp3"
+  },
+  {
+    "id": 17,
+    "name": "الإسراء",
+    "from": 282,
+    "to": 293,
+    "audio": "https://archive.org/download/1_20251025/17.mp3"
+  },
+  {
+    "id": 18,
+    "name": "الكهف",
+    "from": 293,
+    "to": 304,
+    "audio": "https://archive.org/download/1_20251025/18.mp3"
+  },
+  {
+    "id": 19,
+    "name": "مريم",
+    "from": 305,
+    "to": 312,
+    "audio": "https://archive.org/download/1_20251025/19.mp3"
+  },
+  {
+    "id": 20,
+    "name": "طه",
+    "from": 312,
+    "to": 321,
+    "audio": "https://archive.org/download/1_20251025/20.mp3"
+  },
+  {
+    "id": 21,
+    "name": "الأنبياء",
+    "from": 322,
+    "to": 331,
+    "audio": "https://archive.org/download/1_20251025/21.mp3"
+  },
+  {
+    "id": 22,
+    "name": "الحج",
+    "from": 332,
+    "to": 341,
+    "audio": "https://archive.org/download/1_20251025/22.mp3"
+  },
+  {
+    "id": 23,
+    "name": "المؤمنون",
+    "from": 342,
+    "to": 349,
+    "audio": "https://archive.org/download/1_20251025/23.mp3"
+  },
+  {
+    "id": 24,
+    "name": "النور",
+    "from": 350,
+    "to": 359,
+    "audio": "https://archive.org/download/1_20251025/24.mp3"
+  },
+  {
+    "id": 25,
+    "name": "الفرقان",
+    "from": 359,
+    "to": 366,
+    "audio": "https://archive.org/download/1_20251025/25.mp3"
+  },
+  {
+    "id": 26,
+    "name": "الشعراء",
+    "from": 367,
+    "to": 376,
+    "audio": "https://archive.org/download/1_20251025/26.mp3"
+  },
+  {
+    "id": 27,
+    "name": "النمل",
+    "from": 377,
+    "to": 385,
+    "audio": "https://archive.org/download/1_20251025/27.mp3"
+  },
+  {
+    "id": 28,
+    "name": "القصص",
+    "from": 385,
+    "to": 396,
+    "audio": "https://archive.org/download/1_20251025/28.mp3"
+  },
+  {
+    "id": 29,
+    "name": "العنكبوت",
+    "from": 396,
+    "to": 404,
+    "audio": "https://archive.org/download/1_20251025/29.mp3"
+  },
+  {
+    "id": 30,
+    "name": "الروم",
+    "from": 404,
+    "to": 410,
+    "audio": "https://archive.org/download/1_20251025/30.mp3"
+  },
+  {
+    "id": 31,
+    "name": "لقمان",
+    "from": 411,
+    "to": 414,
+    "audio": "https://archive.org/download/1_20251025/31.mp3"
+  },
+  {
+    "id": 32,
+    "name": "السجدة",
+    "from": 415,
+    "to": 417,
+    "audio": "https://archive.org/download/1_20251025/32.mp3"
+  },
+  {
+    "id": 33,
+    "name": "الأحزاب",
+    "from": 418,
+    "to": 427,
+    "audio": "https://archive.org/download/1_20251025/33.mp3"
+  },
+  {
+    "id": 34,
+    "name": "سبأ",
+    "from": 428,
+    "to": 434,
+    "audio": "https://archive.org/download/1_20251025/34.mp3"
+  },
+  {
+    "id": 35,
+    "name": "فاطر",
+    "from": 434,
+    "to": 440,
+    "audio": "https://archive.org/download/1_20251025/35.mp3"
+  },
+  {
+    "id": 36,
+    "name": "يس",
+    "from": 440,
+    "to": 445,
+    "audio": "https://archive.org/download/1_20251025/36.mp3"
+  },
+  {
+    "id": 37,
+    "name": "الصافات",
+    "from": 446,
+    "to": 452,
+    "audio": "https://archive.org/download/1_20251025/37.mp3"
+  },
+  {
+    "id": 38,
+    "name": "ص",
+    "from": 453,
+    "to": 458,
+    "audio": "https://archive.org/download/1_20251025/38.mp3"
+  },
+  {
+    "id": 39,
+    "name": "الزمر",
+    "from": 458,
+    "to": 467,
+    "audio": "https://archive.org/download/1_20251025/39.mp3"
+  },
+  {
+    "id": 40,
+    "name": "غافر",
+    "from": 467,
+    "to": 476,
+    "audio": "https://archive.org/download/1_20251025/40.mp3"
+  },
+  {
+    "id": 41,
+    "name": "فصلت",
+    "from": 477,
+    "to": 482,
+    "audio": "https://archive.org/download/1_20251025/41.mp3"
+  },
+  {
+    "id": 42,
+    "name": "الشورى",
+    "from": 483,
+    "to": 489,
+    "audio": "https://archive.org/download/1_20251025/42.mp3"
+  },
+  {
+    "id": 43,
+    "name": "الزخرف",
+    "from": 489,
+    "to": 495,
+    "audio": "https://archive.org/download/1_20251025/43.mp3"
+  },
+  {
+    "id": 44,
+    "name": "الدخان",
+    "from": 496,
+    "to": 498,
+    "audio": "https://archive.org/download/1_20251025/44.mp3"
+  },
+  {
+    "id": 45,
+    "name": "الجاثية",
+    "from": 499,
+    "to": 502,
+    "audio": "https://archive.org/download/1_20251025/45.mp3"
+  },
+  {
+    "id": 46,
+    "name": "الأحقاف",
+    "from": 502,
+    "to": 507,
+    "audio": "https://archive.org/download/1_20251025/46.mp3"
+  },
+  {
+    "id": 47,
+    "name": "محمد",
+    "from": 507,
+    "to": 510,
+    "audio": "https://archive.org/download/1_20251025/47.mp3"
+  },
+  {
+    "id": 48,
+    "name": "الفتح",
+    "from": 511,
+    "to": 515,
+    "audio": "https://archive.org/download/1_20251025/48.mp3"
+  },
+  {
+    "id": 49,
+    "name": "الحجرات",
+    "from": 515,
+    "to": 517,
+    "audio": "https://archive.org/download/1_20251025/49.mp3"
+  },
+  {
+    "id": 50,
+    "name": "ق",
+    "from": 518,
+    "to": 520,
+    "audio": "https://archive.org/download/1_20251025/50.mp3"
+  },
+  {
+    "id": 51,
+    "name": "الذاريات",
+    "from": 520,
+    "to": 523,
+    "audio": "https://archive.org/download/1_20251025/51.mp3"
+  },
+  {
+    "id": 52,
+    "name": "الطور",
+    "from": 523,
+    "to": 525,
+    "audio": "https://archive.org/download/1_20251025/52.mp3"
+  },
+  {
+    "id": 53,
+    "name": "النجم",
+    "from": 526,
+    "to": 528,
+    "audio": "https://archive.org/download/1_20251025/53.mp3"
+  },
+  {
+    "id": 54,
+    "name": "القمر",
+    "from": 528,
+    "to": 531,
+    "audio": "https://archive.org/download/1_20251025/54.mp3"
+  },
+  {
+    "id": 55,
+    "name": "الرحمن",
+    "from": 531,
+    "to": 534,
+    "audio": "https://archive.org/download/1_20251025/55.mp3"
+  },
+  {
+    "id": 56,
+    "name": "الواقعة",
+    "from": 534,
+    "to": 537,
+    "audio": "https://archive.org/download/1_20251025/56.mp3"
+  },
+  {
+    "id": 57,
+    "name": "الحديد",
+    "from": 537,
+    "to": 541,
+    "audio": "https://archive.org/download/1_20251025/57.mp3"
+  },
+  {
+    "id": 58,
+    "name": "المجادلة",
+    "from": 542,
+    "to": 545,
+    "audio": "https://archive.org/download/1_20251025/58.mp3"
+  },
+  {
+    "id": 59,
+    "name": "الحشر",
+    "from": 545,
+    "to": 548,
+    "audio": "https://archive.org/download/1_20251025/59.mp3"
+  },
+  {
+    "id": 60,
+    "name": "الممتحنة",
+    "from": 549,
+    "to": 551,
+    "audio": "https://archive.org/download/1_20251025/60.mp3"
+  },
+  {
+    "id": 61,
+    "name": "الصف",
+    "from": 551,
+    "to": 552,
+    "audio": "https://archive.org/download/1_20251025/61.mp3"
+  },
+  {
+    "id": 62,
+    "name": "الجمعة",
+    "from": 553,
+    "to": 554,
+    "audio": "https://archive.org/download/1_20251025/62.mp3"
+  },
+  {
+    "id": 63,
+    "name": "المنافقون",
+    "from": 554,
+    "to": 555,
+    "audio": "https://archive.org/download/1_20251025/63.mp3"
+  },
+  {
+    "id": 64,
+    "name": "التغابن",
+    "from": 556,
+    "to": 557,
+    "audio": "https://archive.org/download/1_20251025/64.mp3"
+  },
+  {
+    "id": 65,
+    "name": "الطلاق",
+    "from": 558,
+    "to": 559,
+    "audio": "https://archive.org/download/1_20251025/65.mp3"
+  },
+  {
+    "id": 66,
+    "name": "التحريم",
+    "from": 560,
+    "to": 561,
+    "audio": "https://archive.org/download/1_20251025/66.mp3"
+  },
+  {
+    "id": 67,
+    "name": "الملك",
+    "from": 562,
+    "to": 564,
+    "audio": "https://archive.org/download/1_20251025/67.mp3"
+  },
+  {
+    "id": 68,
+    "name": "القلم",
+    "from": 564,
+    "to": 566,
+    "audio": "https://archive.org/download/1_20251025/68.mp3"
+  },
+  {
+    "id": 69,
+    "name": "الحاقة",
+    "from": 566,
+    "to": 568,
+    "audio": "https://archive.org/download/1_20251025/69.mp3"
+  },
+  {
+    "id": 70,
+    "name": "المعارج",
+    "from": 568,
+    "to": 570,
+    "audio": "https://archive.org/download/1_20251025/70.mp3"
+  },
+  {
+    "id": 71,
+    "name": "نوح",
+    "from": 570,
+    "to": 571,
+    "audio": "https://archive.org/download/1_20251025/71.mp3"
+  },
+  {
+    "id": 72,
+    "name": "الجن",
+    "from": 572,
+    "to": 573,
+    "audio": "https://archive.org/download/1_20251025/72.mp3"
+  },
+  {
+    "id": 73,
+    "name": "المزمل",
+    "from": 574,
+    "to": 575,
+    "audio": "https://archive.org/download/1_20251025/73.mp3"
+  },
+  {
+    "id": 74,
+    "name": "المدثر",
+    "from": 575,
+    "to": 577,
+    "audio": "https://archive.org/download/1_20251025/74.mp3"
+  },
+  {
+    "id": 75,
+    "name": "القيامة",
+    "from": 577,
+    "to": 578,
+    "audio": "https://archive.org/download/1_20251025/75.mp3"
+  },
+  {
+    "id": 76,
+    "name": "الإنسان",
+    "from": 578,
+    "to": 580,
+    "audio": "https://archive.org/download/1_20251025/76.mp3"
+  },
+  {
+    "id": 77,
+    "name": "المرسلات",
+    "from": 580,
+    "to": 582,
+    "audio": "https://archive.org/download/1_20251025/77.mp3"
+  },
+  {
+    "id": 78,
+    "name": "النبأ",
+    "from": 582,
+    "to": 583,
+    "audio": "https://archive.org/download/1_20251025/78.mp3"
+  },
+  {
+    "id": 79,
+    "name": "النازعات",
+    "from": 583,
+    "to": 584,
+    "audio": "https://archive.org/download/1_20251025/79.mp3"
+  },
+  {
+    "id": 80,
+    "name": "عبس",
+    "from": 585,
+    "to": 586,
+    "audio": "https://archive.org/download/1_20251025/80.mp3"
+  },
+  {
+    "id": 81,
+    "name": "التكوير",
+    "from": 586,
+    "to": 586,
+    "audio": "https://archive.org/download/1_20251025/81.mp3"
+  },
+  {
+    "id": 82,
+    "name": "الإنفطار",
+    "from": 587,
+    "to": 587,
+    "audio": "https://archive.org/download/1_20251025/82.mp3"
+  },
+  {
+    "id": 83,
+    "name": "المطففين",
+    "from": 587,
+    "to": 589,
+    "audio": "https://archive.org/download/1_20251025/83.mp3"
+  },
+  {
+    "id": 84,
+    "name": "الإنشقاق",
+    "from": 589,
+    "to": 590,
+    "audio": "https://archive.org/download/1_20251025/84.mp3"
+  },
+  {
+    "id": 85,
+    "name": "البروج",
+    "from": 590,
+    "to": 591,
+    "audio": "https://archive.org/download/1_20251025/85.mp3"
+  },
+  {
+    "id": 86,
+    "name": "الطارق",
+    "from": 591,
+    "to": 591,
+    "audio": "https://archive.org/download/1_20251025/86.mp3"
+  },
+  {
+    "id": 87,
+    "name": "الأعلى",
+    "from": 591,
+    "to": 592,
+    "audio": "https://archive.org/download/1_20251025/87.mp3"
+  },
+  {
+    "id": 88,
+    "name": "الغاشية",
+    "from": 592,
+    "to": 593,
+    "audio": "https://archive.org/download/1_20251025/88.mp3"
+  },
+  {
+    "id": 89,
+    "name": "الفجر",
+    "from": 593,
+    "to": 594,
+    "audio": "https://archive.org/download/1_20251025/89.mp3"
+  },
+  {
+    "id": 90,
+    "name": "البلد",
+    "from": 594,
+    "to": 595,
+    "audio": "https://archive.org/download/1_20251025/90.mp3"
+  },
+  {
+    "id": 91,
+    "name": "الشمس",
+    "from": 595,
+    "to": 595,
+    "audio": "https://archive.org/download/1_20251025/91.mp3"
+  },
+  {
+    "id": 92,
+    "name": "الليل",
+    "from": 595,
+    "to": 596,
+    "audio": "https://archive.org/download/1_20251025/92.mp3"
+  },
+  {
+    "id": 93,
+    "name": "الضحى",
+    "from": 596,
+    "to": 596,
+    "audio": "https://archive.org/download/1_20251025/93.mp3"
+  },
+  {
+    "id": 94,
+    "name": "الشرح",
+    "from": 597,
+    "to": 597,
+    "audio": "https://archive.org/download/1_20251025/94.mp3"
+  },
+  {
+    "id": 95,
+    "name": "التين",
+    "from": 597,
+    "to": 597,
+    "audio": "https://archive.org/download/1_20251025/95.mp3"
+  },
+  {
+    "id": 96,
+    "name": "العلق",
+    "from": 597,
+    "to": 598,
+    "audio": "https://archive.org/download/1_20251025/96.mp3"
+  },
+  {
+    "id": 97,
+    "name": "القدر",
+    "from": 598,
+    "to": 598,
+    "audio": "https://archive.org/download/1_20251025/97.mp3"
+  },
+  {
+    "id": 98,
+    "name": "البينة",
+    "from": 598,
+    "to": 599,
+    "audio": "https://archive.org/download/1_20251025/98.mp3"
+  },
+  {
+    "id": 99,
+    "name": "الزلزلة",
+    "from": 599,
+    "to": 599,
+    "audio": "https://archive.org/download/1_20251025/99.mp3"
+  },
+  {
+    "id": 100,
+    "name": "العاديات",
+    "from": 599,
+    "to": 600,
+    "audio": "https://archive.org/download/1_20251025/100.mp3"
+  },
+  {
+    "id": 101,
+    "name": "القارعة",
+    "from": 600,
+    "to": 600,
+    "audio": "https://archive.org/download/1_20251025/101.mp3"
+  },
+  {
+    "id": 102,
+    "name": "التكاثر",
+    "from": 600,
+    "to": 601,
+    "audio": "https://archive.org/download/1_20251025/102.mp3"
+  },
+  {
+    "id": 103,
+    "name": "العصر",
+    "from": 601,
+    "to": 601,
+    "audio": "https://archive.org/download/1_20251025/103.mp3"
+  },
+  {
+    "id": 104,
+    "name": "الهمزة",
+    "from": 601,
+    "to": 601,
+    "audio": "https://archive.org/download/1_20251025/104.mp3"
+  },
+  {
+    "id": 105,
+    "name": "الفيل",
+    "from": 601,
+    "to": 602,
+    "audio": "https://archive.org/download/1_20251025/105.mp3"
+  },
+  {
+    "id": 106,
+    "name": "قريش",
+    "from": 602,
+    "to": 602,
+    "audio": "https://archive.org/download/1_20251025/106.mp3"
+  },
+  {
+    "id": 107,
+    "name": "الماعون",
+    "from": 602,
+    "to": 603,
+    "audio": "https://archive.org/download/1_20251025/107.mp3"
+  },
+  {
+    "id": 108,
+    "name": "الكوثر",
+    "from": 603,
+    "to": 603,
+    "audio": "https://archive.org/download/1_20251025/108.mp3"
+  },
+  {
+    "id": 109,
+    "name": "الكافرون",
+    "from": 603,
+    "to": 603,
+    "audio": "https://archive.org/download/1_20251025/109.mp3"
+  },
+  {
+    "id": 110,
+    "name": "النصر",
+    "from": 603,
+    "to": 604,
+    "audio": "https://archive.org/download/1_20251025/110.mp3"
+  },
+  {
+    "id": 111,
+    "name": "المسد",
+    "from": 604,
+    "to": 604,
+    "audio": "https://archive.org/download/1_20251025/111.mp3"
+  },
+  {
+    "id": 112,
+    "name": "الإخلاص",
+    "from": 604,
+    "to": 604,
+    "audio": "https://archive.org/download/1_20251025/112.mp3"
+  },
+  {
+    "id": 113,
+    "name": "الفلق",
+    "from": 604,
+    "to": 604,
+    "audio": "https://archive.org/download/1_20251025/113.mp3"
+  },
+  {
+    "id": 114,
+    "name": "الناس",
+    "from": 604,
+    "to": 604,
+    "audio": "https://archive.org/download/1_20251025/114.mp3"
+  }
+]

@@ -2,12 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect, useState } from "react";
-import {
-  ActivityIndicator,
-  I18nManager,
-  Text as RNText,
-  View,
-} from "react-native";
+import { I18nManager, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "./global.css";
 
@@ -16,13 +11,12 @@ import "./global.css";
 
 SplashScreen.preventAutoHideAsync();
 
-if(!I18nManager.isRTL){
+if (!I18nManager.isRTL) {
   I18nManager.allowRTL(true);
-  I18nManager.forceRTL(true)
+  I18nManager.forceRTL(true);
 }
 
 export default function RootLayout() {
-
   const [completedOnboarding, setCompletedOnboarding] = useState<
     boolean | null
   >(null);
@@ -39,8 +33,17 @@ export default function RootLayout() {
   useEffect(() => {
     async function prepareApp() {
       try {
+        
+        // await AsyncStorage.removeItem("onboardingCompleted");
+
         const value = await AsyncStorage.getItem("onboardingCompleted");
-        setCompletedOnboarding(value === "true");
+        console.log("onboardingCompleted (raw) : ", value);
+        if (value === null || value === undefined) {
+          await AsyncStorage.setItem("onboardingCompleted", "false");
+          setCompletedOnboarding(false);
+        } else {
+          setCompletedOnboarding(value === "true");
+        }
       } catch (e) {
         console.warn("Falid to fetch onboarding status from storage", e);
       } finally {
@@ -58,16 +61,8 @@ export default function RootLayout() {
     }
   }, [fontLoaded, fontError, isReady]);
 
-  if ((!fontLoaded && !fontError) || !isReady) {
+  if (!(fontLoaded && !fontError) || !isReady || completedOnboarding === null) {
     return null;
-  }
-
-  if (completedOnboarding === null) {
-    return (
-      <View className="flex-1 justify-center items-center">
-        <ActivityIndicator size="large" color="blue" />
-      </View>
-    );
   }
 
   if (!completedOnboarding) {
@@ -93,8 +88,8 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <Stack screenOptions={{ statusBarHidden: true }}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="GreatNames" />
-        <Stack.Screen name="MyNotification" />
+        <Stack.Screen name="GreatNames" options={{ headerShown: false }} />
+        <Stack.Screen name="MyNotifications" options={{ headerShown: false }} />
         <Stack.Screen name="Settings" />
         <Stack.Screen name="Dua" />
       </Stack>

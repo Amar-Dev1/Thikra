@@ -96,7 +96,7 @@ const AccessLocation = () => {
   const isReady = selectedCountry?.length > 0 && selectedCity?.length > 0;
 
   return (
-    <BgWrapper className={`${loading && "justify-center items-center"}`}>
+    <BgWrapper className={`px-5 ${loading && "justify-center items-center"}`}>
       {loading ? (
         <>
           <ActivityIndicator color={"black"} size={"large"} />

@@ -39,9 +39,10 @@
       "supportsRTL": true,
       "API_URL": "https://api.aladhan.com/v1/timingsByCity",
       "ALL_QURAN_URL": "https://raw.githubusercontent.com/Amar-dev1",
+      "SURAH_AUDIO_URL":"https://ia800606.us.archive.org/16/items/1_20251025",
       "router": {},
       "eas": {
-        "projectId": "b2a39f7b-af82-47a2-ae74-bc9b38002778"
+        "projectId": "359d9ac7-b411-4673-89b4-382173a12e60"
       }
     },
     "plugins": [
@@ -51,7 +52,6 @@
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
       ],
-      "expo-localization",
       "expo-router",
       [
         "expo-splash-screen",
@@ -64,7 +64,8 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      "expo-audio"
     ],
     "experiments": {
       "typedRoutes": true,

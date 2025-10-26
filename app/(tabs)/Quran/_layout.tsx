@@ -3,12 +3,10 @@ import React from "react";
 
 const _layout = () => {
   return (
-
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="Listen" />
-        <Stack.Screen name="Read" />
-      </Stack>
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="index" />
+      <Stack.Screen name="[id]" />
+    </Stack>
   );
 };
 

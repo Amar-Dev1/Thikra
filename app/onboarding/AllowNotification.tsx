@@ -48,7 +48,7 @@ const AllowNotification = () => {
   };
 
   return (
-    <BgWrapper>
+    <BgWrapper className="px-5">
       <View className="flex-row items-center gap-2">
         <Text className="font-cairo-bold text-3xl my-5">تفعيل الإشعارات</Text>
         <Image source={images.bell} className="size-10" />

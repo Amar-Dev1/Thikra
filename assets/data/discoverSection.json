@@ -15,13 +15,13 @@
     "id": 3,
     "title": "القبلة (قريباً)",
     "image": "kabaaBg",
-    "route": "/Index"
+    "route": "/"
   },
   {
     "id": 4,
     "title": "إشعاراتي",
     "image": "bell",
-    "route": "/Settings/MyNotifications"
+    "route": "/MyNotifications"
   },
   {
     "id": 5,

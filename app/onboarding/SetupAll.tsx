@@ -1,9 +1,9 @@
+import BgWrapper from "@/components/BgWrapper";
 import { fetchPrayerTimes } from "@/services/fetchPrayerTimes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 const SetupAll = () => {
   const [loading, setLoading] = useState<boolean | null>(false);
@@ -18,7 +18,7 @@ const SetupAll = () => {
       await AsyncStorage.setItem("timings", JSON.stringify(timings));
       console.log(await AsyncStorage.getItem("timings"));
       await AsyncStorage.setItem("onboardingCompleted", "true");
-      router.push("/(tabs)/Index");
+      router.push("/(tabs)");
     } catch (e: any) {
       console.error(e);
       setErr(e.message || "الرجاء التأكدمن تشغيل الإنترنت");
@@ -32,9 +32,7 @@ const SetupAll = () => {
   }, []);
 
   return (
-    <SafeAreaView
-      className={`flex-1 bg-primary px-5 py-3 flex flex-col justify-center items-center gap-5`}
-    >
+    <BgWrapper className="flex-1 bg-primary px-5 py-3 flex flex-col justify-center items-center gap-5">
       {loading && (
         <>
           <ActivityIndicator size={"large"} color={"black"} />
@@ -47,7 +45,7 @@ const SetupAll = () => {
       {!loading && err !== null && (
         <Text className="font-cairo-bold text-md text-red-400">{err}</Text>
       )}
-    </SafeAreaView>
+    </BgWrapper>
   );
 };
 

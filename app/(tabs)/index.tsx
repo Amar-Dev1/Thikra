@@ -73,6 +73,7 @@ const Index = () => {
         let randomIndex = Math.floor(Math.random() * ayat.length);
         let randomAyah = ayat[randomIndex];
         setRandomAyah(randomAyah.ayah);
+
         // await AsyncStorage.setItem("onboardingCompleted", "false");
 
         // Second, call scheduleNotificationAsync()
@@ -113,7 +114,7 @@ const Index = () => {
   }, []);
 
   return (
-    <BgWrapper>
+    <BgWrapper className="px-5">
       <View className="flex-1">
         <View className="flex-row justify-between items-center border-b-[.5px] border-gray-400">
           <MainTitle title="الصفحة الرئيسية" />
@@ -147,7 +148,10 @@ const Index = () => {
                   </View>
                 </View>
                 <View className="flex-col items-center font-cairo text-xs">
-                  <Text className="text-lg opacity-60"> {today}</Text>
+                  <Text className="text-md font-cairo-bold opacity-60">
+                    {" "}
+                    {today}
+                  </Text>
                   <Image source={images.mosque} className="size-32" />
                 </View>
               </TouchableOpacity>

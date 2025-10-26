@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const DuaDetails = () => {
+const ItemDetails = () => {
   return (
     <View>
       <Text>DuaDetails</Text>
@@ -9,4 +9,4 @@ const DuaDetails = () => {
   )
 }
 
-export default DuaDetails;
+export default ItemDetails;
