@@ -1,4 +1,4 @@
-import { HomeSvg, QuranSvg, SettingsSvg, UnSavedSvg } from "@/constants/icons";
+import { DuaSvg, HomeSvg, SettingsSvg, UnSavedSvg } from "@/constants/icons";
 import { Tabs } from "expo-router";
 import React from "react";
 import { SvgProps } from "react-native-svg";
@@ -22,7 +22,7 @@ const TabIcon = ({ focused, Icon, name }: ITabIcon) => {
   );
 };
 
-const _layout = () => {
+const TabsLayout = () => {
   return (
     <Tabs
       screenOptions={{
@@ -31,12 +31,11 @@ const _layout = () => {
           paddingTop: 5,
         },
         tabBarStyle: {
-          backgroundColor: "#faf7ef",
-          borderTopWidth: 1,
+          backgroundColor: "#FFFDF8",
+          borderTopWidth: 0.5,
           minHeight: 70,
           position: "absolute",
           overflow: "hidden",
-          direction: "rtl",
         },
       }}
     >
@@ -51,15 +50,15 @@ const _layout = () => {
       />
 
       <Tabs.Screen
-        name="Quran"
+        name="Dua"
         options={{
           headerShown: false,
-          tabBarStyle:{display:"none"},
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} Icon={QuranSvg} name="القرآن" />
+            <TabIcon focused={focused} Icon={DuaSvg} name="الدعاء" />
           ),
         }}
       />
+
       <Tabs.Screen
         name="Saved"
         options={{
@@ -74,6 +73,7 @@ const _layout = () => {
         name="Settings"
         options={{
           headerShown: false,
+
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} Icon={SettingsSvg} name="الإعدادات" />
           ),
@@ -83,4 +83,4 @@ const _layout = () => {
   );
 };
 
-export default _layout;
+export default TabsLayout;

@@ -12,7 +12,6 @@ import {
   View,
 } from "react-native";
 import locations from "../../assets/data/locations.json";
-
 import BgWrapper from "@/components/BgWrapper";
 import { SelectList } from "react-native-dropdown-select-list";
 

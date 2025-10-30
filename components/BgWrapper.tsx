@@ -10,7 +10,7 @@ interface Props {
 
 const BgWrapper = ({ children, className, hideBackground }: Props) => {
   return (
-    <SafeAreaView className={`flex-1 py-3 bg-transparent ${className}`}>
+    <SafeAreaView className={`flex-1 py-3 bg-bgColor ${className}`}>
       {!hideBackground && (
         <View style={styles.bgWrap} pointerEvents="none">
           <Image

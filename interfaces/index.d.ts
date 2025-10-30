@@ -1,3 +1,6 @@
+import React from "react";
+import { SvgProps } from "react-native-svg";
+
 export interface ILocation {
   city: string | null;
   country: string | null;
@@ -11,10 +14,46 @@ export interface IPrayerDetails {
   to: string;
 }
 
-export interface ISurah {
-  id: number;
+export interface IGreatName {
+  id?: number;
   name: string;
-  from: number;
-  to: number;
-  audio?: string;
+  text?: string;
+  className?: string;
+  onPress?: () => void;
 }
+
+export interface IDuaCategory {
+  id?: number;
+  title: string;
+  Icon: React.FC<SvgProps>;
+  className?: string;
+}
+
+export interface IDuaCategoryItem {
+  id?: number;
+  name: string;
+  className?: string;
+  categoryId: number;
+}
+
+// saved screen consist of categories (Quran,Dua,...etc)
+export interface ISavedCategory {
+  id?: any;
+  name: "Quran" | "Dua";
+  items: ISavedCategoryItem[];
+}
+
+// category item
+export interface ISavedCategoryItem {
+  id?: any;
+  route?: string;
+  name?: string;
+}
+
+// export interface ISurah {
+//   id: number;
+//   name: string;
+//   from: number;
+//   to: number;
+//   audio?: string;
+// }

@@ -1,13 +1,13 @@
 import BgWrapper from "@/components/BgWrapper";
+import { ISavedCategory } from "@/interfaces";
 import { fetchPrayerTimes } from "@/services/fetchPrayerTimes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, Text } from "react-native";
+import { ActivityIndicator, Alert, Text } from "react-native";
 
 const SetupAll = () => {
   const [loading, setLoading] = useState<boolean | null>(false);
-  const [err, setErr] = useState<string | null>(null);
 
   const prepareData = async () => {
     try {
@@ -21,14 +21,32 @@ const SetupAll = () => {
       router.push("/(tabs)");
     } catch (e: any) {
       console.error(e);
-      setErr(e.message || "الرجاء التأكدمن تشغيل الإنترنت");
+      Alert.alert(
+        "تفعيل خدمة الموقع",
+        "قم بتفعيل الموقع و الإنترنت رجاءاً ليعمل التطبيق ",
+        [{ text: "موافق", style: "default" }]
+      );
     } finally {
       setLoading(false);
     }
   };
 
+  const prepareSavedScreen = async () => {
+    try {
+      if (!(await AsyncStorage.getItem("Saved"))) {
+        const initialValues: ISavedCategory[] = [
+          { id: 1, name: "Dua", items: [] },
+        ];
+        await AsyncStorage.setItem("Saved", JSON.stringify(initialValues));
+      }
+    } catch (e) {
+      console.warn("faild to initialize : Saved screen ! ", e);
+    }
+  };
+
   useEffect(() => {
     prepareData();
+    prepareSavedScreen();
   }, []);
 
   return (
@@ -42,9 +60,9 @@ const SetupAll = () => {
         </>
       )}
 
-      {!loading && err !== null && (
+      {/* {!loading && err !== null && (
         <Text className="font-cairo-bold text-md text-red-400">{err}</Text>
-      )}
+      )} */}
     </BgWrapper>
   );
 };

@@ -30,7 +30,10 @@ import TrashSvg from "../assets/icons/trash.svg";
 import TravelSvg from "../assets/icons/travel.svg";
 import UnSavedSvg from "../assets/icons/unsaved.svg";
 import WaterSvg from "../assets/icons/water.svg";
-
+import Next10Svg from '../assets/icons/next10.svg';
+import Prev10Svg from '../assets/icons/prev10.svg';
+import DuaSvg from '../assets/icons/shield.svg'
+import DarkMoonSvg from '../assets/icons/moon-dark.svg'
 export {
   BellSvg,
   ClockSvg,
@@ -64,4 +67,8 @@ export {
   TravelSvg,
   UnSavedSvg,
   WaterSvg,
+  Prev10Svg,
+  Next10Svg,
+  DuaSvg,
+  DarkMoonSvg
 };

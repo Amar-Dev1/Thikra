@@ -114,7 +114,7 @@ const Index = () => {
   }, []);
 
   return (
-    <BgWrapper className="px-5">
+    <BgWrapper className="px-5" hideBackground={true}>
       <View className="flex-1">
         <View className="flex-row justify-between items-center border-b-[.5px] border-gray-400">
           <MainTitle title="الصفحة الرئيسية" />
@@ -122,17 +122,17 @@ const Index = () => {
             className="flex flex-row items-center gap-1 px-2 h-1/2 bg-primary rounded-xl shadow-md"
             onPress={() => router.push("/Settings/EditLocation")}
           >
-            <Text className="font-bold">{currentLocation?.city || "N/A"}</Text>
+            <Text className="font-cairo text-sm">{currentLocation?.city || "N/A"}</Text>
             <LocationSvg width={30} />
           </TouchableOpacity>
         </View>
         <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
           <View className="flex-1 py-5">
             <View>
-              <Text className="my-5 text-xl font-cairo-bold">
+              <Text className="my-5 text-lg font-cairo-bold">
                 السلام عليكم ، أخي المسلم
               </Text>
-              <TouchableOpacity className="flex flex-row justify-between px-4 py-3 bg-primary rounded-2xl shadow-md">
+              <TouchableOpacity className="flex flex-row justify-between px-4 py-3 bg-primary border-[.5px] border-dark/40 rounded-2xl">
                 <View className="flex-col justify-center">
                   <Text
                     className="opacity-60 text-lg"
@@ -157,7 +157,7 @@ const Index = () => {
               </TouchableOpacity>
             </View>
             {isFriday && (
-              <View className="my-5 bg-primary rounded-2xl shadow-md px-4 py-3">
+              <View className="my-5 bg-primary rounded-2xl border-[.5px] border-dark/40 px-4 py-3">
                 <View className="flex-row gap-2 items-center max-h-8">
                   <KabaaSvg width={20} />
                   <Text className="font-cairo-bold">ساعة الجمعة</Text>
@@ -176,8 +176,7 @@ const Index = () => {
 
             <View>
               <Text
-                className="my-5 text-2xl"
-                style={{ fontFamily: "Cairo-Bold" }}
+                className="my-5 font-cairo-bold text-xl"
               >
                 استكشف
               </Text>
@@ -189,6 +188,7 @@ const Index = () => {
                     image={(images as any)[card.image]}
                     className="min-w-[31%] flex-1"
                     route={card.route}
+                    
                   />
                 ))}
               </View>
@@ -197,7 +197,7 @@ const Index = () => {
 
           <View className="mb-5">
             <Text className="my-5 text-xl font-cairo-bold">مواقيت الصلاة</Text>
-            <View className="items-center gap-7 px-4 py-5 bg-primary rounded-2xl shadow-md">
+            <View className="items-center gap-7 px-4 py-5 bg-primary rounded-2xl border-[.5px] border-dark/40">
               <Text className="text-xl text-center font-amiri-bold">
                 فَذَالكٌم الرباط ، فَذَالكٌم الرباط
               </Text>
@@ -231,7 +231,7 @@ const Index = () => {
           </View>
 
           <View className="mb-[65px]">
-            <View className="bg-primary py-4 px-5 rounded-2xl shadow-md">
+            <View className="bg-primary py-4 px-5 rounded-2xl border-[.5px] border-dark/40">
               <Text className="mb-2 text-md font-cairo-bold">
                 الآية اليومية
               </Text>

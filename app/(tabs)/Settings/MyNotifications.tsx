@@ -4,7 +4,7 @@ import { Text } from "react-native";
 
 const MyNotifications = () => {
   return (
-    <BgWrapper>
+    <BgWrapper hideBackground={true}>
       <Text>MyNotifications</Text>
     </BgWrapper>
   );

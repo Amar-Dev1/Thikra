@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
-import { SplashScreen, Stack } from "expo-router";
+import { router, SplashScreen, Stack } from "expo-router";
 import { useEffect, useState } from "react";
 import { I18nManager, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -78,13 +78,14 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name="onboarding/SetupAll"
-          options={{ headerShown: false }}
+          options={{ headerShown: false, }}
         />
       </Stack>
     );
   }
 
   return (
+  
     <SafeAreaProvider>
       <Stack screenOptions={{ statusBarHidden: true }}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
