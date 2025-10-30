@@ -77,7 +77,7 @@ const ItemDetails = () => {
           });
         }
       };
-    }, [navigation]) // Dependency array
+    }, [navigation])
   );
   const toggleSave = async (id: number) => {
     try {
@@ -90,27 +90,24 @@ const ItemDetails = () => {
       if (category) {
         const itemIndex = category.items.findIndex((item) => item.id === id);
         if (itemIndex > -1) {
-          // Item is already saved, remove it
           category.items.splice(itemIndex, 1);
-          setIsSaved(false); // Update state
+          setIsSaved(false);
         } else {
-          // Item is not saved, add it
           category.items.push({
             id,
             route: `/Dua/${categoryId}/${id}`,
             name: currentItem?.name,
           });
-          setIsSaved(true); // Update state
+          setIsSaved(true);
         }
       } else {
-        // If the category doesn't exist, create it
         saved.push({
           name: "Dua",
           items: [
             { id, route: `/Dua/${categoryId}/${id}`, name: currentItem?.name },
           ],
         });
-        setIsSaved(true); // Update state
+        setIsSaved(true);
       }
 
       await AsyncStorage.setItem("Saved", JSON.stringify(saved));
@@ -129,7 +126,6 @@ const ItemDetails = () => {
     }
     if (!isRunningInExpoGo()) {
       try {
-        // 1. Capture the ViewShot to get the local file URI
         // @ts-ignore
         const uri = await shareViewRef.current.capture({
           format: "png",
@@ -139,11 +135,10 @@ const ItemDetails = () => {
 
         const link = "Download Thikra here:\nhttps://github.com/amar-dev1";
 
-        // 2. Use the standard React Native Share API
         await Share.share({
-          url: uri, // The image file URI
-          title: currentItem?.name, // This is often ignored by WhatsApp
-          message: `${currentItem?.name}\n\n${link}`, // Combine the name and the link
+          url: uri,
+          title: currentItem?.name,
+          message: `${currentItem?.name}\n\n${link}`,
         });
       } catch (e) {
         console.log("Failed to share dua:", e);
@@ -160,11 +155,10 @@ const ItemDetails = () => {
         style={{
           position: "absolute",
           left: 0,
-          top: -9999, // Move it way off-screen
+          top: -9999,
           zIndex: -100,
           opacity: 0,
-          // Add these to ensure it has a size and renders its children
-          width: 300, // Based on your ShareDua content size
+          width: 300,
           height: 300,
         }}
       >
