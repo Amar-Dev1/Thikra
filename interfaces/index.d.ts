@@ -39,7 +39,7 @@ export interface IDuaCategoryItem {
 // saved screen consist of categories (Quran,Dua,...etc)
 export interface ISavedCategory {
   id?: any;
-  name: "Quran" | "Dua";
+  name: "القرآن" | "الأدعية و الأذكار";
   items: ISavedCategoryItem[];
 }
 

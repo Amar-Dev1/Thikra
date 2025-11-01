@@ -34,7 +34,7 @@ const ItemDetails = () => {
   const shareViewRef = useRef<ViewShot>(null);
 
   const categoryId = Number(Category);
-  const itemId = Number(Item);
+  const itemId = Item;
 
   const category = adhkar.find((c) => c.id === categoryId);
   const currentItem =
@@ -44,7 +44,7 @@ const ItemDetails = () => {
     const checkIfSaved = async () => {
       const data = await AsyncStorage.getItem("Saved");
       const saved: ISavedCategory[] = data ? JSON.parse(data) : [];
-      const category = saved.find((cat) => cat.name === "Dua");
+      const category = saved.find((cat) => cat.name === "الأدعية و الأذكار");
       if (category) {
         const itemExists = category.items.some((item) => item.id === itemId);
         setIsSaved(itemExists);
@@ -79,32 +79,42 @@ const ItemDetails = () => {
       };
     }, [navigation])
   );
-  const toggleSave = async (id: number) => {
+
+  const toggleSave = async () => {
+    if (!currentItem) return;
+
     try {
       setLoading(true);
       const data = await AsyncStorage.getItem("Saved");
       const saved: ISavedCategory[] = data ? JSON.parse(data) : [];
 
-      const category = saved.find((cat) => cat.name === "Dua");
+      const category = saved.find((cat) => cat.name === "الأدعية و الأذكار");
 
       if (category) {
-        const itemIndex = category.items.findIndex((item) => item.id === id);
+        const itemIndex = category.items.findIndex(
+          (item) => item.id === currentItem?.id
+        );
         if (itemIndex > -1) {
           category.items.splice(itemIndex, 1);
           setIsSaved(false);
         } else {
           category.items.push({
-            id,
-            route: `/Dua/${categoryId}/${id}`,
+            id: currentItem?.id,
+            route: `/Dua/${categoryId}/${currentItem?.id}`,
             name: currentItem?.name,
           });
           setIsSaved(true);
         }
       } else {
         saved.push({
-          name: "Dua",
+          id: 1,
+          name: "الأدعية و الأذكار",
           items: [
-            { id, route: `/Dua/${categoryId}/${id}`, name: currentItem?.name },
+            {
+              id: currentItem?.id,
+              route: `/Dua/${categoryId}/${currentItem?.id}`,
+              name: currentItem?.name,
+            },
           ],
         });
         setIsSaved(true);
@@ -216,7 +226,7 @@ const ItemDetails = () => {
         }}
       >
         <TouchableOpacity
-          onPress={() => toggleSave(itemId)}
+          onPress={toggleSave}
           style={{ alignItems: "center", gap: 4, flex: 1, marginBottom: 8 }}
         >
           {
