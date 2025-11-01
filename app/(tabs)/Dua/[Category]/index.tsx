@@ -27,10 +27,10 @@ const Index = () => {
             const isLast = index === items.length - 1;
             return (
               <DuaCategoryItem
-                id={item.id}
+                id={item.id.toString()}
                 name={item.name}
-                categoryId={currentItem?.id}
-                className={`${isLast && "mb-16"}`}
+                categoryId={currentItem?.id!}
+                className={`${isLast && "mb-20"}`}
               />
             );
           }}

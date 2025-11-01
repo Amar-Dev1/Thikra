@@ -23,6 +23,8 @@ const index = () => {
           renderItem={({ item }) => {
             const iconKey = item.icon;
             const IconComponent = iconMap[iconKey];
+            const isLast =
+              item.id === adhkar.length || item.id === adhkar.length - 1;
             if (!IconComponent) return null;
             return (
               <DuaCategory
@@ -30,7 +32,7 @@ const index = () => {
                 id={item.id}
                 title={item.category}
                 Icon={IconComponent}
-                className="w-[48%]"
+                className={`w-[48%] ${isLast && "mb-24"}`}
               />
             );
           }}

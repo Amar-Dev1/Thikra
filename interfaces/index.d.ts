@@ -23,14 +23,14 @@ export interface IGreatName {
 }
 
 export interface IDuaCategory {
-  id?: number;
+  id?: any;
   title: string;
   Icon: React.FC<SvgProps>;
   className?: string;
 }
 
 export interface IDuaCategoryItem {
-  id?: number;
+  id?: any;
   name: string;
   className?: string;
   categoryId: number;

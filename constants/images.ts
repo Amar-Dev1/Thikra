@@ -16,6 +16,8 @@ import clouds from "../assets/images/clouds.png";
 import settingsImg from '../assets/images/settingsBg.png';
 // @ts-ignore
 import androidForgroundIcon from '../assets/images/android-icon-foreground.png'
+// @ts-ignore
+import icon from '../assets/images/icon.png';
 
 export const images = {
   Allah,
@@ -26,5 +28,6 @@ export const images = {
   bell,
   clouds,
   settingsImg,
-  androidForgroundIcon
+  androidForgroundIcon,
+  icon
 };

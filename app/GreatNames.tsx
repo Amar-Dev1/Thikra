@@ -53,7 +53,7 @@ const GreatNames = () => {
         <MainTitle title="أسماء الله الحسنى" className="text-center" />
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false} className="pt-5">
+      <ScrollView showsVerticalScrollIndicator={false} className="py-5">
         <FlatList
           data={Namesdata}
           numColumns={3}

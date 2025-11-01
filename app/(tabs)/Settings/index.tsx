@@ -2,7 +2,7 @@ import BgWrapper from "@/components/BgWrapper";
 import MainTitle from "@/components/MainTitle";
 import SettingsItem, { ISettingsElement } from "@/components/SettingsItem";
 import {
-  BellSvg,
+  // BellSvg,
   ContactSvg,
   InfoSvg,
   LocationSvg,
@@ -48,12 +48,12 @@ const elements: ISettingsElement[] = [
     route: "/Settings/EditLocation",
     Icon: LocationSvg,
   },
-  {
-    title: "إشعاراتي",
-    desc: "تفضيلات الإشعارات",
-    route: "/Settings/MyNotifications",
-    Icon: BellSvg,
-  },
+  // {
+  //   title: "إشعاراتي",
+  //   desc: "تفضيلات الإشعارات",
+  //   route: "/Settings/MyNotifications",
+  //   Icon: BellSvg,
+  // },
   {
     title: "مشاركة التطبيق",
     desc: " كن شريكاً في الأجر",

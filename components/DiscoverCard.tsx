@@ -17,11 +17,11 @@ const DiscoverCard = ({ title, image, route, className }: props) => {
       onPress={() => router.push(`${route}`)}
       className={`flex flex-col gap-2 bg-primary rounded-2xl p-3 border-[.5px] border-dark/40 ${className}`}
     >
-      <Text style={{ fontFamily: "Cairo-Regular" }}>{title}</Text>
+      <Text className="font-cairo text-sm">{title}</Text>
       <Image
         source={image}
         resizeMode="contain"
-        className="size-14 ml-auto"
+        className="size-12 ml-auto"
       />
     </TouchableOpacity>
   );

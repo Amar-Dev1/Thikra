@@ -122,7 +122,9 @@ const Index = () => {
             className="flex flex-row items-center gap-1 px-2 h-1/2 bg-primary border-[.5px] border-dark/40 rounded-xl"
             onPress={() => router.push("/Settings/EditLocation")}
           >
-            <Text className="font-cairo text-sm">{currentLocation?.city || "N/A"}</Text>
+            <Text className="font-cairo text-sm">
+              {currentLocation?.city || "N/A"}
+            </Text>
             <LocationSvg width={30} />
           </TouchableOpacity>
         </View>
@@ -134,10 +136,7 @@ const Index = () => {
               </Text>
               <TouchableOpacity className="flex flex-row justify-between px-4 py-3 bg-primary border-[.5px] border-dark/40 rounded-2xl">
                 <View className="flex-col justify-center">
-                  <Text
-                    className="opacity-60 text-lg"
-                    style={{ fontFamily: "Cairo-Bold" }}
-                  >
+                  <Text className="opacity-60 text-lg font-cairo-bold">
                     {currentSalah?.name || "N/A"}
                   </Text>
                   <View className="flex-row items-center gap-2">
@@ -152,7 +151,7 @@ const Index = () => {
                     {" "}
                     {today}
                   </Text>
-                  <Image source={images.mosque} className="size-32" />
+                  <Image source={images.mosque} className="size-28" />
                 </View>
               </TouchableOpacity>
             </View>
@@ -175,11 +174,7 @@ const Index = () => {
             )}
 
             <View>
-              <Text
-                className="my-5 font-cairo-bold text-xl"
-              >
-                استكشف
-              </Text>
+              <Text className="my-5 font-cairo-bold text-lg">استكشف</Text>
               <View className=" flex-row gap-2 flex-wrap">
                 {discoverCards.map((card) => (
                   <DiscoverCard
@@ -188,7 +183,6 @@ const Index = () => {
                     image={(images as any)[card.image]}
                     className="min-w-[31%] flex-1"
                     route={card.route}
-                    
                   />
                 ))}
               </View>
@@ -196,7 +190,7 @@ const Index = () => {
           </View>
 
           <View className="mb-5">
-            <Text className="my-5 text-xl font-cairo-bold">مواقيت الصلاة</Text>
+            <Text className="my-5 text-lg font-cairo-bold">مواقيت الصلاة</Text>
             <View className="items-center gap-7 px-4 py-5 bg-primary rounded-2xl border-[.5px] border-dark/40">
               <Text className="text-xl text-center font-amiri-bold">
                 فَذَالكٌم الرباط ، فَذَالكٌم الرباط
