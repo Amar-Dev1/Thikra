@@ -17,14 +17,9 @@
     "image": "kabaaBg",
     "route": "/"
   },
+ 
   {
     "id": 4,
-    "title": "إشعاراتي",
-    "image": "bell",
-    "route": "/MyNotifications"
-  },
-  {
-    "id": 5,
     "title": "أسماء الله الحسنى",
     "image": "Allah",
     "route": "/GreatNames"

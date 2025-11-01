@@ -1,4 +1,10 @@
-import { DuaSvg, HomeSvg, SettingsSvg, UnSavedSvg } from "@/constants/icons";
+import {
+  DuaSvg,
+  HomeSvg,
+  QuranSvg,
+  SettingsSvg,
+  UnSavedSvg,
+} from "@/constants/icons";
 import { Tabs } from "expo-router";
 import React from "react";
 import { SvgProps } from "react-native-svg";
@@ -13,8 +19,8 @@ const TabIcon = ({ focused, Icon, name }: ITabIcon) => {
   const iconColor = focused ? "#F5C97B" : "#FFFDF8";
   return (
     <Icon
-      width={focused ? 30 : 28}
-      height={focused ? 30 : 28}
+      width={focused ? 28 : 26}
+      height={focused ? 28 : 26}
       fill={iconColor}
       stroke={iconColor}
       className="transition-all"
@@ -45,6 +51,16 @@ const TabsLayout = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} Icon={HomeSvg} name="الصفحة الرئيسية" />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="Quran"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon focused={focused} Icon={QuranSvg} name="القرآن" />
           ),
         }}
       />

@@ -119,7 +119,7 @@ const Index = () => {
         <View className="flex-row justify-between items-center border-b-[.5px] border-gray-400">
           <MainTitle title="الصفحة الرئيسية" />
           <TouchableOpacity
-            className="flex flex-row items-center gap-1 px-2 h-1/2 bg-primary rounded-xl shadow-md"
+            className="flex flex-row items-center gap-1 px-2 h-1/2 bg-primary border-[.5px] border-dark/40 rounded-xl"
             onPress={() => router.push("/Settings/EditLocation")}
           >
             <Text className="font-cairo text-sm">{currentLocation?.city || "N/A"}</Text>

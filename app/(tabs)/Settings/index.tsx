@@ -92,17 +92,14 @@ const index = () => {
       <ImageBackground
         source={images.settingsImg}
         resizeMode="cover"
-        className="relative min-h-[28%] mb-16 rounded-2xl overflow-hidden flex-col justify-center px-5"
+        className="relative min-h-[25%] mb-16 rounded-2xl overflow-hidden flex-col justify-center px-5"
       >
         <View className="absolute inset-0 bg-black/70" />
-        <Text className="text-light font-cairo-bold text-md text-center">
-          وَابْتَغِ فِيمَا آتَاكَ اللَّهُ الدَّارَ الْآخِرَةَ ۖ وَلَا تَنسَ
-          نَصِيبَكَ مِنَ الدُّنْيَا ۖ وَأَحْسِن كَمَا أَحْسَنَ اللَّهُ إِلَيْكَ
-          ۖ وَلَا تَبْغِ الْفَسَادَ فِي الْأَرْضِ ۖ إِنَّ اللَّهَ لَا يُحِبُّ
-          الْمُفْسِدِينَ
+        <Text className="text-light font-cairo-bold text-xl text-center">
+          وَذَكِّرْ فَإِنَّ الذِّكْرَى تَنْفَعُ الْمُؤْمِنِينَ
         </Text>
         <Text className="text-light font-cairo text-xs text-center mt-5">
-          [القصص : ٧٧]
+          [ الذاريات: 55]
         </Text>
       </ImageBackground>
     </BgWrapper>
