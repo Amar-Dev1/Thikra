@@ -1,6 +1,11 @@
+// import {
+//   infiniteNotification,
+//   scheduleRepeatingNotification,
+// } from "@/utils/pushLocalNotification";
+import { accessNotifications } from "@/utils/accessNotifications";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
-import { router, SplashScreen, Stack } from "expo-router";
+import { SplashScreen, Stack } from "expo-router";
 import { useEffect, useState } from "react";
 import { I18nManager, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -33,7 +38,6 @@ export default function RootLayout() {
   useEffect(() => {
     async function prepareApp() {
       try {
-        
         // await AsyncStorage.removeItem("onboardingCompleted");
 
         const value = await AsyncStorage.getItem("onboardingCompleted");
@@ -61,6 +65,13 @@ export default function RootLayout() {
     }
   }, [fontLoaded, fontError, isReady]);
 
+  // notifications
+  useEffect(() => {
+    (async () => {
+      await accessNotifications();
+    })();
+  }, []);
+
   if (!(fontLoaded && !fontError) || !isReady || completedOnboarding === null) {
     return null;
   }
@@ -78,14 +89,13 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name="onboarding/SetupAll"
-          options={{ headerShown: false, }}
+          options={{ headerShown: false }}
         />
       </Stack>
     );
   }
 
   return (
-  
     <SafeAreaProvider>
       <Stack screenOptions={{ statusBarHidden: true }}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

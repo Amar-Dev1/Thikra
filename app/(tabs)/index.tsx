@@ -4,10 +4,10 @@ import MainTitle from "@/components/MainTitle";
 import { ClockSvg, KabaaSvg, LocationSvg } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { ILocation, IPrayerDetails } from "@/interfaces";
-import { convert24To12 } from "@/utils/convert24To12";
 import { getCurrentSalah } from "@/utils/getCurrentSalah";
+import { convert24To12 } from "@/utils/parseTime";
+import { schedulePrayerNotification } from "@/utils/schedulePrayerNotification";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as Notifications from "expo-notifications";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
@@ -36,6 +36,7 @@ const Index = () => {
   useEffect(() => {
     async function prepareData() {
       try {
+        // await AsyncStorage.removeItem("onboardingCompleted");
         const location = await AsyncStorage.getItem("location");
         setCurrentLocation(location ? JSON.parse(location) : null);
 
@@ -63,28 +64,16 @@ const Index = () => {
         });
 
         setPrayersDetails(updated);
+        await schedulePrayerNotification(updated);
 
         // detect current salah
         const current = getCurrentSalah(updated);
         setCurrentSalah(current ? current : null);
 
         // set daily ayah
-
         let randomIndex = Math.floor(Math.random() * ayat.length);
         let randomAyah = ayat[randomIndex];
         setRandomAyah(randomAyah.ayah);
-
-        // await AsyncStorage.setItem("onboardingCompleted", "false");
-
-        // Second, call scheduleNotificationAsync()
-        Notifications.scheduleNotificationAsync({
-          content: {
-            title: "زايلللي",
-            body: "قوموا إالى الصلاه",
-          },
-
-          trigger: null,
-        });
       } catch (e) {
         console.error("Faild to prepare data", e);
       }

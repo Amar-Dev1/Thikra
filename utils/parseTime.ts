@@ -18,3 +18,10 @@ export const convert24To12 = (time24?: string | null) => {
 
   return `${hours12}:${minutesStr} ${period}`;
 };
+
+export const convertToHHMM = (time: string) => {
+  const [hourStr, minutesStr] = time.split(":");
+  const hour = parseInt(hourStr, 10);
+  const minute = parseInt(minutesStr, 10);
+  return { hour, minute };
+};

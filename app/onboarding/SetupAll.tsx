@@ -35,7 +35,7 @@ const SetupAll = () => {
     try {
       if (!(await AsyncStorage.getItem("Saved"))) {
         const initialValues: ISavedCategory[] = [
-          { id: 1, name: "Dua", items: [] },
+          { id: 1, name: "الأدعية و الأذكار", items: [] },
         ];
         await AsyncStorage.setItem("Saved", JSON.stringify(initialValues));
       }

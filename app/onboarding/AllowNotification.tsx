@@ -1,45 +1,17 @@
 import BgWrapper from "@/components/BgWrapper";
 import { images } from "@/constants/images";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as Notifications from "expo-notifications";
+import { accessNotifications } from "@/utils/accessNotifications";
 import { router } from "expo-router";
-import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 const AllowNotification = () => {
   const handleAllow = async () => {
     try {
-      const { status: existingStatus } =
-        await Notifications.getPermissionsAsync();
-
-      let finalStatus = existingStatus;
-      if (existingStatus !== "granted") {
-        const { status } = await Notifications.requestPermissionsAsync();
-        finalStatus = status;
-      }
-
-      if (finalStatus !== "granted") {
-        Alert.alert(
-          "لم يتم السماح",
-          "لن نتمكن من إرسال التنبيهات لك إلا بعد السماح بالإشعارات."
-        );
-        
-        Notifications.setNotificationHandler({
-          handleNotification: async () => ({
-            shouldPlaySound: true,
-            shouldSetBadge: false,
-            shouldShowBanner: true,
-            shouldShowList: true,
-          }),
-        });
-
-        return;
-      }
-
-      await AsyncStorage.setItem("notifications_allowed", "true");
-      router.push("/onboarding/AccessLocation");
+      const allowed = await accessNotifications();
+      if (!allowed) return;
+      else router.push("/onboarding/AccessLocation");
     } catch (e) {
-      console.error("Notification setup failed:", e);
-      Alert.alert("حدث خطأ", "حدث خطأ أثناء إعداد الإشعارات.");
+      console.warn(e);
     }
   };
 
