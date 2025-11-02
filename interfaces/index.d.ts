@@ -31,9 +31,11 @@ export interface IDuaCategory {
 
 export interface IDuaCategoryItem {
   id?: any;
+  index?:number;
   name: string;
   className?: string;
   categoryId: number;
+  
 }
 
 // saved screen consist of categories (Quran,Dua,...etc)

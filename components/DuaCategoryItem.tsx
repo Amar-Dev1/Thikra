@@ -6,6 +6,7 @@ import { Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
 
 const DuaCategoryItem = ({
   id,
+  index,
   name,
   className,
   categoryId,
@@ -16,7 +17,7 @@ const DuaCategoryItem = ({
       onPress={() => router.push(`/(tabs)/Dua/${categoryId}/${id}`)}
     >
       <View className="bg-primary w-8 h-8 justify-center items-center rounded-full opacity-75">
-        <Text className="font-cairo text-xs">{id}</Text>
+        <Text className="font-cairo text-xs">{index}</Text>
       </View>
       <Text className="font-cairo-bold text-sm flex-1">{name}</Text>
       <TouchableHighlight className="rotate-180">

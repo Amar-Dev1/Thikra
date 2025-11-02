@@ -28,6 +28,7 @@ const Index = () => {
             return (
               <DuaCategoryItem
                 id={item.id.toString()}
+                index={index + 1}
                 name={item.name}
                 categoryId={currentItem?.id!}
                 className={`${isLast && "mb-20"}`}
