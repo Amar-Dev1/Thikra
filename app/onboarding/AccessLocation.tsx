@@ -1,3 +1,4 @@
+import BgWrapper from "@/components/BgWrapper";
 import { LocationSvg } from "@/constants/icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Location from "expo-location";
@@ -11,9 +12,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import locations from "../../assets/data/locations.json";
-import BgWrapper from "@/components/BgWrapper";
 import { SelectList } from "react-native-dropdown-select-list";
+import locations from "../../assets/data/locations.json";
 
 const AccessLocation = () => {
   const [loading, setLoading] = useState<boolean | null>(null);
@@ -115,7 +115,7 @@ const AccessLocation = () => {
 
             <View className="mt-5 gap-4">
               <TouchableOpacity
-                className="bg-primary p-5 rounded-2xl shadow-md border border-primary"
+                className="bg-primary p-5 rounded-2xl border border-dark/40"
                 onPress={locationAutoDetect}
               >
                 <View className="flex-row gap-3">
@@ -135,7 +135,7 @@ const AccessLocation = () => {
               </TouchableOpacity>
 
               <TouchableOpacity
-                className="bg-primary p-5 rounded-2xl shadow-md border border-primary"
+                className="bg-primary p-5 rounded-2xl border border-dark/40"
                 onPress={() => setExpandedCountry(!expandedCountry)}
               >
                 <View className="flex-row gap-3 ">
@@ -181,7 +181,7 @@ const AccessLocation = () => {
 
           <View className="flex-row items-center mt-auto">
             <TouchableOpacity
-              className={`bg-primary shadow-md ${
+              className={`bg-primary border border-dark/40 ${
                 !isReady ? "opacity-60" : "opacity-100"
               } rounded-2xl py-2 flex-1`}
               disabled={!isReady}

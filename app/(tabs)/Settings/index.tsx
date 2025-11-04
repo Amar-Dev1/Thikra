@@ -31,11 +31,9 @@ const onShare = async () => {
 };
 
 const onReport = () => {
-  const recipient = "amarofficial249@gmail.com";
+  const recipient = "thikraapp@gmail.com";
   const subject = encodeURIComponent("technical report - Thikra");
-  const body = encodeURIComponent(`
-  Please describe the issue below:\n\n
-  `);
+  const body = encodeURIComponent(`Please describe the issue below:\n\n`);
   const mailToUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
 
   Linking.openURL(mailToUrl);

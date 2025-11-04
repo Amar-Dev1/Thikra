@@ -15,10 +15,6 @@ const AllowNotification = () => {
     }
   };
 
-  const handleSkip = () => {
-    router.push("/onboarding/AccessLocation");
-  };
-
   return (
     <BgWrapper className="px-5">
       <View className="flex-row items-center gap-2">
@@ -31,16 +27,10 @@ const AllowNotification = () => {
 
       <View className="flex-row items-center mt-auto">
         <TouchableOpacity
-          className="bg-primary rounded-2xl py-2 flex-1 shadow-md"
+          className="bg-primary rounded-2xl py-2 flex-1 border border-dark/40"
           onPress={handleAllow}
         >
           <Text className="text-lg font-cairo-bold text-center">سماح</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          className="rounded-2xl py-2 flex-1"
-          onPress={handleSkip}
-        >
-          <Text className="text-lg font-cairo-bold text-center">تخطي</Text>
         </TouchableOpacity>
       </View>
     </BgWrapper>

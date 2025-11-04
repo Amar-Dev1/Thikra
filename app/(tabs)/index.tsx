@@ -7,6 +7,7 @@ import { ILocation, IPrayerDetails } from "@/interfaces";
 import { getCurrentSalah } from "@/utils/getCurrentSalah";
 import { convert24To12 } from "@/utils/parseTime";
 import { schedulePrayerNotification } from "@/utils/schedulePrayerNotification";
+import { syncNotificationState } from "@/utils/syncNotificationState";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
@@ -37,43 +38,38 @@ const Index = () => {
     async function prepareData() {
       try {
         // await AsyncStorage.removeItem("onboardingCompleted");
+        console.log(await AsyncStorage.getItem("onboardingCompleted"));
         const location = await AsyncStorage.getItem("location");
         setCurrentLocation(location ? JSON.parse(location) : null);
 
         const date = new Date();
+
         const options: Intl.DateTimeFormatOptions = {
           year: "numeric",
           month: "long",
           day: "numeric",
           calendar: "islamic",
         };
+
         setToday(date.toLocaleDateString("ar-SA", options));
 
-        const timingsRaw = await AsyncStorage.getItem("timings");
-        const timings = timingsRaw ? JSON.parse(timingsRaw) : {};
+        const storedTimings = await AsyncStorage.getItem("timings");
+        const timings = storedTimings ? JSON.parse(storedTimings) : [];
 
-        const updated = prayersDetails.map((prayer, idx) => {
-          const from = timings[prayer.enName];
-          const next = prayersDetails[(idx + 1) % prayersDetails.length];
-          const to = timings[next.enName] ?? "N/A";
-          return {
-            ...prayer,
-            time: from,
-            to,
-          };
-        });
+        setPrayersDetails(timings);
 
-        setPrayersDetails(updated);
-        await schedulePrayerNotification(updated);
+        // await schedulePrayerNotification(timings);
+        // await syncNotificationState(timings);
 
         // detect current salah
-        const current = getCurrentSalah(updated);
+        const current = getCurrentSalah(timings);
         setCurrentSalah(current ? current : null);
 
         // set daily ayah
         let randomIndex = Math.floor(Math.random() * ayat.length);
         let randomAyah = ayat[randomIndex];
         setRandomAyah(randomAyah.ayah);
+
       } catch (e) {
         console.error("Faild to prepare data", e);
       }
@@ -99,7 +95,7 @@ const Index = () => {
   // for handling friday message
   useEffect(() => {
     const now = new Date();
-    setIsFriday(now.getDay() === 5 && now.getHours() === 14);
+    setIsFriday(now.getDay() === 5);
   }, []);
 
   return (
@@ -161,7 +157,6 @@ const Index = () => {
                 <Text className="font-amiri ml-auto">متفق عليه</Text>
               </View>
             )}
-
             <View>
               <Text className="my-5 font-cairo-bold text-lg">استكشف</Text>
               <View className=" flex-row gap-2 flex-wrap">
@@ -186,7 +181,6 @@ const Index = () => {
               </Text>
               <View className="relative w-[95%] mx-auto mb-4">
                 <View className="absolute top-[5.5px] w-full h-[1.5px] bg-[#ddd]" />
-
                 <View className="flex flex-row justify-between">
                   {prayersDetails.map((prayer) => (
                     <TouchableOpacity

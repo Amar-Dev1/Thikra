@@ -7,7 +7,7 @@ export const fetchPrayerTimes = async (
 ) => {
   try {
     const res = await fetch(
-      `${CONFIG.API_URL}?city=${city}&country=${country}&method=${method}`,
+      `${CONFIG.PRAYER_TIME_URL}?city=${city}&country=${country}&method=${method}`,
       { method: "GET", headers: CONFIG.HEADERS }
     );
     if (!res) {

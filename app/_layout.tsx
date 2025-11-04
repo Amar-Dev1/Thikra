@@ -1,13 +1,12 @@
-// import {
-//   infiniteNotification,
-//   scheduleRepeatingNotification,
-// } from "@/utils/pushLocalNotification";
-import { accessNotifications } from "@/utils/accessNotifications";
+import { syncNotificationState } from "@/utils/syncNotificationState";
+import { fireBackgroundNotification } from "@/utils/taskManager";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as BackgroundTask from "expo-background-task";
 import { useFonts } from "expo-font";
-import { SplashScreen, Stack } from "expo-router";
+import { SplashScreen, Stack, useRouter } from "expo-router";
+import * as TaskManager from "expo-task-manager";
 import { useEffect, useState } from "react";
-import { I18nManager, Text as RNText } from "react-native";
+import { AppState, I18nManager, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "./global.css";
 
@@ -21,7 +20,22 @@ if (!I18nManager.isRTL) {
   I18nManager.forceRTL(true);
 }
 
+// define tasks for prayer notifications
+const PRAYER_BACKGROUND_TASK = "background-notification-task";
+
+TaskManager.defineTask(PRAYER_BACKGROUND_TASK, async () => {
+  try {
+    await fireBackgroundNotification();
+    return BackgroundTask.BackgroundTaskResult.Success;
+  } catch (e) {
+    console.warn("Prayer background task failed", e);
+    return BackgroundTask.BackgroundTaskResult.Failed;
+  }
+});
+
 export default function RootLayout() {
+  const router = useRouter();
+
   const [completedOnboarding, setCompletedOnboarding] = useState<
     boolean | null
   >(null);
@@ -35,29 +49,6 @@ export default function RootLayout() {
     "Cairo-Regular": require("../assets/fonts/Cairo-Regular.ttf"),
   });
 
-  useEffect(() => {
-    async function prepareApp() {
-      try {
-        // await AsyncStorage.removeItem("onboardingCompleted");
-
-        const value = await AsyncStorage.getItem("onboardingCompleted");
-        console.log("onboardingCompleted (raw) : ", value);
-        if (value === null || value === undefined) {
-          await AsyncStorage.setItem("onboardingCompleted", "false");
-          setCompletedOnboarding(false);
-        } else {
-          setCompletedOnboarding(value === "true");
-        }
-      } catch (e) {
-        console.warn("Falid to fetch onboarding status from storage", e);
-      } finally {
-        setIsReady(true);
-      }
-    }
-
-    prepareApp();
-  }, []);
-
   // hide splash screen only when fonts are loaded
   useEffect(() => {
     if ((fontLoaded || fontError) && isReady) {
@@ -65,39 +56,77 @@ export default function RootLayout() {
     }
   }, [fontLoaded, fontError, isReady]);
 
-  // notifications
   useEffect(() => {
-    (async () => {
-      await accessNotifications();
-    })();
+    let sub: any;
+    async function prepareApp() {
+      try {
+        // await AsyncStorage.removeItem("onboardingCompleted"); // for testing
+
+        const storedValue = await AsyncStorage.getItem("onboardingCompleted");
+
+        if (storedValue === null || storedValue === undefined) {
+          await AsyncStorage.setItem("onboardingCompleted", "false");
+          setCompletedOnboarding(false);
+        } else {
+          setCompletedOnboarding(storedValue === "true");
+        }
+
+        // sync notifications permission
+        await syncNotificationState();
+        sub = AppState.addEventListener("change", (state) => {
+          if (state === "active") {
+            syncNotificationState();
+          }
+        });
+      } catch (e) {
+        console.warn("Faild prepare app", e);
+      } finally {
+        setIsReady(true);
+      }
+    }
+
+    prepareApp();
+
+    return () => sub.remove();
   }, []);
 
-  if (!(fontLoaded && !fontError) || !isReady || completedOnboarding === null) {
-    return null;
-  }
+  useEffect(() => {
+    if (!isReady || completedOnboarding === null) {
+      return;
+    }
 
-  if (!completedOnboarding) {
-    return (
-      <Stack screenOptions={{ headerShown: false, statusBarHidden: true }}>
-        <Stack.Screen
-          name="onboarding/AllowNotification"
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="onboarding/AccessLocation"
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="onboarding/SetupAll"
-          options={{ headerShown: false }}
-        />
-      </Stack>
-    );
+    if (!completedOnboarding) {
+      router.replace("/onboarding/AllowNotification");
+    }
+
+    // If completedOnboarding is true, this effect does nothing,
+    // and the app will just render the <Stack> as intended.
+  }, [isReady, completedOnboarding, router]);
+
+  // register the prayer background task
+  useEffect(() => {
+    async function register() {
+      await BackgroundTask.registerTaskAsync(PRAYER_BACKGROUND_TASK, {
+        minimumInterval: 60 * 60 * 8,
+        // @ts-ignore
+        stopOnTerminate: false,
+        startOnBoot: true,
+      });
+    }
+    register();
+  }, []);
+
+  if (
+    !(fontLoaded && fontError === null) ||
+    !isReady ||
+    completedOnboarding === null
+  ) {
+    return null;
   }
 
   return (
     <SafeAreaProvider>
-      <Stack screenOptions={{ statusBarHidden: true }}>
+      <Stack screenOptions={{ statusBarHidden: true, headerShown: false }}>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="GreatNames" options={{ headerShown: false }} />
         <Stack.Screen name="MyNotifications" options={{ headerShown: false }} />

@@ -1,5 +1,5 @@
 import BgWrapper from "@/components/BgWrapper";
-import { ISavedCategory } from "@/interfaces";
+import { IPrayerDetails, ISavedCategory } from "@/interfaces";
 import { fetchPrayerTimes } from "@/services/fetchPrayerTimes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
@@ -9,14 +9,37 @@ import { ActivityIndicator, Alert, Text } from "react-native";
 const SetupAll = () => {
   const [loading, setLoading] = useState<boolean | null>(false);
 
+  const [prayersDetails, setPrayersDetails] = useState<IPrayerDetails[]>([
+    { key: 1, name: "الفجر", enName: "Fajr", time: "", to: "" },
+    { key: 2, name: "الظهر", enName: "Dhuhr", time: "", to: "" },
+    { key: 3, name: "العصر", enName: "Asr", time: "", to: "" },
+    { key: 4, name: "المغرب", enName: "Maghrib", time: "", to: "" },
+    { key: 5, name: "العشاء", enName: "Isha", time: "", to: "" },
+  ]);
+
   const prepareData = async () => {
     try {
       setLoading(true);
+
+      // prepare location
       const location = await AsyncStorage.getItem("location");
       const { city, country } = JSON.parse(location!);
-      const timings = await fetchPrayerTimes(city, country, 3);
-      await AsyncStorage.setItem("timings", JSON.stringify(timings));
+
+      // prepare timings
+      const timingsRaw = await fetchPrayerTimes(city, country, 3);
+
+      const updated:IPrayerDetails[] = prayersDetails.map((prayer, index)=>{
+        const from = timingsRaw[prayer.enName];
+        const next = prayersDetails[(index + 1) % prayersDetails.length];
+        const to = timingsRaw[next.enName] ?? 'N/A';
+        return {
+          ...prayer,time:from,to
+        }
+      })
+      await AsyncStorage.setItem("timings", JSON.stringify(updated));
       console.log(await AsyncStorage.getItem("timings"));
+
+      // mark onboarding as completed ✅
       await AsyncStorage.setItem("onboardingCompleted", "true");
       router.push("/(tabs)");
     } catch (e: any) {

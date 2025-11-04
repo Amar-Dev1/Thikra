@@ -37,8 +37,9 @@ const ItemDetails = () => {
   const itemId = Item;
 
   const category = adhkar.find((c) => c.id === categoryId);
+  const allItems = (category?.items ?? []) as any[];
   const currentItem =
-    category?.items.find((item) => item.id === itemId) ?? null;
+    allItems.find((item) => String(item.id) === String(itemId)) ?? null;
 
   useEffect(() => {
     const checkIfSaved = async () => {
@@ -100,7 +101,7 @@ const ItemDetails = () => {
         } else {
           category.items.push({
             id: currentItem?.id,
-            route: `/Dua/${categoryId}/${currentItem?.id}`,
+            route: `/Dua/${categoryId}/${currentItem.id}`,
             name: currentItem?.name,
           });
           setIsSaved(true);
@@ -184,7 +185,7 @@ const ItemDetails = () => {
         </View>
       ) : (
         <FlatList
-          data={currentItem?.duas ?? []}
+          data={currentItem.duas ?? []}
           keyExtractor={(d: any) => String(d.id)}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
