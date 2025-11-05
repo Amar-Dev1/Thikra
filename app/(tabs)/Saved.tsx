@@ -1,6 +1,8 @@
 import BgWrapper from "@/components/BgWrapper";
-import MainTitle from "@/components/MainTitle";
+import ScreenTitle from "@/components/ScreenTitle";
+import ThemedText from "@/components/ThemedText";
 import { QuranSvg, TrashSvg, UnSavedSvg } from "@/constants/icons";
+import { useTheme } from "@/context/ThemeContext";
 import { ISavedCategory, ISavedCategoryItem } from "@/interfaces";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
@@ -16,6 +18,10 @@ import {
 import Modal from "react-native-modal";
 
 const Saved = () => {
+  // @ts-ignore
+  const { currentTheme } = useTheme();
+  const textColor = currentTheme === "dark" ? "#ffffff" : "#222222";
+
   const [loading, setLoading] = useState(false);
   const [saved, setSaved] = useState<ISavedCategory[]>([]);
   const [selectedCat, setSelectedCat] = useState(1);
@@ -107,26 +113,30 @@ const Saved = () => {
   }, []);
 
   return (
-    <BgWrapper hideBackground={true}>
-      <View className="relative flex-row items-center justify-center py-4 border-b-[.5px] border-b-dark/20">
-        <MainTitle title="المحفوظات" />
-      </View>
+    <BgWrapper>
+      <ScreenTitle title="المحفوظات" />
       {loading ? (
         <View className="flex-1 items-center justify-center">
-          <ActivityIndicator size={"large"} color={"black"} />
+          <ActivityIndicator size={"large"} color={textColor} />
         </View>
       ) : (
         <>
-          <View className="flex-row items-center gap-5 bg-primary px-5">
+          <View
+            className={`flex-row items-center gap-5 ${
+              currentTheme === "dark" ? "bg-[#222222]" : "bg-primary"
+            }  px-5`}
+          >
             {saved.map((cat) => (
               <TouchableOpacity
                 className="relative py-5"
                 key={cat.id}
                 onPress={() => setSelectedCat(cat.id)}
               >
-                <Text>{cat.name}</Text>
+                <ThemedText className="font-cairo">{cat.name}</ThemedText>
 
-                <View className="bg-accent absolute bottom-0 right-0 w-full h-1 rounded-full"></View>
+                <View
+                  className={`bg-accent absolute bottom-0 right-0 w-full h-1 rounded-full`}
+                ></View>
               </TouchableOpacity>
             ))}
           </View>
@@ -136,12 +146,23 @@ const Saved = () => {
               <ScrollView showsVerticalScrollIndicator={false}>
                 {SavedItems.map((item) => (
                   <View
-                    className="p-5 flex-row items-center border-b-[.5px] border-dark/30"
+                    className={`p-5 flex-row items-center border-b-[.5px] ${
+                      currentTheme === "dark"
+                        ? " border-b-light/10"
+                        : "border-b-dark/20"
+                    }`}
                     key={item.id}
                   >
                     <View className="flex-row items-center gap-2">
-                      <UnSavedSvg width={24} height={24} />
-                      <Text className="text-sm font-cairo">{item.name}</Text>
+                      <UnSavedSvg
+                        width={24}
+                        height={24}
+                        stroke={textColor}
+                        strokeWidth={1}
+                      />
+                      <ThemedText className="text-sm font-cairo">
+                        {item.name}
+                      </ThemedText>
                     </View>
                     <View className="ml-auto flex-row items-center gap-5">
                       <TouchableOpacity
@@ -150,7 +171,12 @@ const Saved = () => {
                           router.push(item.route)
                         }
                       >
-                        <QuranSvg width={24} height={24} />
+                        <QuranSvg
+                          width={24}
+                          height={24}
+                          stroke={textColor}
+                          strokeWidth={1}
+                        />
                       </TouchableOpacity>
                       <TouchableOpacity
                         onPress={() => {
@@ -166,8 +192,10 @@ const Saved = () => {
               </ScrollView>
             ) : (
               <View className="flex-1 justify-center items-center gap-3 opacity-65">
-                <QuranSvg width={32} height={32} />
-                <Text>لا توجد محفوظات حتى الآن</Text>
+                <QuranSvg width={32} height={32} stroke={textColor} />
+                <ThemedText className="font-cairo">
+                  لا توجد محفوظات حتى الآن
+                </ThemedText>
               </View>
             )}
           </View>

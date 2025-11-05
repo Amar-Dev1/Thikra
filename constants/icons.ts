@@ -13,7 +13,6 @@ import InfoSvg from "../assets/icons/info.svg";
 import KabaaSvg from "../assets/icons/kabaa.svg";
 import LocationSvg from "../assets/icons/location.svg";
 import MenuSvg from "../assets/icons/menu.svg";
-import DarkMoonSvg from "../assets/icons/moon-dark.svg";
 import MoonSvg from "../assets/icons/moon.svg";
 import NatureSvg from "../assets/icons/nature.svg";
 import NextSvg from "../assets/icons/next.svg";
@@ -37,6 +36,7 @@ import TrashSvg from "../assets/icons/trash.svg";
 import TravelSvg from "../assets/icons/travel.svg";
 import UnSavedSvg from "../assets/icons/unsaved.svg";
 import WaterSvg from "../assets/icons/water.svg";
+import ThemeSvg from '../assets/icons/theme.svg';
 
 export {
   BellSvg,
@@ -45,7 +45,6 @@ export {
   CoffinSvg,
   ContactSvg,
   CrossSvg,
-  DarkMoonSvg,
   DoneSvg,
   DuaSvg,
   FamilySvg,
@@ -78,4 +77,5 @@ export {
   TravelSvg,
   UnSavedSvg,
   WaterSvg,
+  ThemeSvg,
 };

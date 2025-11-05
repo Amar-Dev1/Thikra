@@ -4,8 +4,8 @@ import { FlatList, View } from "react-native";
 
 import BgWrapper from "@/components/BgWrapper";
 import DuaCategoryItem from "@/components/DuaCategoryItem";
-import MainTitle from "@/components/MainTitle";
 import adhkar from "../../../../assets/data/adhkar.json";
+import ScreenTitle from "@/components/ScreenTitle";
 
 const Index = () => {
   const { Category } = useLocalSearchParams();
@@ -14,10 +14,7 @@ const Index = () => {
   return (
     <BgWrapper className="px-5" hideBackground={true}>
       <View className="flex-1">
-        <View className="relative flex-row items-center justify-center py-4 border-b-[.5px] border-b-dark/20">
-          <MainTitle title={currentItem?.category!} />
-        </View>
-
+        <ScreenTitle title={currentItem?.category!}/>
         <FlatList
           data={currentItem?.items}
           scrollEnabled={true}
@@ -37,7 +34,8 @@ const Index = () => {
           }}
           contentContainerStyle={{
             justifyContent: "center",
-            gap: 7,
+            gap: 10,
+            paddingTop:10
           }}
         />
       </View>

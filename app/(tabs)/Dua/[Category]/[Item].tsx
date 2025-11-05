@@ -1,7 +1,9 @@
 import BgWrapper from "@/components/BgWrapper";
-import MainTitle from "@/components/MainTitle";
+import ScreenTitle from "@/components/ScreenTitle";
 import ShareDua from "@/components/ShareDua";
-import { ShareSvg, UnSavedSvg } from "@/constants/icons";
+import ThemedText from "@/components/ThemedText";
+import { SavedSvg, ShareSvg, UnSavedSvg } from "@/constants/icons";
+import { useTheme } from "@/context/ThemeContext";
 import { ISavedCategory } from "@/interfaces";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { isRunningInExpoGo } from "expo";
@@ -16,7 +18,6 @@ import {
   Alert,
   FlatList,
   Share,
-  Text,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -25,6 +26,11 @@ import ViewShot from "react-native-view-shot";
 import adhkar from "../../../../assets/data/adhkar.json";
 
 const ItemDetails = () => {
+  // @ts-ignore
+  const { currentTheme } = useTheme();
+  const bg = currentTheme === "dark" ? "#222222" : "#F8EFD4";
+  const textColor = currentTheme === "dark" ? "#ffffff" : "#222222";
+
   const { Item, Category } = useLocalSearchParams();
   const [loading, setLoading] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
@@ -65,12 +71,12 @@ const ItemDetails = () => {
       }
       return () => {
         if (tabsParent) {
-          console.log("Restoring original tab bar.");
           // Restore the original tab bar
           tabsParent.setOptions({
             tabBarStyle: {
-              backgroundColor: "#FFFDF8",
+              backgroundColor: bg,
               borderTopWidth: 0.5,
+              borderTopColor: currentTheme === "dark" ? "#333333" : "#888888",
               minHeight: 70,
               position: "absolute",
               overflow: "hidden",
@@ -176,9 +182,8 @@ const ItemDetails = () => {
         <ShareDua duaName={currentItem?.name || "Dua"} ref={shareViewRef} />
       </View>
 
-      <View className="flex-row items-center justify-center py-4 border-b-[.5px] border-b-dark/20">
-        <MainTitle title={currentItem?.name!} />
-      </View>
+      <ScreenTitle title={currentItem?.name!} />
+
       {loading ? (
         <View className="flex-1 justify-center">
           <ActivityIndicator size={"large"} color={"black"} />
@@ -190,19 +195,27 @@ const ItemDetails = () => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
             justifyContent: "center",
-            gap: 7,
+            gap: 10,
             paddingBottom: 90,
+            paddingTop: 10,
           }}
           renderItem={({ item }) => {
             return (
               <View
-                className={`px-5 py-7 border-[.5px] border-dark bg-primary rounded-xl`}
+                className={`px-5 py-7 rounded-2xl ${
+                  currentTheme === "dark"
+                    ? "border-[.5px] border-light/10"
+                    : "border-[.5px] border-dark/20"
+                }`}
+                style={{ backgroundColor: bg }}
               >
-                <Text className="font-amiri-bold text-lg">{item.text}</Text>
+                <ThemedText className="font-amiri-bold text-lg">
+                  {item.text}
+                </ThemedText>
                 {item.count != null && (
-                  <Text className="opacity-60 text-xs mt-5">
+                  <ThemedText className="opacity-60 text-xs mt-5">
                     عدد المرات: {item.count}
-                  </Text>
+                  </ThemedText>
                 )}
               </View>
             );
@@ -216,12 +229,12 @@ const ItemDetails = () => {
           left: 0,
           right: 0,
           minHeight: 70,
-          backgroundColor: "#FFFDF8",
+          backgroundColor: bg,
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-around",
           borderTopWidth: 0.5,
-          borderColor: "rgba(0,0,0,0.2)",
+          borderColor: currentTheme === "dark" ? "#333333" : "#888888",
           paddingBottom: 5,
           zIndex: 100,
         }}
@@ -230,20 +243,28 @@ const ItemDetails = () => {
           onPress={toggleSave}
           style={{ alignItems: "center", gap: 4, flex: 1, marginBottom: 8 }}
         >
-          {
-            <UnSavedSvg
-              width={26}
-              height={26}
-              fill={isSaved ? "black" : "none"}
+          {isSaved ? (
+            <SavedSvg
+              width={22}
+              height={22}
+              stroke={textColor}
+              strokeWidth={1}
             />
-          }
+          ) : (
+            <UnSavedSvg
+              width={22}
+              height={22}
+              stroke={textColor}
+              strokeWidth={1}
+            />
+          )}
         </TouchableOpacity>
 
         <TouchableOpacity
           onPress={onShare}
           style={{ alignItems: "center", gap: 4, flex: 1, marginBottom: 8 }}
         >
-          <ShareSvg width={26} height={26} strokeWidth={100} />
+          <ShareSvg width={22} height={22} stroke={textColor} strokeWidth={1} />
         </TouchableOpacity>
       </View>
     </BgWrapper>

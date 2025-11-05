@@ -1,12 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import BgWrapper from "@/components/BgWrapper";
+import ThemedText from "@/components/ThemedText";
+import React from "react";
 
 const index = () => {
   return (
-    <View>
-      <Text>index</Text>
-    </View>
-  )
-}
+    <BgWrapper>
+      <ThemedText>Quran screen...</ThemedText>
+    </BgWrapper>
+  );
+};
 
-export default index
+export default index;

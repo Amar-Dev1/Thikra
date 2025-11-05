@@ -1,21 +1,26 @@
 import BgWrapper from "@/components/BgWrapper";
 import DiscoverCard from "@/components/DiscoverCard";
-import MainTitle from "@/components/MainTitle";
+import ScreenTitle from "@/components/ScreenTitle";
+import ThemedText from "@/components/ThemedText";
 import { ClockSvg, KabaaSvg, LocationSvg } from "@/constants/icons";
 import { images } from "@/constants/images";
+import { useTheme } from "@/context/ThemeContext";
 import { ILocation, IPrayerDetails } from "@/interfaces";
 import { getCurrentSalah } from "@/utils/getCurrentSalah";
 import { convert24To12 } from "@/utils/parseTime";
-import { schedulePrayerNotification } from "@/utils/schedulePrayerNotification";
-import { syncNotificationState } from "@/utils/syncNotificationState";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, TouchableOpacity, View } from "react-native";
 import ayat from "../../assets/data/ayat.json";
 import discoverCards from "../../assets/data/discoverSection.json";
 
 const Index = () => {
+  // @ts-ignore
+  const { currentTheme } = useTheme();
+  const bg = currentTheme === "dark" ? "#222222" : "#F8EFD4";
+  const textColor = currentTheme === "dark" ? "#ffffff" : "#222222";
+
   const [currentLocation, setCurrentLocation] = useState<ILocation | null>(
     null
   );
@@ -69,7 +74,6 @@ const Index = () => {
         let randomIndex = Math.floor(Math.random() * ayat.length);
         let randomAyah = ayat[randomIndex];
         setRandomAyah(randomAyah.ayah);
-
       } catch (e) {
         console.error("Faild to prepare data", e);
       }
@@ -99,67 +103,97 @@ const Index = () => {
   }, []);
 
   return (
-    <BgWrapper className="px-5" hideBackground={true}>
+    <BgWrapper className="px-5">
       <View className="flex-1">
-        <View className="flex-row justify-between items-center border-b-[.5px] border-gray-400">
-          <MainTitle title="الصفحة الرئيسية" />
+        <ScreenTitle title="الصفحة الرئيسية" className="justify-between">
           <TouchableOpacity
-            className="flex flex-row items-center gap-1 px-2 h-1/2 bg-primary border-[.5px] border-dark/40 rounded-xl"
+            className={`flex flex-row items-center px-2 py-1 gap-1  ${
+              currentTheme === "dark"
+                ? "border-[.5px] border-light/20"
+                : "border-[.5px] border-dark/20"
+            } rounded-xl`}
+            style={{ backgroundColor: bg }}
             onPress={() => router.push("/Settings/EditLocation")}
           >
-            <Text className="font-cairo text-sm">
+            <ThemedText className="text-sm">
               {currentLocation?.city || "N/A"}
-            </Text>
-            <LocationSvg width={30} />
+            </ThemedText>
+            <LocationSvg
+              width={20}
+              height={20}
+              stroke={textColor}
+              strokeWidth={1}
+            />
           </TouchableOpacity>
-        </View>
+        </ScreenTitle>
+
         <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
           <View className="flex-1 py-5">
             <View>
-              <Text className="my-5 text-lg font-cairo-bold">
+              <ThemedText className="my-5 text-lg font-cairo-bold">
                 السلام عليكم ، أخي المسلم
-              </Text>
-              <TouchableOpacity className="flex flex-row justify-between px-4 py-3 bg-primary border-[.5px] border-dark/40 rounded-2xl">
+              </ThemedText>
+              <TouchableOpacity
+                className={`flex flex-row justify-between px-4 py-3 ${
+                  currentTheme === "dark"
+                    ? "border-[.5px] border-light/20"
+                    : "border-[.5px] border-dark/20"
+                } rounded-2xl`}
+                style={{ backgroundColor: bg }}
+              >
                 <View className="flex-col justify-center">
-                  <Text className="opacity-60 text-lg font-cairo-bold">
+                  <ThemedText className=" text-lg font-cairo-bold">
                     {currentSalah?.name || "N/A"}
-                  </Text>
+                  </ThemedText>
                   <View className="flex-row items-center gap-2">
-                    <ClockSvg width={20} className="opacity-60" />
-                    <Text className="text-3xl font-cairo-light">
+                    <ClockSvg width={18} stroke={textColor} strokeWidth={1}/>
+                    <ThemedText className="text-3xl font-cairo-light">
                       {convert24To12(currentSalah?.time || "12:00 AM")}
-                    </Text>
+                    </ThemedText>
                   </View>
                 </View>
                 <View className="flex-col items-center font-cairo text-xs">
-                  <Text className="text-md font-cairo-bold opacity-60">
+                  <ThemedText className="text-md font-cairo-bold ">
                     {" "}
                     {today}
-                  </Text>
+                  </ThemedText>
                   <Image source={images.mosque} className="size-28" />
                 </View>
               </TouchableOpacity>
             </View>
             {isFriday && (
-              <View className="my-5 bg-primary rounded-2xl border-[.5px] border-dark/40 px-4 py-3">
+              <View
+                className={`my-5 rounded-2xl ${
+                  currentTheme === "dark"
+                    ? "border-[.5px] border-light/20"
+                    : "border-[.5px] border-dark/20"
+                } px-4 py-3`}
+                style={{ backgroundColor: bg }}
+              >
                 <View className="flex-row gap-2 items-center max-h-8">
                   <KabaaSvg width={20} />
-                  <Text className="font-cairo-bold">ساعة الجمعة</Text>
+                  <ThemedText className="font-cairo-bold">
+                    ساعة الجمعة
+                  </ThemedText>
                 </View>
-                <Text className="font-amiri">
+                <ThemedText className="font-amiri">
                   عَن أبي هريرة أَنَّ رَسُولَ اللَّهِ ﷺ ذَكَرَ يَوْمَ
                   الجُمُعَةِ، فَقَالَ:{" "}
-                  <Text className="font-amiri-bold">
+                  <ThemedText className="font-amiri-bold">
                     فِيه سَاعَةٌ لا يُوَافِقها عَبْدٌ مُسلِمٌ، وَهُو قَائِمٌ
                     يُصَلِّي يسأَلُ اللَّه شَيْئًا، إِلاَّ أَعْطَاهُ إِيَّاه .
-                  </Text>
-                </Text>
-                <Text className="font-amiri ml-auto">متفق عليه</Text>
+                  </ThemedText>
+                </ThemedText>
+                <ThemedText className="font-amiri ml-auto">
+                  متفق عليه
+                </ThemedText>
               </View>
             )}
             <View>
-              <Text className="my-5 font-cairo-bold text-lg">استكشف</Text>
-              <View className=" flex-row gap-2 flex-wrap">
+              <ThemedText className="my-5 font-cairo-bold text-lg">
+                استكشف
+              </ThemedText>
+              <View className="flex-row gap-2 flex-wrap">
                 {discoverCards.map((card) => (
                   <DiscoverCard
                     key={card.id}
@@ -174,11 +208,20 @@ const Index = () => {
           </View>
 
           <View className="mb-5">
-            <Text className="my-5 text-lg font-cairo-bold">مواقيت الصلاة</Text>
-            <View className="items-center gap-7 px-4 py-5 bg-primary rounded-2xl border-[.5px] border-dark/40">
-              <Text className="text-xl text-center font-amiri-bold">
+            <ThemedText className="my-5 text-lg font-cairo-bold">
+              مواقيت الصلاة
+            </ThemedText>
+            <View
+              className={`items-center gap-7 px-4 py-5 rounded-2xl ${
+                currentTheme === "dark"
+                  ? "border-[.5px] border-light/20"
+                  : "border-[.5px] border-dark/20"
+              }`}
+              style={{ backgroundColor: bg }}
+            >
+              <ThemedText className="text-xl text-center font-amiri-bold">
                 فَذَالكٌم الرباط ، فَذَالكٌم الرباط
-              </Text>
+              </ThemedText>
               <View className="relative w-[95%] mx-auto mb-4">
                 <View className="absolute top-[5.5px] w-full h-[1.5px] bg-[#ddd]" />
                 <View className="flex flex-row justify-between">
@@ -190,16 +233,16 @@ const Index = () => {
                       <View
                         className={`w-3 h-3 ${
                           currentSalah?.key === prayer.key
-                            ? "bg-dark"
+                            ? "bg-accent"
                             : "bg-[#ddd]"
-                        }  rounded-full`}
+                        } rounded-full`}
                       />
-                      <Text className="font-cairo-bold text-sm text-dark">
+                      <ThemedText className="font-cairo-bold text-sm text-dark">
                         {prayer.name}
-                      </Text>
-                      <Text className="text-xs font-cairo opacity-65">
+                      </ThemedText>
+                      <ThemedText className="text-xs font-cairo opacity-65">
                         {convert24To12(prayer.time)}
-                      </Text>
+                      </ThemedText>
                     </TouchableOpacity>
                   ))}
                 </View>
@@ -208,14 +251,21 @@ const Index = () => {
           </View>
 
           <View className="mb-[65px]">
-            <View className="bg-primary py-4 px-5 rounded-2xl border-[.5px] border-dark/40">
-              <Text className="mb-2 text-md font-cairo-bold">
+            <View
+              className={`py-4 px-5 rounded-2xl ${
+                currentTheme === "dark"
+                  ? "border-[.5px] border-light/20"
+                  : "border-[.5px] border-dark/20"
+              }`}
+              style={{ backgroundColor: bg }}
+            >
+              <ThemedText className="mb-2 text-md font-cairo-bold">
                 الآية اليومية
-              </Text>
-              <Text className="text-md text- font-amiri-bold">
+              </ThemedText>
+              <ThemedText className="text-md text- font-amiri-bold">
                 {randomAyah ||
                   "إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ تَتَنَزَّلُ عَلَيْهِمُ ٱلْمَلَٰٓئِكَةُ أَلَّا تَخَافُوا۟ وَلَا تَحْزَنُوا۟ وَأَبْشِرُوا۟ بِٱلْجَنَّةِ ٱلَّتِى كُنتُمْ تُوعَدُونَ"}
-              </Text>
+              </ThemedText>
             </View>
           </View>
         </ScrollView>

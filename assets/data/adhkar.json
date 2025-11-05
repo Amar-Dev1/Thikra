@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "icon": "DarkMoonSvg",
+    "icon": "MoonSvg",
     "category": "النوم",
     "route": "/Dua/1",
     "items": [

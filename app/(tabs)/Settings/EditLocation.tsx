@@ -1,5 +1,7 @@
 import BgWrapper from "@/components/BgWrapper";
+import ThemedText from "@/components/ThemedText";
 import { LocationSvg } from "@/constants/icons";
+import { useTheme } from "@/context/ThemeContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Location from "expo-location";
 import { router } from "expo-router";
@@ -8,7 +10,6 @@ import {
   ActivityIndicator,
   Alert,
   ScrollView,
-  Text,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -16,6 +17,11 @@ import { SelectList } from "react-native-dropdown-select-list";
 import locations from "../../../assets/data/locations.json";
 
 const EditLocation = () => {
+  // @ts-ignore
+  const { currentTheme } = useTheme();
+  const bg = currentTheme === "dark" ? "#222222" : "#F8EFD4";
+  const textColor = currentTheme === "dark" ? "#ffffff" : "#222222";
+
   const [loading, setLoading] = useState<boolean | null>(null);
   const [expandedCountry, setExpandedCountry] = useState(false);
   const [expandedCity, setExpandedCity] = useState(false);
@@ -100,16 +106,13 @@ const EditLocation = () => {
   const isReady = selectedCountry?.length > 0 && selectedCity?.length > 0;
 
   return (
-    <BgWrapper
-      className={`px-5 ${loading && "justify-center items-center"}`}
-      hideBackground={true}
-    >
+    <BgWrapper className={`px-5 ${loading && "justify-center items-center"}`}>
       {loading ? (
         <>
-          <ActivityIndicator color={"black"} size={"large"} />
-          <Text className="font-cairo-bold text-lg opacity-65 mt-5">
+          <ActivityIndicator color={textColor} size={"large"} />
+          <ThemedText className="font-cairo-bold text-lg opacity-65 mt-5">
             جار ضبط الموقع
-          </Text>
+          </ThemedText>
         </>
       ) : (
         <>
@@ -118,56 +121,68 @@ const EditLocation = () => {
             showsVerticalScrollIndicator={false}
           >
             <View className="flex-row items-center gap-2">
-              <Text className="font-cairo-bold text-3xl my-5">
+              <ThemedText className="font-cairo-bold text-3xl my-5">
                 تعديل الموقع
-              </Text>
+              </ThemedText>
             </View>
-            <Text className="font-cairo text-xl opacity-65">
+            <ThemedText className="font-cairo text-xl opacity-65">
               تفعيل الوصول للموقع ، لعرض مواقيت الصلاة بناءاً على موقعك الحالي
-            </Text>
+            </ThemedText>
 
             <View className="mt-5 gap-4">
               <TouchableOpacity
-                className="bg-primary p-5 rounded-2xl shadow-md border border-primary"
+                className="bg-primary p-5 rounded-2xl  border"
+                style={{ backgroundColor: bg }}
                 onPress={locationAutoDetect}
               >
                 <View className="flex-row gap-3">
-                  <LocationSvg width={32} height={32} />
+                  <LocationSvg
+                    width={24}
+                    height={24}
+                    stroke={textColor}
+                    strokeWidth={1}
+                  />
                   <View className="gap-2 flex-1">
-                    <Text className="font-cairo-bold text-lg">
+                    <ThemedText className="font-cairo-bold text-lg">
                       تحديد الموقع تلقائياً{" "}
-                      <Text className="text-sm font-cairo opacity-60">
+                      <ThemedText className="text-sm font-cairo opacity-60">
                         (موصى به)
-                      </Text>
-                    </Text>
-                    <Text className="font-cairo-bold text-sm opacity-55">
+                      </ThemedText>
+                    </ThemedText>
+                    <ThemedText className="font-cairo-bold text-sm opacity-55">
                       سيتم تحديث مواقيت الصلاة تلقائياً
-                    </Text>
+                    </ThemedText>
                   </View>
                 </View>
               </TouchableOpacity>
 
               <TouchableOpacity
-                className="bg-primary p-5 rounded-2xl shadow-md border border-primary"
+                className="bg-primary p-5 rounded-2xl  border"
+                style={{ backgroundColor: bg }}
                 onPress={() => setExpandedCountry(!expandedCountry)}
               >
                 <View className="flex-row gap-3 ">
-                  <LocationSvg width={32} height={32} />
+                  <LocationSvg
+                    width={24}
+                    height={24}
+                    stroke={textColor}
+                    strokeWidth={1}
+                  />
                   <View className="gap-2 flex-1">
-                    <Text className="font-cairo-bold text-lg">
+                    <ThemedText className="font-cairo-bold text-lg">
                       تحديد الموقع يدوياً
-                    </Text>
-                    <Text className="font-cairo-bold text-sm opacity-55">
+                    </ThemedText>
+                    <ThemedText className="font-cairo-bold text-sm opacity-55">
                       حدد البلد و المدينة يدوياً . عليك تحديث موقعك إذا غيرت
                       المدينة
-                    </Text>
+                    </ThemedText>
                   </View>
                 </View>
               </TouchableOpacity>
 
               {expandedCountry && (
                 <View className="mt-3">
-                  <Text>اختار الدولة</Text>
+                  <ThemedText>اختار الدولة</ThemedText>
                   <SelectList
                     data={countries}
                     setSelected={(value: string) => {
@@ -175,17 +190,21 @@ const EditLocation = () => {
                       setExpandedCity(true);
                     }}
                     search={false}
+                    dropdownTextStyles={{color:textColor}}
+                    inputStyles={{color:textColor}}
                   />
                 </View>
               )}
 
               {expandedCity && (
                 <View className={`mt-3 mb-3`}>
-                  <Text>اختار المدينة</Text>
+                  <ThemedText>اختار المدينة</ThemedText>
                   <SelectList
                     data={cities}
                     setSelected={(value: string) => setSelectedCity(value)}
                     search={false}
+                     dropdownTextStyles={{color:textColor}}
+                    inputStyles={{color:textColor}}
                   />
                 </View>
               )}
@@ -193,24 +212,25 @@ const EditLocation = () => {
 
             <View className="flex-row items-center mt-5">
               <TouchableOpacity
-                className={`bg-primary shadow-md ${
+                className={` ${
                   !isReady ? "opacity-60" : "opacity-100"
                 } rounded-2xl py-2 flex-1`}
+                style={{ backgroundColor: bg }}
                 disabled={!isReady}
                 onPress={locationManualDetect}
               >
-                <Text className="text-lg font-cairo-bold text-center">
+                <ThemedText className="text-lg font-cairo-bold text-center">
                   تعيين
-                </Text>
+                </ThemedText>
               </TouchableOpacity>
 
               <TouchableOpacity
                 className="rounded-2xl py-2 flex-1"
                 onPress={() => router.push("/Settings")}
               >
-                <Text className="text-lg font-cairo-bold text-center">
+                <ThemedText className="text-lg font-cairo-bold text-center">
                   إلغاء
-                </Text>
+                </ThemedText>
               </TouchableOpacity>
             </View>
           </ScrollView>

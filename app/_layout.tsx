@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/context/ThemeContext";
 import { syncNotificationState } from "@/utils/syncNotificationState";
 import { fireBackgroundNotification } from "@/utils/taskManager";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -125,14 +126,19 @@ export default function RootLayout() {
   }
 
   return (
-    <SafeAreaProvider>
-      <Stack screenOptions={{ statusBarHidden: true, headerShown: false }}>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="GreatNames" options={{ headerShown: false }} />
-        <Stack.Screen name="MyNotifications" options={{ headerShown: false }} />
-        <Stack.Screen name="Settings" />
-        <Stack.Screen name="Dua" />
-      </Stack>
-    </SafeAreaProvider>
+    <ThemeProvider>
+      <SafeAreaProvider>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="GreatNames" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="MyNotifications"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="Settings" />
+          <Stack.Screen name="Dua" />
+        </Stack>
+      </SafeAreaProvider>
+    </ThemeProvider>
   );
 }

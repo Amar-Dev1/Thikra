@@ -5,6 +5,7 @@ import {
   SettingsSvg,
   UnSavedSvg,
 } from "@/constants/icons";
+import { useTheme } from "@/context/ThemeContext";
 import { Tabs } from "expo-router";
 import React from "react";
 import { SvgProps } from "react-native-svg";
@@ -15,20 +16,26 @@ interface ITabIcon {
   name?: string;
 }
 
-const TabIcon = ({ focused, Icon, name }: ITabIcon) => {
-  const iconColor = focused ? "#F5C97B" : "#FFFDF8";
-  return (
-    <Icon
-      width={focused ? 28 : 26}
-      height={focused ? 28 : 26}
-      fill={iconColor}
-      stroke={iconColor}
-      className="transition-all"
-    />
-  );
-};
-
 const TabsLayout = () => {
+  // @ts-ignore
+  const { currentTheme } = useTheme();
+  const bg = currentTheme === "dark" ? "#111111" : "#ffffff";
+
+  const TabIcon = ({ focused, Icon, name }: ITabIcon) => {
+    const themeColor = currentTheme === "dark" ? "#ffffff" : "#111111";
+    const iconColor = focused ? "#F5C97B" : "#FFFDF8";
+
+    return (
+      <Icon
+        width={focused ? 24 : 22}
+        height={focused ? 24 : 22}
+        stroke={focused ? iconColor : themeColor}
+        strokeWidth={1}
+        className="transition-all"
+      />
+    );
+  };
+
   return (
     <Tabs
       screenOptions={{
@@ -37,8 +44,9 @@ const TabsLayout = () => {
           paddingTop: 5,
         },
         tabBarStyle: {
-          backgroundColor: "#FFFDF8",
+          backgroundColor: bg,
           borderTopWidth: 0.5,
+          borderTopColor: currentTheme === "dark" ? "#333333" : "#888888",
           minHeight: 70,
           position: "absolute",
           overflow: "hidden",

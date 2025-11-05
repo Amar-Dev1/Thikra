@@ -1,12 +1,19 @@
 import BgWrapper from "@/components/BgWrapper";
+import ThemedText from "@/components/ThemedText";
+import { useTheme } from "@/context/ThemeContext";
 import { IPrayerDetails, ISavedCategory } from "@/interfaces";
 import { fetchPrayerTimes } from "@/services/fetchPrayerTimes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, Alert, Text } from "react-native";
+import { ActivityIndicator, Alert } from "react-native";
 
 const SetupAll = () => {
+  // @ts-ignore
+  const { currentTheme } = useTheme();
+  const bg = currentTheme === "dark" ? "#222222" : "#F8EFD4";
+  const textColor = currentTheme === "dark" ? "#ffffff" : "#222222";
+
   const [loading, setLoading] = useState<boolean | null>(false);
 
   const [prayersDetails, setPrayersDetails] = useState<IPrayerDetails[]>([
@@ -28,14 +35,16 @@ const SetupAll = () => {
       // prepare timings
       const timingsRaw = await fetchPrayerTimes(city, country, 3);
 
-      const updated:IPrayerDetails[] = prayersDetails.map((prayer, index)=>{
+      const updated: IPrayerDetails[] = prayersDetails.map((prayer, index) => {
         const from = timingsRaw[prayer.enName];
         const next = prayersDetails[(index + 1) % prayersDetails.length];
-        const to = timingsRaw[next.enName] ?? 'N/A';
+        const to = timingsRaw[next.enName] ?? "N/A";
         return {
-          ...prayer,time:from,to
-        }
-      })
+          ...prayer,
+          time: from,
+          to,
+        };
+      });
       await AsyncStorage.setItem("timings", JSON.stringify(updated));
       console.log(await AsyncStorage.getItem("timings"));
 
@@ -73,19 +82,18 @@ const SetupAll = () => {
   }, []);
 
   return (
-    <BgWrapper className="flex-1 bg-primary px-5 py-3 flex flex-col justify-center items-center gap-5">
+    <BgWrapper
+      className="flex-1 px-5 py-3 flex flex-col justify-center items-center gap-5"
+      style={{ backgroundColor: bg }}
+    >
       {loading && (
         <>
-          <ActivityIndicator size={"large"} color={"black"} />
-          <Text className="font-cairo-bold text-lg opacity-65">
+          <ActivityIndicator size={"large"} color={textColor} />
+          <ThemedText className="font-cairo-bold text-lg opacity-65">
             يتم تهيئة التطبيق...
-          </Text>
+          </ThemedText>
         </>
       )}
-
-      {/* {!loading && err !== null && (
-        <Text className="font-cairo-bold text-md text-red-400">{err}</Text>
-      )} */}
     </BgWrapper>
   );
 };

@@ -1,36 +1,27 @@
-import { images } from "@/constants/images";
+import { useTheme } from "@/context/ThemeContext";
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleProp,ViewStyle } from "react-native";
 interface Props {
   children: React.ReactNode;
   className?: string;
-  hideBackground?: boolean;
+  style?: StyleProp<ViewStyle>;
 }
 
-const BgWrapper = ({ children, className, hideBackground }: Props) => {
+const BgWrapper = ({ children, className, style }: Props) => {
+  // @ts-ignore
+  const { currentTheme } = useTheme();
+
+  const bg = currentTheme === "dark" ? "#111111" : "#FFFDF8";
+
   return (
-    <SafeAreaView className={`flex-1 py-3 bg-bgColor ${className}`}>
-      {!hideBackground && (
-        <View style={styles.bgWrap} pointerEvents="none">
-          <Image
-            source={images.clouds}
-            resizeMode="repeat"
-            className="opacity-10 bg-yellow-300 w-full h-full"
-            style={StyleSheet.absoluteFill}
-          />
-        </View>
-      )}
+    <SafeAreaView
+      className={`flex-1 py-3 ${className}`}
+      style={[{ backgroundColor: bg }, style]}
+    >
       {children}
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  bgWrap: {
-    ...StyleSheet.absoluteFillObject,
-    zIndex: 0,
-  },
-});
 
 export default BgWrapper;

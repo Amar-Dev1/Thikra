@@ -1,7 +1,9 @@
 import BgWrapper from "@/components/BgWrapper";
 import GreatName from "@/components/GreatName";
-import MainTitle from "@/components/MainTitle";
+import ScreenTitle from "@/components/ScreenTitle";
+import ThemedText from "@/components/ThemedText";
 import { RightAngleSvg } from "@/constants/icons";
+import { useTheme } from "@/context/ThemeContext";
 import { IGreatName } from "@/interfaces";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -9,7 +11,6 @@ import {
   Dimensions,
   FlatList,
   ScrollView,
-  Text,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -18,6 +19,10 @@ import Namesdata from "../assets/data/Names_Of_Allah.json";
 
 const GreatNames = () => {
   const { height, width } = Dimensions.get("window");
+
+  // @ts-ignore
+  const { currentTheme } = useTheme();
+  const bg = currentTheme === "dark" ? "#222222" : "#F8EFD4";
 
   const [selectedName, setSelectedName] = useState<IGreatName | null>(null);
   const [visible, setVisible] = useState(false);
@@ -43,15 +48,17 @@ const GreatNames = () => {
 
   return (
     <BgWrapper className="px-5" hideBackground={true}>
-      <View className="relative flex-row items-center justify-center py-4 border-b-[.5px] border-b-dark/20">
+      <ScreenTitle
+        title="أسماء الله الحسنى"
+        className="flex-row items-center py-4"
+      >
         <TouchableOpacity
-          className="absolute left-0 w-12 h-12 flex justify-center items-center bg-light border border-gray-300 rounded-full"
+          className="absolute left-0 w-10 h-10 flex justify-center items-center bg-light border border-gray-300 rounded-full"
           onPress={router.back}
         >
-          <RightAngleSvg width={26} />
+          <RightAngleSvg width={24} height={24} />
         </TouchableOpacity>
-        <MainTitle title="أسماء الله الحسنى" className="text-center" />
-      </View>
+      </ScreenTitle>
 
       <ScrollView showsVerticalScrollIndicator={false} className="py-5">
         <FlatList
@@ -83,12 +90,23 @@ const GreatNames = () => {
         coverScreen={false}
         customBackdrop={<Overlay />}
       >
-        <View className="relative items-center justify-center gap-4 p-8 rounded-2xl bg-primary">
-          <Text className="font-cairo-bold text-xl text-center">
+        <View
+          className="relative items-center justify-center gap-4 p-8 rounded-2xl"
+          style={{ backgroundColor: bg }}
+        >
+          <ThemedText className="font-cairo-bold text-xl text-center">
             {selectedName?.name}
-          </Text>
-          <View className="bg-light rounded-xl p-3 border border-gray-200">
-            <Text className="font-cairo text-center">{selectedName?.text}</Text>
+          </ThemedText>
+          <View
+            className={`rounded-xl p-3 border-[.5px] ${
+              currentTheme === "dark"
+                ? "bg-[#333333] border-light/10"
+                : "bg-light border-dark/20"
+            }`}
+          >
+            <ThemedText className="font-cairo text-center">
+              {selectedName?.text}
+            </ThemedText>
           </View>
           <TouchableOpacity
             className="absolute top-2 left-2 bg-light w-10 h-10 justify-center items-center rounded-full"
