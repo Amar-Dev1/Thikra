@@ -12,7 +12,7 @@ import {
   useLocalSearchParams,
   useNavigation,
 } from "expo-router";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -20,6 +20,7 @@ import {
   Share,
   TouchableOpacity,
   View,
+  ViewStyle,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ViewShot from "react-native-view-shot";
@@ -28,7 +29,7 @@ import adhkar from "../../../../assets/data/adhkar.json";
 const ItemDetails = () => {
   // @ts-ignore
   const { currentTheme } = useTheme();
-  const bg = currentTheme === "dark" ? "#222222" : "#F8EFD4";
+  const bg = currentTheme === "dark" ? "#111111" : "#ffffff";
   const textColor = currentTheme === "dark" ? "#ffffff" : "#222222";
 
   const { Item, Category } = useLocalSearchParams();
@@ -47,44 +48,67 @@ const ItemDetails = () => {
   const currentItem =
     allItems.find((item) => String(item.id) === String(itemId)) ?? null;
 
-  useEffect(() => {
-    const checkIfSaved = async () => {
-      const data = await AsyncStorage.getItem("Saved");
-      const saved: ISavedCategory[] = data ? JSON.parse(data) : [];
-      const category = saved.find((cat) => cat.name === "الأدعية و الأذكار");
-      if (category) {
-        const itemExists = category.items.some((item) => item.id === itemId);
-        setIsSaved(itemExists);
-      }
-    };
-
-    checkIfSaved();
-  }, [itemId]);
   useFocusEffect(
     useCallback(() => {
+      const checkIfSaved = async () => {
+        const data = await AsyncStorage.getItem("Saved");
+        const saved: ISavedCategory[] = data ? JSON.parse(data) : [];
+        const category = saved.find((cat) => cat.name === "الأدعية و الأذكار");
+
+        if (category) {
+          const itemExists = category.items.some(
+            (item) => String(item.id) === String(itemId)
+          );
+          setIsSaved(itemExists);
+        } else {
+          setIsSaved(false);
+        }
+      };
+
+      checkIfSaved();
+
+      return () => {};
+    }, [itemId])
+  );
+
+  useFocusEffect(
+    useCallback(() => {
+      const tabLayoutBorder = currentTheme === "dark" ? "#333333" : "#FFFDF8";
+
+      const restoredTabBarStyle: ViewStyle = {
+        backgroundColor: bg,
+        borderTopWidth: 0.05,
+        borderTopColor: tabLayoutBorder,
+        minHeight: 60,
+        position: "absolute",
+        overflow: "hidden",
+      };
+
+      const restoredTabBarItemStyle: ViewStyle = {
+        paddingTop: 5,
+      };
+
       // @ts-ignore
       const tabsParent = navigation.getParent()?.getParent("/(tabs)");
+
+      // hide the tab bar
       if (tabsParent) {
         tabsParent.setOptions({
           tabBarStyle: { display: "none" },
+          tabBarItemStyle: { display: "none" },
         });
       }
+
+      // The cleanup function
       return () => {
         if (tabsParent) {
-          // Restore the original tab bar
           tabsParent.setOptions({
-            tabBarStyle: {
-              backgroundColor: bg,
-              borderTopWidth: 0.5,
-              borderTopColor: currentTheme === "dark" ? "#333333" : "#888888",
-              minHeight: 70,
-              position: "absolute",
-              overflow: "hidden",
-            },
+            tabBarStyle: restoredTabBarStyle,
+            tabBarItemStyle: restoredTabBarItemStyle,
           });
         }
       };
-    }, [navigation])
+    }, [navigation, currentTheme, bg])
   );
 
   const toggleSave = async () => {
@@ -99,7 +123,7 @@ const ItemDetails = () => {
 
       if (category) {
         const itemIndex = category.items.findIndex(
-          (item) => item.id === currentItem?.id
+          (item) => String(item.id) === String(currentItem?.id)
         );
         if (itemIndex > -1) {
           category.items.splice(itemIndex, 1);
@@ -128,6 +152,7 @@ const ItemDetails = () => {
       }
 
       await AsyncStorage.setItem("Saved", JSON.stringify(saved));
+      // DeviceEventEmitter.emit('SavedUpdated')
     } catch (e) {
       console.log(e);
       Alert.alert("خطأ", "لم يتم الحفظ", [{ text: "موافق", style: "default" }]);
@@ -167,7 +192,7 @@ const ItemDetails = () => {
   };
 
   return (
-    <BgWrapper className="px-5" hideBackground={true}>
+    <BgWrapper className="px-5">
       <View
         style={{
           position: "absolute",
@@ -228,7 +253,7 @@ const ItemDetails = () => {
           bottom: insets.bottom - 15,
           left: 0,
           right: 0,
-          minHeight: 70,
+          minHeight: 60,
           backgroundColor: bg,
           flexDirection: "row",
           alignItems: "center",
@@ -247,7 +272,7 @@ const ItemDetails = () => {
             <SavedSvg
               width={22}
               height={22}
-              stroke={textColor}
+              stroke={"#F5C97B"}
               strokeWidth={1}
             />
           ) : (

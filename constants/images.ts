@@ -11,8 +11,6 @@ import kabaaBg from "../assets/images/kabaaBg.png";
 // @ts-ignore
 import bell from "../assets/images/bell.png";
 // @ts-ignore
-import clouds from "../assets/images/clouds.png";
-// @ts-ignore
 import settingsImg from '../assets/images/settingsBg.png';
 // @ts-ignore
 import androidForgroundIcon from '../assets/images/android-icon-foreground.png'
@@ -26,7 +24,6 @@ export const images = {
   dua,
   kabaaBg,
   bell,
-  clouds,
   settingsImg,
   androidForgroundIcon,
   icon

@@ -1,6 +1,9 @@
 import { ThemeProvider } from "@/context/ThemeContext";
 import { syncNotificationState } from "@/utils/syncNotificationState";
-import { fireBackgroundNotification } from "@/utils/taskManager";
+import {
+  fireBackgroundNotification,
+  updatePrayersTimings,
+} from "@/utils/taskManager";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as BackgroundTask from "expo-background-task";
 import { useFonts } from "expo-font";
@@ -20,16 +23,26 @@ if (!I18nManager.isRTL) {
   I18nManager.allowRTL(true);
   I18nManager.forceRTL(true);
 }
-
+// define task for fetching updated prayer timings
+const UPDATE_PRAYER_TIMINGS = "update-prayer-timings";
 // define tasks for prayer notifications
 const PRAYER_BACKGROUND_TASK = "background-notification-task";
 
+TaskManager.defineTask(UPDATE_PRAYER_TIMINGS, async () => {
+  try {
+    await updatePrayersTimings();
+    return BackgroundTask.BackgroundTaskResult.Success;
+  } catch (e) {
+    console.warn("updating timings task failed", e);
+    return BackgroundTask.BackgroundTaskResult.Failed;
+  }
+});
 TaskManager.defineTask(PRAYER_BACKGROUND_TASK, async () => {
   try {
     await fireBackgroundNotification();
     return BackgroundTask.BackgroundTaskResult.Success;
   } catch (e) {
-    console.warn("Prayer background task failed", e);
+    console.warn("Prayer noficiation background task failed", e);
     return BackgroundTask.BackgroundTaskResult.Failed;
   }
 });
@@ -104,17 +117,44 @@ export default function RootLayout() {
     // and the app will just render the <Stack> as intended.
   }, [isReady, completedOnboarding, router]);
 
-  // register the prayer background task
+  // register the background tasks
   useEffect(() => {
-    async function register() {
-      await BackgroundTask.registerTaskAsync(PRAYER_BACKGROUND_TASK, {
-        minimumInterval: 60 * 60 * 8,
-        // @ts-ignore
-        stopOnTerminate: false,
-        startOnBoot: true,
-      });
+    async function registerUpdateTimings() {
+      const isRegistered = await TaskManager.isTaskRegisteredAsync(
+        UPDATE_PRAYER_TIMINGS
+      );
+      if (!isRegistered) {
+        await BackgroundTask.registerTaskAsync(UPDATE_PRAYER_TIMINGS, {
+          minimumInterval: 60 * 60 * 5,
+          // @ts-ignore
+          stopOnTerminate: false,
+          startOnBoot: true,
+        });
+        console.log(`${UPDATE_PRAYER_TIMINGS} registered.`);
+      } else {
+        console.log(`${UPDATE_PRAYER_TIMINGS} is already registered.`);
+      }
     }
-    register();
+
+    async function registerPrayerNotifications() {
+      const isRegistered = await TaskManager.isTaskRegisteredAsync(
+        PRAYER_BACKGROUND_TASK
+      );
+      if (!isRegistered) {
+        await BackgroundTask.registerTaskAsync(PRAYER_BACKGROUND_TASK, {
+          minimumInterval: 60 * 60 * 8,
+          // @ts-ignore
+          stopOnTerminate: false,
+          startOnBoot: true,
+        });
+        console.log(`${PRAYER_BACKGROUND_TASK} registered.`);
+      } else {
+        console.log(`${PRAYER_BACKGROUND_TASK} is already registered.`);
+      }
+    }
+
+    registerUpdateTimings();
+    registerPrayerNotifications();
   }, []);
 
   if (
@@ -131,10 +171,6 @@ export default function RootLayout() {
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="GreatNames" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="MyNotifications"
-            options={{ headerShown: false }}
-          />
           <Stack.Screen name="Settings" />
           <Stack.Screen name="Dua" />
         </Stack>

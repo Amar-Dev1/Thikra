@@ -5,8 +5,8 @@ import { QuranSvg, TrashSvg, UnSavedSvg } from "@/constants/icons";
 import { useTheme } from "@/context/ThemeContext";
 import { ISavedCategory, ISavedCategoryItem } from "@/interfaces";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { router } from "expo-router";
-import React, { useEffect, useState } from "react";
+import { router, useFocusEffect } from "expo-router";
+import React, { useCallback, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -62,55 +62,29 @@ const Saved = () => {
     }
   };
 
-  useEffect(() => {
-    const prepareData = async () => {
-      try {
-        // await AsyncStorage.setItem(
-        //   "Saved",
-        //   JSON.stringify([
-        //     {
-        //       id: 1,
-        //       name: "الأدعية و الأذكار",
-        //       items: [],
-        //     },
-        //   ])
-        // );
-        // await AsyncStorage.removeItem("Saved");
-
-        setLoading(true);
-        const data = await AsyncStorage.getItem("Saved");
-        const saved: ISavedCategory[] = data ? JSON.parse(data) : [];
-        if (Array.isArray(saved)) setSaved(saved);
-      } catch (e) {
-        console.log(e);
-        Alert.alert(" خطأ !", "حدث خطأ، يرجى إعادة التحميل ", [
-          { text: "موافق", style: "default" },
-        ]);
-      } finally {
-        setLoading(false);
-        console.log("saved array : ", saved);
-        console.log("itemsPerCategory : ", SavedItems);
-      }
-    };
-    prepareData();
-  }, []);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      const check = async () => {
+  useFocusEffect(
+    useCallback(() => {
+      const prepareData = async () => {
         try {
+          setLoading(true);
           const data = await AsyncStorage.getItem("Saved");
           const saved: ISavedCategory[] = data ? JSON.parse(data) : [];
           if (Array.isArray(saved)) setSaved(saved);
         } catch (e) {
-          console.warn(e);
+          console.log(e);
+          Alert.alert(" خطأ !", "حدث خطأ، يرجى إعادة التحميل ", [
+            { text: "موافق", style: "default" },
+          ]);
+        } finally {
+          setLoading(false);
+          console.log("saved array : ", saved);
+          console.log("itemsPerCategory : ", SavedItems);
         }
       };
-      check();
-    }, 1000);
 
-    return () => clearInterval(intervalId);
-  }, []);
+      prepareData();
+    }, [])
+  );
 
   return (
     <BgWrapper>
@@ -140,55 +114,60 @@ const Saved = () => {
               </TouchableOpacity>
             ))}
           </View>
-
           <View className="flex-1">
             {Array.isArray(SavedItems) && SavedItems.length > 0 ? (
               <ScrollView showsVerticalScrollIndicator={false}>
-                {SavedItems.map((item) => (
-                  <View
-                    className={`p-5 flex-row items-center border-b-[.5px] ${
-                      currentTheme === "dark"
-                        ? " border-b-light/10"
-                        : "border-b-dark/20"
-                    }`}
-                    key={item.id}
-                  >
-                    <View className="flex-row items-center gap-2">
-                      <UnSavedSvg
-                        width={24}
-                        height={24}
-                        stroke={textColor}
-                        strokeWidth={1}
-                      />
-                      <ThemedText className="text-sm font-cairo">
-                        {item.name}
-                      </ThemedText>
-                    </View>
-                    <View className="ml-auto flex-row items-center gap-5">
-                      <TouchableOpacity
-                        onPress={() =>
-                          // @ts-ignore
-                          router.push(item.route)
-                        }
-                      >
-                        <QuranSvg
+                {SavedItems.reverse().map((item, index) => {
+                  const isLast = index === SavedItems.length - 1;
+                  return (
+                    <View
+                      className={`p-5 flex-row items-center border-t-[.5px] ${
+                        currentTheme === "dark"
+                          ? " border-t-light/10"
+                          : "border-t-dark/20"
+                      }
+                      ${isLast && "mb-16"}
+                      `}
+                      key={item.id}
+                    >
+                      <View className="flex-row items-center gap-2">
+                        <UnSavedSvg
                           width={24}
                           height={24}
                           stroke={textColor}
                           strokeWidth={1}
                         />
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                        onPress={() => {
-                          setSelectedItem(item);
-                          setVisible((prev) => !prev);
-                        }}
-                      >
-                        <TrashSvg width={24} height={24} />
-                      </TouchableOpacity>
+                        <ThemedText className="text-sm font-cairo">
+                          {item.name}
+                        </ThemedText>
+                      </View>
+
+                      <View className="ml-auto flex-row items-center gap-5">
+                        <TouchableOpacity
+                          onPress={() =>
+                            // @ts-ignore
+                            router.push(item.route)
+                          }
+                        >
+                          <QuranSvg
+                            width={24}
+                            height={24}
+                            stroke={textColor}
+                            strokeWidth={1}
+                          />
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                          onPress={() => {
+                            setSelectedItem(item);
+                            setVisible((prev) => !prev);
+                          }}
+                        >
+                          <TrashSvg width={24} height={24} />
+                        </TouchableOpacity>
+                      </View>
                     </View>
-                  </View>
-                ))}
+                  );
+                })}
               </ScrollView>
             ) : (
               <View className="flex-1 justify-center items-center gap-3 opacity-65">

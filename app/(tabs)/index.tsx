@@ -43,28 +43,25 @@ const Index = () => {
     async function prepareData() {
       try {
         // await AsyncStorage.removeItem("onboardingCompleted");
-        console.log(await AsyncStorage.getItem("onboardingCompleted"));
         const location = await AsyncStorage.getItem("location");
         setCurrentLocation(location ? JSON.parse(location) : null);
 
         const date = new Date();
 
-        const options: Intl.DateTimeFormatOptions = {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          calendar: "islamic",
-        };
-
-        setToday(date.toLocaleDateString("ar-SA", options));
+        const formatedDate = date.toLocaleDateString(
+          "ar-SA-u-ca-islamic-umalqura",
+          {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }
+        );
+        setToday(formatedDate);
 
         const storedTimings = await AsyncStorage.getItem("timings");
         const timings = storedTimings ? JSON.parse(storedTimings) : [];
 
         setPrayersDetails(timings);
-
-        // await schedulePrayerNotification(timings);
-        // await syncNotificationState(timings);
 
         // detect current salah
         const current = getCurrentSalah(timings);
@@ -146,18 +143,18 @@ const Index = () => {
                     {currentSalah?.name || "N/A"}
                   </ThemedText>
                   <View className="flex-row items-center gap-2">
-                    <ClockSvg width={18} stroke={textColor} strokeWidth={1}/>
+                    <ClockSvg width={18} stroke={textColor} strokeWidth={1} />
                     <ThemedText className="text-3xl font-cairo-light">
                       {convert24To12(currentSalah?.time || "12:00 AM")}
                     </ThemedText>
                   </View>
                 </View>
-                <View className="flex-col items-center font-cairo text-xs">
+                <View className="items-center gap-3 font-cairo text-xs">
                   <ThemedText className="text-md font-cairo-bold ">
                     {" "}
                     {today}
                   </ThemedText>
-                  <Image source={images.mosque} className="size-28" />
+                  <Image source={images.kabaaBg} className="size-28" />
                 </View>
               </TouchableOpacity>
             </View>
@@ -206,7 +203,6 @@ const Index = () => {
               </View>
             </View>
           </View>
-
           <View className="mb-5">
             <ThemedText className="my-5 text-lg font-cairo-bold">
               مواقيت الصلاة

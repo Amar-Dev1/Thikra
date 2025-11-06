@@ -1,5 +1,4 @@
 import BgWrapper from "@/components/BgWrapper";
-import MainTitle from "@/components/MainTitle";
 import React from "react";
 import { FlatList, View } from "react-native";
 
@@ -13,7 +12,7 @@ const iconMap = g as { [key: string]: React.FC<any> };
 
 const index = () => {
   return (
-    <BgWrapper className="px-5" hideBackground={true}>
+    <BgWrapper className="px-5">
       <View className="flex-1">
         <ScreenTitle title="الدعاء و الذكر"/>
         <FlatList

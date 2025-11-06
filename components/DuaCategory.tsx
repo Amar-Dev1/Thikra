@@ -20,16 +20,15 @@ const DuaCategory = ({ id, title, className, Icon }: IDuaCategory) => {
       } 
       ${className}`}
       onPress={() => router.push(`/(tabs)/Dua/${id}`)}
-      style={{backgroundColor:bg}}
+      style={{ backgroundColor: bg }}
     >
       <View
         className={`flex-1 rounded-2xl flex-row justify-center items-center p-7
           // ${currentTheme === "dark" ? "bg-[#222222]" : "bg-[#F5C97B]"}
           `}
-          
       >
         <View className="opacity-75">
-          <Icon width={22} height={22} stroke={textColor}/>
+          <Icon width={22} height={22} stroke={textColor} strokeWidth={1} />
         </View>
       </View>
       <ThemedText className="font-cairo text-sm text-center my-2">
