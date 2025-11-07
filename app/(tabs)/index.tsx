@@ -12,6 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { Image, ScrollView, TouchableOpacity, View } from "react-native";
+import Animated, { FadeInDown } from "react-native-reanimated";
 import ayat from "../../assets/data/ayat.json";
 import discoverCards from "../../assets/data/discoverSection.json";
 
@@ -130,8 +131,9 @@ const Index = () => {
               <ThemedText className="my-5 text-lg font-cairo-bold">
                 السلام عليكم ، أخي المسلم
               </ThemedText>
-              <TouchableOpacity
-                className={`flex flex-row justify-between px-4 py-3 ${
+              <Animated.View
+                entering={FadeInDown.springify().delay(200)}
+                className={`flex-row justify-between px-4 py-3 ${
                   currentTheme === "dark"
                     ? "border-[.5px] border-light/20"
                     : "border-[.5px] border-dark/20"
@@ -156,10 +158,12 @@ const Index = () => {
                   </ThemedText>
                   <Image source={images.kabaaBg} className="size-28" />
                 </View>
-              </TouchableOpacity>
+              </Animated.View>
             </View>
+
             {isFriday && (
-              <View
+              <Animated.View
+                entering={FadeInDown.springify().delay(300)}
                 className={`my-5 rounded-2xl ${
                   currentTheme === "dark"
                     ? "border-[.5px] border-light/20"
@@ -168,9 +172,14 @@ const Index = () => {
                 style={{ backgroundColor: bg }}
               >
                 <View className="flex-row gap-2 items-center max-h-8">
-                  <KabaaSvg width={20} />
+                  <KabaaSvg
+                    width={20}
+                    height={20}
+                    strokeWidth={1}
+                    stroke={textColor}
+                  />
                   <ThemedText className="font-cairo-bold">
-                    ساعة الجمعة
+                    يوم الجمعة
                   </ThemedText>
                 </View>
                 <ThemedText className="font-amiri">
@@ -184,7 +193,7 @@ const Index = () => {
                 <ThemedText className="font-amiri ml-auto">
                   متفق عليه
                 </ThemedText>
-              </View>
+              </Animated.View>
             )}
             <View>
               <ThemedText className="my-5 font-cairo-bold text-lg">

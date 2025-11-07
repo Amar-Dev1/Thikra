@@ -1,14 +1,10 @@
 import { ThemeProvider } from "@/context/ThemeContext";
+import { IPrayerDetails } from "@/interfaces";
+import { schedulePrayerNotification } from "@/utils/schedulePrayerNotification";
 import { syncNotificationState } from "@/utils/syncNotificationState";
-import {
-  fireBackgroundNotification,
-  updatePrayersTimings,
-} from "@/utils/taskManager";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as BackgroundTask from "expo-background-task";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack, useRouter } from "expo-router";
-import * as TaskManager from "expo-task-manager";
 import { useEffect, useState } from "react";
 import { AppState, I18nManager, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -23,29 +19,19 @@ if (!I18nManager.isRTL) {
   I18nManager.allowRTL(true);
   I18nManager.forceRTL(true);
 }
-// define task for fetching updated prayer timings
-const UPDATE_PRAYER_TIMINGS = "update-prayer-timings";
+
 // define tasks for prayer notifications
 const PRAYER_BACKGROUND_TASK = "background-notification-task";
 
-TaskManager.defineTask(UPDATE_PRAYER_TIMINGS, async () => {
-  try {
-    await updatePrayersTimings();
-    return BackgroundTask.BackgroundTaskResult.Success;
-  } catch (e) {
-    console.warn("updating timings task failed", e);
-    return BackgroundTask.BackgroundTaskResult.Failed;
-  }
-});
-TaskManager.defineTask(PRAYER_BACKGROUND_TASK, async () => {
-  try {
-    await fireBackgroundNotification();
-    return BackgroundTask.BackgroundTaskResult.Success;
-  } catch (e) {
-    console.warn("Prayer noficiation background task failed", e);
-    return BackgroundTask.BackgroundTaskResult.Failed;
-  }
-});
+// TaskManager.defineTask(PRAYER_BACKGROUND_TASK, async () => {
+//   try {
+//     await fireBackgroundNotification();
+//     return BackgroundTask.BackgroundTaskResult.Success;
+//   } catch (e) {
+//     console.warn("Prayer noficiation background task failed", e);
+//     return BackgroundTask.BackgroundTaskResult.Failed;
+//   }
+// });
 
 export default function RootLayout() {
   const router = useRouter();
@@ -118,43 +104,34 @@ export default function RootLayout() {
   }, [isReady, completedOnboarding, router]);
 
   // register the background tasks
+  // useEffect(() => {
+  //   async function registerPrayerNotifications() {
+  //     const isRegistered = await TaskManager.isTaskRegisteredAsync(
+  //       PRAYER_BACKGROUND_TASK
+  //     );
+  //     if (!isRegistered) {
+  //       await BackgroundTask.registerTaskAsync(PRAYER_BACKGROUND_TASK, {
+  //         minimumInterval: 60 * 60 * 23,
+  //         // @ts-ignore
+  //         stopOnTerminate: false,
+  //         startOnBoot: true,
+  //       });
+  //       console.log(`${PRAYER_BACKGROUND_TASK} registered.`);
+  //     } else {
+  //       console.log(`${PRAYER_BACKGROUND_TASK} is already registered.`);
+  //     }
+  //   }
+  //   registerPrayerNotifications();
+  // }, []);
+
   useEffect(() => {
-    async function registerUpdateTimings() {
-      const isRegistered = await TaskManager.isTaskRegisteredAsync(
-        UPDATE_PRAYER_TIMINGS
-      );
-      if (!isRegistered) {
-        await BackgroundTask.registerTaskAsync(UPDATE_PRAYER_TIMINGS, {
-          minimumInterval: 60 * 60 * 5,
-          // @ts-ignore
-          stopOnTerminate: false,
-          startOnBoot: true,
-        });
-        console.log(`${UPDATE_PRAYER_TIMINGS} registered.`);
-      } else {
-        console.log(`${UPDATE_PRAYER_TIMINGS} is already registered.`);
-      }
-    }
-
-    async function registerPrayerNotifications() {
-      const isRegistered = await TaskManager.isTaskRegisteredAsync(
-        PRAYER_BACKGROUND_TASK
-      );
-      if (!isRegistered) {
-        await BackgroundTask.registerTaskAsync(PRAYER_BACKGROUND_TASK, {
-          minimumInterval: 60 * 60 * 8,
-          // @ts-ignore
-          stopOnTerminate: false,
-          startOnBoot: true,
-        });
-        console.log(`${PRAYER_BACKGROUND_TASK} registered.`);
-      } else {
-        console.log(`${PRAYER_BACKGROUND_TASK} is already registered.`);
-      }
-    }
-
-    registerUpdateTimings();
-    registerPrayerNotifications();
+    const registerNotifications = async () => {
+      const data = await AsyncStorage.getItem("timings");
+      const timings: IPrayerDetails[] = data ? JSON.parse(data) : [];
+      await schedulePrayerNotification(timings);
+      await syncNotificationState();
+    };
+    registerNotifications();
   }, []);
 
   if (

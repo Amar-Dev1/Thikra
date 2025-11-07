@@ -20,10 +20,6 @@ export const syncNotificationState = async (prayers?: IPrayerDetails[]) => {
       await AsyncStorage.removeItem(FLAG);
     }
 
-    // else if (granted && flag === "true" && prayers) {
-    //   await schedulePrayerNotification(prayers);
-    // }
-
     return granted;
   } catch (e) {
     console.warn(e);

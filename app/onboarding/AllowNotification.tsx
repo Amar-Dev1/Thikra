@@ -1,10 +1,16 @@
 import BgWrapper from "@/components/BgWrapper";
+import ThemedText from "@/components/ThemedText";
 import { images } from "@/constants/images";
+import { useTheme } from "@/context/ThemeContext";
 import { accessNotifications } from "@/utils/accessNotifications";
 import { router } from "expo-router";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 
 const AllowNotification = () => {
+  // @ts-ignore
+  const { currentTheme } = useTheme();
+  const bg = currentTheme === "dark" ? "#222222" : "#F8EFD4";
+
   const handleAllow = async () => {
     try {
       const allowed = await accessNotifications();
@@ -18,19 +24,26 @@ const AllowNotification = () => {
   return (
     <BgWrapper className="px-5">
       <View className="flex-row items-center gap-2">
-        <Text className="font-cairo-bold text-3xl my-5">تفعيل الإشعارات</Text>
+        <ThemedText className="font-cairo-bold text-3xl my-5">
+          تفعيل الإشعارات
+        </ThemedText>
         <Image source={images.bell} className="size-10" />
       </View>
-      <Text className="font-cairo text-xl opacity-65">
+      <ThemedText className="font-cairo text-xl opacity-65">
         الرجاء تفعيل اللإشعارات ، لكي تصلك مواقيت الصلاة ، و باقي الأذكار
-      </Text>
+      </ThemedText>
 
       <View className="flex-row items-center mt-auto">
         <TouchableOpacity
-          className="bg-primary rounded-2xl py-2 flex-1 border border-dark/40"
+          className={`rounded-2xl py-2 flex-1 border ${
+            currentTheme === "dark" ? "border-light/10" : "borde-dark/10"
+          }`}
           onPress={handleAllow}
+          style={{ backgroundColor: bg }}
         >
-          <Text className="text-lg font-cairo-bold text-center">سماح</Text>
+          <ThemedText className="text-lg font-cairo-bold text-center">
+            سماح
+          </ThemedText>
         </TouchableOpacity>
       </View>
     </BgWrapper>

@@ -1,26 +1,23 @@
 import { Directory, File, Paths } from "expo-file-system";
-import { Platform } from "react-native";
 import { CONFIG } from "./config";
 
-const os = Platform.OS;
-
-export const fetchAdhanSound = async (filename: string) => {
+export const fetchAdhanSound = async (platform: string) => {
   try {
-    const extension = os === "android" ? "ogg" : "wav";
+    const extension = platform === "android" ? "ogg" : "m4a";
 
-    const soundDir = new Directory(Paths.document, "soundDir");
+    const soundDir = new Directory(Paths.document, "AdhanSounds");
     if (!soundDir.exists) {
       soundDir.create();
     }
 
-    const localFile = new File(soundDir, `${filename}.${extension}`);
+    const localFile = new File(soundDir, `AboJabber.${extension}`);
     if (!localFile.exists) {
       const downloadedSound = await File.downloadFileAsync(
-        `${CONFIG.ADHAN_SOUND_URL}/${filename}.${extension}`,
+        `${CONFIG.ADHAN_SOUND_URL}/AboJabber.${extension}`,
         localFile
       );
 
-      console.log(`downloaded sound for : ${filename}.${extension}`);
+      console.log(`downloaded sound for : AboJabber.${extension}`);
 
       return downloadedSound.uri;
     }

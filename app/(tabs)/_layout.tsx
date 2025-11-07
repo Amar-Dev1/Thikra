@@ -41,6 +41,7 @@ const TabsLayout = () => {
           position: "absolute",
           overflow: "hidden",
         };
+
         return {
           tabBarShowLabel: false,
           tabBarStyle: tabBarStyle,

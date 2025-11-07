@@ -15,6 +15,7 @@ import {
   View,
 } from "react-native";
 import Modal from "react-native-modal";
+import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
 import Namesdata from "../assets/data/Names_Of_Allah.json";
 
 const GreatNames = () => {
@@ -66,12 +67,12 @@ const GreatNames = () => {
           numColumns={3}
           scrollEnabled={false}
           renderItem={({ item }) => (
-            <GreatName
-              {...item}
-              className="w-[32%] min-h-[80px]"
-              // @ts-ignore
-              onPress={() => handleSelect(item)}
-            />
+              <GreatName
+                {...item}
+                className="w-[32%] min-h-[80px]"
+                // @ts-ignore
+                onPress={() => handleSelect(item)}
+              />
           )}
           keyExtractor={(item) => item.id.toString()}
           columnWrapperStyle={{

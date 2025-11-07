@@ -2,11 +2,13 @@ import BgWrapper from "@/components/BgWrapper";
 import ThemedText from "@/components/ThemedText";
 import { useTheme } from "@/context/ThemeContext";
 import { IPrayerDetails, ISavedCategory } from "@/interfaces";
+import { fetchAdhanSound } from "@/services/fetchAdhanSound";
 import { fetchPrayerTimes } from "@/services/fetchPrayerTimes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Notifications from "expo-notifications";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, Alert } from "react-native";
+import { ActivityIndicator, Alert, Platform } from "react-native";
 
 const SetupAll = () => {
   // @ts-ignore
@@ -47,6 +49,19 @@ const SetupAll = () => {
       });
       await AsyncStorage.setItem("timings", JSON.stringify(updated));
       console.log(await AsyncStorage.getItem("timings"));
+
+      // prepare adhan sound
+      const adhanSoundFileUri = await fetchAdhanSound(Platform.OS);
+
+      if (Platform.OS === "android" && adhanSoundFileUri) {
+        Notifications.setNotificationChannelAsync("adhan_channel", {
+          name: "Adhan Time",
+          importance: Notifications.AndroidImportance.MAX,
+          sound: adhanSoundFileUri,
+        });
+        console.log('Android Adhan Channel set up with custom sound.');
+        
+      }
 
       // mark onboarding as completed ✅
       await AsyncStorage.setItem("onboardingCompleted", "true");

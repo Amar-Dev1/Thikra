@@ -22,6 +22,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
+import Animated, { FadeInRight } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ViewShot from "react-native-view-shot";
 import adhkar from "../../../../assets/data/adhkar.json";
@@ -224,9 +225,10 @@ const ItemDetails = () => {
             paddingBottom: 90,
             paddingTop: 10,
           }}
-          renderItem={({ item }) => {
+          renderItem={({ item, index }) => {
             return (
-              <View
+              <Animated.View
+                entering={FadeInRight.springify().delay(index * 100)}
                 className={`px-5 py-7 rounded-2xl ${
                   currentTheme === "dark"
                     ? "border-[.5px] border-light/10"
@@ -242,7 +244,7 @@ const ItemDetails = () => {
                     عدد المرات: {item.count}
                   </ThemedText>
                 )}
-              </View>
+              </Animated.View>
             );
           }}
         />

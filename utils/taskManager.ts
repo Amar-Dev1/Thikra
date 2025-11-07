@@ -4,21 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { schedulePrayerNotification } from "./schedulePrayerNotification";
 import { syncNotificationState } from "./syncNotificationState";
 
-export const fireBackgroundNotification = async () => {
-  try {
-    const storedTimings = await AsyncStorage.getItem("timings");
-    const timings: IPrayerDetails[] = storedTimings
-      ? JSON.parse(storedTimings)
-      : [];
-
-    await schedulePrayerNotification(timings);
-    await syncNotificationState(timings);
-  } catch (e) {
-    console.warn(e);
-  }
-};
-
-export const updatePrayersTimings = async () => {
+export const updatedPrayersTimings = async () => {
   try {
     const location = await AsyncStorage.getItem("location");
     const { city, country } = JSON.parse(location!);
@@ -44,7 +30,20 @@ export const updatePrayersTimings = async () => {
     console.log(
       `SUCCESS : Prayer Timings updated at : ${new Date().toLocaleTimeString()}`
     );
+    return updated;
   } catch (e) {
     console.warn(`Faild to update timings, error :`, e);
+  }
+};
+
+export const fireBackgroundNotification = async () => {
+  try {
+    const updatedData = await updatedPrayersTimings();
+    const timings = updatedData ? updatedData : [];
+
+    await schedulePrayerNotification(timings);
+    await syncNotificationState(timings);
+  } catch (e) {
+    console.warn(e);
   }
 };

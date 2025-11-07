@@ -1,30 +1,41 @@
 import { IPrayerDetails } from "@/interfaces";
+import { fetchAdhanSound } from "@/services/fetchAdhanSound";
 import * as Notifications from "expo-notifications";
+import { Platform } from "react-native";
 import { convertToHHMM } from "./parseTime";
+// FIX: Updated schedulePrayerNotification function
 
-// this function fire the notification , made for prayers notifications
 export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
   try {
-    // utility for calculating the 'الأذكار' time
+    await Notifications.cancelAllScheduledNotificationsAsync();
+    console.log("Cancelled all scheduled notifications");
+
+    const now = new Date();
+
+    // This utility is fixed (see Bug #2 below)
     const createScheduleDate = (
       hour: number,
       minutes: number,
       minutesOffset: number = 0
     ) => {
-      const now = new Date();
       const scheduledDate = new Date(
         now.getFullYear(),
         now.getMonth(),
         now.getDate(),
         hour,
-        now.getMinutes() + minutesOffset,
+        minutes + minutesOffset, // <-- This was the bug
         0
       );
+
+      // If this time is already in the past, schedule it for tomorrow
+      if (scheduledDate < now) {
+        scheduledDate.setDate(scheduledDate.getDate() + 1);
+      }
       return scheduledDate;
     };
 
-    await Notifications.cancelAllScheduledNotificationsAsync();
-    console.log("Cancelled all scheduled notifications");
+    const AdhanUri = await fetchAdhanSound(Platform.OS);
+    const sound = AdhanUri ? AdhanUri : "default";
 
     for (const prayer of prayers) {
       const { hour, minute } = convertToHHMM(prayer.time);
@@ -36,21 +47,39 @@ export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
         continue;
       }
 
+      // --- START OF NEW LOGIC ---
+      const triggerDate = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+        hour,
+        minute,
+        0
+      );
+
+      // If the prayer time has already passed today, schedule it for tomorrow
+      if (triggerDate < now) {
+        triggerDate.setDate(triggerDate.getDate() + 1);
+      }
+      // --- END OF NEW LOGIC ---
+
       await Notifications.scheduleNotificationAsync({
         content: {
           title: `حان الآن موعد أذان ${prayer.name}`,
           body: "إن الصلاة كانت على المؤمنين كتاباً موقوتا",
-          sound: "default",
+          sound: sound,
         },
+        // Use the explicit Date object as the trigger
         // @ts-ignore
         trigger: {
-          hour: hour,
-          minute: minute,
+          date: triggerDate,
           repeats: false,
         },
       });
-
-      if (prayer.key === 1) {
+      // Schedule Adhkar notifications using the fixed utility
+      if (prayer.key === 2) {
+        // Fajr
+        const adhkarTime = createScheduleDate(hour, minute, 10); // 10 mins after Fajr
         await Notifications.scheduleNotificationAsync({
           content: {
             title: "أذكار الصباح يا مسلم",
@@ -59,14 +88,17 @@ export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
           },
           // @ts-ignore
           trigger: {
-            hour: createScheduleDate(hour, minute, 10).getHours(),
-            minute: createScheduleDate(hour, minute, 10).getMinutes(),
+            date: adhkarTime,
             repeats: false,
           },
         });
+
+        console.log(`SUCCESS: Scheduled notification for adhkar alsabah`);
       }
 
-      if (prayer.key === 3) {
+      if (prayer.key === 4) {
+        // Asr
+        const adhkarTime = createScheduleDate(hour, minute, 10); // 10 mins after Asr
         await Notifications.scheduleNotificationAsync({
           content: {
             title: "أذكار المساء يا مسلم",
@@ -75,27 +107,20 @@ export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
           },
           // @ts-ignore
           trigger: {
-            hour: hour,
-            minute: minute,
+            date: adhkarTime,
             repeats: false,
           },
         });
+        console.log(`SUCCESS: Scheduled notification for adhkar almasa`);
       }
 
       console.log(
-        `SUCCESS: Scheduled notification for ${prayer.enName} at ${hour}:${minute}`
+        `SUCCESS: Scheduled notification for ${
+          prayer.enName
+        } at ${triggerDate.toLocaleString()}`
       );
-      console.log(`${
-        prayer.key === 1 &&
-        `SUCCESS : Scheduled notification for Adhkar Alsabah`
-      }
-         ${
-           prayer.key === 3 &&
-           `SUCCESS : Scheduled notification for Adhkar Alsabah`
-         }
-        `);
     }
   } catch (e) {
-    console.warn("Faild to schedule prayer notifications ", e);
+    console.warn("Failed to schedule prayer notifications ", e);
   }
 };

@@ -7,6 +7,7 @@ import { images } from "@/constants/images";
 import { useTheme } from "@/context/ThemeContext";
 import React, { useState } from "react";
 import {
+  Dimensions,
   ImageBackground,
   ScrollView,
   Text,
@@ -14,7 +15,10 @@ import {
   View,
 } from "react-native";
 import Modal from "react-native-modal";
+import Animated, { FadeInDown } from "react-native-reanimated";
 import { settingsElements } from "./elements";
+
+const { width, height } = Dimensions.get("window");
 
 const Index = () => {
   const [themeModalVisible, setThemeModalVisible] = useState(false);
@@ -30,41 +34,60 @@ const Index = () => {
   };
 
   return (
-    <BgWrapper className="px-5 gap-3 bg-bgColor" hideBackground={true}>
+    <BgWrapper className="px-5 gap-3 bg-bgColor">
       <ScreenTitle title="الإعدادات" />
       <ScrollView showsVerticalScrollIndicator={false} className="flex-1">
-        {settingsElements.map((item, Index) => {
+        {settingsElements.map((item, index) => {
           const onPress =
             item.title === "السمات"
               ? () => setThemeModalVisible(true)
               : item.onPress;
-          return <SettingsItem key={Index} {...item} onPress={onPress} />;
+          return (
+            <Animated.View
+              key={index}
+              entering={FadeInDown.springify().delay(index * 200)}
+            >
+              <SettingsItem {...item} onPress={onPress} className="flex-1" />
+            </Animated.View>
+          );
         })}
       </ScrollView>
-      <ImageBackground
-        source={images.settingsImg}
-        resizeMode="cover"
-        className="relative min-h-[25%] mb-16 rounded-2xl overflow-hidden flex-col justify-center px-5"
+      <Animated.View
+        className={`min-h-[25%] mb-safe-or-16`}
+        entering={FadeInDown.springify().delay(400)}
       >
-        <View
-          className={`absolute inset-0 ${
-            currentTheme === "dark" ? "bg-black/50" : "bg-black/70"
-          } `}
-        />
-        <Text className="text-light font-cairo-bold text-xl text-center">
-          وَذَكِّرْ فَإِنَّ الذِّكْرَى تَنْفَعُ الْمُؤْمِنِينَ
-        </Text>
-        <Text className="text-light font-cairo text-xs text-center mt-5">
-          [ الذاريات: 55]
-        </Text>
-      </ImageBackground>
+        <ImageBackground
+          source={images.settingsImg}
+          resizeMode="cover"
+          className="flex-1 relative  rounded-2xl overflow-hidden flex-col justify-center px-5"
+        >
+          <View
+            className={`absolute inset-0 ${
+              currentTheme === "dark" ? "bg-black/50" : "bg-black/70"
+            } `}
+          />
+          <Text className="text-light font-cairo-bold text-xl text-center">
+            وَذَكِّرْ فَإِنَّ الذِّكْرَى تَنْفَعُ الْمُؤْمِنِينَ
+          </Text>
+          <Text className="text-light font-cairo text-xs text-center mt-5">
+            [ الذاريات: 55]
+          </Text>
+        </ImageBackground>
+      </Animated.View>
 
       <Modal
         isVisible={themeModalVisible}
         animationIn={"zoomIn"}
         animationOut={"zoomOut"}
-        animationInTiming={500}
-        animationOutTiming={500}
+        animationInTiming={400}
+        animationOutTiming={400}
+        customBackdrop={
+          <TouchableOpacity
+            onPress={(prev) => setThemeModalVisible(!prev)}
+            className={`absolute inset-0 bg-dark/90 border`}
+            style={{ width, height: height + 40 }}
+          ></TouchableOpacity>
+        }
       >
         <View
           className={`gap-4 py-5 px-3 rounded-2xl ${
