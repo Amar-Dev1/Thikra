@@ -25,6 +25,7 @@ import {
 import Animated, { FadeInRight } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ViewShot from "react-native-view-shot";
+import * as Sharing from "expo-sharing";
 import adhkar from "../../../../assets/data/adhkar.json";
 
 const ItemDetails = () => {
@@ -167,28 +168,20 @@ const ItemDetails = () => {
       console.log("ViewShot ref is not available.");
       return;
     }
-    if (!isRunningInExpoGo()) {
-      try {
-        // @ts-ignore
-        const uri = await shareViewRef.current.capture({
-          format: "png",
-          quality: 0.9,
-          result: "tmpfile",
-        });
+    try {
+      // @ts-ignore
+      const uri = await shareViewRef.current.capture({
+        format: "png",
+        quality: 0.9,
+        result: "tmpfile",
+      });
 
-        const link = "Download Thikra here:\nhttps://github.com/amar-dev1";
-
-        await Share.share({
-          url: uri,
-          title: currentItem?.name,
-          message: `${currentItem?.name}\n\n${link}`,
-        });
-      } catch (e) {
-        console.log("Failed to share dua:", e);
-        Alert.alert("خطأ", "فشل في المشاركة", [
-          { text: "موافق", style: "default" },
-        ]);
-      }
+      await Sharing.shareAsync(uri);
+    } catch (e) {
+      console.log("Failed to share dua:", e);
+      Alert.alert("خطأ", "فشل في المشاركة", [
+        { text: "موافق", style: "default" },
+      ]);
     }
   };
 
@@ -205,7 +198,12 @@ const ItemDetails = () => {
           height: 300,
         }}
       >
-        <ShareDua duaName={currentItem?.name || "Dua"} ref={shareViewRef} />
+        <ShareDua
+          duaName={currentItem?.name || "Dua"}
+          firstDua={currentItem?.duas[0].text}
+          count={currentItem?.duas[0].count}
+          ref={shareViewRef}
+        />
       </View>
 
       <ScreenTitle title={currentItem?.name!} />

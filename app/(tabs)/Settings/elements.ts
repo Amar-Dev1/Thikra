@@ -1,12 +1,20 @@
 import { ISettingsElement } from "@/components/SettingsItem";
-import { ContactSvg, InfoSvg, LocationSvg, ShareSvg, ThemeSvg } from "@/constants/icons";
+import {
+  ContactSvg,
+  InfoSvg,
+  LocationSvg,
+  ShareSvg,
+  ThemeSvg,
+} from "@/constants/icons";
 import { Linking, Share } from "react-native";
 
 const onShare = async () => {
   try {
     await Share.share({
       message:
-        "Check out Thikra app !,  Download it here:\nhttps://github.com/amar-dev1",
+        "Check out Thikra app !,  Download it here:\nhttps://thikra.netlify.app",
+      url: "https://thikra.netlify.app",
+      
     });
   } catch (e) {
     console.log("faild to share app", e);
@@ -21,7 +29,6 @@ const onReport = () => {
 
   Linking.openURL(mailToUrl);
 };
-
 
 export const settingsElements: ISettingsElement[] = [
   {

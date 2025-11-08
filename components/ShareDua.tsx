@@ -5,20 +5,27 @@ import ViewShot from "react-native-view-shot";
 
 interface props {
   duaName: string;
+  firstDua: string;
+  count?: number;
   ref: React.Ref<ViewShot>;
 }
 
-const ShareDua = ({ duaName, ref }: props) => {
+const ShareDua = ({ duaName, ref, firstDua, count }: props) => {
   return (
     <ViewShot ref={ref} options={{ format: "png", quality: 0.9 }}>
-      <View className="bg-dark/50 justify-center py-8 rounded-xl h-[450px]">
-        <View className="flex-1 gap-3 justify-center items-center">
+      <View className="bg-dark/50 justify-center py-8 px-5 gap-12 rounded-xl h-[450px]">
+        <View className="gap-5 items-center">
           <Text className="text-light text-lg font-cairo-bold">{duaName}</Text>
-          <Text className="text-light font-cairo text-sm opacity-65">
-            Dua from Thikra
+        </View>
+        <View className="flex-1 bg-[#222222] rounded-2xl p-5 gap-4 items-center justify-center">
+          <Text className="text-light font-cairo text-xs text-center">
+            {firstDua}
+          </Text>
+          <Text className="text-[8px] font-cairo text-light opacity-65">
+            المرات : {count}
           </Text>
         </View>
-        <View className="mt-auto gap-3 items-center">
+        <View className="gap-3 items-center">
           <Image
             source={images.androidForgroundIcon}
             resizeMode="contain"
