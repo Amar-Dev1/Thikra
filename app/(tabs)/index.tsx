@@ -2,21 +2,34 @@ import BgWrapper from "@/components/BgWrapper";
 import DiscoverCard from "@/components/DiscoverCard";
 import ScreenTitle from "@/components/ScreenTitle";
 import ThemedText from "@/components/ThemedText";
-import { ClockSvg, KabaaSvg, LocationSvg } from "@/constants/icons";
+import { ClockSvg, KabaaSvg, LocationSvg, RefreshSvg } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { useTheme } from "@/context/ThemeContext";
 import { ILocation, IPrayerDetails } from "@/interfaces";
 import { getCurrentSalah } from "@/utils/getCurrentSalah";
 import { convert24To12 } from "@/utils/parseTime";
+import { refreshTimings } from "@/utils/refreshTimings";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { Image, ScrollView, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  Image,
+  Modal,
+  ScrollView,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ayat from "../../assets/data/ayat.json";
 import discoverCards from "../../assets/data/discoverSection.json";
 
 const Index = () => {
+
+  const insets = useSafeAreaInsets();
+  
   // @ts-ignore
   const { currentTheme } = useTheme();
   const bg = currentTheme === "dark" ? "#222222" : "#F8EFD4";
@@ -26,6 +39,7 @@ const Index = () => {
     null
   );
 
+  const [loading, setLoading] = useState(false);
   const [currentSalah, setCurrentSalah] = useState<IPrayerDetails | null>(null);
   const [randomAyah, setRandomAyah] = useState<string | null>(null);
   const [today, setToday] = useState<string | null>("");
@@ -44,8 +58,9 @@ const Index = () => {
     async function prepareData() {
       try {
         // await AsyncStorage.removeItem("onboardingCompleted");
-        const location = await AsyncStorage.getItem("location");
-        setCurrentLocation(location ? JSON.parse(location) : null);
+        const locationData = await AsyncStorage.getItem("location");
+        const location = locationData ? JSON.parse(locationData) : null;
+        setCurrentLocation(location);
 
         const date = new Date();
 
@@ -100,181 +115,232 @@ const Index = () => {
     setIsFriday(now.getDay() === 5);
   }, []);
 
+  const updateTimings = async () => {
+    try {
+      setLoading(true);
+      const timings = await refreshTimings(currentLocation!, prayersDetails);
+      if (timings) router.replace("/");
+      console.log("updated timings manually ✅");
+    } catch (e) {
+      console.warn("faild to manual update timings", e);
+      Alert.alert("خطأ", "حدث خطأ أثناء تحديث المواقيت", [
+        { text: "موافق", style: "default" },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <BgWrapper className="px-5">
-      <View className="flex-1">
-        <ScreenTitle title="الصفحة الرئيسية" className="justify-between">
-          <TouchableOpacity
-            className={`flex flex-row items-center px-2 py-1 gap-1  ${
-              currentTheme === "dark"
-                ? "border-[.5px] border-light/20"
-                : "border-[.5px] border-dark/20"
-            } rounded-xl`}
-            style={{ backgroundColor: bg }}
-            onPress={() => router.push("/Settings/EditLocation")}
+    <BgWrapper>
+      {loading ? (
+        <Modal
+          visible={loading}
+          transparent
+          animationType="fade"
+          statusBarTranslucent
+        >
+          <View
+            className="flex-1 justify-center items-center gap-8"
+            style={{
+              backgroundColor: bg,
+              paddingBottom: insets.bottom,
+            }}
           >
-            <ThemedText className="text-sm">
-              {currentLocation?.city || "N/A"}
+            <ThemedText className="font-cairo-bold text-sm">
+              يتم تحديث المواقيت
             </ThemedText>
-            <LocationSvg
-              width={20}
-              height={20}
-              stroke={textColor}
-              strokeWidth={1}
-            />
-          </TouchableOpacity>
-        </ScreenTitle>
-
-        <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
-          <View className="flex-1 py-5">
-            <View>
-              <ThemedText className="my-5 text-lg font-cairo-bold">
-                السلام عليكم ، أخي المسلم
-              </ThemedText>
-              <Animated.View
-                entering={FadeInDown.springify().delay(200)}
-                className={`flex-row justify-between px-4 py-3 ${
-                  currentTheme === "dark"
-                    ? "border-[.5px] border-light/20"
-                    : "border-[.5px] border-dark/20"
-                } rounded-2xl`}
-                style={{ backgroundColor: bg }}
-              >
-                <View className="flex-col justify-center">
-                  <ThemedText className=" text-lg font-cairo-bold">
-                    {currentSalah?.name || "N/A"}
-                  </ThemedText>
-                  <View className="flex-row items-center gap-2">
-                    <ClockSvg width={18} stroke={textColor} strokeWidth={1} />
-                    <ThemedText className="text-3xl font-cairo-light">
-                      {convert24To12(currentSalah?.time || "12:00 AM")}
-                    </ThemedText>
-                  </View>
-                </View>
-                <View className="items-center gap-3 font-cairo text-xs">
-                  <ThemedText className="text-md font-cairo-bold ">
-                    {" "}
-                    {today}
-                  </ThemedText>
-                  <Image source={images.kabaaBg} className="size-28" />
-                </View>
-              </Animated.View>
-            </View>
-
-            {isFriday && (
-              <Animated.View
-                entering={FadeInDown.springify().delay(300)}
-                className={`my-5 rounded-2xl ${
-                  currentTheme === "dark"
-                    ? "border-[.5px] border-light/20"
-                    : "border-[.5px] border-dark/20"
-                } px-4 py-3`}
-                style={{ backgroundColor: bg }}
-              >
-                <View className="flex-row gap-2 items-center max-h-8">
-                  <KabaaSvg
-                    width={20}
-                    height={20}
-                    strokeWidth={1}
-                    stroke={textColor}
-                  />
-                  <ThemedText className="font-cairo-bold">
-                    يوم الجمعة
-                  </ThemedText>
-                </View>
-                <ThemedText className="font-amiri">
-                  عَن أبي هريرة أَنَّ رَسُولَ اللَّهِ ﷺ ذَكَرَ يَوْمَ
-                  الجُمُعَةِ، فَقَالَ:{" "}
-                  <ThemedText className="font-amiri-bold">
-                    فِيه سَاعَةٌ لا يُوَافِقها عَبْدٌ مُسلِمٌ، وَهُو قَائِمٌ
-                    يُصَلِّي يسأَلُ اللَّه شَيْئًا، إِلاَّ أَعْطَاهُ إِيَّاه .
-                  </ThemedText>
-                </ThemedText>
-                <ThemedText className="font-amiri ml-auto">
-                  متفق عليه
-                </ThemedText>
-              </Animated.View>
-            )}
-            <View>
-              <ThemedText className="my-5 font-cairo-bold text-lg">
-                استكشف
-              </ThemedText>
-              <View className="flex-row gap-2 flex-wrap">
-                {discoverCards.map((card) => (
-                  <DiscoverCard
-                    key={card.id}
-                    {...card}
-                    image={(images as any)[card.image]}
-                    className="min-w-[31%] flex-1"
-                    route={card.route}
-                  />
-                ))}
-              </View>
-            </View>
+            <ActivityIndicator color={textColor} size={"large"} />
           </View>
-          <View className="mb-5">
-            <ThemedText className="my-5 text-lg font-cairo-bold">
-              مواقيت الصلاة
-            </ThemedText>
-            <View
-              className={`items-center gap-7 px-4 py-5 rounded-2xl ${
+        </Modal>
+      ) : (
+        <View className="flex-1 px-5">
+          <ScreenTitle title="الصفحة الرئيسية" className="justify-between">
+            <TouchableOpacity
+              className={`flex flex-row items-center px-2 py-1 gap-1  ${
                 currentTheme === "dark"
                   ? "border-[.5px] border-light/20"
                   : "border-[.5px] border-dark/20"
-              }`}
+              } rounded-xl`}
               style={{ backgroundColor: bg }}
+              onPress={() => router.push("/Settings/EditLocation")}
             >
-              <ThemedText className="text-xl text-center font-amiri-bold">
-                فَذَالكٌم الرباط ، فَذَالكٌم الرباط
+              <ThemedText className="text-sm">
+                {currentLocation?.city || "N/A"}
               </ThemedText>
-              <View className="relative w-[95%] mx-auto mb-4">
-                <View className="absolute top-[5.5px] w-full h-[1.5px] bg-[#ddd]" />
-                <View className="flex flex-row justify-between">
-                  {prayersDetails.map((prayer) => (
-                    <TouchableOpacity
-                      key={prayer.key}
-                      className="flex flex-col items-center gap-2 "
-                    >
-                      <View
-                        className={`w-3 h-3 ${
-                          currentSalah?.key === prayer.key
-                            ? "bg-accent"
-                            : "bg-[#ddd]"
-                        } rounded-full`}
-                      />
-                      <ThemedText className="font-cairo-bold text-sm text-dark">
-                        {prayer.name}
+              <LocationSvg
+                width={20}
+                height={20}
+                stroke={textColor}
+                strokeWidth={1}
+              />
+            </TouchableOpacity>
+          </ScreenTitle>
+
+          <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
+            <View className="flex-1 py-5">
+              <View>
+                <View className="flex-row items-center justify-between">
+                  <ThemedText className="my-5 text-lg font-cairo-bold">
+                    السلام عليكم ، أخي المسلم
+                  </ThemedText>
+                  <TouchableOpacity
+                    className="p-2 rounded-lg flex-row items-center gap-2"
+                    style={{ backgroundColor: bg }}
+                    onPress={updateTimings}
+                  >
+                    <RefreshSvg width={12} height={12} stroke={textColor} />
+                    <ThemedText className="font-cairo-bold text-xs">
+                      تحديث المواقيت
+                    </ThemedText>
+                  </TouchableOpacity>
+                </View>
+
+                <Animated.View
+                  entering={FadeInDown.springify().delay(200)}
+                  className={`flex-row justify-between px-4 py-3 ${
+                    currentTheme === "dark"
+                      ? "border-[.5px] border-light/20"
+                      : "border-[.5px] border-dark/20"
+                  } rounded-2xl`}
+                  style={{ backgroundColor: bg }}
+                >
+                  <View className="flex-col justify-center">
+                    <ThemedText className=" text-lg font-cairo-bold">
+                      {currentSalah?.name || "N/A"}
+                    </ThemedText>
+                    <View className="flex-row items-center gap-2">
+                      <ClockSvg width={18} stroke={textColor} strokeWidth={1} />
+                      <ThemedText className="text-3xl font-cairo-light">
+                        {convert24To12(currentSalah?.time || "12:00 AM")}
                       </ThemedText>
-                      <ThemedText className="text-xs font-cairo opacity-65">
-                        {convert24To12(prayer.time)}
-                      </ThemedText>
-                    </TouchableOpacity>
+                    </View>
+                  </View>
+                  <View className="items-center gap-3 font-cairo text-xs">
+                    <ThemedText className="text-md font-cairo-bold ">
+                      {" "}
+                      {today}
+                    </ThemedText>
+                    <Image source={images.kabaaBg} className="size-28" />
+                  </View>
+                </Animated.View>
+              </View>
+
+              {isFriday && (
+                <Animated.View
+                  entering={FadeInDown.springify().delay(300)}
+                  className={`my-5 rounded-2xl ${
+                    currentTheme === "dark"
+                      ? "border-[.5px] border-light/20"
+                      : "border-[.5px] border-dark/20"
+                  } px-4 py-3`}
+                  style={{ backgroundColor: bg }}
+                >
+                  <View className="flex-row gap-2 items-center max-h-8">
+                    <KabaaSvg
+                      width={20}
+                      height={20}
+                      strokeWidth={1}
+                      stroke={textColor}
+                    />
+                    <ThemedText className="font-cairo-bold">
+                      يوم الجمعة
+                    </ThemedText>
+                  </View>
+                  <ThemedText className="font-amiri">
+                    عَن أبي هريرة أَنَّ رَسُولَ اللَّهِ ﷺ ذَكَرَ يَوْمَ
+                    الجُمُعَةِ، فَقَالَ:{" "}
+                    <ThemedText className="font-amiri-bold">
+                      فِيه سَاعَةٌ لا يُوَافِقها عَبْدٌ مُسلِمٌ، وَهُو قَائِمٌ
+                      يُصَلِّي يسأَلُ اللَّه شَيْئًا، إِلاَّ أَعْطَاهُ إِيَّاه .
+                    </ThemedText>
+                  </ThemedText>
+                  <ThemedText className="font-amiri ml-auto">
+                    متفق عليه
+                  </ThemedText>
+                </Animated.View>
+              )}
+              <View>
+                <ThemedText className="my-5 font-cairo-bold text-lg">
+                  استكشف
+                </ThemedText>
+                <View className="flex-row gap-2 flex-wrap">
+                  {discoverCards.map((card) => (
+                    <DiscoverCard
+                      key={card.id}
+                      {...card}
+                      image={(images as any)[card.image]}
+                      className="min-w-[31%] flex-1"
+                      route={card.route}
+                    />
                   ))}
                 </View>
               </View>
             </View>
-          </View>
-
-          <View className="mb-[65px]">
-            <View
-              className={`py-4 px-5 rounded-2xl ${
-                currentTheme === "dark"
-                  ? "border-[.5px] border-light/20"
-                  : "border-[.5px] border-dark/20"
-              }`}
-              style={{ backgroundColor: bg }}
-            >
-              <ThemedText className="mb-2 text-md font-cairo-bold">
-                الآية اليومية
+            <View className="mb-5">
+              <ThemedText className="my-5 text-lg font-cairo-bold">
+                مواقيت الصلاة
               </ThemedText>
-              <ThemedText className="text-md text- font-amiri-bold">
-                {randomAyah ||
-                  "إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ تَتَنَزَّلُ عَلَيْهِمُ ٱلْمَلَٰٓئِكَةُ أَلَّا تَخَافُوا۟ وَلَا تَحْزَنُوا۟ وَأَبْشِرُوا۟ بِٱلْجَنَّةِ ٱلَّتِى كُنتُمْ تُوعَدُونَ"}
-              </ThemedText>
+              <View
+                className={`items-center gap-7 px-4 py-5 rounded-2xl ${
+                  currentTheme === "dark"
+                    ? "border-[.5px] border-light/20"
+                    : "border-[.5px] border-dark/20"
+                }`}
+                style={{ backgroundColor: bg }}
+              >
+                <ThemedText className="text-xl text-center font-amiri-bold">
+                  فَذَالكٌم الرباط ، فَذَالكٌم الرباط
+                </ThemedText>
+                <View className="relative w-[95%] mx-auto mb-4">
+                  <View className="absolute top-[5.5px] w-full h-[1.5px] bg-[#ddd]" />
+                  <View className="flex flex-row justify-between">
+                    {prayersDetails.map((prayer) => (
+                      <TouchableOpacity
+                        key={prayer.key}
+                        className="flex flex-col items-center gap-2 "
+                      >
+                        <View
+                          className={`w-3 h-3 ${
+                            currentSalah?.key === prayer.key
+                              ? "bg-accent"
+                              : "bg-[#ddd]"
+                          } rounded-full`}
+                        />
+                        <ThemedText className="font-cairo-bold text-sm text-dark">
+                          {prayer.name}
+                        </ThemedText>
+                        <ThemedText className="text-xs font-cairo opacity-65">
+                          {convert24To12(prayer.time)}
+                        </ThemedText>
+                      </TouchableOpacity>
+                    ))}
+                  </View>
+                </View>
+              </View>
             </View>
-          </View>
-        </ScrollView>
-      </View>
+
+            <View className="mb-[65px]">
+              <View
+                className={`py-4 px-5 rounded-2xl ${
+                  currentTheme === "dark"
+                    ? "border-[.5px] border-light/20"
+                    : "border-[.5px] border-dark/20"
+                }`}
+                style={{ backgroundColor: bg }}
+              >
+                <ThemedText className="mb-2 text-md font-cairo-bold">
+                  الآية اليومية
+                </ThemedText>
+                <ThemedText className="text-md text- font-amiri-bold">
+                  {randomAyah ||
+                    "إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ تَتَنَزَّلُ عَلَيْهِمُ ٱلْمَلَٰٓئِكَةُ أَلَّا تَخَافُوا۟ وَلَا تَحْزَنُوا۟ وَأَبْشِرُوا۟ بِٱلْجَنَّةِ ٱلَّتِى كُنتُمْ تُوعَدُونَ"}
+                </ThemedText>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+      )}
     </BgWrapper>
   );
 };

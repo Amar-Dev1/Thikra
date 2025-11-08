@@ -1,20 +1,15 @@
+import { ILocation } from "@/interfaces";
 import { CONFIG } from "./config";
 
-export const fetchPrayerTimes = async (
-  city: string,
-  country: string,
-  method: number
-) => {
+export const fetchPrayerTimes = async (location: ILocation) => {
   try {
-    const res = await fetch(
-      `${CONFIG.PRAYER_TIME_URL}?city=${city}&country=${country}&method=${method}`,
-      { method: "GET", headers: CONFIG.HEADERS }
-    );
+    const apiUrl = `${CONFIG.PRAYER_TIME_URL}/timings?latitude=${location.latitude}&longitude=${location.longitude}&method=${location.method}`;
+
+    const res = await fetch(apiUrl, { method: "GET", headers: CONFIG.HEADERS });
     if (!res) {
       throw new Error("خطأ في التهيئة. الرجاء التأكد من تشغيل الإنترنت");
     }
     const data = await res.json();
-
     return data?.data?.timings;
   } catch (e) {
     console.error(e);

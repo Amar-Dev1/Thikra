@@ -1,14 +1,12 @@
 import BgWrapper from "@/components/BgWrapper";
 import ThemedText from "@/components/ThemedText";
 import { useTheme } from "@/context/ThemeContext";
-import { IPrayerDetails, ISavedCategory } from "@/interfaces";
-import { fetchAdhanSound } from "@/services/fetchAdhanSound";
+import { ILocation, IPrayerDetails, ISavedCategory } from "@/interfaces";
 import { fetchPrayerTimes } from "@/services/fetchPrayerTimes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import * as Notifications from "expo-notifications";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, Alert, Platform } from "react-native";
+import { ActivityIndicator, Alert } from "react-native";
 
 const SetupAll = () => {
   // @ts-ignore
@@ -31,11 +29,14 @@ const SetupAll = () => {
       setLoading(true);
 
       // prepare location
-      const location = await AsyncStorage.getItem("location");
-      const { city, country } = JSON.parse(location!);
+      const locationData = await AsyncStorage.getItem("location");
+      const location: ILocation = locationData
+        ? JSON.parse(locationData)
+        : null;
+      console.log("location: ", location);
 
       // prepare timings
-      const timingsRaw = await fetchPrayerTimes(city, country, 3);
+      const timingsRaw = await fetchPrayerTimes(location);
 
       const updated: IPrayerDetails[] = prayersDetails.map((prayer, index) => {
         const from = timingsRaw[prayer.enName];
@@ -51,17 +52,16 @@ const SetupAll = () => {
       console.log(await AsyncStorage.getItem("timings"));
 
       // prepare adhan sound
-      const adhanSoundFileUri = await fetchAdhanSound(Platform.OS);
+      // const adhanSoundFileUri = await fetchAdhanSound(Platform.OS);
 
-      if (Platform.OS === "android" && adhanSoundFileUri) {
-        Notifications.setNotificationChannelAsync("adhan_channel", {
-          name: "Adhan Time",
-          importance: Notifications.AndroidImportance.MAX,
-          sound: adhanSoundFileUri,
-        });
-        console.log('Android Adhan Channel set up with custom sound.');
-        
-      }
+      // if (Platform.OS === "android" && adhanSoundFileUri) {
+      //   Notifications.setNotificationChannelAsync("adhan_channel", {
+      //     name: "Adhan Time",
+      //     importance: Notifications.AndroidImportance.MAX,
+      //     sound: adhanSoundFileUri,
+      //   });
+      //   console.log("Android Adhan Channel set up with custom sound.");
+      // }
 
       // mark onboarding as completed ✅
       await AsyncStorage.setItem("onboardingCompleted", "true");

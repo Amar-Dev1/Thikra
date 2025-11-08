@@ -9,14 +9,18 @@ import React, { useState } from "react";
 import {
   ActivityIndicator,
   Alert,
+  Modal,
   ScrollView,
   TouchableOpacity,
   View,
 } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import locations from "../../../assets/data/locations.json";
 
 const EditLocation = () => {
+  const insets = useSafeAreaInsets();
+
   // @ts-ignore
   const { currentTheme } = useTheme();
   const bg = currentTheme === "dark" ? "#222222" : "#F8EFD4";
@@ -24,7 +28,6 @@ const EditLocation = () => {
 
   const [loading, setLoading] = useState<boolean | null>(null);
   const [expandedCountry, setExpandedCountry] = useState(false);
-  const [expandedCity, setExpandedCity] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState<string | null>("");
   const [selectedCity, setSelectedCity] = useState<string | null>("");
 
@@ -33,7 +36,9 @@ const EditLocation = () => {
   const selectedCountryData = locations.find(
     (c) => c.country === selectedCountry
   );
+
   const cities = selectedCountryData ? selectedCountryData.cities : [];
+  const cityNames = cities.map((c) => c.name);
 
   const locationAutoDetect = async () => {
     try {
@@ -46,22 +51,32 @@ const EditLocation = () => {
       let location = await Location.getCurrentPositionAsync({
         accuracy: Location.Accuracy.Highest,
       });
+      const coords = {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      };
 
+      let city = "unknown";
+      let country = "unknown";
       try {
-        const coords = {
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-        };
         const addresses = await Location.reverseGeocodeAsync(coords);
         if (addresses && addresses.length > 0) {
           const addr = addresses[0];
-          const resolvedCity =
+          // @ts-ignore
+          city =
             addr.city || addr.region || addr.subregion || addr.name || null;
-          const resolvedCountry = addr.country || addr.isoCountryCode || null;
+          // @ts-ignore
+          country = addr.country || addr.isoCountryCode || null;
 
           await AsyncStorage.setItem(
             "location",
-            JSON.stringify({ city: resolvedCity, country: resolvedCountry })
+            JSON.stringify({
+              latitude: coords.latitude,
+              longitude: coords.longitude,
+              city: city,
+              country: country,
+              method: "auto",
+            })
           );
 
           router.push("/onboarding/SetupAll");
@@ -73,7 +88,7 @@ const EditLocation = () => {
       console.error(e);
       Alert.alert(
         "تفعيل خدمة الموقع",
-        "قم بتفعيل الموقع و الإنترنت رجاءاً ليعمل التطبيق ",
+        "قم بتفعيل الموقع رجاءاً قم بتفعيل الموقع ليعمل التطبيق ",
         [{ text: "موافق", style: "default" }]
       );
     } finally {
@@ -82,20 +97,32 @@ const EditLocation = () => {
   };
 
   const locationManualDetect = async () => {
+    if (!selectedCity || !selectedCountry) return;
     try {
       setLoading(true);
+
+      const cityData = cities.find((c) => c.name === selectedCity);
+
+      if (!cityData) {
+        Alert.alert("خطأ", "تعذر إيجاد المدينة", [
+          { text: "موافق", style: "default" },
+        ]);
+        throw new Error("Could not find city data");
+      }
+
       await AsyncStorage.setItem(
         "location",
-        JSON.stringify({ city: selectedCity, country: selectedCountry })
+        JSON.stringify({
+          latitude: cityData.latitude,
+          longitude: cityData.longitude,
+          city: cityData.name,
+          country: selectedCountry,
+          method: "manual",
+        })
       );
       router.push("/onboarding/SetupAll");
     } catch (e) {
-      console.log("faild to process manual location", e);
-      Alert.alert(
-        "تفعيل خدمة الموقع",
-        "قم بتفعيل الموقع و الإنترنت رجاءاً ليعمل التطبيق ",
-        [{ text: "موافق", style: "default" }]
-      );
+      console.error("faild to process manual location", e);
     } finally {
       console.log(await AsyncStorage.getItem("location"));
       setLoading(false);
@@ -103,17 +130,27 @@ const EditLocation = () => {
   };
 
   // @ts-ignore , i dont have time !
-  const isReady = selectedCountry?.length > 0 && selectedCity?.length > 0;
+  const isReady = !!selectedCountry && !!selectedCity;
 
   return (
     <BgWrapper className={`px-5 ${loading && "justify-center items-center"}`}>
       {loading ? (
-        <>
-          <ActivityIndicator color={textColor} size={"large"} />
-          <ThemedText className="font-cairo-bold text-lg opacity-65 mt-5">
-            جار ضبط الموقع
-          </ThemedText>
-        </>
+        <Modal
+          visible={loading}
+          transparent
+          statusBarTranslucent
+          animationType="fade"
+        >
+          <View
+            className="flex-1 gap-8 justify-center items-center"
+            style={{ backgroundColor: bg, paddingBottom: insets.bottom }}
+          >
+            <ActivityIndicator color={textColor} size={"large"} />
+            <ThemedText className="font-cairo-bold text-lg opacity-65">
+              جار ضبط الموقع
+            </ThemedText>
+          </View>
+        </Modal>
       ) : (
         <>
           <ScrollView
@@ -187,24 +224,24 @@ const EditLocation = () => {
                     data={countries}
                     setSelected={(value: string) => {
                       setSelectedCountry(value);
-                      setExpandedCity(true);
+                      setSelectedCity(null);
                     }}
                     search={false}
-                    dropdownTextStyles={{color:textColor}}
-                    inputStyles={{color:textColor}}
+                    dropdownTextStyles={{ color: textColor }}
+                    inputStyles={{ color: textColor }}
                   />
                 </View>
               )}
 
-              {expandedCity && (
+              {selectedCountry && (
                 <View className={`mt-3 mb-3`}>
                   <ThemedText>اختار المدينة</ThemedText>
                   <SelectList
-                    data={cities}
+                    data={cityNames}
                     setSelected={(value: string) => setSelectedCity(value)}
                     search={false}
-                     dropdownTextStyles={{color:textColor}}
-                    inputStyles={{color:textColor}}
+                    dropdownTextStyles={{ color: textColor }}
+                    inputStyles={{ color: textColor }}
                   />
                 </View>
               )}

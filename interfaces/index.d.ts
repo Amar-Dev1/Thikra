@@ -2,8 +2,11 @@ import React from "react";
 import { SvgProps } from "react-native-svg";
 
 export interface ILocation {
-  city: string | null;
-  country: string | null;
+  city?: string;
+  country?: string;
+  latitude: number;
+  longitude: number;
+  method?:string;
 }
 
 export interface IPrayerDetails {
@@ -31,11 +34,10 @@ export interface IDuaCategory {
 
 export interface IDuaCategoryItem {
   id?: any;
-  index?:number;
+  index?: number;
   name: string;
   className?: string;
   categoryId: number;
-  
 }
 
 // saved screen consist of categories (Quran,Dua,...etc)

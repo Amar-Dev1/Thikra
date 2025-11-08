@@ -1,131 +1,173 @@
 [
   {
-    "key": "Sudan",
-    "country": " Sudan",
+    "country": "Sudan",
     "cities": [
-      "Khartoum",
-      "Omdurman",
-      "Sennar",
-      "Atbara",
-      "Dongola",
-      "Shendi",
-      "Kosti",
-      "Merowe",
-      "Singa",
-      "Port Sudan",
-      "Kassala",
-      "Al Manaqil",
-      "Al Qadarif",
-      "Nyala",
-      "Wad Madani",
-      "Al-Ubayyid",
-      "Ad-Damazin",
-      "Wadi Halfa"
+      {"name": "Khartoum", "latitude": 15.5007, "longitude": 32.5599},
+      {"name": "Omdurman", "latitude": 15.6445, "longitude": 32.4777},
+      {"name": "Sennar", "latitude": 13.5500, "longitude": 33.6000},
+      {"name": "Atbara", "latitude": 17.7022, "longitude": 33.9864},
+      {"name": "Dongola", "latitude": 19.1667, "longitude": 30.4833},
+      {"name": "Shendi", "latitude": 16.6915, "longitude": 33.4341},
+      {"name": "Kosti", "latitude": 13.1667, "longitude": 32.6667},
+      {"name": "Merowe", "latitude": 18.4706, "longitude": 31.8111},
+      {"name": "Singa", "latitude": 13.1500, "longitude": 33.9333},
+      {"name": "Port Sudan", "latitude": 19.6158, "longitude": 37.2164},
+      {"name": "Kassala", "latitude": 15.4500, "longitude": 36.4000},
+      {"name": "Al Manaqil", "latitude": 14.2500, "longitude": 32.9833},
+      {"name": "Al Qadarif", "latitude": 14.0333, "longitude": 35.3833},
+      {"name": "Nyala", "latitude": 12.0500, "longitude": 24.8833},
+      {"name": "Wad Madani", "latitude": 14.4000, "longitude": 33.5333},
+      {"name": "Al-Ubayyid", "latitude": 13.1833, "longitude": 30.2167},
+      {"name": "Ad-Damazin", "latitude": 11.7689, "longitude": 34.3592},
+      {"name": "Wadi Halfa", "latitude": 21.8000, "longitude": 31.3500}
     ]
   },
   {
-    "key": "Saudi Arabia",
-    "country": " Saudi Arabia",
-    "cities": ["Riyadh", "Jeddah", "Mecca", "Medina", "Dammam"]
+    "country": "Saudi Arabia",
+    "cities": [
+      {"name": "Riyadh", "latitude": 24.7136, "longitude": 46.6753},
+      {"name": "Jeddah", "latitude": 21.4858, "longitude": 39.1925},
+      {"name": "Mecca", "latitude": 21.4225, "longitude": 39.8261},
+      {"name": "Medina", "latitude": 24.4667, "longitude": 39.6000},
+      {"name": "Dammam", "latitude": 26.4333, "longitude": 50.1000}
+    ]
   },
   {
-    "key": "Egypt",
-    "country": " Egypt",
-    "cities": ["Cairo", "Alexandria", "Giza"]
+    "country": "Egypt",
+    "cities": [
+      {"name": "Cairo", "latitude": 30.0444, "longitude": 31.2358},
+      {"name": "Alexandria", "latitude": 31.2000, "longitude": 29.9167},
+      {"name": "Giza", "latitude": 30.0167, "longitude": 31.2167}
+    ]
   },
   {
-    "key": "Morocco",
-    "country": " Morocco",
-    "cities": ["Casablanca"]
+    "country": "Morocco",
+    "cities": [
+      {"name": "Casablanca", "latitude": 33.5992, "longitude": -7.6200}
+    ]
   },
   {
-    "key": "Tunisia",
-    "country": " Tunisia",
-    "cities": ["Tunis"]
+    "country": "Tunisia",
+    "cities": [
+      {"name": "Tunis", "latitude": 36.8008, "longitude": 10.1800}
+    ]
   },
   {
-    "key": "Algeria",
-    "country": " Algeria",
-    "cities": ["Algiers"]
+    "country": "Algeria",
+    "cities": [
+      {"name": "Algiers", "latitude": 36.7539, "longitude": 3.0589}
+    ]
   },
   {
-    "key": "Qatar",
     "country": "Qatar",
-    "cities": ["Doha"]
+    "cities": [
+      {"name": "Doha", "latitude": 25.2867, "longitude": 51.5333}
+    ]
   },
   {
-    "key": "UAE",
     "country": "United Arab Emirates",
-    "cities": ["Dubai"]
+    "cities": [
+      {"name": "Dubai", "latitude": 25.2631, "longitude": 55.2972}
+    ]
   },
   {
-    "key": "Canada",
     "country": "Canada",
-    "cities": ["Toronto", "Montreal"]
+    "cities": [
+      {"name": "Toronto", "latitude": 43.7417, "longitude": -79.3733},
+      {"name": "Montreal", "latitude": 45.5089, "longitude": -73.5617}
+    ]
   },
   {
-    "key": "Malaysia",
     "country": "Malaysia",
-    "cities": ["Kuala Lumpur", "Klang"]
+    "cities": [
+      {"name": "Kuala Lumpur", "latitude": 3.1478, "longitude": 101.6953},
+      {"name": "Klang", "latitude": 3.0333, "longitude": 101.4500}
+    ]
   },
   {
-    "key": "Cyprus",
     "country": "Cyprus",
-    "cities": ["Nicosia", "Limassol"]
+    "cities": [
+      {"name": "Nicosia", "latitude": 35.1725, "longitude": 33.3650},
+      {"name": "Limassol", "latitude": 34.6747, "longitude": 33.0442}
+    ]
   },
   {
-    "key": "Czechia",
     "country": "Czechia",
-    "cities": ["Prague", "Brno"]
+    "cities": [
+      {"name": "Prague", "latitude": 50.0875, "longitude": 14.4214},
+      {"name": "Brno", "latitude": 49.1953, "longitude": 16.6083}
+    ]
   },
   {
-    "key": "Turkey",
     "country": "Turkey",
-    "cities": ["Istanbul", "Ankara"]
+    "cities": [
+      {"name": "Istanbul", "latitude": 41.0136, "longitude": 28.9550},
+      {"name": "Ankara", "latitude": 39.9300, "longitude": 32.8500}
+    ]
   },
   {
-    "key": "Jordan",
     "country": "Jordan",
-    "cities": ["Amman", "Zarqa"]
+    "cities": [
+      {"name": "Amman", "latitude": 31.9500, "longitude": 35.9333},
+      {"name": "Zarqa", "latitude": 32.0833, "longitude": 36.1000}
+    ]
   },
   {
-    "key": "Lebanon",
     "country": "Lebanon",
-    "cities": ["Beirut", "Tripoli"]
+    "cities": [
+      {"name": "Beirut", "latitude": 33.8869, "longitude": 35.5131},
+      {"name": "Tripoli", "latitude": 34.4367, "longitude": 35.8344}
+    ]
   },
   {
-    "key": "USA",
     "country": "United States",
-    "cities": ["New York", "Los Angeles", "Chicago"]
+    "cities": [
+      {"name": "New York", "latitude": 40.7128, "longitude": -74.0060},
+      {"name": "Los Angeles", "latitude": 34.0522, "longitude": -118.2437},
+      {"name": "Chicago", "latitude": 41.8781, "longitude": -87.6298}
+    ]
   },
   {
-    "key": "Kuwait",
     "country": "Kuwait",
-    "cities": ["Kuwait City"]
+    "cities": [
+      {"name": "Kuwait City", "latitude": 29.3759, "longitude": 47.9774}
+    ]
   },
   {
-    "key": "Libya",
     "country": "Libya",
-    "cities": ["Tripoli", "Benghazi"]
+    "cities": [
+      {"name": "Tripoli", "latitude": 32.8872, "longitude": 13.1914},
+      {"name": "Benghazi", "latitude": 32.1167, "longitude": 20.0667}
+    ]
   },
   {
-    "key": "Oman",
     "country": "Oman",
-    "cities": ["Muscat"]
+    "cities": [
+      {"name": "Muscat", "latitude": 23.6139, "longitude": 58.5922}
+    ]
   },
   {
-    "key": "Yemen",
     "country": "Yemen",
-    "cities": ["Sana'a", "Aden", "Taiz"]
+    "cities": [
+      {"name": "Sana'a", "latitude": 15.3483, "longitude": 44.2064},
+      {"name": "Aden", "latitude": 12.8000, "longitude": 45.0333},
+      {"name": "Taiz", "latitude": 13.5789, "longitude": 44.0219}
+    ]
   },
   {
-    "key": "Iraq",
     "country": "Iraq",
-    "cities": ["Baghdad", "Mosul", "Basra"]
+    "cities": [
+      {"name": "Baghdad", "latitude": 33.3153, "longitude": 44.3661},
+      {"name": "Mosul", "latitude": 36.3400, "longitude": 43.1300},
+      {"name": "Basra", "latitude": 30.5000, "longitude": 47.8167}
+    ]
   },
   {
-    "key": "Syria",
     "country": "Syria",
-    "cities": ["Aleppo", "Damascus", "Homs"]
+    "cities": [
+      {"name": "Aleppo", "latitude": 36.2000, "longitude": 37.1600},
+      {"name": "Damascus", "latitude": 33.5131, "longitude": 36.2919},
+      {"name": "Homs", "latitude": 34.7333, "longitude": 36.7167}
+    ]
   }
 ]

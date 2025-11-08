@@ -38,7 +38,7 @@
     },
     "extra": {
       "supportsRTL": true,
-      "PRAYER_TIME_URL": "https://api.aladhan.com/v1/timingsByCity",
+      "PRAYER_TIME_URL": "https://api.aladhan.com/v1",
       "SURAH_AUDIO_URL": "https://ia800606.us.archive.org/16/items/1_20251025",
       "ADHAN_SOUNDS_URL": "https://raw.githubusercontent.com/Amar-dev1/adhanSounds/main",
       "router": {},
