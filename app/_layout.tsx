@@ -20,19 +20,6 @@ if (!I18nManager.isRTL) {
   I18nManager.forceRTL(true);
 }
 
-// define tasks for prayer notifications
-const PRAYER_BACKGROUND_TASK = "background-notification-task";
-
-// TaskManager.defineTask(PRAYER_BACKGROUND_TASK, async () => {
-//   try {
-//     await fireBackgroundNotification();
-//     return BackgroundTask.BackgroundTaskResult.Success;
-//   } catch (e) {
-//     console.warn("Prayer noficiation background task failed", e);
-//     return BackgroundTask.BackgroundTaskResult.Failed;
-//   }
-// });
-
 export default function RootLayout() {
   const router = useRouter();
 
@@ -102,27 +89,6 @@ export default function RootLayout() {
     // If completedOnboarding is true, this effect does nothing,
     // and the app will just render the <Stack> as intended.
   }, [isReady, completedOnboarding, router]);
-
-  // register the background tasks
-  // useEffect(() => {
-  //   async function registerPrayerNotifications() {
-  //     const isRegistered = await TaskManager.isTaskRegisteredAsync(
-  //       PRAYER_BACKGROUND_TASK
-  //     );
-  //     if (!isRegistered) {
-  //       await BackgroundTask.registerTaskAsync(PRAYER_BACKGROUND_TASK, {
-  //         minimumInterval: 60 * 60 * 23,
-  //         // @ts-ignore
-  //         stopOnTerminate: false,
-  //         startOnBoot: true,
-  //       });
-  //       console.log(`${PRAYER_BACKGROUND_TASK} registered.`);
-  //     } else {
-  //       console.log(`${PRAYER_BACKGROUND_TASK} is already registered.`);
-  //     }
-  //   }
-  //   registerPrayerNotifications();
-  // }, []);
 
   useEffect(() => {
     const registerNotifications = async () => {

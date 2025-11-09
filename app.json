@@ -13,14 +13,18 @@
       "infoPlist": {
         "ExpoLocalization_supportsRTL": true
       },
-      "bundleIdentifier": "com.amardev1.Thikra"
+      "bundleIdentifier": "com.amardev1.Thikra",
+      "icon": {
+        "dark": "assets/images/ios-dark.png",
+        "light": "assets/images/ios-light.png",
+        "tinted": "assets/images/ios-tinted.png"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "monochromeImage": "./assets/images/adaptive-icon.png"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
@@ -40,7 +44,6 @@
       "supportsRTL": true,
       "PRAYER_TIME_URL": "https://api.aladhan.com/v1",
       "SURAH_AUDIO_URL": "https://ia800606.us.archive.org/16/items/1_20251025",
-      "ADHAN_SOUNDS_URL": "https://raw.githubusercontent.com/Amar-dev1/adhanSounds/main",
       "router": {},
       "eas": {
         "projectId": "359d9ac7-b411-4673-89b4-382173a12e60"
@@ -62,9 +65,13 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff",
           "dark": {
+            "image":"./assets/images/splash-icon.png",
             "backgroundColor": "#000000"
           }
         }
+      ],
+      [
+        "expo-notifications"
       ],
       "expo-audio",
       "expo-asset",

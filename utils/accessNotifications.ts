@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Alert } from "react-native";
+import { Alert, Platform } from "react-native";
 
 import * as Notifications from "expo-notifications";
 
@@ -31,8 +31,21 @@ export const accessNotifications = async (): Promise<boolean> => {
       }),
     });
 
+    // if (Platform.OS === "android") {
+    //   await Notifications.setNotificationChannelAsync("salah_channel", {
+    //     name: "Salah Notifications",
+    //     importance: Notifications.AndroidImportance.MAX,
+    //     sound: "sound",
+    //   });
+
+    //   await Notifications.setNotificationChannelAsync("default_channel", {
+    //     name: "default channel",
+    //     importance: Notifications.AndroidImportance.MAX,
+    //     sound: "default",
+    //   });
+    // }
+
     await AsyncStorage.setItem("notifications_allowed", "true");
-    // router.push("/onboarding/AccessLocation");
     return true;
   } catch (e) {
     console.error("Notification setup failed:", e);
