@@ -29,9 +29,9 @@
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "permissions": [
+        "android.permission.SCHEDULE_EXACT_ALARM",
         "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.ACCESS_FINE_LOCATION",
-        "android.permission.SCHEDULE_EXACT_ALARM"
+        "android.permission.ACCESS_FINE_LOCATION"
       ],
       "package": "com.amardev1.Thikra"
     },
@@ -78,7 +78,6 @@
       ],
       "expo-audio",
       "expo-asset",
-      "expo-background-task",
       "expo-web-browser"
     ],
     "experiments": {

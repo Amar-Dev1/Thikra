@@ -27,9 +27,9 @@ const ShareDua = ({ duaName, ref, firstDua, count }: props) => {
         </View>
         <View className="gap-3 items-center">
           <Image
-            source={images.androidForgroundIcon}
+            source={images.splashIcon}
             resizeMode="contain"
-            className="w-5 h-5"
+            className="w-8 h-8"
           />
           <Text className="text-center font-cairo text-light text-sm">
             Thikra app

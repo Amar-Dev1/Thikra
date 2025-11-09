@@ -26,7 +26,7 @@ export const initializeNotifications = async () => {
     // channel for Adhkar
     await Notifications.setNotificationChannelAsync("adhkar_channel", {
       name: "تنبيهات الأذكار",
-      importance: Notifications.AndroidImportance.DEFAULT,
+      importance: Notifications.AndroidImportance.MAX,
       sound: "default",
     });
 

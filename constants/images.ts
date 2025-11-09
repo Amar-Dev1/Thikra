@@ -11,9 +11,11 @@ import kabaaBg from "../assets/images/kabaaBg.png";
 // @ts-ignore
 import bell from "../assets/images/bell.png";
 // @ts-ignore
-import settingsImg from '../assets/images/settingsBg.png';
+import settingsImg from "../assets/images/settingsBg.png";
 // @ts-ignore
-import icon from '../assets/images/icon.png';
+import icon from "../assets/images/icon.png";
+// @ts-ignore
+import splashIcon from "../assets/images/splash-icon.png";
 
 export const images = {
   Allah,
@@ -23,5 +25,6 @@ export const images = {
   kabaaBg,
   bell,
   settingsImg,
-  icon
+  icon,
+  splashIcon,
 };

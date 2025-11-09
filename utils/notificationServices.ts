@@ -4,26 +4,18 @@ import { Platform } from "react-native";
 import { convertToHHMM } from "./parseTime";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const createScheduleDate = (
-  hour: number,
-  minutes: number,
-  minutesOffset: number = 0
-) => {
-  const now = new Date();
-  const scheduledDate = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate(),
-    hour,
-    minutes + minutesOffset,
-    0
-  );
-  return scheduledDate;
+const getOffsetTime = (hour: number, minute: number, offsetMinutes: number) => {
+  // Create a base date (the specific date doesn't matter, just the time)
+  const date = new Date();
+  date.setHours(hour, minute, 0, 0); // Set to the prayer time
+  date.setMinutes(date.getMinutes() + offsetMinutes); // Add the offset
+
+  // Return the new hour and minute
+  return { hour: date.getHours(), minute: date.getMinutes() };
 };
 
 export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
   try {
-    const now = new Date();
     const sound = Platform.OS === "android" ? undefined : "sound.wav";
 
     for (const prayer of prayers) {
@@ -36,40 +28,26 @@ export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
         continue;
       }
 
-      const triggerDate = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        hour,
-        minute,
-        0
-      );
-
-      // If the prayer time has already passed today, schedule it for tomorrow
-      if (triggerDate < now) {
-        triggerDate.setDate(triggerDate.getDate() + 1);
-      }
-
       await Notifications.scheduleNotificationAsync({
         content: {
           title: `حان الآن موعد أذان ${prayer.name}`,
           body: "إن الصلاة كانت على المؤمنين كتاباً موقوتا",
           sound: sound,
+          // @ts-ignore
+          android: {
+            channelId: "salah_channel",
+          },
         },
         // @ts-ignore
         trigger: {
-          date: triggerDate,
-          repeats: false,
-        },
-        android: {
-          channelId: "salah_channel",
+          hour: hour,
+          minute: minute,
+          repeats: true,
         },
       });
 
       console.log(
-        `SUCCESS: Scheduled notification for ${
-          prayer.enName
-        } at ${triggerDate.toLocaleString()}`
+        `SUCCESS: Scheduled notification for ${prayer.enName} at ${hour}:${minute}`
       );
     }
   } catch (e) {
@@ -79,7 +57,6 @@ export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
 
 export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
   try {
-    const now = new Date();
     const Fajr = timings.find((p) => p.enName === "Fajr");
     const Asr = timings.find((p) => p.enName === "Asr");
 
@@ -91,47 +68,61 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
     const { hour: fajrHour, minute: fajrMinute } = convertToHHMM(Fajr.time);
     const { hour: AsrHour, minute: AsrMinute } = convertToHHMM(Asr.time);
 
-    if (!isNaN(fajrHour) || !isNaN(fajrMinute)) {
-      let sabahAdhkarTime = createScheduleDate(fajrHour, fajrMinute, 10);
-      if (sabahAdhkarTime < now) {
-        sabahAdhkarTime.setDate(sabahAdhkarTime.getDate() + 1);
-      }
+    if (!isNaN(fajrHour) && !isNaN(fajrMinute)) {
+      const { hour: sabahHour, minute: sabahMinute } = getOffsetTime(
+        fajrHour,
+        fajrMinute,
+        10
+      );
+
       await Notifications.scheduleNotificationAsync({
         content: {
           title: "أذكار الصباح يا مسلم",
           body: "لا تغفل عن أذكار الصباح ، رحمك الله",
           sound: "default",
+          // @ts-ignore
+          android: {
+            channelId: "adhkar_channel",
+          },
         },
         // @ts-ignore
         trigger: {
-          date: sabahAdhkarTime,
-          repeats: false,
+          hour: sabahHour,
+          minute: sabahMinute,
+          repeats: true,
         },
       });
       console.log(
-        `SUCCESS: Scheduled Sabah Adhkar at: ${sabahAdhkarTime.toLocaleString()}`
+        `SUCCESS: Scheduled Sabah Adhkar at: ${sabahHour}:${sabahMinute}`
       );
     }
 
-    if (!isNaN(AsrHour) || !isNaN(AsrMinute)) {
-      let masaAdhkarTime = createScheduleDate(AsrHour, AsrMinute, 10);
-      if (masaAdhkarTime < now) {
-        masaAdhkarTime.setDate(masaAdhkarTime.getDate() + 1);
-      }
+    if (!isNaN(AsrHour) && !isNaN(AsrMinute)) {
+      const { hour: MasaHour, minute: MasaMinute } = getOffsetTime(
+        AsrHour,
+        AsrMinute,
+        10
+      );
+
       await Notifications.scheduleNotificationAsync({
         content: {
           title: "أذكار المساء يا مسلم",
           body: "لا تغفل عن أذكار المساء ، رحمك الله",
           sound: "default",
+          // @ts-ignore
+          android: {
+            channelId: "adhkar_channel",
+          },
         },
         // @ts-ignore
         trigger: {
-          date: masaAdhkarTime,
-          repeats: false,
+          hour: MasaHour,
+          minute: MasaMinute,
+          repeats: true,
         },
       });
       console.log(
-        `SUCCESS: Scheduled Sabah Adhkar at: ${masaAdhkarTime.toLocaleString()}`
+        `SUCCESS: Scheduled Masa Adhkar at: ${MasaHour}:${MasaMinute}`
       );
     }
   } catch (e) {
@@ -153,7 +144,7 @@ export const scheduleAllNotifications = async (timings: IPrayerDetails[]) => {
   }
 };
 
-export const syncNotificationState = async (prayers?: IPrayerDetails[]) => {
+export const syncNotificationState = async () => {
   const FLAG = "notifications_allowed";
   try {
     const { status } = await Notifications.getPermissionsAsync();
@@ -162,8 +153,6 @@ export const syncNotificationState = async (prayers?: IPrayerDetails[]) => {
 
     if (granted && flag !== "true") {
       await AsyncStorage.setItem(FLAG, "true");
-      // Re-schedule ALL notifications, not just prayers
-      if (prayers) await scheduleAllNotifications(prayers);
     } else if (!granted && flag === "true") {
       await Notifications.cancelAllScheduledNotificationsAsync();
       await AsyncStorage.removeItem(FLAG);

@@ -107,8 +107,16 @@ export default function RootLayout() {
     const registerNotifications = async () => {
       const data = await AsyncStorage.getItem("timings");
       const timings: IPrayerDetails[] = data ? JSON.parse(data) : [];
-      await scheduleAllNotifications(timings);
-      await syncNotificationState(timings);
+      if (timings.length === 0) {
+        console.log("No timings found, skipping notification schedule.");
+        return;
+      }
+      const granted = await syncNotificationState();
+      if (granted) {
+        await scheduleAllNotifications(timings);
+      } else {
+        console.log("Notification permissions not granted. Skipping schedule.");
+      }
     };
     registerNotifications();
   }, []);
