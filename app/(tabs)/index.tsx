@@ -119,7 +119,7 @@ const Index = () => {
     try {
       setLoading(true);
       const timings = await refreshTimings(currentLocation!, prayersDetails);
-      if (timings) router.replace("/");
+      if (timings) router.push('/');
       console.log("updated timings manually ✅");
     } catch (e) {
       console.warn("faild to manual update timings", e);

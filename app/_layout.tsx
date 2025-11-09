@@ -1,7 +1,6 @@
 import { ThemeProvider } from "@/context/ThemeContext";
 import { IPrayerDetails } from "@/interfaces";
-import { schedulePrayerNotification } from "@/utils/schedulePrayerNotification";
-import { syncNotificationState } from "@/utils/syncNotificationState";
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack, useRouter } from "expo-router";
@@ -9,6 +8,11 @@ import { useEffect, useState } from "react";
 import { AppState, I18nManager, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "./global.css";
+import {
+  scheduleAllNotifications,
+  syncNotificationState,
+} from "@/utils/notificationServices";
+import { initializeNotifications } from "@/utils/initializeNotifications";
 
 (RNText as any).defaultProps = (RNText as any).defaultProps || {};
 (RNText as any).defaultProps.style = [{ fontFamily: "Cairo-Regular" }];
@@ -90,12 +94,21 @@ export default function RootLayout() {
     // and the app will just render the <Stack> as intended.
   }, [isReady, completedOnboarding, router]);
 
+  // initialize forground notifications features
+  useEffect(() => {
+    async function init() {
+      await initializeNotifications();
+    }
+    init();
+  }, []);
+
+  // register notficiations
   useEffect(() => {
     const registerNotifications = async () => {
       const data = await AsyncStorage.getItem("timings");
       const timings: IPrayerDetails[] = data ? JSON.parse(data) : [];
-      await schedulePrayerNotification(timings);
-      await syncNotificationState();
+      await scheduleAllNotifications(timings);
+      await syncNotificationState(timings);
     };
     registerNotifications();
   }, []);
