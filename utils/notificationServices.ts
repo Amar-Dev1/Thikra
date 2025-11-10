@@ -1,53 +1,69 @@
 import { IPrayerDetails } from "@/interfaces";
-import * as Notifications from "expo-notifications";
 import { Platform } from "react-native";
 import { convertToHHMM } from "./parseTime";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import notifee, {
+  AndroidImportance,
+  RepeatFrequency,
+  TimestampTrigger,
+  TriggerType,
+} from "@notifee/react-native";
 
-const getOffsetTime = (hour: number, minute: number, offsetMinutes: number) => {
-  // Create a base date (the specific date doesn't matter, just the time)
-  const date = new Date();
-  date.setHours(hour, minute, 0, 0); // Set to the prayer time
-  date.setMinutes(date.getMinutes() + offsetMinutes); // Add the offset
+const createTriggerDate = (
+  hour: number,
+  minute: number,
+  offset: number = 0
+) => {
+  const now = new Date();
+  const triggerDate = new Date();
+  triggerDate.setHours(hour, minute + offset, 0, 0); // Set time for today
 
-  // Return the new hour and minute
-  return { hour: date.getHours(), minute: date.getMinutes() };
+  // If the time has already passed today, schedule it for tomorrow
+  if (triggerDate.getTime() < now.getTime()) {
+    triggerDate.setDate(triggerDate.getDate() + 1);
+  }
+  return triggerDate.getTime(); // Return the timestamp in milliseconds
 };
 
 export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
   try {
-    const sound = Platform.OS === "android" ? undefined : "sound.wav";
-
     for (const prayer of prayers) {
       const { hour, minute } = convertToHHMM(prayer.time);
-
       if (isNaN(hour) || isNaN(minute)) {
-        console.warn(
-          `Invalid time for current salah ${prayer.enName}: ${prayer.time}`
-        );
+        console.warn(`Invalid time for ${prayer.enName}: ${prayer.time}`);
         continue;
       }
 
-      await Notifications.scheduleNotificationAsync({
-        content: {
+      const timestamp = createTriggerDate(hour, minute);
+      const trigger: TimestampTrigger = {
+        type: TriggerType.TIMESTAMP,
+        timestamp: timestamp,
+        repeatFrequency: RepeatFrequency.DAILY,
+        alarmManager: {
+          allowWhileIdle: true,
+        },
+      };
+
+      await notifee.createTriggerNotification(
+        {
           title: `حان الآن موعد أذان ${prayer.name}`,
           body: "إن الصلاة كانت على المؤمنين كتاباً موقوتا",
-          sound: sound,
-          // @ts-ignore
           android: {
             channelId: "salah_channel",
+            importance: AndroidImportance.HIGH,
+            sound: Platform.OS === "android" ? "sound" : undefined,
+            pressAction: { id: "default" },
+            showTimestamp: true,
+          },
+          ios: {
+            sound: "sound.wav",
           },
         },
-        // @ts-ignore
-        trigger: {
-          hour: hour,
-          minute: minute,
-          repeats: true,
-        },
-      });
-
+        trigger
+      );
       console.log(
-        `SUCCESS: Scheduled notification for ${prayer.enName} at ${hour}:${minute}`
+        `SUCCESS: Scheduled Notifee REPEATING trigger for ${
+          prayer.enName
+        } at ${new Date(timestamp).toLocaleString()}`
       );
     }
   } catch (e) {
@@ -66,63 +82,73 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
     }
 
     const { hour: fajrHour, minute: fajrMinute } = convertToHHMM(Fajr.time);
-    const { hour: AsrHour, minute: AsrMinute } = convertToHHMM(Asr.time);
+    const { hour: asrHour, minute: asrMinute } = convertToHHMM(Asr.time);
 
+    // Schedule Sabah Adhkar
     if (!isNaN(fajrHour) && !isNaN(fajrMinute)) {
-      const { hour: sabahHour, minute: sabahMinute } = getOffsetTime(
-        fajrHour,
-        fajrMinute,
-        10
-      );
+      const timestamp = createTriggerDate(fajrHour, fajrMinute, 10); // 10 min offset
+      const trigger: TimestampTrigger = {
+        type: TriggerType.TIMESTAMP,
+        timestamp: timestamp,
+        repeatFrequency: RepeatFrequency.DAILY,
+        alarmManager: {
+          allowWhileIdle: true, // Also needs to be exact
+        },
+      };
 
-      await Notifications.scheduleNotificationAsync({
-        content: {
+      await notifee.createTriggerNotification(
+        {
           title: "أذكار الصباح يا مسلم",
           body: "لا تغفل عن أذكار الصباح ، رحمك الله",
-          sound: "default",
-          // @ts-ignore
           android: {
             channelId: "adhkar_channel",
+            pressAction: { id: "default" },
+            showTimestamp: true,
+          },
+          ios: {
+            sound: "default",
           },
         },
-        // @ts-ignore
-        trigger: {
-          hour: sabahHour,
-          minute: sabahMinute,
-          repeats: true,
-        },
-      });
+        trigger
+      );
       console.log(
-        `SUCCESS: Scheduled Sabah Adhkar at: ${sabahHour}:${sabahMinute}`
+        `SUCCESS: Scheduled Sabah Adhkar at: ${new Date(
+          timestamp
+        ).toLocaleString()}`
       );
     }
 
-    if (!isNaN(AsrHour) && !isNaN(AsrMinute)) {
-      const { hour: MasaHour, minute: MasaMinute } = getOffsetTime(
-        AsrHour,
-        AsrMinute,
-        10
-      );
+    // Schedule Masa Adhkar
+    if (!isNaN(asrHour) && !isNaN(asrMinute)) {
+      const timestamp = createTriggerDate(asrHour, asrMinute, 10); // 10 min offset
+      const trigger: TimestampTrigger = {
+        type: TriggerType.TIMESTAMP,
+        timestamp: timestamp,
+        repeatFrequency: RepeatFrequency.DAILY,
+        alarmManager: {
+          allowWhileIdle: true,
+        },
+      };
 
-      await Notifications.scheduleNotificationAsync({
-        content: {
+      await notifee.createTriggerNotification(
+        {
           title: "أذكار المساء يا مسلم",
           body: "لا تغفل عن أذكار المساء ، رحمك الله",
-          sound: "default",
-          // @ts-ignore
           android: {
             channelId: "adhkar_channel",
+            pressAction: { id: "default" },
+            showTimestamp: true,
+          },
+          ios: {
+            sound: "default",
           },
         },
-        // @ts-ignore
-        trigger: {
-          hour: MasaHour,
-          minute: MasaMinute,
-          repeats: true,
-        },
-      });
+        trigger
+      );
       console.log(
-        `SUCCESS: Scheduled Masa Adhkar at: ${MasaHour}:${MasaMinute}`
+        `SUCCESS: Scheduled Masa Adhkar at: ${new Date(
+          timestamp
+        ).toLocaleString()}`
       );
     }
   } catch (e) {
@@ -132,34 +158,14 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
 
 export const scheduleAllNotifications = async (timings: IPrayerDetails[]) => {
   try {
-    await Notifications.cancelAllScheduledNotificationsAsync();
-    console.log("Canceld all scheduled notifications");
+    await notifee.cancelAllNotifications();
+    console.log("Canceled all scheduled notifications");
 
     await schedulePrayerNotification(timings);
     await scheduleAdhkar(timings);
 
-    console.log("All notifications scheduled successfuly !");
+    console.log("All Notifee triggers scheduled successfully!");
   } catch (e) {
     console.warn("Failed to schedule notifications ", e);
-  }
-};
-
-export const syncNotificationState = async () => {
-  const FLAG = "notifications_allowed";
-  try {
-    const { status } = await Notifications.getPermissionsAsync();
-    const granted = status === "granted";
-    const flag = await AsyncStorage.getItem(FLAG);
-
-    if (granted && flag !== "true") {
-      await AsyncStorage.setItem(FLAG, "true");
-    } else if (!granted && flag === "true") {
-      await Notifications.cancelAllScheduledNotificationsAsync();
-      await AsyncStorage.removeItem(FLAG);
-    }
-    return granted;
-  } catch (e) {
-    console.warn(e);
-    return false;
   }
 };

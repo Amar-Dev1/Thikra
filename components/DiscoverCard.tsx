@@ -8,7 +8,7 @@ interface props {
   id?: any;
   title: string;
   image: any;
-  route: any;
+  route?: any;
   className?: string;
 }
 
@@ -20,13 +20,13 @@ const DiscoverCard = ({ title, image, route, className }: props) => {
   return (
     <TouchableOpacity
       // @ts-ignore
-      onPress={() => router.push(`${route}`)}
+      onPress={() => route && router.push(`${route}`)}
       className={`flex flex-col gap-2 rounded-2xl p-3 ${
         currentTheme === "dark"
           ? "border-[.5px] border-light/20"
           : "border-[.5px] border-dark/20"
       } ${className}`}
-      style={{backgroundColor:bg}}
+      style={{ backgroundColor: bg }}
     >
       <ThemedText className="font-cairo text-sm">{title}</ThemedText>
       <Image source={image} resizeMode="contain" className="size-12 ml-auto" />

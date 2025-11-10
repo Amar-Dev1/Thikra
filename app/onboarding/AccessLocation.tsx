@@ -142,7 +142,7 @@ const AccessLocation = () => {
           animationType="fade"
         >
           <View
-            className="flex-1 gap-8 justify-center items-center"
+            className="flex-1 gap-5 justify-center items-center"
             style={{ backgroundColor: bg, paddingBottom: insets.bottom }}
           >
             <ActivityIndicator color={textColor} size={"large"} />

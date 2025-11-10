@@ -24,12 +24,14 @@ import {
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ayat from "../../assets/data/ayat.json";
+import { initializeNotifications } from "@/utils/initializeNotifications";
+import { accessNotifications } from "@/utils/accessNotifications";
+import { scheduleAllNotifications } from "@/utils/notificationServices";
 import discoverCards from "../../assets/data/discoverSection.json";
 
 const Index = () => {
-
   const insets = useSafeAreaInsets();
-  
+
   // @ts-ignore
   const { currentTheme } = useTheme();
   const bg = currentTheme === "dark" ? "#222222" : "#F8EFD4";
@@ -118,8 +120,16 @@ const Index = () => {
   const updateTimings = async () => {
     try {
       setLoading(true);
-      const timings = await refreshTimings(currentLocation!, prayersDetails);
-      if (timings) router.push('/');
+      // @ts-ignore
+      const timings: IPrayerDetails[] = await refreshTimings(
+        currentLocation!,
+        prayersDetails
+      );
+      await initializeNotifications();
+      const granted = await accessNotifications();
+      if (granted && timings.length > 0)
+        await scheduleAllNotifications(timings);
+      if (timings) router.push("/");
       console.log("updated timings manually ✅");
     } catch (e) {
       console.warn("faild to manual update timings", e);
@@ -141,7 +151,7 @@ const Index = () => {
           statusBarTranslucent
         >
           <View
-            className="flex-1 justify-center items-center gap-8"
+            className="flex-1 justify-center items-center gap-5"
             style={{
               backgroundColor: bg,
               paddingBottom: insets.bottom,
@@ -265,21 +275,23 @@ const Index = () => {
                   استكشف
                 </ThemedText>
                 <View className="flex-row gap-2 flex-wrap">
-                  {discoverCards.map((card) => (
-                    <DiscoverCard
-                      key={card.id}
-                      {...card}
-                      image={(images as any)[card.image]}
-                      className="min-w-[31%] flex-1"
-                      route={card.route}
-                    />
-                  ))}
+                  {discoverCards
+                    .filter((card) => card.id !== 5 && card.id !== 6)
+                    .map((card) => (
+                      <DiscoverCard
+                        key={card.id}
+                        {...card}
+                        image={(images as any)[card.image]}
+                        className={`min-w-[31%] flex-1`}
+                        route={card.route}
+                      />
+                    ))}
                 </View>
               </View>
             </View>
             <View className="mb-5">
               <ThemedText className="my-5 text-lg font-cairo-bold">
-                مواقيت الصلاة
+                التحديث اليومي
               </ThemedText>
               <View
                 className={`items-center gap-7 px-4 py-5 rounded-2xl ${

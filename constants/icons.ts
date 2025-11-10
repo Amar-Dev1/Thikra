@@ -27,6 +27,7 @@ import TrashSvg from "../assets/icons/trash.svg";
 import TravelSvg from "../assets/icons/travel.svg";
 import UnSavedSvg from "../assets/icons/unsaved.svg";
 import WaterSvg from "../assets/icons/water.svg";
+import BellSvg from '../assets/icons/bell.svg';
 
 export {
   ClockSvg,
@@ -58,4 +59,5 @@ export {
   TravelSvg,
   UnSavedSvg,
   WaterSvg,
+  BellSvg
 };

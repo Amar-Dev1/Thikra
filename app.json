@@ -70,12 +70,13 @@
           }
         }
       ],
-      [
-        "expo-notifications",
-        {
-          "sounds": ["./assets/sounds/sound.wav"]
-        }
-      ],
+      // [
+      //   "expo-notifications",
+      //   {
+      //     "sounds": ["./assets/sounds/sound.wav"]
+      //   }
+      // ],
+      
       "expo-audio",
       "expo-asset",
       "expo-web-browser"

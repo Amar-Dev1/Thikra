@@ -1,35 +1,42 @@
-import * as Notifications from "expo-notifications";
 import { Platform } from "react-native";
+import notifee, {
+  AndroidVisibility,
+  AndroidImportance,
+  EventType,
+} from "@notifee/react-native";
 
 export const initializeNotifications = async () => {
-  // 1. setting the forground notification handler
-  Notifications.setNotificationHandler({
-    handleNotification: async () => ({
-      shouldPlaySound: true,
-      shouldSetBadge: true,
-      shouldShowBanner: true,
-      shouldShowList: true,
-    }),
+  // 1. setup forground event handling
+  notifee.onForegroundEvent(({ type, detail }) => {
+    // You can add logic here, e.g., navigate to a screen
+    console.log(
+      "Foreground event:",
+      detail.notification?.title,
+      EventType[type]
+    );
   });
 
-  //   2. creating notification channels for android
+  // 2. create channel for android
   if (Platform.OS === "android") {
-    // channel for salah times
-    await Notifications.setNotificationChannelAsync("salah_channel", {
+    // create channel for salah times
+    notifee.createChannel({
+      id: "salah_channel",
       name: "تنبيهات الصلاة",
-      importance: Notifications.AndroidImportance.MAX,
-      vibrationPattern: [0, 250, 250, 250],
+      importance: AndroidImportance.HIGH,
+      vibration: true,
+      vibrationPattern: [100, 250, 100, 250],
       lightColor: "#FF231F7C",
-      sound: "sound.wav",
+      sound: "sound",
+      visibility: AndroidVisibility.PUBLIC,
     });
 
-    // channel for Adhkar
-    await Notifications.setNotificationChannelAsync("adhkar_channel", {
+    notifee.createChannel({
+      id: "adhkar_channel",
       name: "تنبيهات الأذكار",
-      importance: Notifications.AndroidImportance.MAX,
+      importance: AndroidImportance.DEFAULT,
       sound: "default",
+      visibility: AndroidVisibility.PUBLIC,
     });
-
-    console.log("Notification channels configured.");
+    console.log("Notifee channels configured.");
   }
 };

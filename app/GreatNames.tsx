@@ -15,7 +15,6 @@ import {
   View,
 } from "react-native";
 import Modal from "react-native-modal";
-import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
 import Namesdata from "../assets/data/Names_Of_Allah.json";
 
 const GreatNames = () => {

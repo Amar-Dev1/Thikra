@@ -11,8 +11,6 @@ import Animated, { FadeInDown } from "react-native-reanimated";
 
 const iconMap = g as { [key: string]: React.FC<any> };
 
-const AnimatedDuaCategory = Animated.createAnimatedComponent(DuaCategory);
-
 const index = () => {
   return (
     <BgWrapper className="px-5">

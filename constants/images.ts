@@ -16,6 +16,9 @@ import settingsImg from "../assets/images/settingsBg.png";
 import icon from "../assets/images/icon.png";
 // @ts-ignore
 import splashIcon from "../assets/images/splash-icon.png";
+// @ts-ignore
+import more from "../assets/images/more.png";
+
 
 export const images = {
   Allah,
@@ -27,4 +30,5 @@ export const images = {
   settingsImg,
   icon,
   splashIcon,
+  more
 };

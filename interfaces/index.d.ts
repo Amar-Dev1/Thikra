@@ -10,7 +10,7 @@ export interface ILocation {
 }
 
 export interface IPrayerDetails {
-  key: number;
+  key?: number;
   name: string;
   enName: string;
   time: string;

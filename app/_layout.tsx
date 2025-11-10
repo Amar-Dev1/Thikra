@@ -1,18 +1,15 @@
 import { ThemeProvider } from "@/context/ThemeContext";
 import { IPrayerDetails } from "@/interfaces";
-
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { AppState, I18nManager, Text as RNText } from "react-native";
+import { I18nManager, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "./global.css";
-import {
-  scheduleAllNotifications,
-  syncNotificationState,
-} from "@/utils/notificationServices";
+import { scheduleAllNotifications } from "@/utils/notificationServices";
 import { initializeNotifications } from "@/utils/initializeNotifications";
+import { accessNotifications } from "@/utils/accessNotifications";
 
 (RNText as any).defaultProps = (RNText as any).defaultProps || {};
 (RNText as any).defaultProps.style = [{ fontFamily: "Cairo-Regular" }];
@@ -31,7 +28,6 @@ export default function RootLayout() {
     boolean | null
   >(null);
   const [isReady, setIsReady] = useState(false);
-
   const [fontLoaded, fontError] = useFonts({
     "Amiri-Regular": require("../assets/fonts/Amiri-Regular.ttf"),
     "Amiri-Bold": require("../assets/fonts/Amiri-Bold.ttf"),
@@ -48,7 +44,6 @@ export default function RootLayout() {
   }, [fontLoaded, fontError, isReady]);
 
   useEffect(() => {
-    let sub: any;
     async function prepareApp() {
       try {
         // await AsyncStorage.removeItem("onboardingCompleted"); // for testing
@@ -61,14 +56,6 @@ export default function RootLayout() {
         } else {
           setCompletedOnboarding(storedValue === "true");
         }
-
-        // sync notifications permission
-        await syncNotificationState();
-        sub = AppState.addEventListener("change", (state) => {
-          if (state === "active") {
-            syncNotificationState();
-          }
-        });
       } catch (e) {
         console.warn("Faild prepare app", e);
       } finally {
@@ -77,8 +64,29 @@ export default function RootLayout() {
     }
 
     prepareApp();
+  }, []);
 
-    return () => sub.remove();
+  // register notficiations
+  useEffect(() => {
+    const registerNotifications = async () => {
+      await initializeNotifications();
+
+      const data = await AsyncStorage.getItem("timings");
+      const timings: IPrayerDetails[] = data ? JSON.parse(data) : [];
+
+      if (timings.length === 0) {
+        console.log("No timings found, skipping notification schedule.");
+        return;
+      }
+
+      const AllPermissionsGranted = await accessNotifications();
+      if (AllPermissionsGranted) {
+        await scheduleAllNotifications(timings);
+      } else {
+        console.log("Permissions not fully granted. Skipping schedule.");
+      }
+    };
+    registerNotifications();
   }, []);
 
   useEffect(() => {
@@ -94,33 +102,6 @@ export default function RootLayout() {
     // and the app will just render the <Stack> as intended.
   }, [isReady, completedOnboarding, router]);
 
-  // initialize forground notifications features
-  useEffect(() => {
-    async function init() {
-      await initializeNotifications();
-    }
-    init();
-  }, []);
-
-  // register notficiations
-  useEffect(() => {
-    const registerNotifications = async () => {
-      const data = await AsyncStorage.getItem("timings");
-      const timings: IPrayerDetails[] = data ? JSON.parse(data) : [];
-      if (timings.length === 0) {
-        console.log("No timings found, skipping notification schedule.");
-        return;
-      }
-      const granted = await syncNotificationState();
-      if (granted) {
-        await scheduleAllNotifications(timings);
-      } else {
-        console.log("Notification permissions not granted. Skipping schedule.");
-      }
-    };
-    registerNotifications();
-  }, []);
-
   if (
     !(fontLoaded && fontError === null) ||
     !isReady ||
@@ -135,6 +116,13 @@ export default function RootLayout() {
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="GreatNames" options={{ headerShown: false }} />
+          <Stack.Screen name="SalahTimes" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="MyNotifications"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="More" options={{ headerShown: false }} />
+
           <Stack.Screen name="Settings" />
           <Stack.Screen name="Dua" />
         </Stack>

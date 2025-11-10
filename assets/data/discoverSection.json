@@ -1,14 +1,42 @@
 [
   {
-    "id": 2,
+    "id": 1,
     "title": "أدعية و أذكار",
     "image": "dua",
     "route": "/Dua"
+  },
+  {
+    "id": 2,
+    "title": "مواقيت الصلاة",
+    "image": "mosque",
+    "route": "/SalahTimes"
+  },
+  {
+    "id": 3,
+    "title": "إشعاراتي",
+    "image": "bell",
+    "route": "/MyNotifications"
   },
   {
     "id": 4,
     "title": "أسماء الله الحسنى",
     "image": "Allah",
     "route": "/GreatNames"
+  },
+  {
+    "id": 5,
+    "title": "القرآن ( قريباً )",
+    "image": "quranBg"
+  },
+  {
+    "id": 6,
+    "title": "القبلة ( قريباً )",
+    "image": "kabaaBg"
+  },
+  {
+    "id": 7,
+    "title": "المزيد",
+    "image": "more",
+    "route": "/More"
   }
 ]
