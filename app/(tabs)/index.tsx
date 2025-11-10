@@ -133,9 +133,11 @@ const Index = () => {
       console.log("updated timings manually ✅");
     } catch (e) {
       console.warn("faild to manual update timings", e);
-      Alert.alert("خطأ", "حدث خطأ أثناء تحديث المواقيت", [
-        { text: "موافق", style: "default" },
-      ]);
+      Alert.alert(
+        "خطأ",
+        "حدث خطأ أثناء تحديث المواقيت، تأكد من إتصالك بالإنترنت",
+        [{ text: "موافق", style: "default" }]
+      );
     } finally {
       setLoading(false);
     }
@@ -192,7 +194,7 @@ const Index = () => {
               <View>
                 <View className="flex-row items-center justify-between">
                   <ThemedText className="my-5 text-lg font-cairo-bold">
-                    السلام عليكم ، أخي المسلم
+                    السلام عليكم
                   </ThemedText>
                   <TouchableOpacity
                     className="p-2 rounded-lg flex-row items-center gap-2"
@@ -276,13 +278,13 @@ const Index = () => {
                 </ThemedText>
                 <View className="flex-row gap-2 flex-wrap">
                   {discoverCards
-                    .filter((card) => card.id !== 5 && card.id !== 6)
+                    .filter((card) => card.id !== 4 && card.id !== 5)
                     .map((card) => (
                       <DiscoverCard
                         key={card.id}
                         {...card}
                         image={(images as any)[card.image]}
-                        className={`min-w-[31%] flex-1`}
+                        className={`min-w-[48%] flex-1`}
                         route={card.route}
                       />
                     ))}

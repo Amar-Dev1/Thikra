@@ -69,15 +69,7 @@
             "backgroundColor": "#000000"
           }
         }
-      ],
-      // [
-      //   "expo-notifications",
-      //   {
-      //     "sounds": ["./assets/sounds/sound.wav"]
-      //   }
-      // ],
-      
-      "expo-audio",
+      ],    
       "expo-asset",
       "expo-web-browser"
     ],

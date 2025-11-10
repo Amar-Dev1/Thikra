@@ -13,28 +13,22 @@
   },
   {
     "id": 3,
-    "title": "إشعاراتي",
-    "image": "bell",
-    "route": "/MyNotifications"
-  },
-  {
-    "id": 4,
     "title": "أسماء الله الحسنى",
     "image": "Allah",
     "route": "/GreatNames"
   },
   {
-    "id": 5,
+    "id": 4,
     "title": "القرآن ( قريباً )",
     "image": "quranBg"
   },
   {
-    "id": 6,
+    "id": 5,
     "title": "القبلة ( قريباً )",
     "image": "kabaaBg"
   },
   {
-    "id": 7,
+    "id": 6,
     "title": "المزيد",
     "image": "more",
     "route": "/More"

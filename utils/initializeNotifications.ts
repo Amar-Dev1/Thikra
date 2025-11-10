@@ -4,11 +4,10 @@ import notifee, {
   AndroidImportance,
   EventType,
 } from "@notifee/react-native";
+// @ts-ignore
 
 export const initializeNotifications = async () => {
-  // 1. setup forground event handling
-  notifee.onForegroundEvent(({ type, detail }) => {
-    // You can add logic here, e.g., navigate to a screen
+  notifee.onForegroundEvent(async ({ type, detail }) => {
     console.log(
       "Foreground event:",
       detail.notification?.title,
@@ -16,7 +15,6 @@ export const initializeNotifications = async () => {
     );
   });
 
-  // 2. create channel for android
   if (Platform.OS === "android") {
     // create channel for salah times
     notifee.createChannel({

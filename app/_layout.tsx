@@ -10,7 +10,6 @@ import "./global.css";
 import { scheduleAllNotifications } from "@/utils/notificationServices";
 import { initializeNotifications } from "@/utils/initializeNotifications";
 import { accessNotifications } from "@/utils/accessNotifications";
-
 (RNText as any).defaultProps = (RNText as any).defaultProps || {};
 (RNText as any).defaultProps.style = [{ fontFamily: "Cairo-Regular" }];
 
@@ -109,6 +108,7 @@ export default function RootLayout() {
   ) {
     return null;
   }
+
 
   return (
     <ThemeProvider>

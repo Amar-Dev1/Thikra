@@ -1,5 +1,4 @@
 import { IPrayerDetails } from "@/interfaces";
-import { Platform } from "react-native";
 import { convertToHHMM } from "./parseTime";
 import notifee, {
   AndroidImportance,
@@ -50,16 +49,16 @@ export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
           android: {
             channelId: "salah_channel",
             importance: AndroidImportance.HIGH,
-            sound: Platform.OS === "android" ? "sound" : undefined,
             pressAction: { id: "default" },
             showTimestamp: true,
           },
           ios: {
-            sound: "sound.wav",
+            sound: "sound",
           },
         },
         trigger
       );
+
       console.log(
         `SUCCESS: Scheduled Notifee REPEATING trigger for ${
           prayer.enName

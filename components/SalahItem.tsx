@@ -23,7 +23,7 @@ const SalahItem = ({ name, time, to, className }: props) => {
       className={`p-2 border ${
         currentTheme === "dark"
           ? "bg-[#333333] border-light/10"
-          : "bg-accent/50 border-dark/10"
+          : "bg-primary/30 border-dark/10"
       } rounded-xl`}
     >
       <View

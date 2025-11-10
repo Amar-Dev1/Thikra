@@ -6,7 +6,6 @@ import { SavedSvg, ShareSvg, UnSavedSvg } from "@/constants/icons";
 import { useTheme } from "@/context/ThemeContext";
 import { ISavedCategory } from "@/interfaces";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { isRunningInExpoGo } from "expo";
 import {
   useFocusEffect,
   useLocalSearchParams,
@@ -17,7 +16,6 @@ import {
   ActivityIndicator,
   Alert,
   FlatList,
-  Share,
   TouchableOpacity,
   View,
   ViewStyle,
@@ -31,7 +29,7 @@ import adhkar from "../../../../assets/data/adhkar.json";
 const ItemDetails = () => {
   // @ts-ignore
   const { currentTheme } = useTheme();
-  const bg = currentTheme === "dark" ? "#111111" : "#ffffff";
+  const bg = currentTheme === "dark" ? "#222222" : "#ffffff";
   const textColor = currentTheme === "dark" ? "#ffffff" : "#222222";
 
   const { Item, Category } = useLocalSearchParams();

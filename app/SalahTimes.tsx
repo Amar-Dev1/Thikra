@@ -19,7 +19,7 @@ import { useTheme } from "@/context/ThemeContext";
 const SalahTimes = () => {
   // @ts-ignore
   const { currentTheme } = useTheme();
-  const bg = currentTheme === "dark" ? "#111111" : "#F8EFD4";
+  const bg = currentTheme === "dark" ? "#111111" : "#ffffff";
   const textColor = currentTheme === "dark" ? "#ffffff" : "#222222";
 
   const [timings, setTimings] = useState<IPrayerDetails[]>([]);

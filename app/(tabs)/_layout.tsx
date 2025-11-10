@@ -19,6 +19,7 @@ const TabsLayout = () => {
     const themeColor = currentTheme === "dark" ? "#ffffff" : "#111111";
     const iconColor = focused ? "#F5C97B" : "#FFFDF8";
 
+
     return (
       <Icon
         width={focused ? 24 : 22}
@@ -32,7 +33,7 @@ const TabsLayout = () => {
   return (
     <Tabs
       screenOptions={() => {
-        const bg = currentTheme === "dark" ? "#111111" : "#ffffff";
+        const bg = currentTheme === "dark" ? "#222222" : "#ffffff";
         const tabBarStyle: ViewStyle = {
           backgroundColor: bg,
           borderTopWidth: 0.05,
