@@ -9,8 +9,6 @@ import dua from "../assets/images/dua.png";
 // @ts-ignore
 import kabaaBg from "../assets/images/kabaaBg.png";
 // @ts-ignore
-import bell from "../assets/images/bell.png";
-// @ts-ignore
 import settingsImg from "../assets/images/settingsBg.png";
 // @ts-ignore
 import icon from "../assets/images/icon.png";
@@ -26,7 +24,6 @@ export const images = {
   quranBg,
   dua,
   kabaaBg,
-  bell,
   settingsImg,
   icon,
   splashIcon,
