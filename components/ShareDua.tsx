@@ -17,8 +17,8 @@ const ShareDua = ({ duaName, ref, firstDua, count }: props) => {
         <View className="gap-5 items-center">
           <Text className="text-light text-lg font-cairo-bold">{duaName}</Text>
         </View>
-        <View className="flex-1 bg-[#222222] rounded-2xl p-5 gap-4 items-center justify-center">
-          <Text className="text-light font-cairo text-xs text-center">
+        <View className="flex-1 bg-[#222222] rounded-2xl p-4 gap-4 items-center justify-center">
+          <Text className="text-light font-cairo text-[10px] text-center">
             {firstDua}
           </Text>
           <Text className="text-[8px] font-cairo text-light opacity-65">
