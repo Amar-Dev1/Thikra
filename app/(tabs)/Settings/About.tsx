@@ -2,19 +2,13 @@ import BgWrapper from "@/components/BgWrapper";
 import ScreenTitle from "@/components/ScreenTitle";
 import ThemedText from "@/components/ThemedText";
 import { images } from "@/constants/images";
-import { useTheme } from "@/context/ThemeContext";
 import Constants from "expo-constants";
 import React from "react";
 import { Image, Text, View } from "react-native";
 
 const About = () => {
-  // @ts-ignore
-  const { currentTheme } = useTheme();
-  const bg = currentTheme === "dark" ? "#222222" : "#F8EFD4";
-  const textColor = currentTheme === "dark" ? "#ccc" : "#222222";
-
   return (
-    <BgWrapper className="px-5 gap-3 bg-bgColor" hideBackground={true}>
+    <BgWrapper className="px-5 gap-3 bg-bgColor">
       <ScreenTitle title="عن التطبيق" />
 
       <View className="flex-1 gap-8">
