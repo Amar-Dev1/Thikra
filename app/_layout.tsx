@@ -2,14 +2,15 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { IPrayerDetails } from "@/interfaces";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
-import { SplashScreen, Stack, useRouter } from "expo-router";
-import { useEffect, useState } from "react";
-import { I18nManager, Text as RNText } from "react-native";
+import { SplashScreen, Stack, useFocusEffect, useRouter } from "expo-router";
+import { useCallback, useEffect, useState } from "react";
+import { Alert, I18nManager, Linking, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "./global.css";
 import { scheduleAllNotifications } from "@/utils/notificationServices";
 import { initializeNotifications } from "@/utils/initializeNotifications";
 import { accessNotifications } from "@/utils/accessNotifications";
+import { fetchPlayStoreStatus } from "@/services/fetchPlayStoreStatus";
 (RNText as any).defaultProps = (RNText as any).defaultProps || {};
 (RNText as any).defaultProps.style = [{ fontFamily: "Cairo-Regular" }];
 
@@ -101,6 +102,40 @@ export default function RootLayout() {
     // and the app will just render the <Stack> as intended.
   }, [isReady, completedOnboarding, router]);
 
+  useFocusEffect(
+    useCallback(() => {
+      const fetchStatus = async () => {
+        const playStoreStatus = await fetchPlayStoreStatus();
+
+        if (
+          !playStoreStatus ||
+          typeof playStoreStatus.isPublished !== "boolean"
+        )
+          return;
+
+        if (playStoreStatus.isPublished) {
+          const storeUrl =
+            playStoreStatus.url && playStoreStatus.url !== "null"
+              ? playStoreStatus.url
+              : "https://thikra.netlify.app";
+
+          Alert.alert("أخبار سارة !", "نم نشر التطبيق في متجر غوغل بلاي !", [
+            {
+              text: "الق نظرة",
+              style: "default",
+              onPress: () => Linking.openURL(storeUrl),
+            },
+            {
+              text: "غير مهتم",
+              style: "cancel",
+            },
+          ]);
+        }
+      };
+      fetchStatus();
+    }, [])
+  );
+
   if (
     !(fontLoaded && fontError === null) ||
     !isReady ||
@@ -108,7 +143,6 @@ export default function RootLayout() {
   ) {
     return null;
   }
-
 
   return (
     <ThemeProvider>
