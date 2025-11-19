@@ -62,6 +62,7 @@ export default function RootLayout() {
         setIsReady(true);
       }
     }
+    
 
     prepareApp();
   }, []);
@@ -102,39 +103,34 @@ export default function RootLayout() {
     // and the app will just render the <Stack> as intended.
   }, [isReady, completedOnboarding, router]);
 
-  useFocusEffect(
-    useCallback(() => {
-      const fetchStatus = async () => {
-        const playStoreStatus = await fetchPlayStoreStatus();
+  useEffect(() => {
+    const fetchStatus = async () => {
+      const playStoreStatus = await fetchPlayStoreStatus();
 
-        if (
-          !playStoreStatus ||
-          typeof playStoreStatus.isPublished !== "boolean"
-        )
-          return;
+      if (!playStoreStatus || typeof playStoreStatus.isPublished !== "boolean")
+        return;
 
-        if (playStoreStatus.isPublished) {
-          const storeUrl =
-            playStoreStatus.url && playStoreStatus.url !== "null"
-              ? playStoreStatus.url
-              : "https://thikra.netlify.app";
+      if (playStoreStatus.isPublished) {
+        const storeUrl =
+          playStoreStatus.url && playStoreStatus.url !== "null"
+            ? playStoreStatus.url
+            : "https://thikra.netlify.app";
 
-          Alert.alert("أخبار سارة !", "نم نشر التطبيق في متجر غوغل بلاي !", [
-            {
-              text: "الق نظرة",
-              style: "default",
-              onPress: () => Linking.openURL(storeUrl),
-            },
-            {
-              text: "غير مهتم",
-              style: "cancel",
-            },
-          ]);
-        }
-      };
-      fetchStatus();
-    }, [])
-  );
+        Alert.alert("أخبار سارة !", "نم نشر التطبيق في متجر غوغل بلاي !", [
+          {
+            text: "الق نظرة",
+            style: "default",
+            onPress: () => Linking.openURL(storeUrl),
+          },
+          {
+            text: "غير مهتم",
+            style: "cancel",
+          },
+        ]);
+      }
+    };
+    fetchStatus();
+  }, []);
 
   if (
     !(fontLoaded && fontError === null) ||
