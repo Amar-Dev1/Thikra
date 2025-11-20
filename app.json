@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Thikra",
-    "slug": "Thikra",
+    "slug": "thikra",
     "version": "1.0.2",
     "orientation": "portrait",
     "scheme": "thikra",
@@ -44,22 +44,13 @@
       "supportsRTL": true,
       "PRAYER_TIME_URL": "https://api.aladhan.com/v1",
       "SURAH_AUDIO_URL": "https://ia800606.us.archive.org/16/items/1_20251025",
-      "PLAY_SOTRE_STATUS_URL": "https://thikraworker.thikraworker1.workers.dev",
+      "PLAY_STORE_STATUS_URL": "https://thikraworker.thikraworker1.workers.dev",
       "router": {},
       "eas": {
-        "projectId": "359d9ac7-b411-4673-89b4-382173a12e60"
+        "projectId": "e861c284-1787-4a83-ad76-ec4bec3a024f"
       }
     },
     "plugins": [
-      [
-        "expo-build-properties",
-        {
-          "android": {
-            // It modifies the app/build.gradle file for the native build process.
-            "abiFilters": ["arm64-v8a"]
-          }
-        }
-      ],
       [
         "expo-location",
         {
@@ -82,12 +73,11 @@
       ],
       "expo-asset",
       "expo-web-browser",
-      "expo-build-properties"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
     },
-    "owner": "amar-dev1"
+    "owner": "amar-dev2"
   }
 }

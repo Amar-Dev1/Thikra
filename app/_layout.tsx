@@ -2,8 +2,8 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { IPrayerDetails } from "@/interfaces";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
-import { SplashScreen, Stack, useFocusEffect, useRouter } from "expo-router";
-import { useCallback, useEffect, useState } from "react";
+import { SplashScreen, Stack, useRouter } from "expo-router";
+import { useEffect, useState } from "react";
 import { Alert, I18nManager, Linking, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "./global.css";
@@ -62,7 +62,6 @@ export default function RootLayout() {
         setIsReady(true);
       }
     }
-    
 
     prepareApp();
   }, []);

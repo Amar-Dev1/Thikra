@@ -1,50 +1,44 @@
-# Welcome to your Expo app 👋
+![Alt text](https://thikra.netlify.app/og.png)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+# Welcome to **Thikra** 🤍
 
-## Get started
+**Thikra** is your peaceful daily companion for staying connected to the remembrance of Allah.
+A beautifully crafted Islamic app that brings you authentic _Adhkar_, _Duas_, and precise _Prayer Times_ — all in one place.
 
-1. Install dependencies
+## 🕌 Key Features
 
-   ```bash
-   npm install
-   ```
+### 🌅 Morning & Evening Adhkar
 
-2. Start the app
+Read authentic Adhkar to begin and end your day with tranquility.
 
-   ```bash
-   npx expo start
-   ```
+### 🕰 Accurate Prayer Times
 
-In the output, you'll find options to open the app in a
+Get precise prayer timings based on your location.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 🔔 Prayer Reminders
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Receive elegant, timely notifications for each prayer.
 
-## Get a fresh project
+### 🔄 Auto Updates
 
-When you're ready, run:
+Prayer times refresh automatically based on location.
 
-```bash
-npm run reset-project
-```
+### 🖼 Shareable Duas
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Share any Dhikr or Dua as a beautifully designed image.
 
-## Learn more
+### 🔒 Privacy First
 
-To learn more about developing your project with Expo, look at the following resources:
+No accounts. No tracking. No data collection. Your privacy is fully respected.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 💎 Completely Free
 
-## Join the community
+No ads. No subscriptions. Pure spiritual benefit.
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Whether you’re at home, traveling, or offline, **Thikra** keeps you connected to your daily remembrance and spiritual routine.
+
+✨ **Try Thikra today — Let every moment be a reminder.**
+
+👉 **Official website :** [https://thikra.netlify.app](https://thikra.netlify.app)
