@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Thikra",
-    "slug": "thikra",
+    "slug": "Thikra",
     "version": "1.0.3",
     "orientation": "portrait",
     "scheme": "thikra",
@@ -47,7 +47,7 @@
       "PLAY_STORE_STATUS_URL": "https://thikraworker.thikraworker1.workers.dev",
       "router": {},
       "eas": {
-        "projectId": "e861c284-1787-4a83-ad76-ec4bec3a024f"
+        "projectId": "359d9ac7-b411-4673-89b4-382173a12e60"
       }
     },
     "plugins": [
@@ -71,13 +71,23 @@
           }
         }
       ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraMavenRepos": [
+              "../../node_modules/@notifee/react-native/android/libs"
+            ]
+          }
+        }
+      ],
       "expo-asset",
-      "expo-web-browser",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
     },
-    "owner": "amar-dev2"
+    "owner": "amar-dev1"
   }
 }
