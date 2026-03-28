@@ -6,6 +6,7 @@ import { initializeNotifications } from "@/src/utils/initializeNotifications";
 import { scheduleAllNotifications } from "@/src/utils/notificationServices";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
+import { getLocales } from "expo-localization";
 import { SplashScreen, Stack, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, I18nManager, Linking, Text as RNText } from "react-native";
@@ -15,6 +16,9 @@ import "../global.css";
 (RNText as any).defaultProps.style = [{ fontFamily: "Cairo-Regular" }];
 
 SplashScreen.preventAutoHideAsync();
+
+const deviceLanguage = getLocales()[0].languageCode;
+console.log(deviceLanguage);
 
 if (!I18nManager.isRTL) {
   I18nManager.allowRTL(true);
