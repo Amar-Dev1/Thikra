@@ -1,10 +1,18 @@
+import ayat from "@/assets/data/ayat.json";
+import discoverCards from "@/assets/data/discoverSection.json";
 import BgWrapper from "@/src/components/BgWrapper";
 import DiscoverCard from "@/src/components/DiscoverCard";
 import ScreenTitle from "@/src/components/ScreenTitle";
 import ThemedText from "@/src/components/ThemedText";
-import { ClockSvg, KabaaSvg, LocationSvg, RefreshSvg } from "@/src/constants/icons";
+import {
+  ClockSvg,
+  KabaaSvg,
+  LocationSvg,
+  RefreshSvg,
+} from "@/src/constants/icons";
 import { images } from "@/src/constants/images";
 import { useTheme } from "@/src/context/ThemeContext";
+import i18n from "@/src/i18n";
 import { ILocation, IPrayerDetails } from "@/src/interfaces";
 import { accessNotifications } from "@/src/utils/accessNotifications";
 import { getCurrentSalah } from "@/src/utils/getCurrentSalah";
@@ -26,8 +34,6 @@ import {
 } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import ayat from "@/assets/data/ayat.json";
-import discoverCards from "@/assets/data/discoverSection.json";
 
 const Index = () => {
   const insets = useSafeAreaInsets();
@@ -38,7 +44,7 @@ const Index = () => {
   const textColor = currentTheme === "dark" ? "#ffffff" : "#222222";
 
   const [currentLocation, setCurrentLocation] = useState<ILocation | null>(
-    null,
+    null
   );
 
   const [loading, setLoading] = useState(false);
@@ -48,11 +54,17 @@ const Index = () => {
   const [isFriday, setIsFriday] = useState<boolean>(false);
 
   const [prayersDetails, setPrayersDetails] = useState<IPrayerDetails[]>([
-    { key: 1, name: "الفجر", enName: "Fajr", time: "", to: "" },
-    { key: 2, name: "الظهر", enName: "Dhuhr", time: "", to: "" },
-    { key: 3, name: "العصر", enName: "Asr", time: "", to: "" },
-    { key: 4, name: "المغرب", enName: "Maghrib", time: "", to: "" },
-    { key: 5, name: "العشاء", enName: "Isha", time: "", to: "" },
+    { key: 1, name: i18n.t("common.fajr"), enName: "Fajr", time: "", to: "" },
+    { key: 2, name: i18n.t("common.dhuhr"), enName: "Dhuhr", time: "", to: "" },
+    { key: 3, name: i18n.t("common.asr"), enName: "Asr", time: "", to: "" },
+    {
+      key: 4,
+      name: i18n.t("common.maghrib"),
+      enName: "Maghrib",
+      time: "",
+      to: "",
+    },
+    { key: 5, name: i18n.t("common.isha"), enName: "Isha", time: "", to: "" },
   ]);
 
   // prepare data
@@ -65,14 +77,16 @@ const Index = () => {
         setCurrentLocation(location);
 
         const date = new Date();
-
+        const deviceLang = i18n.locale;
         const formatedDate = date.toLocaleDateString(
-          "ar-SA-u-ca-islamic-umalqura",
+          deviceLang === "en"
+            ? "en-US-u-ca-islamic-umalqura"
+            : "ar-EG-u-ca-islamic-umalqura",
           {
             year: "numeric",
             month: "long",
             day: "numeric",
-          },
+          }
         );
         setToday(formatedDate);
 
@@ -123,7 +137,7 @@ const Index = () => {
       // @ts-ignore
       const timings: IPrayerDetails[] = await refreshTimings(
         currentLocation!,
-        prayersDetails,
+        prayersDetails
       );
       await initializeNotifications();
       const granted = await accessNotifications();
@@ -133,10 +147,11 @@ const Index = () => {
       console.log("updated timings manually ✅");
     } catch (e) {
       console.warn("faild to manual update timings", e);
+      setLoading(false);
       Alert.alert(
-        "خطأ",
-        "حدث خطأ أثناء تحديث المواقيت، تأكد من إتصالك بالإنترنت",
-        [{ text: "موافق", style: "default" }],
+        i18n.t("common.error"),
+        i18n.t("screens.index.update_error_desc"),
+        [{ text: i18n.t("common.ok"), style: "default" }]
       );
     } finally {
       setLoading(false);
@@ -159,15 +174,18 @@ const Index = () => {
               paddingBottom: insets.bottom,
             }}
           >
-            <ThemedText className="font-cairo-bold text-sm">
-              يتم تحديث المواقيت
-            </ThemedText>
             <ActivityIndicator color={textColor} size={"large"} />
+            <ThemedText className="font-cairo-bold text-sm">
+              {i18n.t("screens.index.updating_timings")}
+            </ThemedText>
           </View>
         </Modal>
       ) : (
         <View className="flex-1 px-5">
-          <ScreenTitle title="الصفحة الرئيسية" className="justify-between">
+          <ScreenTitle
+            title={i18n.t("screens.index.title")}
+            className="justify-between"
+          >
             <TouchableOpacity
               className={`flex flex-row items-center px-2 py-1 gap-1  ${
                 currentTheme === "dark"
@@ -194,7 +212,7 @@ const Index = () => {
               <View>
                 <View className="flex-row items-center justify-between">
                   <ThemedText className="my-5 text-lg font-cairo-bold">
-                    السلام عليكم
+                    {i18n.t("screens.index.welcome")}
                   </ThemedText>
                   <TouchableOpacity
                     className="p-2 rounded-lg flex-row items-center gap-2"
@@ -203,7 +221,7 @@ const Index = () => {
                   >
                     <RefreshSvg width={12} height={12} stroke={textColor} />
                     <ThemedText className="font-cairo-bold text-xs">
-                      تحديث المواقيت
+                      {i18n.t("screens.index.update_timings")}
                     </ThemedText>
                   </TouchableOpacity>
                 </View>
@@ -256,25 +274,20 @@ const Index = () => {
                       stroke={textColor}
                     />
                     <ThemedText className="font-cairo-bold">
-                      يوم الجمعة
+                      {i18n.t("screens.index.friday_message")}
                     </ThemedText>
                   </View>
                   <ThemedText className="font-amiri">
-                    عَن أبي هريرة أَنَّ رَسُولَ اللَّهِ ﷺ ذَكَرَ يَوْمَ
-                    الجُمُعَةِ، فَقَالَ:{" "}
-                    <ThemedText className="font-amiri-bold">
-                      فِيه سَاعَةٌ لا يُوَافِقها عَبْدٌ مُسلِمٌ، وَهُو قَائِمٌ
-                      يُصَلِّي يسأَلُ اللَّه شَيْئًا، إِلاَّ أَعْطَاهُ إِيَّاه .
-                    </ThemedText>
+                    {i18n.t("screens.index.friday_hadith")}
                   </ThemedText>
                   <ThemedText className="font-amiri ml-auto">
-                    متفق عليه
+                    {i18n.t("common.agreed_upon")}
                   </ThemedText>
                 </Animated.View>
               )}
               <View>
                 <ThemedText className="my-5 font-cairo-bold text-lg">
-                  استكشف
+                  {i18n.t("screens.index.explore")}
                 </ThemedText>
                 <View className="flex-row gap-2 flex-wrap">
                   {discoverCards
@@ -283,6 +296,7 @@ const Index = () => {
                       <DiscoverCard
                         key={card.id}
                         {...card}
+                        title={i18n.t((card as any).titleKey)}
                         image={(images as any)[card.image]}
                         className={`min-w-[48%] flex-1`}
                         route={card.route}
@@ -293,7 +307,7 @@ const Index = () => {
             </View>
             <View className="mb-5">
               <ThemedText className="my-5 text-lg font-cairo-bold">
-                التحديث اليومي
+                {i18n.t("screens.index.daily_update")}
               </ThemedText>
               <View
                 className={`items-center gap-7 px-4 py-5 rounded-2xl ${
@@ -304,7 +318,7 @@ const Index = () => {
                 style={{ backgroundColor: bg }}
               >
                 <ThemedText className="text-xl text-center font-amiri-bold">
-                  فَذَالكٌم الرباط ، فَذَالكٌم الرباط
+                  {i18n.t("screens.index.ribat_hadith")}
                 </ThemedText>
                 <View className="relative w-[95%] mx-auto mb-4">
                   <View className="absolute top-[5.5px] w-full h-[1.5px] bg-[#ddd]" />
@@ -344,11 +358,10 @@ const Index = () => {
                 style={{ backgroundColor: bg }}
               >
                 <ThemedText className="mb-2 text-md font-cairo-bold">
-                  الآية اليومية
+                  {i18n.t("screens.index.daily_ayah")}
                 </ThemedText>
                 <ThemedText className="text-md text- font-amiri-bold">
-                  {randomAyah ||
-                    "إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ تَتَنَزَّلُ عَلَيْهِمُ ٱلْمَلَٰٓئِكَةُ أَلَّا تَخَافُوا۟ وَلَا تَحْزَنُوا۟ وَأَبْشِرُوا۟ بِٱلْجَنَّةِ ٱلَّتِى كُنتُمْ تُوعَدُونَ"}
+                  {randomAyah || i18n.t("screens.index.placeholder_ayah")}
                 </ThemedText>
               </View>
             </View>

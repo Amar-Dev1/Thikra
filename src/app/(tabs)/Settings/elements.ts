@@ -6,6 +6,7 @@ import {
   ShareSvg,
   ThemeSvg,
 } from "@/src/constants/icons";
+import i18n from "@/src/i18n";
 import { Linking, Share } from "react-native";
 
 const onShare = async () => {
@@ -14,7 +15,6 @@ const onShare = async () => {
       message:
         "Check out Thikra app !,  Download it here:\nhttps://thikra.netlify.app",
       url: "https://thikra.netlify.app",
-      
     });
   } catch (e) {
     console.log("faild to share app", e);
@@ -32,31 +32,31 @@ const onReport = () => {
 
 export const settingsElements: ISettingsElement[] = [
   {
-    title: "الموقع",
-    desc: "تعديل الموقع",
+    title: i18n.t("screens.location.title"),
+    desc: i18n.t("screens.location.edit_title"),
     route: "/Settings/EditLocation",
     Icon: LocationSvg,
   },
   {
-    title: "السمات",
-    desc: "تغيير لون التطبيق",
+    title: i18n.t("screens.settings.theme_modal_title"),
+    desc: i18n.t("screens.settings.theme_modal_desc"),
     Icon: ThemeSvg,
   },
   {
-    title: "مشاركة التطبيق",
-    desc: " كن شريكاً في الأجر",
+    title: i18n.t("screens.settings.share_app"),
+    desc: i18n.t("screens.settings.share_app_desc"),
     Icon: ShareSvg,
     onPress: async () => onShare(),
   },
   {
-    title: "التبليغ عن مشاكل في التطبيق",
-    desc: "تواصل مع المطور",
+    title: i18n.t("screens.settings.report_issue"),
+    desc: i18n.t("screens.settings.contact_developer"),
     Icon: ContactSvg,
     onPress: () => onReport(),
   },
   {
-    title: "حول التطبيق",
-    desc: "نبذة عن التطبيق",
+    title: i18n.t("screens.settings.about_title"),
+    desc: i18n.t("screens.settings.about_desc"),
     route: "/Settings/About",
     Icon: InfoSvg,
   },

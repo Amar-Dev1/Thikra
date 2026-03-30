@@ -1,5 +1,11 @@
-import { DuaSvg, HomeSvg, SettingsSvg, UnSavedSvg } from "@/src/constants/icons";
+import {
+  DuaSvg,
+  HomeSvg,
+  SettingsSvg,
+  UnSavedSvg,
+} from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
+import i18n from "@/src/i18n";
 import { Tabs } from "expo-router";
 import React from "react";
 import { ViewStyle } from "react-native";
@@ -56,7 +62,11 @@ const TabsLayout = () => {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} Icon={HomeSvg} name="الصفحة الرئيسية" />
+            <TabIcon
+              focused={focused}
+              Icon={HomeSvg}
+              name={i18n.t("screens.index.title")}
+            />
           ),
         }}
       />
@@ -66,7 +76,11 @@ const TabsLayout = () => {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} Icon={DuaSvg} name="الدعاء" />
+            <TabIcon
+              focused={focused}
+              Icon={DuaSvg}
+              name={i18n.t("screens.dua.title")}
+            />
           ),
         }}
       />
@@ -76,7 +90,11 @@ const TabsLayout = () => {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} Icon={UnSavedSvg} name="المحفوظات" />
+            <TabIcon
+              focused={focused}
+              Icon={UnSavedSvg}
+              name={i18n.t("screens.saved.title")}
+            />
           ),
         }}
       />
@@ -87,7 +105,11 @@ const TabsLayout = () => {
           headerShown: false,
 
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} Icon={SettingsSvg} name="الإعدادات" />
+            <TabIcon
+              focused={focused}
+              Icon={SettingsSvg}
+              name={i18n.t("screens.settings.title")}
+            />
           ),
         }}
       />

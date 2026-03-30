@@ -1,17 +1,12 @@
 import BgWrapper from "@/src/components/BgWrapper";
 import ThemedText from "@/src/components/ThemedText";
-import { images } from "@/src/constants/images";
+import { BellSvg } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
+import i18n from "@/src/i18n";
 import { accessNotifications } from "@/src/utils/accessNotifications";
 import { router } from "expo-router";
 import { useState } from "react";
-import {
-  ActivityIndicator,
-  Image,
-  Modal,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ActivityIndicator, Modal, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const AllowNotification = () => {
@@ -52,7 +47,7 @@ const AllowNotification = () => {
           >
             <ActivityIndicator color={textColor} size={"large"} />
             <ThemedText className="font-cairo-bold text-lg opacity-65">
-              يرجى الإنتظار
+              {i18n.t("common.wait")}
             </ThemedText>
           </View>
         </Modal>
@@ -60,12 +55,12 @@ const AllowNotification = () => {
         <>
           <View className="flex-row items-center gap-2">
             <ThemedText className="font-cairo-bold text-3xl my-5">
-              تفعيل الإشعارات
+              {i18n.t("common.notification_permission_title")}
             </ThemedText>
-            <Image source={images.bell} className="size-10" />
+            <BellSvg width={30} height={30} stroke={textColor} />
           </View>
           <ThemedText className="font-cairo text-xl opacity-65">
-            الرجاء تفعيل اللإشعارات ، لكي تصلك مواقيت الصلاة ، و باقي الأذكار
+            {i18n.t("common.notification_permission_desc")}
           </ThemedText>
 
           <View className="flex-row items-center mt-auto">
@@ -77,7 +72,7 @@ const AllowNotification = () => {
               style={{ backgroundColor: bg }}
             >
               <ThemedText className="text-lg font-cairo-bold text-center">
-                سماح
+                {i18n.t("common.allow")}
               </ThemedText>
             </TouchableOpacity>
           </View>

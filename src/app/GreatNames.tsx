@@ -4,6 +4,7 @@ import ScreenTitle from "@/src/components/ScreenTitle";
 import ThemedText from "@/src/components/ThemedText";
 import { RightAngleSvg } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
+import i18n from "@/src/i18n";
 import { IGreatName } from "@/src/interfaces";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -49,7 +50,7 @@ const GreatNames = () => {
   return (
     <BgWrapper className="px-5">
       <ScreenTitle
-        title="أسماء الله الحسنى"
+        title={i18n.t("screens.great_names.title")}
         className="flex-row items-center py-4"
       >
         <TouchableOpacity

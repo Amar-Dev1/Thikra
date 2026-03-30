@@ -4,6 +4,7 @@ import ShareDua from "@/src/components/ShareDua";
 import ThemedText from "@/src/components/ThemedText";
 import { SavedSvg, ShareSvg, UnSavedSvg } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
+import i18n from "@/src/i18n";
 import { ISavedCategory } from "@/src/interfaces";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
@@ -53,11 +54,13 @@ const ItemDetails = () => {
       const checkIfSaved = async () => {
         const data = await AsyncStorage.getItem("Saved");
         const saved: ISavedCategory[] = data ? JSON.parse(data) : [];
-        const category = saved.find((cat) => cat.name === "الأدعية و الأذكار");
+        const category = saved.find(
+          (cat) => cat.name === i18n.t("screens.saved.category_dua_adhkar")
+        );
 
         if (category) {
           const itemExists = category.items.some(
-            (item) => String(item.id) === String(itemId),
+            (item) => String(item.id) === String(itemId)
           );
           setIsSaved(itemExists);
         } else {
@@ -68,7 +71,7 @@ const ItemDetails = () => {
       checkIfSaved();
 
       return () => {};
-    }, [itemId]),
+    }, [itemId])
   );
 
   useFocusEffect(
@@ -108,7 +111,7 @@ const ItemDetails = () => {
           });
         }
       };
-    }, [navigation, currentTheme, bg]),
+    }, [navigation, currentTheme, bg])
   );
 
   const toggleSave = async () => {
@@ -119,11 +122,13 @@ const ItemDetails = () => {
       const data = await AsyncStorage.getItem("Saved");
       const saved: ISavedCategory[] = data ? JSON.parse(data) : [];
 
-      const category = saved.find((cat) => cat.name === "الأدعية و الأذكار");
+      const category = saved.find(
+        (cat) => cat.name === i18n.t("screens.saved.category_dua_adhkar")
+      );
 
       if (category) {
         const itemIndex = category.items.findIndex(
-          (item) => String(item.id) === String(currentItem?.id),
+          (item) => String(item.id) === String(currentItem?.id)
         );
         if (itemIndex > -1) {
           category.items.splice(itemIndex, 1);
@@ -139,7 +144,7 @@ const ItemDetails = () => {
       } else {
         saved.push({
           id: 1,
-          name: "الأدعية و الأذكار",
+          name: i18n.t("screens.saved.category_dua_adhkar"),
           items: [
             {
               id: currentItem?.id,
@@ -155,7 +160,9 @@ const ItemDetails = () => {
       // DeviceEventEmitter.emit('SavedUpdated')
     } catch (e) {
       console.log(e);
-      Alert.alert("خطأ", "لم يتم الحفظ", [{ text: "موافق", style: "default" }]);
+      Alert.alert(i18n.t("common.error"), i18n.t("common.save_error"), [
+        { text: i18n.t("common.ok"), style: "default" },
+      ]);
     } finally {
       setLoading(false);
     }
@@ -177,8 +184,8 @@ const ItemDetails = () => {
       await Sharing.shareAsync(uri);
     } catch (e) {
       console.log("Failed to share dua:", e);
-      Alert.alert("خطأ", "فشل في المشاركة", [
-        { text: "موافق", style: "default" },
+      Alert.alert(i18n.t("common.error"), i18n.t("screens.dua.share_error"), [
+        { text: i18n.t("common.ok"), style: "default" },
       ]);
     }
   };
@@ -237,7 +244,7 @@ const ItemDetails = () => {
                 </ThemedText>
                 {item.count != null && (
                   <ThemedText className="opacity-60 text-xs mt-5">
-                    عدد المرات: {item.count}
+                    {i18n.t("screens.dua.count_label")} {item.count}
                   </ThemedText>
                 )}
               </Animated.View>

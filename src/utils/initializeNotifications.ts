@@ -1,9 +1,10 @@
-import { Platform } from "react-native";
 import notifee, {
-  AndroidVisibility,
   AndroidImportance,
+  AndroidVisibility,
   EventType,
 } from "@notifee/react-native";
+import { Platform } from "react-native";
+import i18n from "../i18n";
 // @ts-ignore
 
 export const initializeNotifications = async () => {
@@ -19,7 +20,7 @@ export const initializeNotifications = async () => {
     // create channel for salah times
     notifee.createChannel({
       id: "salah_channel",
-      name: "تنبيهات الصلاة",
+      name: i18n.t("channels.prayer"),
       importance: AndroidImportance.HIGH,
       vibration: true,
       vibrationPattern: [100, 250, 100, 250],
@@ -30,7 +31,7 @@ export const initializeNotifications = async () => {
 
     notifee.createChannel({
       id: "adhkar_channel",
-      name: "تنبيهات الأذكار",
+      name: i18n.t("channels.adhkar"),
       importance: AndroidImportance.DEFAULT,
       sound: "default",
       visibility: AndroidVisibility.PUBLIC,

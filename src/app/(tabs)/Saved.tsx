@@ -3,6 +3,7 @@ import ScreenTitle from "@/src/components/ScreenTitle";
 import ThemedText from "@/src/components/ThemedText";
 import { QuranSvg, TrashSvg, UnSavedSvg } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
+import i18n from "@/src/i18n";
 import { ISavedCategory, ISavedCategoryItem } from "@/src/interfaces";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router, useFocusEffect } from "expo-router";
@@ -54,8 +55,8 @@ const Saved = () => {
       setSelectedItem(null);
     } catch (e) {
       console.log(e);
-      Alert.alert(" خطأ !", "حدث خطأ، يرجى إعادة التحميل ", [
-        { text: "موافق", style: "default" },
+      Alert.alert(i18n.t("common.error"), i18n.t("screens.saved.load_error"), [
+        { text: i18n.t("common.ok"), style: "default" },
       ]);
     } finally {
       setLoading(false);
@@ -72,9 +73,11 @@ const Saved = () => {
           if (Array.isArray(saved)) setSaved(saved);
         } catch (e) {
           console.log(e);
-          Alert.alert(" خطأ !", "حدث خطأ، يرجى إعادة التحميل ", [
-            { text: "موافق", style: "default" },
-          ]);
+          Alert.alert(
+            i18n.t("common.error"),
+            i18n.t("screens.saved.load_error"),
+            [{ text: i18n.t("common.ok"), style: "default" }]
+          );
         } finally {
           setLoading(false);
           console.log("saved array : ", saved);
@@ -88,7 +91,7 @@ const Saved = () => {
 
   return (
     <BgWrapper>
-      <ScreenTitle title="المحفوظات" />
+      <ScreenTitle title={i18n.t("screens.saved.title")} />
       {loading ? (
         <View className="flex-1 items-center justify-center">
           <ActivityIndicator size={"large"} color={textColor} />
@@ -173,7 +176,7 @@ const Saved = () => {
               <View className="flex-1 justify-center items-center gap-3 opacity-65">
                 <QuranSvg width={32} height={32} stroke={textColor} />
                 <ThemedText className="font-cairo">
-                  لا توجد محفوظات حتى الآن
+                  {i18n.t("screens.saved.no_saved")}
                 </ThemedText>
               </View>
             )}
@@ -191,7 +194,7 @@ const Saved = () => {
         <View className="p-5 gap-5 bg-light rounded-2xl">
           <View className="items-center">
             <Text className="font-cairo-bold text-md">
-              هل أنت متأكد من حذف هذه العلامة المرجعية ؟
+              {i18n.t("screens.saved.delete_confirm")}
             </Text>
           </View>
           <View className="flex-row items-center gap-4">
@@ -200,7 +203,7 @@ const Saved = () => {
               onPress={handleRemove}
             >
               <Text className="font-cairo-bold text-md text-red-500 text-center">
-                حذف
+                {i18n.t("common.delete")}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -208,7 +211,7 @@ const Saved = () => {
               onPress={() => setVisible(false)}
             >
               <Text className="font-cairo-bold text-md text-light text-center">
-                إلغاء
+                {i18n.t("common.cancel")}
               </Text>
             </TouchableOpacity>
           </View>

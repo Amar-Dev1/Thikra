@@ -1,5 +1,13 @@
-import React, { useEffect, useState } from "react";
 import BgWrapper from "@/src/components/BgWrapper";
+import SalahItem from "@/src/components/SalahItem";
+import ScreenTitle from "@/src/components/ScreenTitle";
+import { RightAngleSvg } from "@/src/constants/icons";
+import { useTheme } from "@/src/context/ThemeContext";
+import i18n from "@/src/i18n";
+import { IPrayerDetails } from "@/src/interfaces";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { router } from "expo-router";
+import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -7,14 +15,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import ScreenTitle from "@/src/components/ScreenTitle";
-import { RightAngleSvg } from "@/src/constants/icons";
-import { router } from "expo-router";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { IPrayerDetails } from "@/src/interfaces";
-import SalahItem from "@/src/components/SalahItem";
 import Animated, { FadeInRight } from "react-native-reanimated";
-import { useTheme } from "@/src/context/ThemeContext";
 
 const SalahTimes = () => {
   // @ts-ignore
@@ -38,9 +39,16 @@ const SalahTimes = () => {
         }
       } catch (e) {
         console.error(e);
-        Alert.alert("خطأ", "خطأ في أوقات الصلاة", [
-          { text: "الصفحة الرئيسية", onPress: () => router.push("/") },
-        ]);
+        Alert.alert(
+          i18n.t("common.error"),
+          i18n.t("screens.salah_times.error_desc"),
+          [
+            {
+              text: i18n.t("screens.index.title"),
+              onPress: () => router.push("/"),
+            },
+          ]
+        );
       } finally {
         setLoading(false);
       }
@@ -50,7 +58,10 @@ const SalahTimes = () => {
 
   return (
     <BgWrapper className="px-5">
-      <ScreenTitle title="المزيد" className="flex-row items-center py-4">
+      <ScreenTitle
+        title={i18n.t("screens.salah_times.title")}
+        className="flex-row items-center py-4"
+      >
         <TouchableOpacity
           className="absolute left-0 w-10 h-10 flex justify-center items-center bg-light border border-gray-300 rounded-full"
           onPress={router.back}

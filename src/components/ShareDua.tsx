@@ -1,4 +1,5 @@
 import { images } from "@/src/constants/images";
+import i18n from "@/src/i18n";
 import React from "react";
 import { Image, Text, View } from "react-native";
 import ViewShot from "react-native-view-shot";
@@ -22,7 +23,7 @@ const ShareDua = ({ duaName, ref, firstDua, count }: props) => {
             {firstDua}
           </Text>
           <Text className="text-[8px] font-cairo text-light opacity-65">
-            المرات : {count}
+            {i18n.t("components.share_dua.count_label")} {count}
           </Text>
         </View>
         <View className="gap-3 items-center">

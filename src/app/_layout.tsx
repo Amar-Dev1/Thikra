@@ -1,26 +1,18 @@
 import { ThemeProvider } from "@/src/context/ThemeContext";
-import { IPrayerDetails } from "@/src/interfaces";
-import { fetchPlayStoreStatus } from "@/src/services/fetchPlayStoreStatus";
-import { accessNotifications } from "@/src/utils/accessNotifications";
-import { initializeNotifications } from "@/src/utils/initializeNotifications";
-import { scheduleAllNotifications } from "@/src/utils/notificationServices";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
-import { getLocales } from "expo-localization";
 import { SplashScreen, Stack, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { Alert, I18nManager, Linking, Text as RNText } from "react-native";
+import { I18nManager, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "../global.css";
+import i18n from "../i18n";
 (RNText as any).defaultProps = (RNText as any).defaultProps || {};
 (RNText as any).defaultProps.style = [{ fontFamily: "Cairo-Regular" }];
 
 SplashScreen.preventAutoHideAsync();
 
-const deviceLanguage = getLocales()[0].languageCode;
-console.log(deviceLanguage);
-
-if (!I18nManager.isRTL) {
+if (i18n.locale === "ar") {
   I18nManager.allowRTL(true);
   I18nManager.forceRTL(true);
 }
@@ -50,7 +42,17 @@ export default function RootLayout() {
   useEffect(() => {
     async function prepareApp() {
       try {
-        // await AsyncStorage.removeItem("onboardingCompleted"); // for testing
+        const storedLang = await AsyncStorage.getItem("userLanguage");
+        if (storedLang) {
+          i18n.locale = storedLang;
+          const isRTL = storedLang === "ar";
+          if (I18nManager.isRTL !== isRTL) {
+            I18nManager.allowRTL(isRTL);
+            I18nManager.forceRTL(isRTL);
+            // On some platforms, you might need Updates.reloadAsync()
+            // but we'll try without it first for simplicity.
+          }
+        }
 
         const storedValue = await AsyncStorage.getItem("onboardingCompleted");
 
@@ -70,28 +72,31 @@ export default function RootLayout() {
     prepareApp();
   }, []);
 
+  // =========== WARNING , UN-comment this after finish !!!!!!!!!!============
+
   // register notficiations
-  useEffect(() => {
-    const registerNotifications = async () => {
-      await initializeNotifications();
+  // useEffect(() => {
+  //   const registerNotifications = async () => {
+  //     await initializeNotifications();
 
-      const data = await AsyncStorage.getItem("timings");
-      const timings: IPrayerDetails[] = data ? JSON.parse(data) : [];
+  //     const data = await AsyncStorage.getItem("timings");
+  //     const timings: IPrayerDetails[] = data ? JSON.parse(data) : [];
 
-      if (timings.length === 0) {
-        console.log("No timings found, skipping notification schedule.");
-        return;
-      }
+  //     if (timings.length === 0) {
+  //       console.log("No timings found, skipping notification schedule.");
+  //       return;
+  //     }
 
-      const AllPermissionsGranted = await accessNotifications();
-      if (AllPermissionsGranted) {
-        await scheduleAllNotifications(timings);
-      } else {
-        console.log("Permissions not fully granted. Skipping schedule.");
-      }
-    };
-    registerNotifications();
-  }, []);
+  //     const AllPermissionsGranted = await accessNotifications();
+  //     if (AllPermissionsGranted) {
+  //       await scheduleAllNotifications(timings);
+  //     } else {
+  //       console.log("Permissions not fully granted. Skipping schedule.");
+  //     }
+  //   };
+  //   registerNotifications();
+  // }, []);
+  // =========== WARNING , UN-comment this after finish !!!!!!!!!!============
 
   useEffect(() => {
     if (!isReady || completedOnboarding === null) {
@@ -99,41 +104,45 @@ export default function RootLayout() {
     }
 
     if (!completedOnboarding) {
-      router.replace("/onboarding/AllowNotification");
+      router.replace("/onboarding/Language");
     }
 
     // If completedOnboarding is true, this effect does nothing,
     // and the app will just render the <Stack> as intended.
   }, [isReady, completedOnboarding, router]);
 
-  useEffect(() => {
-    const fetchStatus = async () => {
-      const playStoreStatus = await fetchPlayStoreStatus();
+  // useEffect(() => {
+  //   const fetchStatus = async () => {
+  //     const playStoreStatus = await fetchPlayStoreStatus();
 
-      if (!playStoreStatus || typeof playStoreStatus.isPublished !== "boolean")
-        return;
+  //     if (!playStoreStatus || typeof playStoreStatus.isPublished !== "boolean")
+  //       return;
 
-      if (playStoreStatus.isPublished) {
-        const storeUrl =
-          playStoreStatus.url && playStoreStatus.url !== "null"
-            ? playStoreStatus.url
-            : "https://thikra.netlify.app";
+  //     if (playStoreStatus.isPublished) {
+  //       const storeUrl =
+  //         playStoreStatus.url && playStoreStatus.url !== "null"
+  //           ? playStoreStatus.url
+  //           : "https://thikra.netlify.app";
 
-        Alert.alert("أخبار سارة !", "نم نشر التطبيق في متجر غوغل بلاي !", [
-          {
-            text: "الق نظرة",
-            style: "default",
-            onPress: () => Linking.openURL(storeUrl),
-          },
-          {
-            text: "غير مهتم",
-            style: "cancel",
-          },
-        ]);
-      }
-    };
-    fetchStatus();
-  }, []);
+  //       Alert.alert(
+  //         i18n.t("onboarding.notification_news_title"),
+  //         i18n.t("onboarding.notification_news_desc"),
+  //         [
+  //           {
+  //             text: i18n.t("onboarding.look"),
+  //             style: "default",
+  //             onPress: () => Linking.openURL(storeUrl),
+  //           },
+  //           {
+  //             text: i18n.t("onboarding.not_interested"),
+  //             style: "cancel",
+  //           },
+  //         ]
+  //       );
+  //     }
+  //   };
+  //   fetchStatus();
+  // }, []);
 
   if (
     !(fontLoaded && fontError === null) ||

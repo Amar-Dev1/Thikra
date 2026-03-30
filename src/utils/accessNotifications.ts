@@ -1,9 +1,10 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Alert, Platform } from "react-native";
 import notifee, {
   AndroidNotificationSetting,
   AuthorizationStatus,
 } from "@notifee/react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Alert, Platform } from "react-native";
+import i18n from "../i18n";
 
 export const accessNotifications = async (): Promise<boolean> => {
   const FLAG = "notifications_allowed";
@@ -15,12 +16,12 @@ export const accessNotifications = async (): Promise<boolean> => {
     });
 
     const granted =
-    settings.authorizationStatus === AuthorizationStatus.AUTHORIZED;
+      settings.authorizationStatus === AuthorizationStatus.AUTHORIZED;
     if (!granted) {
       await notifee.cancelAllNotifications();
       Alert.alert(
-        "لم يتم السماح",
-        "لن نتمكن من إرسال التنبيهات لك إلا بعد السماح بالإشعارات."
+        i18n.t("common.permission_denied"),
+        i18n.t("common.permission_denied_desc")
       );
       await AsyncStorage.removeItem(FLAG);
       return false;
@@ -32,12 +33,12 @@ export const accessNotifications = async (): Promise<boolean> => {
       const alarmSettings = await notifee.getNotificationSettings();
       if (alarmSettings.android.alarm !== AndroidNotificationSetting.ENABLED) {
         Alert.alert(
-          "الإذن مطلوب",
-          "لضمان عمل تنبيهات الصلاة في وقتها تماماً حتى إذا كان التطبيق مغلقاً، يرجى تفعيل إذن 'التنبيهات والمذكرات' من الإعدادات.",
+          i18n.t("common.permission_required"),
+          i18n.t("common.permission_required_desc"),
           [
-            { text: "لاحقاً", style: "cancel" },
+            { text: i18n.t("common.later"), style: "cancel" },
             {
-              text: "فتح الإعدادات",
+              text: i18n.t("common.open_settings"),
               // open settings page!
               onPress: () => notifee.openAlarmPermissionSettings(),
             },
@@ -51,7 +52,10 @@ export const accessNotifications = async (): Promise<boolean> => {
     return true;
   } catch (e) {
     console.error("Notification permission check failed:", e);
-    Alert.alert("حدث خطأ", "حدث خطأ أثناء إعداد الإشعارات.");
+    Alert.alert(
+      i18n.t("common.error"),
+      i18n.t("common.notification_setup_error")
+    );
     return false;
   }
 };

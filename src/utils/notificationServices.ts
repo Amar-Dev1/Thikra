@@ -5,12 +5,13 @@ import notifee, {
   TimestampTrigger,
   TriggerType,
 } from "@notifee/react-native";
+import i18n from "../i18n";
 import { convertToHHMM } from "./parseTime";
 
 const createTriggerDate = (
   hour: number,
   minute: number,
-  offset: number = 0,
+  offset: number = 0
 ) => {
   const now = new Date();
   const triggerDate = new Date();
@@ -44,8 +45,10 @@ export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
 
       await notifee.createTriggerNotification(
         {
-          title: `حان الآن موعد أذان ${prayer.name}`,
-          body: "إن الصلاة كانت على المؤمنين كتاباً موقوتا",
+          title: i18n.t("notifications.prayer_time_title", {
+            name: prayer.name,
+          }),
+          body: i18n.t("notifications.prayer_time_body"),
           android: {
             channelId: "salah_channel",
             importance: AndroidImportance.HIGH,
@@ -56,13 +59,13 @@ export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
             sound: "sound",
           },
         },
-        trigger,
+        trigger
       );
 
       console.log(
         `SUCCESS: Scheduled Notifee REPEATING trigger for ${
           prayer.enName
-        } at ${new Date(timestamp).toLocaleString()}`,
+        } at ${new Date(timestamp).toLocaleString()}`
       );
     }
   } catch (e) {
@@ -97,8 +100,8 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
 
       await notifee.createTriggerNotification(
         {
-          title: "أذكار الصباح يا مسلم",
-          body: "لا تغفل عن أذكار الصباح ، رحمك الله",
+          title: i18n.t("notifications.morning_adhkar_title"),
+          body: i18n.t("notifications.morning_adhkar_body"),
           android: {
             channelId: "adhkar_channel",
             pressAction: { id: "default" },
@@ -108,12 +111,12 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
             sound: "default",
           },
         },
-        trigger,
+        trigger
       );
       console.log(
         `SUCCESS: Scheduled Sabah Adhkar at: ${new Date(
-          timestamp,
-        ).toLocaleString()}`,
+          timestamp
+        ).toLocaleString()}`
       );
     }
 
@@ -131,8 +134,8 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
 
       await notifee.createTriggerNotification(
         {
-          title: "أذكار المساء يا مسلم",
-          body: "لا تغفل عن أذكار المساء ، رحمك الله",
+          title: i18n.t("notifications.evening_adhkar_title"),
+          body: i18n.t("notifications.evening_adhkar_body"),
           android: {
             channelId: "adhkar_channel",
             pressAction: { id: "default" },
@@ -142,12 +145,12 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
             sound: "default",
           },
         },
-        trigger,
+        trigger
       );
       console.log(
         `SUCCESS: Scheduled Masa Adhkar at: ${new Date(
-          timestamp,
-        ).toLocaleString()}`,
+          timestamp
+        ).toLocaleString()}`
       );
     }
   } catch (e) {

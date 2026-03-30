@@ -3,6 +3,7 @@ import DiscoverCard from "@/src/components/DiscoverCard";
 import ScreenTitle from "@/src/components/ScreenTitle";
 import { RightAngleSvg } from "@/src/constants/icons";
 import { images } from "@/src/constants/images";
+import i18n from "@/src/i18n";
 import { router } from "expo-router";
 import { TouchableOpacity, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
@@ -11,7 +12,10 @@ import discoverCards from "../../assets/data/discoverSection.json";
 const More = () => {
   return (
     <BgWrapper className="px-5">
-      <ScreenTitle title="المزيد" className="flex-row items-center py-4">
+      <ScreenTitle
+        title={i18n.t("screens.more.title")}
+        className="flex-row items-center py-4"
+      >
         <TouchableOpacity
           className="absolute left-0 w-10 h-10 flex justify-center items-center bg-light border border-gray-300 rounded-full"
           onPress={router.back}

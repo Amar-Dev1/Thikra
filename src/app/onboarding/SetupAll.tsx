@@ -1,6 +1,7 @@
 import BgWrapper from "@/src/components/BgWrapper";
 import ThemedText from "@/src/components/ThemedText";
 import { useTheme } from "@/src/context/ThemeContext";
+import i18n from "@/src/i18n";
 import { ILocation, IPrayerDetails, ISavedCategory } from "@/src/interfaces";
 import { fetchPrayerTimes } from "@/src/services/fetchPrayerTimes";
 import { accessNotifications } from "@/src/utils/accessNotifications";
@@ -20,11 +21,17 @@ const SetupAll = () => {
   const [loading, setLoading] = useState<boolean | null>(false);
 
   const [prayersDetails, setPrayersDetails] = useState<IPrayerDetails[]>([
-    { key: 1, name: "الفجر", enName: "Fajr", time: "", to: "" },
-    { key: 2, name: "الظهر", enName: "Dhuhr", time: "", to: "" },
-    { key: 3, name: "العصر", enName: "Asr", time: "", to: "" },
-    { key: 4, name: "المغرب", enName: "Maghrib", time: "", to: "" },
-    { key: 5, name: "العشاء", enName: "Isha", time: "", to: "" },
+    { key: 1, name: i18n.t("common.fajr"), enName: "Fajr", time: "", to: "" },
+    { key: 2, name: i18n.t("common.dhuhr"), enName: "Dhuhr", time: "", to: "" },
+    { key: 3, name: i18n.t("common.asr"), enName: "Asr", time: "", to: "" },
+    {
+      key: 4,
+      name: i18n.t("common.maghrib"),
+      enName: "Maghrib",
+      time: "",
+      to: "",
+    },
+    { key: 5, name: i18n.t("common.isha"), enName: "Isha", time: "", to: "" },
   ]);
 
   const prepareData = async () => {
@@ -64,9 +71,9 @@ const SetupAll = () => {
     } catch (e: any) {
       console.error(e);
       Alert.alert(
-        "تفعيل خدمة الموقع",
-        "قم بتفعيل الموقع و الإنترنت رجاءاً ليعمل التطبيق ",
-        [{ text: "موافق", style: "default" }],
+        i18n.t("common.location_service_title"),
+        i18n.t("common.location_service_desc"),
+        [{ text: i18n.t("common.ok"), style: "default" }]
       );
     } finally {
       setLoading(false);
@@ -77,7 +84,11 @@ const SetupAll = () => {
     try {
       if (!(await AsyncStorage.getItem("Saved"))) {
         const initialValues: ISavedCategory[] = [
-          { id: 1, name: "الأدعية و الأذكار", items: [] },
+          {
+            id: 1,
+            name: i18n.t("screens.saved.category_dua_adhkar"),
+            items: [],
+          },
         ];
         await AsyncStorage.setItem("Saved", JSON.stringify(initialValues));
       }
@@ -100,7 +111,7 @@ const SetupAll = () => {
         <>
           <ActivityIndicator size={"large"} color={textColor} />
           <ThemedText className="font-cairo-bold text-lg opacity-65">
-            يتم تهيئة التطبيق...
+            {i18n.t("common.initializing_app")}
           </ThemedText>
         </>
       )}

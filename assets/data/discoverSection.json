@@ -2,34 +2,40 @@
   {
     "id": 1,
     "title": "أدعية و أذكار",
+    "titleKey": "screens.index.discover.dua",
     "image": "dua",
     "route": "/Dua"
   },
   {
     "id": 2,
     "title": "مواقيت الصلاة",
+    "titleKey": "screens.index.discover.salah_times",
     "image": "mosque",
     "route": "/SalahTimes"
   },
   {
     "id": 3,
     "title": "أسماء الله الحسنى",
+    "titleKey": "screens.index.discover.great_names",
     "image": "Allah",
     "route": "/GreatNames"
   },
   {
     "id": 4,
     "title": "القرآن ( قريباً )",
+    "titleKey": "screens.index.discover.quran",
     "image": "quranBg"
   },
   {
     "id": 5,
     "title": "القبلة ( قريباً )",
+    "titleKey": "screens.index.discover.qibla",
     "image": "kabaaBg"
   },
   {
     "id": 6,
     "title": "المزيد",
+    "titleKey": "screens.index.discover.more",
     "image": "more",
     "route": "/More"
   }

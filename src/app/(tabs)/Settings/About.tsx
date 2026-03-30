@@ -2,6 +2,7 @@ import BgWrapper from "@/src/components/BgWrapper";
 import ScreenTitle from "@/src/components/ScreenTitle";
 import ThemedText from "@/src/components/ThemedText";
 import { images } from "@/src/constants/images";
+import i18n from "@/src/i18n";
 import Constants from "expo-constants";
 import React from "react";
 import { Image, Text, View } from "react-native";
@@ -9,7 +10,7 @@ import { Image, Text, View } from "react-native";
 const About = () => {
   return (
     <BgWrapper className="px-5 gap-3 bg-bgColor">
-      <ScreenTitle title="عن التطبيق" />
+      <ScreenTitle title={i18n.t("screens.about.title")} />
 
       <View className="flex-1 gap-8">
         <View className="items-center gap-3">
@@ -24,22 +25,23 @@ const About = () => {
         </View>
         <View className="flex-row items-center gap-3 ">
           <ThemedText className="font-cairo opacity-75">
-            - اسم التطبيق :{" "}
+            {i18n.t("screens.about.app_name_label")}
           </ThemedText>
-          <ThemedText className="font-cairo-bold">ذكرى - Thikra</ThemedText>
+          <ThemedText className="font-cairo-bold">
+            {i18n.t("screens.about.app_name_value")}
+          </ThemedText>
         </View>
 
         <View className="flex-row items-center gap-3">
           <ThemedText className="font-cairo opacity-75 mb-auto">
-            - نبذه :{" "}
+            {i18n.t("screens.about.about_label")}
           </ThemedText>
           <ThemedText className="font-cairo-bold flex-1 opacity-65">
-            هو تطبيق إسلامي لإعانة المسلم -
+            {i18n.t("screens.about.about_value")}
             <Text className="font-cairo-bold text-green-700">
-              الموحّد لله عز و جل{" "}
+              {i18n.t("screens.about.monotheist")}
             </Text>
-            - على تتبع أوقات الصلاة بناءاً على موقعه و قراءة الأذكار و الأدعية،
-            بالإضافة لأشياء أخرى
+            {i18n.t("screens.about.description_rest")}
           </ThemedText>
         </View>
       </View>

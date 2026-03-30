@@ -7,6 +7,7 @@ import adhkar from "../../../../assets/data/adhkar.json";
 
 import ScreenTitle from "@/src/components/ScreenTitle";
 import * as g from "@/src/constants/icons";
+import i18n from "@/src/i18n";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
 const iconMap = g as { [key: string]: React.FC<any> };
@@ -15,7 +16,7 @@ const index = () => {
   return (
     <BgWrapper className="px-5">
       <View className="flex-1">
-        <ScreenTitle title="الدعاء و الذكر" />
+        <ScreenTitle title={i18n.t("screens.dua.title")} />
         <FlatList
           showsVerticalScrollIndicator={false}
           keyExtractor={(item) => String(item.id)}

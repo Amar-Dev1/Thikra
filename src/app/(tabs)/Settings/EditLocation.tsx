@@ -2,6 +2,7 @@ import BgWrapper from "@/src/components/BgWrapper";
 import ThemedText from "@/src/components/ThemedText";
 import { LocationSvg } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
+import i18n from "@/src/i18n";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Location from "expo-location";
 import { router } from "expo-router";
@@ -34,7 +35,7 @@ const EditLocation = () => {
   const countries = locations.map((c) => c.country);
 
   const selectedCountryData = locations.find(
-    (c) => c.country === selectedCountry,
+    (c) => c.country === selectedCountry
   );
 
   const cities = selectedCountryData ? selectedCountryData.cities : [];
@@ -76,7 +77,7 @@ const EditLocation = () => {
               city: city,
               country: country,
               method: "auto",
-            }),
+            })
           );
 
           router.push("/onboarding/SetupAll");
@@ -87,9 +88,9 @@ const EditLocation = () => {
     } catch (e) {
       console.error(e);
       Alert.alert(
-        "تفعيل خدمة الموقع",
-        "قم بتفعيل الموقع رجاءاً قم بتفعيل الموقع ليعمل التطبيق ",
-        [{ text: "موافق", style: "default" }],
+        i18n.t("common.location_service_title"),
+        i18n.t("common.location_service_desc"),
+        [{ text: i18n.t("common.ok"), style: "default" }]
       );
     } finally {
       setLoading(false);
@@ -104,9 +105,11 @@ const EditLocation = () => {
       const cityData = cities.find((c) => c.name === selectedCity);
 
       if (!cityData) {
-        Alert.alert("خطأ", "تعذر إيجاد المدينة", [
-          { text: "موافق", style: "default" },
-        ]);
+        Alert.alert(
+          i18n.t("common.error"),
+          i18n.t("screens.location.city_not_found"),
+          [{ text: i18n.t("common.ok"), style: "default" }]
+        );
         throw new Error("Could not find city data");
       }
 
@@ -118,7 +121,7 @@ const EditLocation = () => {
           city: cityData.name,
           country: selectedCountry,
           method: "manual",
-        }),
+        })
       );
       router.push("/onboarding/SetupAll");
     } catch (e) {
@@ -147,7 +150,7 @@ const EditLocation = () => {
           >
             <ActivityIndicator color={textColor} size={"large"} />
             <ThemedText className="font-cairo-bold text-lg opacity-65">
-              جار ضبط الموقع
+              {i18n.t("screens.location.setting_location")}
             </ThemedText>
           </View>
         </Modal>
@@ -159,11 +162,11 @@ const EditLocation = () => {
           >
             <View className="flex-row items-center gap-2">
               <ThemedText className="font-cairo-bold text-3xl my-5">
-                تعديل الموقع
+                {i18n.t("screens.location.edit_title")}
               </ThemedText>
             </View>
             <ThemedText className="font-cairo text-xl opacity-65">
-              تفعيل الوصول للموقع ، لعرض مواقيت الصلاة بناءاً على موقعك الحالي
+              {i18n.t("screens.location.desc")}
             </ThemedText>
 
             <View className="mt-5 gap-4">
@@ -181,13 +184,13 @@ const EditLocation = () => {
                   />
                   <View className="gap-2 flex-1">
                     <ThemedText className="font-cairo-bold text-lg">
-                      تحديد الموقع تلقائياً{" "}
+                      {i18n.t("screens.location.auto_detect")}{" "}
                       <ThemedText className="text-sm font-cairo opacity-60">
-                        (موصى به)
+                        {i18n.t("screens.location.recommended")}
                       </ThemedText>
                     </ThemedText>
                     <ThemedText className="font-cairo-bold text-sm opacity-55">
-                      سيتم تحديث مواقيت الصلاة تلقائياً
+                      {i18n.t("screens.location.auto_detect_desc")}
                     </ThemedText>
                   </View>
                 </View>
@@ -207,11 +210,10 @@ const EditLocation = () => {
                   />
                   <View className="gap-2 flex-1">
                     <ThemedText className="font-cairo-bold text-lg">
-                      تحديد الموقع يدوياً
+                      {i18n.t("screens.location.manual_detect")}
                     </ThemedText>
                     <ThemedText className="font-cairo-bold text-sm opacity-55">
-                      حدد البلد و المدينة يدوياً . عليك تحديث موقعك إذا غيرت
-                      المدينة
+                      {i18n.t("screens.location.manual_detect_desc")}
                     </ThemedText>
                   </View>
                 </View>
@@ -219,7 +221,9 @@ const EditLocation = () => {
 
               {expandedCountry && (
                 <View className="mt-3">
-                  <ThemedText>اختار الدولة</ThemedText>
+                  <ThemedText>
+                    {i18n.t("screens.location.choose_country")}
+                  </ThemedText>
                   <SelectList
                     data={countries}
                     setSelected={(value: string) => {
@@ -235,7 +239,9 @@ const EditLocation = () => {
 
               {selectedCountry && (
                 <View className={`mt-3 mb-3`}>
-                  <ThemedText>اختار المدينة</ThemedText>
+                  <ThemedText>
+                    {i18n.t("screens.location.choose_city")}
+                  </ThemedText>
                   <SelectList
                     data={cityNames}
                     setSelected={(value: string) => setSelectedCity(value)}
@@ -257,7 +263,7 @@ const EditLocation = () => {
                 onPress={locationManualDetect}
               >
                 <ThemedText className="text-lg font-cairo-bold text-center">
-                  تعيين
+                  {i18n.t("screens.location.apply")}
                 </ThemedText>
               </TouchableOpacity>
 
@@ -266,7 +272,7 @@ const EditLocation = () => {
                 onPress={() => router.push("/Settings")}
               >
                 <ThemedText className="text-lg font-cairo-bold text-center">
-                  إلغاء
+                  {i18n.t("common.cancel")}
                 </ThemedText>
               </TouchableOpacity>
             </View>

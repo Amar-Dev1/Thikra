@@ -81,9 +81,17 @@
           }
         }
       ],
+      [
+        "expo-localization",
+        {
+          "supportedLocales": {
+            "ios": ["ar", "en"],
+            "android": ["ar", "en"]
+          }
+        }
+      ],
       "expo-asset",
       "expo-web-browser",
-      "expo-localization",
       "expo-secure-store"
     ],
     "experiments": {
