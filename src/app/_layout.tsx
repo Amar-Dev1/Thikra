@@ -7,6 +7,10 @@ import { I18nManager, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "../global.css";
 import i18n from "../i18n";
+import { scheduleAllNotifications } from "../utils/notificationServices";
+import { accessNotifications } from "../utils/accessNotifications";
+import { initializeNotifications } from "../utils/initializeNotifications";
+import { IPrayerDetails } from "../interfaces";
 (RNText as any).defaultProps = (RNText as any).defaultProps || {};
 (RNText as any).defaultProps.style = [{ fontFamily: "Cairo-Regular" }];
 
@@ -72,31 +76,29 @@ export default function RootLayout() {
     prepareApp();
   }, []);
 
-  // =========== WARNING , UN-comment this after finish !!!!!!!!!!============
 
   // register notficiations
-  // useEffect(() => {
-  //   const registerNotifications = async () => {
-  //     await initializeNotifications();
+  useEffect(() => {
+    const registerNotifications = async () => {
+      await initializeNotifications();
 
-  //     const data = await AsyncStorage.getItem("timings");
-  //     const timings: IPrayerDetails[] = data ? JSON.parse(data) : [];
+      const data = await AsyncStorage.getItem("timings");
+      const timings: IPrayerDetails[] = data ? JSON.parse(data) : [];
 
-  //     if (timings.length === 0) {
-  //       console.log("No timings found, skipping notification schedule.");
-  //       return;
-  //     }
+      if (timings.length === 0) {
+        console.log("No timings found, skipping notification schedule.");
+        return;
+      }
 
-  //     const AllPermissionsGranted = await accessNotifications();
-  //     if (AllPermissionsGranted) {
-  //       await scheduleAllNotifications(timings);
-  //     } else {
-  //       console.log("Permissions not fully granted. Skipping schedule.");
-  //     }
-  //   };
-  //   registerNotifications();
-  // }, []);
-  // =========== WARNING , UN-comment this after finish !!!!!!!!!!============
+      const AllPermissionsGranted = await accessNotifications();
+      if (AllPermissionsGranted) {
+        await scheduleAllNotifications(timings);
+      } else {
+        console.log("Permissions not fully granted. Skipping schedule.");
+      }
+    };
+    registerNotifications();
+  }, []);
 
   useEffect(() => {
     if (!isReady || completedOnboarding === null) {
@@ -111,38 +113,6 @@ export default function RootLayout() {
     // and the app will just render the <Stack> as intended.
   }, [isReady, completedOnboarding, router]);
 
-  // useEffect(() => {
-  //   const fetchStatus = async () => {
-  //     const playStoreStatus = await fetchPlayStoreStatus();
-
-  //     if (!playStoreStatus || typeof playStoreStatus.isPublished !== "boolean")
-  //       return;
-
-  //     if (playStoreStatus.isPublished) {
-  //       const storeUrl =
-  //         playStoreStatus.url && playStoreStatus.url !== "null"
-  //           ? playStoreStatus.url
-  //           : "https://thikra.netlify.app";
-
-  //       Alert.alert(
-  //         i18n.t("onboarding.notification_news_title"),
-  //         i18n.t("onboarding.notification_news_desc"),
-  //         [
-  //           {
-  //             text: i18n.t("onboarding.look"),
-  //             style: "default",
-  //             onPress: () => Linking.openURL(storeUrl),
-  //           },
-  //           {
-  //             text: i18n.t("onboarding.not_interested"),
-  //             style: "cancel",
-  //           },
-  //         ]
-  //       );
-  //     }
-  //   };
-  //   fetchStatus();
-  // }, []);
 
   if (
     !(fontLoaded && fontError === null) ||

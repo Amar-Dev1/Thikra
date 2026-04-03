@@ -66,7 +66,7 @@ const AllowNotification = () => {
           <View className="flex-row items-center mt-auto">
             <TouchableOpacity
               className={`rounded-2xl py-2 flex-1 border ${
-                currentTheme === "dark" ? "border-light/10" : "borde-dark/10"
+                currentTheme === "dark" ? "border-light/10" : "border-dark/50"
               }`}
               onPress={handleAllow}
               style={{ backgroundColor: bg }}

@@ -85,14 +85,21 @@
         "expo-localization",
         {
           "supportedLocales": {
-            "ios": ["ar", "en"],
-            "android": ["ar", "en"]
+            "ios": [
+              "ar",
+              "en"
+            ],
+            "android": [
+              "ar",
+              "en"
+            ]
           }
         }
       ],
       "expo-asset",
       "expo-web-browser",
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-background-task"
     ],
     "experiments": {
       "typedRoutes": true,

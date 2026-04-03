@@ -50,7 +50,7 @@ const Language = () => {
           <TouchableOpacity
             className={`p-5 rounded-2xl border ${
               selectedLang === "ar"
-                ? "border-accent"
+                ? "border-2 border-accent"
                 : currentTheme === "dark"
                 ? "border-light/10"
                 : "border-dark/10"
@@ -75,7 +75,7 @@ const Language = () => {
           <TouchableOpacity
             className={`p-5 rounded-2xl border ${
               selectedLang === "en"
-                ? "border-accent"
+                ? "border-2 border-accent"
                 : currentTheme === "dark"
                 ? "border-light/10"
                 : "border-dark/10"
@@ -101,7 +101,7 @@ const Language = () => {
         <View className="flex-row items-center mt-auto mb-5">
           <TouchableOpacity
             className={`rounded-2xl py-3 flex-1 border ${
-              currentTheme === "dark" ? "border-light/10" : "border-dark/10"
+              currentTheme === "dark" ? "border-light/10" : "border-dark/50"
             }`}
             onPress={handleNext}
             style={{ backgroundColor: bg }}
