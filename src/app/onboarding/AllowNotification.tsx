@@ -3,7 +3,7 @@ import ThemedText from "@/src/components/ThemedText";
 import { BellSvg } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
 import i18n from "@/src/i18n";
-import { accessNotifications } from "@/src/utils/accessNotifications";
+import { requestPermission } from "@/src/utils/Notifications";
 import { router } from "expo-router";
 import { useState } from "react";
 import { ActivityIndicator, Modal, TouchableOpacity, View } from "react-native";
@@ -22,9 +22,9 @@ const AllowNotification = () => {
   const handleAllow = async () => {
     try {
       setLoading(true);
-      const allowed = await accessNotifications();
-      if (!allowed) return;
-      else router.push("/onboarding/AccessLocation");
+      const allowed = await requestPermission();
+      // if (!allowed) return;
+      router.push("/onboarding/SetupAll");
     } catch (e) {
       console.warn(e);
     } finally {

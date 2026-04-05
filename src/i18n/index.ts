@@ -9,6 +9,5 @@ const i18n = new I18n({ en, ar });
 // Set the locale once at the beginning of your app.
 i18n.locale = getLocales().at(0)?.languageCode ?? "en";
 i18n.enableFallback = true;
-i18n.defaultLocale = "en";
 
 export default i18n;

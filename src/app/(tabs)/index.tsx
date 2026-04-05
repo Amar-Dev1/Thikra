@@ -1,373 +1,126 @@
-import ayat from "@/assets/data/ayat.json";
-import discoverCards from "@/assets/data/discoverSection.json";
+import AyatData from "@/assets/data/Ayat.json";
 import BgWrapper from "@/src/components/BgWrapper";
-import DiscoverCard from "@/src/components/DiscoverCard";
-import ScreenTitle from "@/src/components/ScreenTitle";
+import AISheikhCard from "@/src/components/home/AISheikhCard";
+import DhikrCounter from "@/src/components/home/DhikrCounter";
+import VerseOfTheDay from "@/src/components/home/VerseOfTheDay";
 import ThemedText from "@/src/components/ThemedText";
-import {
-  ClockSvg,
-  KabaaSvg,
-  LocationSvg,
-  RefreshSvg,
-} from "@/src/constants/icons";
-import { images } from "@/src/constants/images";
+import { Colors } from "@/src/constants/colors";
 import { useTheme } from "@/src/context/ThemeContext";
 import i18n from "@/src/i18n";
-import { ILocation, IPrayerDetails } from "@/src/interfaces";
-import { accessNotifications } from "@/src/utils/accessNotifications";
-import { getCurrentSalah } from "@/src/utils/getCurrentSalah";
-import { initializeNotifications } from "@/src/utils/initializeNotifications";
-import { scheduleAllNotifications } from "@/src/utils/notificationServices";
-import { convert24To12 } from "@/src/utils/parseTime";
-import { refreshTimings } from "@/src/utils/refreshTimings";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import {
-  ActivityIndicator,
-  Alert,
-  Image,
-  Modal,
-  ScrollView,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import Animated, { FadeInDown } from "react-native-reanimated";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { ScrollView, View } from "react-native";
 
 const Index = () => {
-  const insets = useSafeAreaInsets();
-
   // @ts-ignore
   const { currentTheme } = useTheme();
-  const bg = currentTheme === "dark" ? "#222222" : "#F8EFD4";
-  const textColor = currentTheme === "dark" ? "#ffffff" : "#222222";
+  const isDark = currentTheme === "dark";
 
-  const [currentLocation, setCurrentLocation] = useState<ILocation | null>(
-    null
-  );
-
-  const [loading, setLoading] = useState(false);
-  const [currentSalah, setCurrentSalah] = useState<IPrayerDetails | null>(null);
-  const [randomAyah, setRandomAyah] = useState<string | null>(null);
-  const [today, setToday] = useState<string | null>("");
-  const [isFriday, setIsFriday] = useState<boolean>(false);
-
-  const [prayersDetails, setPrayersDetails] = useState<IPrayerDetails[]>([
-    { key: 1, name: i18n.t("common.fajr"), enName: "Fajr", time: "", to: "" },
-    { key: 2, name: i18n.t("common.dhuhr"), enName: "Dhuhr", time: "", to: "" },
-    { key: 3, name: i18n.t("common.asr"), enName: "Asr", time: "", to: "" },
-    {
-      key: 4,
-      name: i18n.t("common.maghrib"),
-      enName: "Maghrib",
-      time: "",
-      to: "",
-    },
-    { key: 5, name: i18n.t("common.isha"), enName: "Isha", time: "", to: "" },
-  ]);
+  const [randomAyah, setRandomAyah] = useState<{
+    ayah: string;
+    translation?: string;
+  } | null>(null);
 
   // prepare data
   useEffect(() => {
     async function prepareData() {
       try {
-        // await AsyncStorage.removeItem("onboardingCompleted");
-        const locationData = await AsyncStorage.getItem("location");
-        const location = locationData ? JSON.parse(locationData) : null;
-        setCurrentLocation(location);
-
-        const date = new Date();
-        const deviceLang = i18n.locale;
-        const formatedDate = date.toLocaleDateString(
-          deviceLang === "en"
-            ? "en-US-u-ca-islamic-umalqura"
-            : "ar-EG-u-ca-islamic-umalqura",
-          {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          }
+        // set daily ayah from the new structured AyatData
+        // Filter out surahs that might not have verses for some reason (safeguard)
+        const validSurahs = AyatData.filter(
+          (s) => s.verses && s.verses.length > 0
         );
-        setToday(formatedDate);
+        const randomSurah =
+          validSurahs[Math.floor(Math.random() * validSurahs.length)];
+        const randomVerse =
+          randomSurah.verses[
+            Math.floor(Math.random() * randomSurah.verses.length)
+          ];
 
-        const storedTimings = await AsyncStorage.getItem("timings");
-        const timings = storedTimings ? JSON.parse(storedTimings) : [];
-
-        setPrayersDetails(timings);
-
-        // detect current salah
-        const current = getCurrentSalah(timings);
-        setCurrentSalah(current ? current : null);
-
-        // set daily ayah
-        let randomIndex = Math.floor(Math.random() * ayat.length);
-        let randomAyah = ayat[randomIndex];
-        setRandomAyah(randomAyah.ayah);
+        setRandomAyah({
+          ayah: randomVerse.text,
+          translation:
+            randomVerse.translation ||
+            i18n.t("screens.index.placeholder_ayah_translation"),
+        });
       } catch (e) {
-        console.error("Faild to prepare data", e);
+        console.error("Failed to prepare data", e);
       }
     }
     prepareData();
   }, []);
 
-  // for checking current salah every 1 minute
-  useEffect(() => {
-    let intervalId = setInterval(() => {
-      const newSalah = getCurrentSalah(prayersDetails);
-      setCurrentSalah((pervSalah) => {
-        if (pervSalah?.key !== newSalah?.key) {
-          return newSalah;
-        }
-        return pervSalah;
-      });
-    }, 60 * 1000);
-
-    return () => clearInterval(intervalId);
-  }, [prayersDetails]);
-
-  // for handling friday message
-  useEffect(() => {
-    const now = new Date();
-    setIsFriday(now.getDay() === 5);
-  }, []);
-
-  const updateTimings = async () => {
-    try {
-      setLoading(true);
-      // @ts-ignore
-      const timings: IPrayerDetails[] = await refreshTimings(
-        currentLocation!,
-        prayersDetails
-      );
-      await initializeNotifications();
-      const granted = await accessNotifications();
-      if (granted && timings.length > 0)
-        await scheduleAllNotifications(timings);
-      if (timings) router.push("/");
-      console.log("updated timings manually ✅");
-    } catch (e) {
-      console.warn("faild to manual update timings", e);
-      setLoading(false);
-      Alert.alert(
-        i18n.t("common.error"),
-        i18n.t("screens.index.update_error_desc"),
-        [{ text: i18n.t("common.ok"), style: "default" }]
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
+  const mainTextColor = isDark ? Colors.darkText : Colors.brandBrown;
+  const mutedTextColor = isDark ? "rgba(255,255,255,0.4)" : Colors.textMuted;
 
   return (
     <BgWrapper>
-      {loading ? (
-        <Modal
-          visible={loading}
-          transparent
-          animationType="fade"
-          statusBarTranslucent
-        >
-          <View
-            className="flex-1 justify-center items-center gap-5"
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 120 }}
+      >
+        {/* Branding */}
+        <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
+          <ThemedText
             style={{
-              backgroundColor: bg,
-              paddingBottom: insets.bottom,
+              fontSize: 22,
+              color: mainTextColor,
             }}
           >
-            <ActivityIndicator color={textColor} size={"large"} />
-            <ThemedText className="font-cairo-bold text-sm">
-              {i18n.t("screens.index.updating_timings")}
-            </ThemedText>
-          </View>
-        </Modal>
-      ) : (
-        <View className="flex-1 px-5">
-          <ScreenTitle
-            title={i18n.t("screens.index.title")}
-            className="justify-between"
-          >
-            <TouchableOpacity
-              className={`flex flex-row items-center px-2 py-1 gap-1  ${
-                currentTheme === "dark"
-                  ? "border-[.5px] border-light/20"
-                  : "border-[.5px] border-dark/20"
-              } rounded-xl`}
-              style={{ backgroundColor: bg }}
-              onPress={() => router.push("/Settings/EditLocation")}
-            >
-              <ThemedText className="text-sm">
-                {currentLocation?.city || "N/A"}
-              </ThemedText>
-              <LocationSvg
-                width={20}
-                height={20}
-                stroke={textColor}
-                strokeWidth={1}
-              />
-            </TouchableOpacity>
-          </ScreenTitle>
-
-          <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
-            <View className="flex-1 py-5">
-              <View>
-                <View className="flex-row items-center justify-between">
-                  <ThemedText className="my-5 text-lg font-cairo-bold">
-                    {i18n.t("screens.index.welcome")}
-                  </ThemedText>
-                  <TouchableOpacity
-                    className="p-2 rounded-lg flex-row items-center gap-2"
-                    style={{ backgroundColor: bg }}
-                    onPress={updateTimings}
-                  >
-                    <RefreshSvg width={12} height={12} stroke={textColor} />
-                    <ThemedText className="font-cairo-bold text-xs">
-                      {i18n.t("screens.index.update_timings")}
-                    </ThemedText>
-                  </TouchableOpacity>
-                </View>
-
-                <Animated.View
-                  entering={FadeInDown.springify().delay(200)}
-                  className={`flex-row justify-between px-4 py-3 ${
-                    currentTheme === "dark"
-                      ? "border-[.5px] border-light/20"
-                      : "border-[.5px] border-dark/20"
-                  } rounded-2xl`}
-                  style={{ backgroundColor: bg }}
-                >
-                  <View className="flex-col justify-center">
-                    <ThemedText className=" text-lg font-cairo-bold">
-                      {currentSalah?.name || "N/A"}
-                    </ThemedText>
-                    <View className="flex-row items-center gap-2">
-                      <ClockSvg width={18} stroke={textColor} strokeWidth={1} />
-                      <ThemedText className="text-3xl font-cairo-light">
-                        {convert24To12(currentSalah?.time || "12:00 AM")}
-                      </ThemedText>
-                    </View>
-                  </View>
-                  <View className="items-center gap-3 font-cairo text-xs">
-                    <ThemedText className="text-md font-cairo-bold ">
-                      {" "}
-                      {today}
-                    </ThemedText>
-                    <Image source={images.kabaaBg} className="size-28" />
-                  </View>
-                </Animated.View>
-              </View>
-
-              {isFriday && (
-                <Animated.View
-                  entering={FadeInDown.springify().delay(300)}
-                  className={`my-5 rounded-2xl ${
-                    currentTheme === "dark"
-                      ? "border-[.5px] border-light/20"
-                      : "border-[.5px] border-dark/20"
-                  } px-4 py-3`}
-                  style={{ backgroundColor: bg }}
-                >
-                  <View className="flex-row gap-2 items-center max-h-8">
-                    <KabaaSvg
-                      width={20}
-                      height={20}
-                      strokeWidth={1}
-                      stroke={textColor}
-                    />
-                    <ThemedText className="font-cairo-bold">
-                      {i18n.t("screens.index.friday_message")}
-                    </ThemedText>
-                  </View>
-                  <ThemedText className="font-amiri">
-                    {i18n.t("screens.index.friday_hadith")}
-                  </ThemedText>
-                  <ThemedText className="font-amiri ml-auto">
-                    {i18n.t("common.agreed_upon")}
-                  </ThemedText>
-                </Animated.View>
-              )}
-              <View>
-                <ThemedText className="my-5 font-cairo-bold text-lg">
-                  {i18n.t("screens.index.explore")}
-                </ThemedText>
-                <View className="flex-row gap-2 flex-wrap">
-                  {discoverCards
-                    .filter((card) => card.id !== 4 && card.id !== 5)
-                    .map((card) => (
-                      <DiscoverCard
-                        key={card.id}
-                        {...card}
-                        title={i18n.t((card as any).titleKey)}
-                        image={(images as any)[card.image]}
-                        className={`min-w-[48%] flex-1`}
-                        route={card.route}
-                      />
-                    ))}
-                </View>
-              </View>
-            </View>
-            <View className="mb-5">
-              <ThemedText className="my-5 text-lg font-cairo-bold">
-                {i18n.t("screens.index.daily_update")}
-              </ThemedText>
-              <View
-                className={`items-center gap-7 px-4 py-5 rounded-2xl ${
-                  currentTheme === "dark"
-                    ? "border-[.5px] border-light/20"
-                    : "border-[.5px] border-dark/20"
-                }`}
-                style={{ backgroundColor: bg }}
-              >
-                <ThemedText className="text-xl text-center font-amiri-bold">
-                  {i18n.t("screens.index.ribat_hadith")}
-                </ThemedText>
-                <View className="relative w-[95%] mx-auto mb-4">
-                  <View className="absolute top-[5.5px] w-full h-[1.5px] bg-[#ddd]" />
-                  <View className="flex flex-row justify-between">
-                    {prayersDetails.map((prayer) => (
-                      <TouchableOpacity
-                        key={prayer.key}
-                        className="flex flex-col items-center gap-2 "
-                      >
-                        <View
-                          className={`w-3 h-3 ${
-                            currentSalah?.key === prayer.key
-                              ? "bg-accent"
-                              : "bg-[#ddd]"
-                          } rounded-full`}
-                        />
-                        <ThemedText className="font-cairo-bold text-sm text-dark">
-                          {prayer.name}
-                        </ThemedText>
-                        <ThemedText className="text-xs font-cairo opacity-65">
-                          {convert24To12(prayer.time)}
-                        </ThemedText>
-                      </TouchableOpacity>
-                    ))}
-                  </View>
-                </View>
-              </View>
-            </View>
-
-            <View className="mb-[65px]">
-              <View
-                className={`py-4 px-5 rounded-2xl ${
-                  currentTheme === "dark"
-                    ? "border-[.5px] border-light/20"
-                    : "border-[.5px] border-dark/20"
-                }`}
-                style={{ backgroundColor: bg }}
-              >
-                <ThemedText className="mb-2 text-md font-cairo-bold">
-                  {i18n.t("screens.index.daily_ayah")}
-                </ThemedText>
-                <ThemedText className="text-md text- font-amiri-bold">
-                  {randomAyah || i18n.t("screens.index.placeholder_ayah")}
-                </ThemedText>
-              </View>
-            </View>
-          </ScrollView>
+            Thikra - ذِكرى
+          </ThemedText>
         </View>
-      )}
+
+        {/* Greeting Section */}
+        <View
+          style={{ paddingHorizontal: 20, marginTop: 40, marginBottom: 20 }}
+        >
+          <ThemedText
+            style={{
+              fontSize: 13,
+              fontWeight: "bold",
+              color: mutedTextColor,
+              letterSpacing: 1.1,
+              textTransform: "uppercase",
+            }}
+          >
+            ASSALAMU ALAIKUM
+          </ThemedText>
+          <ThemedText
+            style={{
+              fontSize: 36,
+              color: mainTextColor,
+              marginTop: 4,
+            }}
+          >
+            {i18n.t("screens.index.greeting_main")}
+          </ThemedText>
+          <ThemedText
+            style={{
+              fontSize: 15,
+              color: mutedTextColor,
+              marginTop: 6,
+              lineHeight: 22,
+              maxWidth: "80%",
+            }}
+          >
+            {i18n.t("screens.index.greeting_sub")}
+          </ThemedText>
+        </View>
+
+        {/* Dhikr Counter */}
+        <DhikrCounter />
+
+        {/* AI Sheikh Card */}
+        <AISheikhCard />
+
+        {/* Verse of the Day */}
+        {randomAyah && (
+          <VerseOfTheDay
+            ayah={randomAyah.ayah}
+            translation={randomAyah.translation}
+          />
+        )}
+      </ScrollView>
     </BgWrapper>
   );
 };

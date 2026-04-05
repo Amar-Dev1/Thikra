@@ -7,19 +7,11 @@ import { I18nManager, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "../global.css";
 import i18n from "../i18n";
-import { scheduleAllNotifications } from "../utils/notificationServices";
-import { accessNotifications } from "../utils/accessNotifications";
-import { initializeNotifications } from "../utils/initializeNotifications";
-import { IPrayerDetails } from "../interfaces";
 (RNText as any).defaultProps = (RNText as any).defaultProps || {};
 (RNText as any).defaultProps.style = [{ fontFamily: "Cairo-Regular" }];
+import * as updates from "expo-updates";
 
 SplashScreen.preventAutoHideAsync();
-
-if (i18n.locale === "ar") {
-  I18nManager.allowRTL(true);
-  I18nManager.forceRTL(true);
-}
 
 export default function RootLayout() {
   const router = useRouter();
@@ -29,11 +21,11 @@ export default function RootLayout() {
   >(null);
   const [isReady, setIsReady] = useState(false);
   const [fontLoaded, fontError] = useFonts({
-    "Amiri-Regular": require("@/assets/fonts/Amiri-Regular.ttf"),
-    "Amiri-Bold": require("@/assets/fonts/Amiri-Bold.ttf"),
-    "Cairo-Bold": require("@/assets/fonts/Cairo-Bold.ttf"),
-    "Cairo-Light": require("@/assets/fonts/Cairo-Light.ttf"),
-    "Cairo-Regular": require("@/assets/fonts/Cairo-Regular.ttf"),
+    "Amiri-Regular": require("../../assets/fonts/Amiri-Regular.ttf"),
+    "Amiri-Bold": require("../../assets/fonts/Amiri-Bold.ttf"),
+    "Cairo-Bold": require("../../assets/fonts/Cairo-Bold.ttf"),
+    "Cairo-Light": require("../../assets/fonts/Cairo-Light.ttf"),
+    "Cairo-Regular": require("../../assets/fonts/Cairo-Regular.ttf"),
   });
 
   // hide splash screen only when fonts are loaded
@@ -50,11 +42,14 @@ export default function RootLayout() {
         if (storedLang) {
           i18n.locale = storedLang;
           const isRTL = storedLang === "ar";
+
           if (I18nManager.isRTL !== isRTL) {
             I18nManager.allowRTL(isRTL);
             I18nManager.forceRTL(isRTL);
-            // On some platforms, you might need Updates.reloadAsync()
-            // but we'll try without it first for simplicity.
+            setTimeout(async () => {
+              await updates.reloadAsync();
+            }, 100);
+            return;
           }
         }
 
@@ -76,30 +71,6 @@ export default function RootLayout() {
     prepareApp();
   }, []);
 
-
-  // register notficiations
-  useEffect(() => {
-    const registerNotifications = async () => {
-      await initializeNotifications();
-
-      const data = await AsyncStorage.getItem("timings");
-      const timings: IPrayerDetails[] = data ? JSON.parse(data) : [];
-
-      if (timings.length === 0) {
-        console.log("No timings found, skipping notification schedule.");
-        return;
-      }
-
-      const AllPermissionsGranted = await accessNotifications();
-      if (AllPermissionsGranted) {
-        await scheduleAllNotifications(timings);
-      } else {
-        console.log("Permissions not fully granted. Skipping schedule.");
-      }
-    };
-    registerNotifications();
-  }, []);
-
   useEffect(() => {
     if (!isReady || completedOnboarding === null) {
       return;
@@ -113,7 +84,6 @@ export default function RootLayout() {
     // and the app will just render the <Stack> as intended.
   }, [isReady, completedOnboarding, router]);
 
-
   if (
     !(fontLoaded && fontError === null) ||
     !isReady ||
@@ -125,18 +95,9 @@ export default function RootLayout() {
   return (
     <ThemeProvider>
       <SafeAreaProvider>
-        <Stack screenOptions={{ headerShown: false }}>
+        <Stack screenOptions={{ headerShown: false, animation:'fade' }} >
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="GreatNames" options={{ headerShown: false }} />
-          <Stack.Screen name="SalahTimes" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="MyNotifications"
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="More" options={{ headerShown: false }} />
-
           <Stack.Screen name="Settings" />
-          <Stack.Screen name="Dua" />
         </Stack>
       </SafeAreaProvider>
     </ThemeProvider>

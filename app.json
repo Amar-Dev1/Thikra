@@ -7,6 +7,7 @@
     "scheme": "thikra",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "supportsRTL": true,
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
@@ -33,7 +34,8 @@
         "android.permission.ACCESS_COARSE_LOCATION",
         "android.permission.ACCESS_FINE_LOCATION"
       ],
-      "package": "com.amardev1.Thikra"
+      "package": "com.amardev1.Thikra",
+      "supportsRTL": true
     },
     "web": {
       "output": "static",
@@ -42,9 +44,6 @@
     },
     "extra": {
       "supportsRTL": true,
-      "PRAYER_TIME_URL": "https://api.aladhan.com/v1",
-      "SURAH_AUDIO_URL": "https://ia800606.us.archive.org/16/items/1_20251025",
-      "PLAY_STORE_STATUS_URL": "https://thikraworker.thikraworker1.workers.dev",
       "router": {},
       "eas": {
         "projectId": "359d9ac7-b411-4673-89b4-382173a12e60"
@@ -85,14 +84,8 @@
         "expo-localization",
         {
           "supportedLocales": {
-            "ios": [
-              "ar",
-              "en"
-            ],
-            "android": [
-              "ar",
-              "en"
-            ]
+            "ios": ["ar", "en"],
+            "android": ["ar", "en"]
           }
         }
       ],

@@ -4,6 +4,7 @@ import { useTheme } from "@/src/context/ThemeContext";
 import i18n from "@/src/i18n";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
+import * as updates from "expo-updates";
 import React, { useState } from "react";
 import { I18nManager, TouchableOpacity, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
@@ -26,6 +27,10 @@ const Language = () => {
       if (I18nManager.isRTL !== isRTL) {
         I18nManager.allowRTL(isRTL);
         I18nManager.forceRTL(isRTL);
+        setTimeout(async () => {
+          await updates.reloadAsync();
+        }, 100);
+        return;
       }
 
       router.push("/onboarding/AllowNotification");

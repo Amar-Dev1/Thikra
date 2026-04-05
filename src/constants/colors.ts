@@ -1,0 +1,17 @@
+export const Colors = {
+  primary: "#F8EFD4",
+  background: "#FFFDF8",
+  accent: "#F5C97B",
+  brandBrown: "#7A5B35",
+  brandGold: "#D4A056",
+  dark: "#222222",
+  light: "#FFFFFF",
+  gray: "#F0F0F0",
+  textMain: "#222222",
+  textMuted: "#666666",
+  white: "#FFFFFF",
+  transparent: "transparent",
+  darkBackground: "#111111",
+  darkCard: "#222222",
+  darkText: "#E0E0E0",
+};

@@ -1,23 +1,15 @@
 import BgWrapper from "@/src/components/BgWrapper";
-import ScreenTitle from "@/src/components/ScreenTitle";
-import SettingsItem from "@/src/components/SettingsItem";
 import ThemedText from "@/src/components/ThemedText";
 import { RightAngleSvg } from "@/src/constants/icons";
-import { images } from "@/src/constants/images";
 import { useTheme } from "@/src/context/ThemeContext";
-import i18n from "@/src/i18n";
 import React, { useState } from "react";
 import {
   Dimensions,
-  ImageBackground,
-  ScrollView,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import Modal from "react-native-modal";
-import Animated, { FadeInDown } from "react-native-reanimated";
-import { settingsElements } from "./elements";
 
 const { width, height } = Dimensions.get("window");
 
@@ -36,45 +28,15 @@ const Index = () => {
 
   return (
     <BgWrapper className="px-5 gap-3 bg-bgColor">
-      <ScreenTitle title={i18n.t("screens.settings.title")} />
-      <ScrollView showsVerticalScrollIndicator={false} className="flex-1">
-        {settingsElements.map((item, index) => {
-          const onPress =
-            item.title === i18n.t("screens.settings.theme_modal_title")
-              ? () => setThemeModalVisible(true)
-              : item.onPress;
-          return (
-            <Animated.View
-              key={index}
-              entering={FadeInDown.springify().delay(index * 200)}
-            >
-              <SettingsItem {...item} onPress={onPress} className="flex-1" />
-            </Animated.View>
-          );
-        })}
-      </ScrollView>
-      <Animated.View
-        className={`min-h-[25%] mb-safe-or-16`}
-        entering={FadeInDown.springify().delay(400)}
-      >
-        <ImageBackground
-          source={images.settingsImg}
-          resizeMode="cover"
-          className="flex-1 relative  rounded-2xl overflow-hidden flex-col justify-center px-5"
-        >
-          <View
-            className={`absolute inset-0 ${
-              currentTheme === "dark" ? "bg-black/50" : "bg-black/70"
-            } `}
-          />
-          <Text className="text-light font-cairo-bold text-xl text-center">
-            {i18n.t("screens.settings.verse")}
-          </Text>
-          <Text className="text-light font-cairo text-xs text-center mt-5">
-            {i18n.t("screens.settings.verse_source")}
-          </Text>
-        </ImageBackground>
-      </Animated.View>
+
+{/* new code here */}
+
+<View>
+  <Text>Settings</Text>
+</View>
+
+{/* new code here */}
+
 
       <Modal
         isVisible={themeModalVisible}

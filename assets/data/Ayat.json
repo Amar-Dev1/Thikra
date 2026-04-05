@@ -1,0 +1,2282 @@
+[
+  {
+    "id": 1,
+    "name": "الفاتحة",
+    "transliteration": "Al-Fatihah",
+    "translation": "The Opener",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 2,
+        "text": "ٱلۡحَمۡدُ لِلَّهِ رَبِّ ٱلۡعَٰلَمِينَ",
+        "translation": "[All] praise is [due] to Allah, Lord of the worlds"
+      },
+      {
+        "id": 7,
+        "text": "صِرَٰطَ ٱلَّذِينَ أَنۡعَمۡتَ عَلَيۡهِمۡ غَيۡرِ ٱلۡمَغۡضُوبِ عَلَيۡهِمۡ وَلَا ٱلضَّآلِّينَ",
+        "translation": "The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "البقرة",
+    "transliteration": "Al-Baqarah",
+    "translation": "The Cow",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 47,
+        "text": "يَٰبَنِيٓ إِسۡرَـٰٓءِيلَ ٱذۡكُرُواْ نِعۡمَتِيَ ٱلَّتِيٓ أَنۡعَمۡتُ عَلَيۡكُمۡ وَأَنِّي فَضَّلۡتُكُمۡ عَلَى ٱلۡعَٰلَمِينَ",
+        "translation": "O Children of Israel, remember My favor that I have bestowed upon you and that I preferred you over the worlds"
+      },
+      {
+        "id": 258,
+        "text": "أَلَمۡ تَرَ إِلَى ٱلَّذِي حَآجَّ إِبۡرَٰهِـۧمَ فِي رَبِّهِۦٓ أَنۡ ءَاتَىٰهُ ٱللَّهُ ٱلۡمُلۡكَ إِذۡ قَالَ إِبۡرَٰهِـۧمُ رَبِّيَ ٱلَّذِي يُحۡيِۦ وَيُمِيتُ قَالَ أَنَا۠ أُحۡيِۦ وَأُمِيتُۖ قَالَ إِبۡرَٰهِـۧمُ فَإِنَّ ٱللَّهَ يَأۡتِي بِٱلشَّمۡسِ مِنَ ٱلۡمَشۡرِقِ فَأۡتِ بِهَا مِنَ ٱلۡمَغۡرِبِ فَبُهِتَ ٱلَّذِي كَفَرَۗ وَٱللَّهُ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ",
+        "translation": "Have you not considered the one who argued with Abraham about his Lord [merely] because Allah had given him kingship? When Abraham said, \"My Lord is the one who gives life and causes death,\" he said, \"I give life and cause death.\" Abraham said, \"Indeed, Allah brings up the sun from the east, so bring it up from the west.\" So the disbeliever was overwhelmed [by astonishment], and Allah does not guide the wrongdoing people"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "آل عمران",
+    "transliteration": "Ali 'Imran",
+    "translation": "Family of Imran",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 64,
+        "text": "قُلۡ يَـٰٓأَهۡلَ ٱلۡكِتَٰبِ تَعَالَوۡاْ إِلَىٰ كَلِمَةٖ سَوَآءِۭ بَيۡنَنَا وَبَيۡنَكُمۡ أَلَّا نَعۡبُدَ إِلَّا ٱللَّهَ وَلَا نُشۡرِكَ بِهِۦ شَيۡـٔٗا وَلَا يَتَّخِذَ بَعۡضُنَا بَعۡضًا أَرۡبَابٗا مِّن دُونِ ٱللَّهِۚ فَإِن تَوَلَّوۡاْ فَقُولُواْ ٱشۡهَدُواْ بِأَنَّا مُسۡلِمُونَ",
+        "translation": "Say, \"O People of the Scripture, come to a word that is equitable between us and you - that we will not worship except Allah and not associate anything with Him and not take one another as lords instead of Allah.\" But if they turn away, then say, \"Bear witness that we are Muslims [submitting to Him]"
+      },
+      {
+        "id": 79,
+        "text": "مَا كَانَ لِبَشَرٍ أَن يُؤۡتِيَهُ ٱللَّهُ ٱلۡكِتَٰبَ وَٱلۡحُكۡمَ وَٱلنُّبُوَّةَ ثُمَّ يَقُولَ لِلنَّاسِ كُونُواْ عِبَادٗا لِّي مِن دُونِ ٱللَّهِ وَلَٰكِن كُونُواْ رَبَّـٰنِيِّـۧنَ بِمَا كُنتُمۡ تُعَلِّمُونَ ٱلۡكِتَٰبَ وَبِمَا كُنتُمۡ تَدۡرُسُونَ",
+        "translation": "It is not for a human [prophet] that Allah should give him the Scripture and authority and prophethood and then he would say to the people, \"Be servants to me rather than Allah,\" but [instead, he would say], \"Be pious scholars of the Lord because of what you have taught of the Scripture and because of what you have studied"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "النساء",
+    "transliteration": "An-Nisa",
+    "translation": "The Women",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 77,
+        "text": "أَلَمۡ تَرَ إِلَى ٱلَّذِينَ قِيلَ لَهُمۡ كُفُّوٓاْ أَيۡدِيَكُمۡ وَأَقِيمُواْ ٱلصَّلَوٰةَ وَءَاتُواْ ٱلزَّكَوٰةَ فَلَمَّا كُتِبَ عَلَيۡهِمُ ٱلۡقِتَالُ إِذَا فَرِيقٞ مِّنۡهُمۡ يَخۡشَوۡنَ ٱلنَّاسَ كَخَشۡيَةِ ٱللَّهِ أَوۡ أَشَدَّ خَشۡيَةٗۚ وَقَالُواْ رَبَّنَا لِمَ كَتَبۡتَ عَلَيۡنَا ٱلۡقِتَالَ لَوۡلَآ أَخَّرۡتَنَآ إِلَىٰٓ أَجَلٖ قَرِيبٖۗ قُلۡ مَتَٰعُ ٱلدُّنۡيَا قَلِيلٞ وَٱلۡأٓخِرَةُ خَيۡرٞ لِّمَنِ ٱتَّقَىٰ وَلَا تُظۡلَمُونَ فَتِيلًا",
+        "translation": "Have you not seen those who were told, \"Restrain your hands [from fighting] and establish prayer and give zakah\"? But then when fighting was ordained for them, at once a party of them feared men as they fear Allah or with [even] greater fear. They said, \"Our Lord, why have You decreed upon us fighting? If only You had postponed [it for] us for a short time.\" Say, The enjoyment of this world is little, and the Hereafter is better for he who fears Allah. And injustice will not be done to you, [even] as much as a thread [inside a date seed]"
+      },
+      {
+        "id": 79,
+        "text": "مَّآ أَصَابَكَ مِنۡ حَسَنَةٖ فَمِنَ ٱللَّهِۖ وَمَآ أَصَابَكَ مِن سَيِّئَةٖ فَمِن نَّفۡسِكَۚ وَأَرۡسَلۡنَٰكَ لِلنَّاسِ رَسُولٗاۚ وَكَفَىٰ بِٱللَّهِ شَهِيدٗا",
+        "translation": "What comes to you of good is from Allah, but what comes to you of evil, [O man], is from yourself. And We have sent you, [O Muhammad], to the people as a messenger, and sufficient is Allah as Witness"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "المائدة",
+    "transliteration": "Al-Ma'idah",
+    "translation": "The Table Spread",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 54,
+        "text": "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُواْ مَن يَرۡتَدَّ مِنكُمۡ عَن دِينِهِۦ فَسَوۡفَ يَأۡتِي ٱللَّهُ بِقَوۡمٖ يُحِبُّهُمۡ وَيُحِبُّونَهُۥٓ أَذِلَّةٍ عَلَى ٱلۡمُؤۡمِنِينَ أَعِزَّةٍ عَلَى ٱلۡكَٰفِرِينَ يُجَٰهِدُونَ فِي سَبِيلِ ٱللَّهِ وَلَا يَخَافُونَ لَوۡمَةَ لَآئِمٖۚ ذَٰلِكَ فَضۡلُ ٱللَّهِ يُؤۡتِيهِ مَن يَشَآءُۚ وَٱللَّهُ وَٰسِعٌ عَلِيمٌ",
+        "translation": "O you who have believed, whoever of you should revert from his religion - Allah will bring forth [in place of them] a people He will love and who will love Him [who are] humble toward the believers, powerful against the disbelievers; they strive in the cause of Allah and do not fear the blame of a critic. That is the favor of Allah; He bestows it upon whom He wills. And Allah is all-Encompassing and Knowing"
+      },
+      {
+        "id": 114,
+        "text": "قَالَ عِيسَى ٱبۡنُ مَرۡيَمَ ٱللَّهُمَّ رَبَّنَآ أَنزِلۡ عَلَيۡنَا مَآئِدَةٗ مِّنَ ٱلسَّمَآءِ تَكُونُ لَنَا عِيدٗا لِّأَوَّلِنَا وَءَاخِرِنَا وَءَايَةٗ مِّنكَۖ وَٱرۡزُقۡنَا وَأَنتَ خَيۡرُ ٱلرَّـٰزِقِينَ",
+        "translation": "Said Jesus, the son of Mary, \"O Allah, our Lord, send down to us a table [spread with food] from the heaven to be for us a festival for the first of us and the last of us and a sign from You. And provide for us, and You are the best of providers"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "الأنعام",
+    "transliteration": "Al-An'am",
+    "translation": "The Cattle",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 15,
+        "text": "قُلۡ إِنِّيٓ أَخَافُ إِنۡ عَصَيۡتُ رَبِّي عَذَابَ يَوۡمٍ عَظِيمٖ",
+        "translation": "Say, \"Indeed I fear, if I should disobey my Lord, the punishment of a tremendous Day"
+      },
+      {
+        "id": 161,
+        "text": "قُلۡ إِنَّنِي هَدَىٰنِي رَبِّيٓ إِلَىٰ صِرَٰطٖ مُّسۡتَقِيمٖ دِينٗا قِيَمٗا مِّلَّةَ إِبۡرَٰهِيمَ حَنِيفٗاۚ وَمَا كَانَ مِنَ ٱلۡمُشۡرِكِينَ",
+        "translation": "Say, \"Indeed, my Lord has guided me to a straight path - a correct religion - the way of Abraham, inclining toward truth. And he was not among those who associated others with Allah"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "الأعراف",
+    "transliteration": "Al-A'raf",
+    "translation": "The Heights",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 83,
+        "text": "فَأَنجَيۡنَٰهُ وَأَهۡلَهُۥٓ إِلَّا ٱمۡرَأَتَهُۥ كَانَتۡ مِنَ ٱلۡغَٰبِرِينَ",
+        "translation": "So We saved him and his family, except for his wife; she was of those who remained [with the evildoers]"
+      },
+      {
+        "id": 89,
+        "text": "قَدِ ٱفۡتَرَيۡنَا عَلَى ٱللَّهِ كَذِبًا إِنۡ عُدۡنَا فِي مِلَّتِكُم بَعۡدَ إِذۡ نَجَّىٰنَا ٱللَّهُ مِنۡهَاۚ وَمَا يَكُونُ لَنَآ أَن نَّعُودَ فِيهَآ إِلَّآ أَن يَشَآءَ ٱللَّهُ رَبُّنَاۚ وَسِعَ رَبُّنَا كُلَّ شَيۡءٍ عِلۡمًاۚ عَلَى ٱللَّهِ تَوَكَّلۡنَاۚ رَبَّنَا ٱفۡتَحۡ بَيۡنَنَا وَبَيۡنَ قَوۡمِنَا بِٱلۡحَقِّ وَأَنتَ خَيۡرُ ٱلۡفَٰتِحِينَ",
+        "translation": "We would have invented against Allah a lie if we returned to your religion after Allah had saved us from it. And it is not for us to return to it except that Allah, our Lord, should will. Our Lord has encompassed all things in knowledge. Upon Allah we have relied. Our Lord, decide between us and our people in truth, and You are the best of those who give decision"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "الأنفال",
+    "transliteration": "Al-Anfal",
+    "translation": "The Spoils of War",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 8,
+        "text": "لِيُحِقَّ ٱلۡحَقَّ وَيُبۡطِلَ ٱلۡبَٰطِلَ وَلَوۡ كَرِهَ ٱلۡمُجۡرِمُونَ",
+        "translation": "That He should establish the truth and abolish falsehood, even if the criminals disliked it"
+      },
+      {
+        "id": 45,
+        "text": "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓاْ إِذَا لَقِيتُمۡ فِئَةٗ فَٱثۡبُتُواْ وَٱذۡكُرُواْ ٱللَّهَ كَثِيرٗا لَّعَلَّكُمۡ تُفۡلِحُونَ",
+        "translation": "O you who have believed, when you encounter a company [from the enemy forces], stand firm and remember Allah much that you may be successful"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "التوبة",
+    "transliteration": "At-Tawbah",
+    "translation": "The Repentance",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 68,
+        "text": "وَعَدَ ٱللَّهُ ٱلۡمُنَٰفِقِينَ وَٱلۡمُنَٰفِقَٰتِ وَٱلۡكُفَّارَ نَارَ جَهَنَّمَ خَٰلِدِينَ فِيهَاۚ هِيَ حَسۡبُهُمۡۚ وَلَعَنَهُمُ ٱللَّهُۖ وَلَهُمۡ عَذَابٞ مُّقِيمٞ",
+        "translation": "Allah has promised the hypocrite men and hypocrite women and the disbelievers the fire of Hell, wherein they will abide eternally. It is sufficient for them. And Allah has cursed them, and for them is an enduring punishment"
+      },
+      {
+        "id": 69,
+        "text": "كَٱلَّذِينَ مِن قَبۡلِكُمۡ كَانُوٓاْ أَشَدَّ مِنكُمۡ قُوَّةٗ وَأَكۡثَرَ أَمۡوَٰلٗا وَأَوۡلَٰدٗا فَٱسۡتَمۡتَعُواْ بِخَلَٰقِهِمۡ فَٱسۡتَمۡتَعۡتُم بِخَلَٰقِكُمۡ كَمَا ٱسۡتَمۡتَعَ ٱلَّذِينَ مِن قَبۡلِكُم بِخَلَٰقِهِمۡ وَخُضۡتُمۡ كَٱلَّذِي خَاضُوٓاْۚ أُوْلَـٰٓئِكَ حَبِطَتۡ أَعۡمَٰلُهُمۡ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِۖ وَأُوْلَـٰٓئِكَ هُمُ ٱلۡخَٰسِرُونَ",
+        "translation": "[You disbelievers are] like those before you; they were stronger than you in power and more abundant in wealth and children. They enjoyed their portion [of worldly enjoyment], and you have enjoyed your portion as those before you enjoyed their portion, and you have engaged [in vanities] like that in which they engaged. [It is] those whose deeds have become worthless in this world and in the Hereafter, and it is they who are the losers"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "يونس",
+    "transliteration": "Yunus",
+    "translation": "Jonah",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 82,
+        "text": "وَيُحِقُّ ٱللَّهُ ٱلۡحَقَّ بِكَلِمَٰتِهِۦ وَلَوۡ كَرِهَ ٱلۡمُجۡرِمُونَ",
+        "translation": "And Allah will establish the truth by His words, even if the criminals dislike it"
+      },
+      {
+        "id": 108,
+        "text": "قُلۡ يَـٰٓأَيُّهَا ٱلنَّاسُ قَدۡ جَآءَكُمُ ٱلۡحَقُّ مِن رَّبِّكُمۡۖ فَمَنِ ٱهۡتَدَىٰ فَإِنَّمَا يَهۡتَدِي لِنَفۡسِهِۦۖ وَمَن ضَلَّ فَإِنَّمَا يَضِلُّ عَلَيۡهَاۖ وَمَآ أَنَا۠ عَلَيۡكُم بِوَكِيلٖ",
+        "translation": "Say, \"O mankind, the truth has come to you from your Lord, so whoever is guided is only guided for [the benefit of] his soul, and whoever goes astray only goes astray [in violation] against it. And I am not over you a manager"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "هود",
+    "transliteration": "Hud",
+    "translation": "Hud",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 21,
+        "text": "أُوْلَـٰٓئِكَ ٱلَّذِينَ خَسِرُوٓاْ أَنفُسَهُمۡ وَضَلَّ عَنۡهُم مَّا كَانُواْ يَفۡتَرُونَ",
+        "translation": "Those are the ones who will have lost themselves, and lost from them is what they used to invent"
+      },
+      {
+        "id": 79,
+        "text": "قَالُواْ لَقَدۡ عَلِمۡتَ مَا لَنَا فِي بَنَاتِكَ مِنۡ حَقّٖ وَإِنَّكَ لَتَعۡلَمُ مَا نُرِيدُ",
+        "translation": "They said, \"You have already known that we have not concerning your daughters any claim, and indeed, you know what we want"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "يوسف",
+    "transliteration": "Yusuf",
+    "translation": "Joseph",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 84,
+        "text": "وَتَوَلَّىٰ عَنۡهُمۡ وَقَالَ يَـٰٓأَسَفَىٰ عَلَىٰ يُوسُفَ وَٱبۡيَضَّتۡ عَيۡنَاهُ مِنَ ٱلۡحُزۡنِ فَهُوَ كَظِيمٞ",
+        "translation": "And he turned away from them and said, \"Oh, my sorrow over Joseph,\" and his eyes became white from grief, for he was [of that] a suppressor"
+      },
+      {
+        "id": 91,
+        "text": "قَالُواْ تَٱللَّهِ لَقَدۡ ءَاثَرَكَ ٱللَّهُ عَلَيۡنَا وَإِن كُنَّا لَخَٰطِـِٔينَ",
+        "translation": "They said, \"By Allah, certainly has Allah preferred you over us, and indeed, we have been sinners"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "الرعد",
+    "transliteration": "Ar-Ra'd",
+    "translation": "The Thunder",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 13,
+        "text": "وَيُسَبِّحُ ٱلرَّعۡدُ بِحَمۡدِهِۦ وَٱلۡمَلَـٰٓئِكَةُ مِنۡ خِيفَتِهِۦ وَيُرۡسِلُ ٱلصَّوَٰعِقَ فَيُصِيبُ بِهَا مَن يَشَآءُ وَهُمۡ يُجَٰدِلُونَ فِي ٱللَّهِ وَهُوَ شَدِيدُ ٱلۡمِحَالِ",
+        "translation": "And the thunder exalts [Allah] with praise of Him - and the angels [as well] from fear of Him - and He sends thunderbolts and strikes therewith whom He wills while they dispute about Allah; and He is severe in assault"
+      },
+      {
+        "id": 17,
+        "text": "أَنزَلَ مِنَ ٱلسَّمَآءِ مَآءٗ فَسَالَتۡ أَوۡدِيَةُۢ بِقَدَرِهَا فَٱحۡتَمَلَ ٱلسَّيۡلُ زَبَدٗا رَّابِيٗاۖ وَمِمَّا يُوقِدُونَ عَلَيۡهِ فِي ٱلنَّارِ ٱبۡتِغَآءَ حِلۡيَةٍ أَوۡ مَتَٰعٖ زَبَدٞ مِّثۡلُهُۥۚ كَذَٰلِكَ يَضۡرِبُ ٱللَّهُ ٱلۡحَقَّ وَٱلۡبَٰطِلَۚ فَأَمَّا ٱلزَّبَدُ فَيَذۡهَبُ جُفَآءٗۖ وَأَمَّا مَا يَنفَعُ ٱلنَّاسَ فَيَمۡكُثُ فِي ٱلۡأَرۡضِۚ كَذَٰلِكَ يَضۡرِبُ ٱللَّهُ ٱلۡأَمۡثَالَ",
+        "translation": "He sends down from the sky, rain, and valleys flow according to their capacity, and the torrent carries a rising foam. And from that [ore] which they heat in the fire, desiring adornments and utensils, is a foam like it. Thus Allah presents [the example of] truth and falsehood. As for the foam, it vanishes, [being] cast off; but as for that which benefits the people, it remains on the earth. Thus does Allah present examples"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "ابراهيم",
+    "transliteration": "Ibrahim",
+    "translation": "Abraham",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 7,
+        "text": "وَإِذۡ تَأَذَّنَ رَبُّكُمۡ لَئِن شَكَرۡتُمۡ لَأَزِيدَنَّكُمۡۖ وَلَئِن كَفَرۡتُمۡ إِنَّ عَذَابِي لَشَدِيدٞ",
+        "translation": "And [remember] when your Lord proclaimed, 'If you are grateful, I will surely increase you [in favor]; but if you deny, indeed, My punishment is severe"
+      },
+      {
+        "id": 28,
+        "text": "۞أَلَمۡ تَرَ إِلَى ٱلَّذِينَ بَدَّلُواْ نِعۡمَتَ ٱللَّهِ كُفۡرٗا وَأَحَلُّواْ قَوۡمَهُمۡ دَارَ ٱلۡبَوَارِ",
+        "translation": "Have you not considered those who exchanged the favor of Allah for disbelief and settled their people [in] the home of ruin"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "الحجر",
+    "transliteration": "Al-Hijr",
+    "translation": "The Rocky Tract",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 59,
+        "text": "إِلَّآ ءَالَ لُوطٍ إِنَّا لَمُنَجُّوهُمۡ أَجۡمَعِينَ",
+        "translation": "Except the family of Lot; indeed, we will save them all"
+      },
+      {
+        "id": 91,
+        "text": "ٱلَّذِينَ جَعَلُواْ ٱلۡقُرۡءَانَ عِضِينَ",
+        "translation": "Who have made the Qur'an into portions"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "النحل",
+    "transliteration": "An-Nahl",
+    "translation": "The Bee",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 53,
+        "text": "وَمَا بِكُم مِّن نِّعۡمَةٖ فَمِنَ ٱللَّهِۖ ثُمَّ إِذَا مَسَّكُمُ ٱلضُّرُّ فَإِلَيۡهِ تَجۡـَٔرُونَ",
+        "translation": "And whatever you have of favor - it is from Allah. Then when adversity touches you, to Him you cry for help"
+      },
+      {
+        "id": 125,
+        "text": "ٱدۡعُ إِلَىٰ سَبِيلِ رَبِّكَ بِٱلۡحِكۡمَةِ وَٱلۡمَوۡعِظَةِ ٱلۡحَسَنَةِۖ وَجَٰدِلۡهُم بِٱلَّتِي هِيَ أَحۡسَنُۚ إِنَّ رَبَّكَ هُوَ أَعۡلَمُ بِمَن ضَلَّ عَن سَبِيلِهِۦ وَهُوَ أَعۡلَمُ بِٱلۡمُهۡتَدِينَ",
+        "translation": "Invite to the way of your Lord with wisdom and good instruction, and argue with them in a way that is best. Indeed, your Lord is most knowing of who has strayed from His way, and He is most knowing of who is [rightly] guided"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "الإسراء",
+    "transliteration": "Al-Isra",
+    "translation": "The Night Journey",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 51,
+        "text": "أَوۡ خَلۡقٗا مِّمَّا يَكۡبُرُ فِي صُدُورِكُمۡۚ فَسَيَقُولُونَ مَن يُعِيدُنَاۖ قُلِ ٱلَّذِي فَطَرَكُمۡ أَوَّلَ مَرَّةٖۚ فَسَيُنۡغِضُونَ إِلَيۡكَ رُءُوسَهُمۡ وَيَقُولُونَ مَتَىٰ هُوَۖ قُلۡ عَسَىٰٓ أَن يَكُونَ قَرِيبٗا",
+        "translation": "Or [any] creation of that which is great within your breasts.\" And they will say, \"Who will restore us?\" Say, \"He who brought you forth the first time.\" Then they will nod their heads toward you and say, \"When is that?\" Say, \"Perhaps it will be soon"
+      },
+      {
+        "id": 101,
+        "text": "وَلَقَدۡ ءَاتَيۡنَا مُوسَىٰ تِسۡعَ ءَايَٰتِۭ بَيِّنَٰتٖۖ فَسۡـَٔلۡ بَنِيٓ إِسۡرَـٰٓءِيلَ إِذۡ جَآءَهُمۡ فَقَالَ لَهُۥ فِرۡعَوۡنُ إِنِّي لَأَظُنُّكَ يَٰمُوسَىٰ مَسۡحُورٗا",
+        "translation": "And We had certainly given Moses nine evident signs, so ask the Children of Israel [about] when he came to them and Pharaoh said to him, \"Indeed I think, O Moses, that you are affected by magic"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "الكهف",
+    "transliteration": "Al-Kahf",
+    "translation": "The Cave",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 30,
+        "text": "إِنَّ ٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّـٰلِحَٰتِ إِنَّا لَا نُضِيعُ أَجۡرَ مَنۡ أَحۡسَنَ عَمَلًا",
+        "translation": "Indeed, those who have believed and done righteous deeds - indeed, We will not allow to be lost the reward of any who did well in deeds"
+      },
+      {
+        "id": 39,
+        "text": "وَلَوۡلَآ إِذۡ دَخَلۡتَ جَنَّتَكَ قُلۡتَ مَا شَآءَ ٱللَّهُ لَا قُوَّةَ إِلَّا بِٱللَّهِۚ إِن تَرَنِ أَنَا۠ أَقَلَّ مِنكَ مَالٗا وَوَلَدٗا",
+        "translation": "And why did you, when you entered your garden, not say, 'What Allah willed [has occurred]; there is no power except in Allah '? Although you see me less than you in wealth and children"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "مريم",
+    "transliteration": "Maryam",
+    "translation": "Mary",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 16,
+        "text": "وَٱذۡكُرۡ فِي ٱلۡكِتَٰبِ مَرۡيَمَ إِذِ ٱنتَبَذَتۡ مِنۡ أَهۡلِهَا مَكَانٗا شَرۡقِيّٗا",
+        "translation": "And mention, [O Muhammad], in the Book [the story of] Mary, when she withdrew from her family to a place toward the east"
+      },
+      {
+        "id": 83,
+        "text": "أَلَمۡ تَرَ أَنَّآ أَرۡسَلۡنَا ٱلشَّيَٰطِينَ عَلَى ٱلۡكَٰفِرِينَ تَؤُزُّهُمۡ أَزّٗا",
+        "translation": "Do you not see that We have sent the devils upon the disbelievers, inciting them to [evil] with [constant] incitement"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "طه",
+    "transliteration": "Taha",
+    "translation": "Ta-Ha",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 57,
+        "text": "قَالَ أَجِئۡتَنَا لِتُخۡرِجَنَا مِنۡ أَرۡضِنَا بِسِحۡرِكَ يَٰمُوسَىٰ",
+        "translation": "He said, \"Have you come to us to drive us out of our land with your magic, O Moses"
+      },
+      {
+        "id": 72,
+        "text": "قَالُواْ لَن نُّؤۡثِرَكَ عَلَىٰ مَا جَآءَنَا مِنَ ٱلۡبَيِّنَٰتِ وَٱلَّذِي فَطَرَنَاۖ فَٱقۡضِ مَآ أَنتَ قَاضٍۖ إِنَّمَا تَقۡضِي هَٰذِهِ ٱلۡحَيَوٰةَ ٱلدُّنۡيَآ",
+        "translation": "They said, \"Never will we prefer you over what has come to us of clear proofs and [over] He who created us. So decree whatever you are to decree. You can only decree for this worldly life"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "الأنبياء",
+    "transliteration": "Al-Anbya",
+    "translation": "The Prophets",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 71,
+        "text": "وَنَجَّيۡنَٰهُ وَلُوطًا إِلَى ٱلۡأَرۡضِ ٱلَّتِي بَٰرَكۡنَا فِيهَا لِلۡعَٰلَمِينَ",
+        "translation": "And We delivered him and Lot to the land which We had blessed for the worlds"
+      },
+      {
+        "id": 72,
+        "text": "وَوَهَبۡنَا لَهُۥٓ إِسۡحَٰقَ وَيَعۡقُوبَ نَافِلَةٗۖ وَكُلّٗا جَعَلۡنَا صَٰلِحِينَ",
+        "translation": "And We gave him Isaac and Jacob in addition, and all [of them] We made righteous"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "الحج",
+    "transliteration": "Al-Hajj",
+    "translation": "The Pilgrimage",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 2,
+        "text": "يَوۡمَ تَرَوۡنَهَا تَذۡهَلُ كُلُّ مُرۡضِعَةٍ عَمَّآ أَرۡضَعَتۡ وَتَضَعُ كُلُّ ذَاتِ حَمۡلٍ حَمۡلَهَا وَتَرَى ٱلنَّاسَ سُكَٰرَىٰ وَمَا هُم بِسُكَٰرَىٰ وَلَٰكِنَّ عَذَابَ ٱللَّهِ شَدِيدٞ",
+        "translation": "On the Day you see it every nursing mother will be distracted from that [child] she was nursing, and every pregnant woman will abort her pregnancy, and you will see the people [appearing] intoxicated while they are not intoxicated; but the punishment of Allah is severe"
+      },
+      {
+        "id": 35,
+        "text": "ٱلَّذِينَ إِذَا ذُكِرَ ٱللَّهُ وَجِلَتۡ قُلُوبُهُمۡ وَٱلصَّـٰبِرِينَ عَلَىٰ مَآ أَصَابَهُمۡ وَٱلۡمُقِيمِي ٱلصَّلَوٰةِ وَمِمَّا رَزَقۡنَٰهُمۡ يُنفِقُونَ",
+        "translation": "Who, when Allah is mentioned, their hearts are fearful, and [to] the patient over what has afflicted them, and the establishers of prayer and those who spend from what We have provided them"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "المؤمنون",
+    "transliteration": "Al-Mu'minun",
+    "translation": "The Believers",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 16,
+        "text": "ثُمَّ إِنَّكُمۡ يَوۡمَ ٱلۡقِيَٰمَةِ تُبۡعَثُونَ",
+        "translation": "Then indeed you, on the Day of Resurrection, will be resurrected"
+      },
+      {
+        "id": 99,
+        "text": "حَتَّىٰٓ إِذَا جَآءَ أَحَدَهُمُ ٱلۡمَوۡتُ قَالَ رَبِّ ٱرۡجِعُونِ",
+        "translation": "[For such is the state of the disbelievers], until, when death comes to one of them, he says, \"My Lord, send me back"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "النور",
+    "transliteration": "An-Nur",
+    "translation": "The Light",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 7,
+        "text": "وَٱلۡخَٰمِسَةُ أَنَّ لَعۡنَتَ ٱللَّهِ عَلَيۡهِ إِن كَانَ مِنَ ٱلۡكَٰذِبِينَ",
+        "translation": "And the fifth [oath will be] that the curse of Allah be upon him if he should be among the liars"
+      },
+      {
+        "id": 13,
+        "text": "لَّوۡلَا جَآءُو عَلَيۡهِ بِأَرۡبَعَةِ شُهَدَآءَۚ فَإِذۡ لَمۡ يَأۡتُواْ بِٱلشُّهَدَآءِ فَأُوْلَـٰٓئِكَ عِندَ ٱللَّهِ هُمُ ٱلۡكَٰذِبُونَ",
+        "translation": "Why did they [who slandered] not produce for it four witnesses? And when they do not produce the witnesses, then it is they, in the sight of Allah, who are the liars"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "الفرقان",
+    "transliteration": "Al-Furqan",
+    "translation": "The Criterion",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 30,
+        "text": "وَقَالَ ٱلرَّسُولُ يَٰرَبِّ إِنَّ قَوۡمِي ٱتَّخَذُواْ هَٰذَا ٱلۡقُرۡءَانَ مَهۡجُورٗا",
+        "translation": "And the Messenger has said, \"O my Lord, indeed my people have taken this Qur'an as [a thing] abandoned"
+      },
+      {
+        "id": 33,
+        "text": "وَلَا يَأۡتُونَكَ بِمَثَلٍ إِلَّا جِئۡنَٰكَ بِٱلۡحَقِّ وَأَحۡسَنَ تَفۡسِيرًا",
+        "translation": "And they do not come to you with an argument except that We bring you the truth and the best explanation"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "name": "الشعراء",
+    "transliteration": "Ash-Shu'ara",
+    "translation": "The Poets",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 143,
+        "text": "إِنِّي لَكُمۡ رَسُولٌ أَمِينٞ",
+        "translation": "Indeed, I am to you a trustworthy messenger"
+      },
+      {
+        "id": 147,
+        "text": "فِي جَنَّـٰتٖ وَعُيُونٖ",
+        "translation": "Within gardens and springs"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "النمل",
+    "transliteration": "An-Naml",
+    "translation": "The Ant",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 24,
+        "text": "وَجَدتُّهَا وَقَوۡمَهَا يَسۡجُدُونَ لِلشَّمۡسِ مِن دُونِ ٱللَّهِ وَزَيَّنَ لَهُمُ ٱلشَّيۡطَٰنُ أَعۡمَٰلَهُمۡ فَصَدَّهُمۡ عَنِ ٱلسَّبِيلِ فَهُمۡ لَا يَهۡتَدُونَ",
+        "translation": "I found her and her people prostrating to the sun instead of Allah, and Satan has made their deeds pleasing to them and averted them from [His] way, so they are not guided"
+      },
+      {
+        "id": 25,
+        "text": "أَلَّاۤ يَسۡجُدُواْۤ لِلَّهِ ٱلَّذِي يُخۡرِجُ ٱلۡخَبۡءَ فِي ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضِ وَيَعۡلَمُ مَا تُخۡفُونَ وَمَا تُعۡلِنُونَ",
+        "translation": "[And] so they do not prostrate to Allah, who brings forth what is hidden within the heavens and the earth and knows what you conceal and what you declare"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "القصص",
+    "transliteration": "Al-Qasas",
+    "translation": "The Stories",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 20,
+        "text": "وَجَآءَ رَجُلٞ مِّنۡ أَقۡصَا ٱلۡمَدِينَةِ يَسۡعَىٰ قَالَ يَٰمُوسَىٰٓ إِنَّ ٱلۡمَلَأَ يَأۡتَمِرُونَ بِكَ لِيَقۡتُلُوكَ فَٱخۡرُجۡ إِنِّي لَكَ مِنَ ٱلنَّـٰصِحِينَ",
+        "translation": "And a man came from the farthest end of the city, running. He said, \"O Moses, indeed the eminent ones are conferring over you [intending] to kill you, so leave [the city]; indeed, I am to you of the sincere advisors"
+      },
+      {
+        "id": 55,
+        "text": "وَإِذَا سَمِعُواْ ٱللَّغۡوَ أَعۡرَضُواْ عَنۡهُ وَقَالُواْ لَنَآ أَعۡمَٰلُنَا وَلَكُمۡ أَعۡمَٰلُكُمۡ سَلَٰمٌ عَلَيۡكُمۡ لَا نَبۡتَغِي ٱلۡجَٰهِلِينَ",
+        "translation": "And when they hear ill speech, they turn away from it and say, \"For us are our deeds, and for you are your deeds. Peace will be upon you; we seek not the ignorant"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "العنكبوت",
+    "transliteration": "Al-'Ankabut",
+    "translation": "The Spider",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 30,
+        "text": "قَالَ رَبِّ ٱنصُرۡنِي عَلَى ٱلۡقَوۡمِ ٱلۡمُفۡسِدِينَ",
+        "translation": "He said, \"My Lord, support me against the corrupting people"
+      },
+      {
+        "id": 56,
+        "text": "يَٰعِبَادِيَ ٱلَّذِينَ ءَامَنُوٓاْ إِنَّ أَرۡضِي وَٰسِعَةٞ فَإِيَّـٰيَ فَٱعۡبُدُونِ",
+        "translation": "O My servants who have believed, indeed My earth is spacious, so worship only Me"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "name": "الروم",
+    "transliteration": "Ar-Rum",
+    "translation": "The Romans",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 5,
+        "text": "بِنَصۡرِ ٱللَّهِۚ يَنصُرُ مَن يَشَآءُۖ وَهُوَ ٱلۡعَزِيزُ ٱلرَّحِيمُ",
+        "translation": "In the victory of Allah. He gives victory to whom He wills, and He is the Exalted in Might, the Merciful"
+      },
+      {
+        "id": 35,
+        "text": "أَمۡ أَنزَلۡنَا عَلَيۡهِمۡ سُلۡطَٰنٗا فَهُوَ يَتَكَلَّمُ بِمَا كَانُواْ بِهِۦ يُشۡرِكُونَ",
+        "translation": "Or have We sent down to them an authority, and it speaks of what they were associating with Him"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "لقمان",
+    "transliteration": "Luqman",
+    "translation": "Luqman",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 15,
+        "text": "وَإِن جَٰهَدَاكَ عَلَىٰٓ أَن تُشۡرِكَ بِي مَا لَيۡسَ لَكَ بِهِۦ عِلۡمٞ فَلَا تُطِعۡهُمَاۖ وَصَاحِبۡهُمَا فِي ٱلدُّنۡيَا مَعۡرُوفٗاۖ وَٱتَّبِعۡ سَبِيلَ مَنۡ أَنَابَ إِلَيَّۚ ثُمَّ إِلَيَّ مَرۡجِعُكُمۡ فَأُنَبِّئُكُم بِمَا كُنتُمۡ تَعۡمَلُونَ",
+        "translation": "But if they endeavor to make you associate with Me that of which you have no knowledge, do not obey them but accompany them in [this] world with appropriate kindness and follow the way of those who turn back to Me [in repentance]. Then to Me will be your return, and I will inform you about what you used to do"
+      },
+      {
+        "id": 28,
+        "text": "مَّا خَلۡقُكُمۡ وَلَا بَعۡثُكُمۡ إِلَّا كَنَفۡسٖ وَٰحِدَةٍۚ إِنَّ ٱللَّهَ سَمِيعُۢ بَصِيرٌ",
+        "translation": "Your creation and your resurrection will not be but as that of a single soul. Indeed, Allah is Hearing and Seeing"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "السجدة",
+    "transliteration": "As-Sajdah",
+    "translation": "The Prostration",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 6,
+        "text": "ذَٰلِكَ عَٰلِمُ ٱلۡغَيۡبِ وَٱلشَّهَٰدَةِ ٱلۡعَزِيزُ ٱلرَّحِيمُ",
+        "translation": "That is the Knower of the unseen and the witnessed, the Exalted in Might, the Merciful"
+      },
+      {
+        "id": 27,
+        "text": "أَوَلَمۡ يَرَوۡاْ أَنَّا نَسُوقُ ٱلۡمَآءَ إِلَى ٱلۡأَرۡضِ ٱلۡجُرُزِ فَنُخۡرِجُ بِهِۦ زَرۡعٗا تَأۡكُلُ مِنۡهُ أَنۡعَٰمُهُمۡ وَأَنفُسُهُمۡۚ أَفَلَا يُبۡصِرُونَ",
+        "translation": "Have they not seen that We drive the water [in clouds] to barren land and bring forth thereby crops from which their livestock eat and [they] themselves? Then do they not see"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "الأحزاب",
+    "transliteration": "Al-Ahzab",
+    "translation": "The Combined Forces",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 11,
+        "text": "هُنَالِكَ ٱبۡتُلِيَ ٱلۡمُؤۡمِنُونَ وَزُلۡزِلُواْ زِلۡزَالٗا شَدِيدٗا",
+        "translation": "There the believers were tested and shaken with a severe shaking"
+      },
+      {
+        "id": 63,
+        "text": "يَسۡـَٔلُكَ ٱلنَّاسُ عَنِ ٱلسَّاعَةِۖ قُلۡ إِنَّمَا عِلۡمُهَا عِندَ ٱللَّهِۚ وَمَا يُدۡرِيكَ لَعَلَّ ٱلسَّاعَةَ تَكُونُ قَرِيبًا",
+        "translation": "People ask you concerning the Hour. Say,\" Knowledge of it is only with Allah. And what may make you perceive? Perhaps the Hour is near"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "سبإ",
+    "transliteration": "Saba",
+    "translation": "Sheba",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 31,
+        "text": "وَقَالَ ٱلَّذِينَ كَفَرُواْ لَن نُّؤۡمِنَ بِهَٰذَا ٱلۡقُرۡءَانِ وَلَا بِٱلَّذِي بَيۡنَ يَدَيۡهِۗ وَلَوۡ تَرَىٰٓ إِذِ ٱلظَّـٰلِمُونَ مَوۡقُوفُونَ عِندَ رَبِّهِمۡ يَرۡجِعُ بَعۡضُهُمۡ إِلَىٰ بَعۡضٍ ٱلۡقَوۡلَ يَقُولُ ٱلَّذِينَ ٱسۡتُضۡعِفُواْ لِلَّذِينَ ٱسۡتَكۡبَرُواْ لَوۡلَآ أَنتُمۡ لَكُنَّا مُؤۡمِنِينَ",
+        "translation": "And those who disbelieve say, \"We will never believe in this Qur'an nor in that before it.\" But if you could see when the wrongdoers are made to stand before their Lord, refuting each other's words... Those who were oppressed will say to those who were arrogant, \"If not for you, we would have been believers"
+      },
+      {
+        "id": 38,
+        "text": "وَٱلَّذِينَ يَسۡعَوۡنَ فِيٓ ءَايَٰتِنَا مُعَٰجِزِينَ أُوْلَـٰٓئِكَ فِي ٱلۡعَذَابِ مُحۡضَرُونَ",
+        "translation": "And the ones who strive against Our verses to cause [them] failure - those will be brought into the punishment [to remain]"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "name": "فاطر",
+    "transliteration": "Fatir",
+    "translation": "Originator",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 4,
+        "text": "وَإِن يُكَذِّبُوكَ فَقَدۡ كُذِّبَتۡ رُسُلٞ مِّن قَبۡلِكَۚ وَإِلَى ٱللَّهِ تُرۡجَعُ ٱلۡأُمُورُ",
+        "translation": "And if they deny you, [O Muhammad] - already were messengers denied before you. And to Allah are returned [all] matters"
+      },
+      {
+        "id": 18,
+        "text": "وَلَا تَزِرُ وَازِرَةٞ وِزۡرَ أُخۡرَىٰۚ وَإِن تَدۡعُ مُثۡقَلَةٌ إِلَىٰ حِمۡلِهَا لَا يُحۡمَلۡ مِنۡهُ شَيۡءٞ وَلَوۡ كَانَ ذَا قُرۡبَىٰٓۗ إِنَّمَا تُنذِرُ ٱلَّذِينَ يَخۡشَوۡنَ رَبَّهُم بِٱلۡغَيۡبِ وَأَقَامُواْ ٱلصَّلَوٰةَۚ وَمَن تَزَكَّىٰ فَإِنَّمَا يَتَزَكَّىٰ لِنَفۡسِهِۦۚ وَإِلَى ٱللَّهِ ٱلۡمَصِيرُ",
+        "translation": "And no bearer of burdens will bear the burden of another. And if a heavily laden soul calls [another] to [carry some of] its load, nothing of it will be carried, even if he should be a close relative. You can only warn those who fear their Lord unseen and have established prayer. And whoever purifies himself only purifies himself for [the benefit of] his soul. And to Allah is the [final] destination"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "name": "يس",
+    "transliteration": "Ya-Sin",
+    "translation": "Ya Sin",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 23,
+        "text": "ءَأَتَّخِذُ مِن دُونِهِۦٓ ءَالِهَةً إِن يُرِدۡنِ ٱلرَّحۡمَٰنُ بِضُرّٖ لَّا تُغۡنِ عَنِّي شَفَٰعَتُهُمۡ شَيۡـٔٗا وَلَا يُنقِذُونِ",
+        "translation": "Should I take other than Him [false] deities [while], if the Most Merciful intends for me some adversity, their intercession will not avail me at all, nor can they save me"
+      },
+      {
+        "id": 74,
+        "text": "وَٱتَّخَذُواْ مِن دُونِ ٱللَّهِ ءَالِهَةٗ لَّعَلَّهُمۡ يُنصَرُونَ",
+        "translation": "But they have taken besides Allah [false] deities that perhaps they would be helped"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "name": "الصافات",
+    "transliteration": "As-Saffat",
+    "translation": "Those who set the Ranks",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 44,
+        "text": "عَلَىٰ سُرُرٖ مُّتَقَٰبِلِينَ",
+        "translation": "On thrones facing one another"
+      },
+      {
+        "id": 108,
+        "text": "وَتَرَكۡنَا عَلَيۡهِ فِي ٱلۡأٓخِرِينَ",
+        "translation": "And We left for him [favorable mention] among later generations"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "ص",
+    "transliteration": "Sad",
+    "translation": "The Letter \"Saad\"",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 9,
+        "text": "أَمۡ عِندَهُمۡ خَزَآئِنُ رَحۡمَةِ رَبِّكَ ٱلۡعَزِيزِ ٱلۡوَهَّابِ",
+        "translation": "Or do they have the depositories of the mercy of your Lord, the Exalted in Might, the Bestower"
+      },
+      {
+        "id": 67,
+        "text": "قُلۡ هُوَ نَبَؤٌاْ عَظِيمٌ",
+        "translation": "Say, \"It is great news"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "الزمر",
+    "transliteration": "Az-Zumar",
+    "translation": "The Troops",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 12,
+        "text": "وَأُمِرۡتُ لِأَنۡ أَكُونَ أَوَّلَ ٱلۡمُسۡلِمِينَ",
+        "translation": "And I have been commanded to be the first [among you] of the Muslims"
+      },
+      {
+        "id": 59,
+        "text": "بَلَىٰ قَدۡ جَآءَتۡكَ ءَايَٰتِي فَكَذَّبۡتَ بِهَا وَٱسۡتَكۡبَرۡتَ وَكُنتَ مِنَ ٱلۡكَٰفِرِينَ",
+        "translation": "But yes, there had come to you My verses, but you denied them and were arrogant, and you were among the disbelievers"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "غافر",
+    "transliteration": "Ghafir",
+    "translation": "The Forgiver",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 48,
+        "text": "قَالَ ٱلَّذِينَ ٱسۡتَكۡبَرُوٓاْ إِنَّا كُلّٞ فِيهَآ إِنَّ ٱللَّهَ قَدۡ حَكَمَ بَيۡنَ ٱلۡعِبَادِ",
+        "translation": "Those who had been arrogant will say, \"Indeed, all [of us] are in it. Indeed, Allah has judged between the servants"
+      },
+      {
+        "id": 74,
+        "text": "مِن دُونِ ٱللَّهِۖ قَالُواْ ضَلُّواْ عَنَّا بَل لَّمۡ نَكُن نَّدۡعُواْ مِن قَبۡلُ شَيۡـٔٗاۚ كَذَٰلِكَ يُضِلُّ ٱللَّهُ ٱلۡكَٰفِرِينَ",
+        "translation": "Other than Allah?\" They will say, \"They have departed from us; rather, we did not used to invoke previously anything.\" Thus does Allah put astray the disbelievers"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "name": "فصلت",
+    "transliteration": "Fussilat",
+    "translation": "Explained in Detail",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 22,
+        "text": "وَمَا كُنتُمۡ تَسۡتَتِرُونَ أَن يَشۡهَدَ عَلَيۡكُمۡ سَمۡعُكُمۡ وَلَآ أَبۡصَٰرُكُمۡ وَلَا جُلُودُكُمۡ وَلَٰكِن ظَنَنتُمۡ أَنَّ ٱللَّهَ لَا يَعۡلَمُ كَثِيرٗا مِّمَّا تَعۡمَلُونَ",
+        "translation": "And you were not covering yourselves, lest your hearing testify against you or your sight or your skins, but you assumed that Allah does not know much of what you do"
+      },
+      {
+        "id": 24,
+        "text": "فَإِن يَصۡبِرُواْ فَٱلنَّارُ مَثۡوٗى لَّهُمۡۖ وَإِن يَسۡتَعۡتِبُواْ فَمَا هُم مِّنَ ٱلۡمُعۡتَبِينَ",
+        "translation": "So [even] if they are patient, the Fire is a residence for them; and if they ask to appease [Allah], they will not be of those who are allowed to appease"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "name": "الشورى",
+    "transliteration": "Ash-Shuraa",
+    "translation": "The Consultation",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 12,
+        "text": "لَهُۥ مَقَالِيدُ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضِۖ يَبۡسُطُ ٱلرِّزۡقَ لِمَن يَشَآءُ وَيَقۡدِرُۚ إِنَّهُۥ بِكُلِّ شَيۡءٍ عَلِيمٞ",
+        "translation": "To Him belong the keys of the heavens and the earth. He extends provision for whom He wills and restricts [it]. Indeed He is, of all things, Knowing"
+      },
+      {
+        "id": 43,
+        "text": "وَلَمَن صَبَرَ وَغَفَرَ إِنَّ ذَٰلِكَ لَمِنۡ عَزۡمِ ٱلۡأُمُورِ",
+        "translation": "And whoever is patient and forgives - indeed, that is of the matters [requiring] determination"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "name": "الزخرف",
+    "transliteration": "Az-Zukhruf",
+    "translation": "The Ornaments of Gold",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 11,
+        "text": "وَٱلَّذِي نَزَّلَ مِنَ ٱلسَّمَآءِ مَآءَۢ بِقَدَرٖ فَأَنشَرۡنَا بِهِۦ بَلۡدَةٗ مَّيۡتٗاۚ كَذَٰلِكَ تُخۡرَجُونَ",
+        "translation": "And who sends down rain from the sky in measured amounts, and We revive thereby a dead land - thus will you be brought forth"
+      },
+      {
+        "id": 83,
+        "text": "فَذَرۡهُمۡ يَخُوضُواْ وَيَلۡعَبُواْ حَتَّىٰ يُلَٰقُواْ يَوۡمَهُمُ ٱلَّذِي يُوعَدُونَ",
+        "translation": "So leave them to converse vainly and amuse themselves until they meet their Day which they are promised"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "name": "الدخان",
+    "transliteration": "Ad-Dukhan",
+    "translation": "The Smoke",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 23,
+        "text": "فَأَسۡرِ بِعِبَادِي لَيۡلًا إِنَّكُم مُّتَّبَعُونَ",
+        "translation": "[Allah said], \"Then set out with My servants by night. Indeed, you are to be pursued"
+      },
+      {
+        "id": 37,
+        "text": "أَهُمۡ خَيۡرٌ أَمۡ قَوۡمُ تُبَّعٖ وَٱلَّذِينَ مِن قَبۡلِهِمۡ أَهۡلَكۡنَٰهُمۡۚ إِنَّهُمۡ كَانُواْ مُجۡرِمِينَ",
+        "translation": "Are they better or the people of Tubba' and those before them? We destroyed them, [for] indeed, they were criminals"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "name": "الجاثية",
+    "transliteration": "Al-Jathiyah",
+    "translation": "The Crouching",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 3,
+        "text": "إِنَّ فِي ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضِ لَأٓيَٰتٖ لِّلۡمُؤۡمِنِينَ",
+        "translation": "Indeed, within the heavens and earth are signs for the believers"
+      },
+      {
+        "id": 5,
+        "text": "وَٱخۡتِلَٰفِ ٱلَّيۡلِ وَٱلنَّهَارِ وَمَآ أَنزَلَ ٱللَّهُ مِنَ ٱلسَّمَآءِ مِن رِّزۡقٖ فَأَحۡيَا بِهِ ٱلۡأَرۡضَ بَعۡدَ مَوۡتِهَا وَتَصۡرِيفِ ٱلرِّيَٰحِ ءَايَٰتٞ لِّقَوۡمٖ يَعۡقِلُونَ",
+        "translation": "And [in] the alternation of night and day and [in] what Allah sends down from the sky of provision and gives life thereby to the earth after its lifelessness and [in His] directing of the winds are signs for a people who reason"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "name": "الأحقاف",
+    "transliteration": "Al-Ahqaf",
+    "translation": "The Wind-Curved Sandhills",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 5,
+        "text": "وَمَنۡ أَضَلُّ مِمَّن يَدۡعُواْ مِن دُونِ ٱللَّهِ مَن لَّا يَسۡتَجِيبُ لَهُۥٓ إِلَىٰ يَوۡمِ ٱلۡقِيَٰمَةِ وَهُمۡ عَن دُعَآئِهِمۡ غَٰفِلُونَ",
+        "translation": "And who is more astray than he who invokes besides Allah those who will not respond to him until the Day of Resurrection, and they, of their invocation, are unaware"
+      },
+      {
+        "id": 24,
+        "text": "فَلَمَّا رَأَوۡهُ عَارِضٗا مُّسۡتَقۡبِلَ أَوۡدِيَتِهِمۡ قَالُواْ هَٰذَا عَارِضٞ مُّمۡطِرُنَاۚ بَلۡ هُوَ مَا ٱسۡتَعۡجَلۡتُم بِهِۦۖ رِيحٞ فِيهَا عَذَابٌ أَلِيمٞ",
+        "translation": "And when they saw it as a cloud approaching their valleys, they said, \"This is a cloud bringing us rain!\" Rather, it is that for which you were impatient: a wind, within it a painful punishment"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "name": "محمد",
+    "transliteration": "Muhammad",
+    "translation": "Muhammad",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 24,
+        "text": "أَفَلَا يَتَدَبَّرُونَ ٱلۡقُرۡءَانَ أَمۡ عَلَىٰ قُلُوبٍ أَقۡفَالُهَآ",
+        "translation": "Then do they not reflect upon the Qur'an, or are there locks upon [their] hearts"
+      },
+      {
+        "id": 30,
+        "text": "وَلَوۡ نَشَآءُ لَأَرَيۡنَٰكَهُمۡ فَلَعَرَفۡتَهُم بِسِيمَٰهُمۡۚ وَلَتَعۡرِفَنَّهُمۡ فِي لَحۡنِ ٱلۡقَوۡلِۚ وَٱللَّهُ يَعۡلَمُ أَعۡمَٰلَكُمۡ",
+        "translation": "And if We willed, We could show them to you, and you would know them by their mark; but you will surely know them by the tone of [their] speech. And Allah knows your deeds"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "name": "الفتح",
+    "transliteration": "Al-Fath",
+    "translation": "The Victory",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 10,
+        "text": "إِنَّ ٱلَّذِينَ يُبَايِعُونَكَ إِنَّمَا يُبَايِعُونَ ٱللَّهَ يَدُ ٱللَّهِ فَوۡقَ أَيۡدِيهِمۡۚ فَمَن نَّكَثَ فَإِنَّمَا يَنكُثُ عَلَىٰ نَفۡسِهِۦۖ وَمَنۡ أَوۡفَىٰ بِمَا عَٰهَدَ عَلَيۡهُ ٱللَّهَ فَسَيُؤۡتِيهِ أَجۡرًا عَظِيمٗا",
+        "translation": "Indeed, those who pledge allegiance to you, [O Muhammad] - they are actually pledging allegiance to Allah. The hand of Allah is over their hands. So he who breaks his word only breaks it to the detriment of himself. And he who fulfills that which he has promised Allah - He will give him a great reward"
+      },
+      {
+        "id": 20,
+        "text": "وَعَدَكُمُ ٱللَّهُ مَغَانِمَ كَثِيرَةٗ تَأۡخُذُونَهَا فَعَجَّلَ لَكُمۡ هَٰذِهِۦ وَكَفَّ أَيۡدِيَ ٱلنَّاسِ عَنكُمۡ وَلِتَكُونَ ءَايَةٗ لِّلۡمُؤۡمِنِينَ وَيَهۡدِيَكُمۡ صِرَٰطٗا مُّسۡتَقِيمٗا",
+        "translation": "Allah has promised you much booty that you will take [in the future] and has hastened for you this [victory] and withheld the hands of people from you - that it may be a sign for the believers and [that] He may guide you to a straight path"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "name": "الحجرات",
+    "transliteration": "Al-Hujurat",
+    "translation": "The Rooms",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 1,
+        "text": "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُواْ لَا تُقَدِّمُواْ بَيۡنَ يَدَيِ ٱللَّهِ وَرَسُولِهِۦۖ وَٱتَّقُواْ ٱللَّهَۚ إِنَّ ٱللَّهَ سَمِيعٌ عَلِيمٞ",
+        "translation": "O you who have believed, do not put [yourselves] before Allah and His Messenger but fear Allah. Indeed, Allah is Hearing and Knowing"
+      },
+      {
+        "id": 18,
+        "text": "إِنَّ ٱللَّهَ يَعۡلَمُ غَيۡبَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضِۚ وَٱللَّهُ بَصِيرُۢ بِمَا تَعۡمَلُونَ",
+        "translation": "Indeed, Allah knows the unseen [aspects] of the heavens and the earth. And Allah is Seeing of what you do"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "name": "ق",
+    "transliteration": "Qaf",
+    "translation": "The Letter \"Qaf\"",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 26,
+        "text": "ٱلَّذِي جَعَلَ مَعَ ٱللَّهِ إِلَٰهًا ءَاخَرَ فَأَلۡقِيَاهُ فِي ٱلۡعَذَابِ ٱلشَّدِيدِ",
+        "translation": "Who made [as equal] with Allah another deity; then throw him into the severe punishment"
+      },
+      {
+        "id": 36,
+        "text": "وَكَمۡ أَهۡلَكۡنَا قَبۡلَهُم مِّن قَرۡنٍ هُمۡ أَشَدُّ مِنۡهُم بَطۡشٗا فَنَقَّبُواْ فِي ٱلۡبِلَٰدِ هَلۡ مِن مَّحِيصٍ",
+        "translation": "And how many a generation before them did We destroy who were greater than them in [striking] power and had explored throughout the lands. Is there any place of escape"
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "name": "الذاريات",
+    "transliteration": "Adh-Dhariyat",
+    "translation": "The Winnowing Winds",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 7,
+        "text": "وَٱلسَّمَآءِ ذَاتِ ٱلۡحُبُكِ",
+        "translation": "By the heaven containing pathways"
+      },
+      {
+        "id": 28,
+        "text": "فَأَوۡجَسَ مِنۡهُمۡ خِيفَةٗۖ قَالُواْ لَا تَخَفۡۖ وَبَشَّرُوهُ بِغُلَٰمٍ عَلِيمٖ",
+        "translation": "And he felt from them apprehension. They said, \"Fear not,\" and gave him good tidings of a learned boy"
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "name": "الطور",
+    "transliteration": "At-Tur",
+    "translation": "The Mount",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 10,
+        "text": "وَتَسِيرُ ٱلۡجِبَالُ سَيۡرٗا",
+        "translation": "And the mountains will pass on, departing"
+      },
+      {
+        "id": 34,
+        "text": "فَلۡيَأۡتُواْ بِحَدِيثٖ مِّثۡلِهِۦٓ إِن كَانُواْ صَٰدِقِينَ",
+        "translation": "Then let them produce a statement like it, if they should be truthful"
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "name": "النجم",
+    "transliteration": "An-Najm",
+    "translation": "The Star",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 24,
+        "text": "أَمۡ لِلۡإِنسَٰنِ مَا تَمَنَّىٰ",
+        "translation": "Or is there for man whatever he wishes"
+      },
+      {
+        "id": 37,
+        "text": "وَإِبۡرَٰهِيمَ ٱلَّذِي وَفَّىٰٓ",
+        "translation": "And [of] Abraham, who fulfilled [his obligations]"
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "name": "القمر",
+    "transliteration": "Al-Qamar",
+    "translation": "The Moon",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 17,
+        "text": "وَلَقَدۡ يَسَّرۡنَا ٱلۡقُرۡءَانَ لِلذِّكۡرِ فَهَلۡ مِن مُّدَّكِرٖ",
+        "translation": "And We have certainly made the Qur'an easy for remembrance, so is there any who will remember"
+      },
+      {
+        "id": 43,
+        "text": "أَكُفَّارُكُمۡ خَيۡرٞ مِّنۡ أُوْلَـٰٓئِكُمۡ أَمۡ لَكُم بَرَآءَةٞ فِي ٱلزُّبُرِ",
+        "translation": "Are your disbelievers better than those [former ones], or have you immunity in the scripture"
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "name": "الرحمن",
+    "transliteration": "Ar-Rahman",
+    "translation": "The Beneficent",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 50,
+        "text": "فِيهِمَا عَيۡنَانِ تَجۡرِيَانِ",
+        "translation": "In both of them are two springs, flowing"
+      },
+      {
+        "id": 66,
+        "text": "فِيهِمَا عَيۡنَانِ نَضَّاخَتَانِ",
+        "translation": "In both of them are two springs, spouting"
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "name": "الواقعة",
+    "transliteration": "Al-Waqi'ah",
+    "translation": "The Inevitable",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 74,
+        "text": "فَسَبِّحۡ بِٱسۡمِ رَبِّكَ ٱلۡعَظِيمِ",
+        "translation": "So exalt the name of your Lord, the Most Great"
+      },
+      {
+        "id": 77,
+        "text": "إِنَّهُۥ لَقُرۡءَانٞ كَرِيمٞ",
+        "translation": "Indeed, it is a noble Qur'an"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "name": "الحديد",
+    "transliteration": "Al-Hadid",
+    "translation": "The Iron",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 16,
+        "text": "۞أَلَمۡ يَأۡنِ لِلَّذِينَ ءَامَنُوٓاْ أَن تَخۡشَعَ قُلُوبُهُمۡ لِذِكۡرِ ٱللَّهِ وَمَا نَزَلَ مِنَ ٱلۡحَقِّ وَلَا يَكُونُواْ كَٱلَّذِينَ أُوتُواْ ٱلۡكِتَٰبَ مِن قَبۡلُ فَطَالَ عَلَيۡهِمُ ٱلۡأَمَدُ فَقَسَتۡ قُلُوبُهُمۡۖ وَكَثِيرٞ مِّنۡهُمۡ فَٰسِقُونَ",
+        "translation": "Has the time not come for those who have believed that their hearts should become humbly submissive at the remembrance of Allah and what has come down of the truth? And let them not be like those who were given the Scripture before, and a long period passed over them, so their hearts hardened; and many of them are defiantly disobedient"
+      },
+      {
+        "id": 28,
+        "text": "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُواْ ٱتَّقُواْ ٱللَّهَ وَءَامِنُواْ بِرَسُولِهِۦ يُؤۡتِكُمۡ كِفۡلَيۡنِ مِن رَّحۡمَتِهِۦ وَيَجۡعَل لَّكُمۡ نُورٗا تَمۡشُونَ بِهِۦ وَيَغۡفِرۡ لَكُمۡۚ وَٱللَّهُ غَفُورٞ رَّحِيمٞ",
+        "translation": "O you who have believed, fear Allah and believe in His Messenger; He will [then] give you a double portion of His mercy and make for you a light by which you will walk and forgive you; and Allah is Forgiving and Merciful"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "name": "المجادلة",
+    "transliteration": "Al-Mujadila",
+    "translation": "The Pleading Woman",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 14,
+        "text": "۞أَلَمۡ تَرَ إِلَى ٱلَّذِينَ تَوَلَّوۡاْ قَوۡمًا غَضِبَ ٱللَّهُ عَلَيۡهِم مَّا هُم مِّنكُمۡ وَلَا مِنۡهُمۡ وَيَحۡلِفُونَ عَلَى ٱلۡكَذِبِ وَهُمۡ يَعۡلَمُونَ",
+        "translation": "Have you not considered those who make allies of a people with whom Allah has become angry? They are neither of you nor of them, and they swear to untruth while they know [they are lying]"
+      },
+      {
+        "id": 21,
+        "text": "كَتَبَ ٱللَّهُ لَأَغۡلِبَنَّ أَنَا۠ وَرُسُلِيٓۚ إِنَّ ٱللَّهَ قَوِيٌّ عَزِيزٞ",
+        "translation": "Allah has written, \"I will surely overcome, I and My messengers.\" Indeed, Allah is Powerful and Exalted in Might"
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "name": "الحشر",
+    "transliteration": "Al-Hashr",
+    "translation": "The Exile",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 10,
+        "text": "وَٱلَّذِينَ جَآءُو مِنۢ بَعۡدِهِمۡ يَقُولُونَ رَبَّنَا ٱغۡفِرۡ لَنَا وَلِإِخۡوَٰنِنَا ٱلَّذِينَ سَبَقُونَا بِٱلۡإِيمَٰنِ وَلَا تَجۡعَلۡ فِي قُلُوبِنَا غِلّٗا لِّلَّذِينَ ءَامَنُواْ رَبَّنَآ إِنَّكَ رَءُوفٞ رَّحِيمٌ",
+        "translation": "And [there is a share for] those who came after them, saying, \"Our Lord, forgive us and our brothers who preceded us in faith and put not in our hearts [any] resentment toward those who have believed. Our Lord, indeed You are Kind and Merciful"
+      },
+      {
+        "id": 17,
+        "text": "فَكَانَ عَٰقِبَتَهُمَآ أَنَّهُمَا فِي ٱلنَّارِ خَٰلِدَيۡنِ فِيهَاۚ وَذَٰلِكَ جَزَـٰٓؤُاْ ٱلظَّـٰلِمِينَ",
+        "translation": "So the outcome for both of them is that they will be in the Fire, abiding eternally therein. And that is the recompense of the wrong-doers"
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "name": "الممتحنة",
+    "transliteration": "Al-Mumtahanah",
+    "translation": "She that is to be examined",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 3,
+        "text": "لَن تَنفَعَكُمۡ أَرۡحَامُكُمۡ وَلَآ أَوۡلَٰدُكُمۡۚ يَوۡمَ ٱلۡقِيَٰمَةِ يَفۡصِلُ بَيۡنَكُمۡۚ وَٱللَّهُ بِمَا تَعۡمَلُونَ بَصِيرٞ",
+        "translation": "Never will your relatives or your children benefit you; the Day of Resurrection He will judge between you. And Allah, of what you do, is Seeing"
+      },
+      {
+        "id": 10,
+        "text": "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓاْ إِذَا جَآءَكُمُ ٱلۡمُؤۡمِنَٰتُ مُهَٰجِرَٰتٖ فَٱمۡتَحِنُوهُنَّۖ ٱللَّهُ أَعۡلَمُ بِإِيمَٰنِهِنَّۖ فَإِنۡ عَلِمۡتُمُوهُنَّ مُؤۡمِنَٰتٖ فَلَا تَرۡجِعُوهُنَّ إِلَى ٱلۡكُفَّارِۖ لَا هُنَّ حِلّٞ لَّهُمۡ وَلَا هُمۡ يَحِلُّونَ لَهُنَّۖ وَءَاتُوهُم مَّآ أَنفَقُواْۚ وَلَا جُنَاحَ عَلَيۡكُمۡ أَن تَنكِحُوهُنَّ إِذَآ ءَاتَيۡتُمُوهُنَّ أُجُورَهُنَّۚ وَلَا تُمۡسِكُواْ بِعِصَمِ ٱلۡكَوَافِرِ وَسۡـَٔلُواْ مَآ أَنفَقۡتُمۡ وَلۡيَسۡـَٔلُواْ مَآ أَنفَقُواْۚ ذَٰلِكُمۡ حُكۡمُ ٱللَّهِ يَحۡكُمُ بَيۡنَكُمۡۖ وَٱللَّهُ عَلِيمٌ حَكِيمٞ",
+        "translation": "O you who have believed, when the believing women come to you as emigrants, examine them. Allah is most knowing as to their faith. And if you know them to be believers, then do not return them to the disbelievers; they are not lawful [wives] for them, nor are they lawful [husbands] for them. But give the disbelievers what they have spent. And there is no blame upon you if you marry them when you have given them their due compensation. And hold not to marriage bonds with disbelieving women, but ask for what you have spent and let them ask for what they have spent. That is the judgement of Allah; He judges between you. And Allah is Knowing and Wise"
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "name": "الصف",
+    "transliteration": "As-Saf",
+    "translation": "The Ranks",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 6,
+        "text": "وَإِذۡ قَالَ عِيسَى ٱبۡنُ مَرۡيَمَ يَٰبَنِيٓ إِسۡرَـٰٓءِيلَ إِنِّي رَسُولُ ٱللَّهِ إِلَيۡكُم مُّصَدِّقٗا لِّمَا بَيۡنَ يَدَيَّ مِنَ ٱلتَّوۡرَىٰةِ وَمُبَشِّرَۢا بِرَسُولٖ يَأۡتِي مِنۢ بَعۡدِي ٱسۡمُهُۥٓ أَحۡمَدُۖ فَلَمَّا جَآءَهُم بِٱلۡبَيِّنَٰتِ قَالُواْ هَٰذَا سِحۡرٞ مُّبِينٞ",
+        "translation": "And [mention] when Jesus, the son of Mary, said, \"O children of Israel, indeed I am the messenger of Allah to you confirming what came before me of the Torah and bringing good tidings of a messenger to come after me, whose name is Ahmad.\" But when he came to them with clear evidences, they said, \"This is obvious magic"
+      },
+      {
+        "id": 14,
+        "text": "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُواْ كُونُوٓاْ أَنصَارَ ٱللَّهِ كَمَا قَالَ عِيسَى ٱبۡنُ مَرۡيَمَ لِلۡحَوَارِيِّـۧنَ مَنۡ أَنصَارِيٓ إِلَى ٱللَّهِۖ قَالَ ٱلۡحَوَارِيُّونَ نَحۡنُ أَنصَارُ ٱللَّهِۖ فَـَٔامَنَت طَّآئِفَةٞ مِّنۢ بَنِيٓ إِسۡرَـٰٓءِيلَ وَكَفَرَت طَّآئِفَةٞۖ فَأَيَّدۡنَا ٱلَّذِينَ ءَامَنُواْ عَلَىٰ عَدُوِّهِمۡ فَأَصۡبَحُواْ ظَٰهِرِينَ",
+        "translation": "O you who have believed, be supporters of Allah, as when Jesus, the son of Mary, said to the disciples, \"Who are my supporters for Allah?\" The disciples said, \"We are supporters of Allah.\" And a faction of the Children of Israel believed and a faction disbelieved. So We supported those who believed against their enemy, and they became dominant"
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "name": "الجمعة",
+    "transliteration": "Al-Jumu'ah",
+    "translation": "The Congregation, Friday",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 4,
+        "text": "ذَٰلِكَ فَضۡلُ ٱللَّهِ يُؤۡتِيهِ مَن يَشَآءُۚ وَٱللَّهُ ذُو ٱلۡفَضۡلِ ٱلۡعَظِيمِ",
+        "translation": "That is the bounty of Allah, which He gives to whom He wills, and Allah is the possessor of great bounty"
+      },
+      {
+        "id": 5,
+        "text": "مَثَلُ ٱلَّذِينَ حُمِّلُواْ ٱلتَّوۡرَىٰةَ ثُمَّ لَمۡ يَحۡمِلُوهَا كَمَثَلِ ٱلۡحِمَارِ يَحۡمِلُ أَسۡفَارَۢاۚ بِئۡسَ مَثَلُ ٱلۡقَوۡمِ ٱلَّذِينَ كَذَّبُواْ بِـَٔايَٰتِ ٱللَّهِۚ وَٱللَّهُ لَا يَهۡدِي ٱلۡقَوۡمَ ٱلظَّـٰلِمِينَ",
+        "translation": "The example of those who were entrusted with the Torah and then did not take it on is like that of a donkey who carries volumes [of books]. Wretched is the example of the people who deny the signs of Allah. And Allah does not guide the wrongdoing people"
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "name": "المنافقون",
+    "transliteration": "Al-Munafiqun",
+    "translation": "The Hypocrites",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 3,
+        "text": "ذَٰلِكَ بِأَنَّهُمۡ ءَامَنُواْ ثُمَّ كَفَرُواْ فَطُبِعَ عَلَىٰ قُلُوبِهِمۡ فَهُمۡ لَا يَفۡقَهُونَ",
+        "translation": "That is because they believed, and then they disbelieved; so their hearts were sealed over, and they do not understand"
+      },
+      {
+        "id": 7,
+        "text": "هُمُ ٱلَّذِينَ يَقُولُونَ لَا تُنفِقُواْ عَلَىٰ مَنۡ عِندَ رَسُولِ ٱللَّهِ حَتَّىٰ يَنفَضُّواْۗ وَلِلَّهِ خَزَآئِنُ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضِ وَلَٰكِنَّ ٱلۡمُنَٰفِقِينَ لَا يَفۡقَهُونَ",
+        "translation": "They are the ones who say, \"Do not spend on those who are with the Messenger of Allah until they disband.\" And to Allah belongs the depositories of the heavens and the earth, but the hypocrites do not understand"
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "name": "التغابن",
+    "transliteration": "At-Taghabun",
+    "translation": "The Mutual Disillusion",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 2,
+        "text": "هُوَ ٱلَّذِي خَلَقَكُمۡ فَمِنكُمۡ كَافِرٞ وَمِنكُم مُّؤۡمِنٞۚ وَٱللَّهُ بِمَا تَعۡمَلُونَ بَصِيرٌ",
+        "translation": "It is He who created you, and among you is the disbeliever, and among you is the believer. And Allah, of what you do, is Seeing"
+      },
+      {
+        "id": 13,
+        "text": "ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَۚ وَعَلَى ٱللَّهِ فَلۡيَتَوَكَّلِ ٱلۡمُؤۡمِنُونَ",
+        "translation": "Allah - there is no deity except Him. And upon Allah let the believers rely"
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "name": "الطلاق",
+    "transliteration": "At-Talaq",
+    "translation": "The Divorce",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 3,
+        "text": "وَيَرۡزُقۡهُ مِنۡ حَيۡثُ لَا يَحۡتَسِبُۚ وَمَن يَتَوَكَّلۡ عَلَى ٱللَّهِ فَهُوَ حَسۡبُهُۥٓۚ إِنَّ ٱللَّهَ بَٰلِغُ أَمۡرِهِۦۚ قَدۡ جَعَلَ ٱللَّهُ لِكُلِّ شَيۡءٖ قَدۡرٗا",
+        "translation": "And will provide for him from where he does not expect. And whoever relies upon Allah - then He is sufficient for him. Indeed, Allah will accomplish His purpose. Allah has already set for everything a [decreed] extent"
+      },
+      {
+        "id": 4,
+        "text": "وَٱلَّـٰٓـِٔي يَئِسۡنَ مِنَ ٱلۡمَحِيضِ مِن نِّسَآئِكُمۡ إِنِ ٱرۡتَبۡتُمۡ فَعِدَّتُهُنَّ ثَلَٰثَةُ أَشۡهُرٖ وَٱلَّـٰٓـِٔي لَمۡ يَحِضۡنَۚ وَأُوْلَٰتُ ٱلۡأَحۡمَالِ أَجَلُهُنَّ أَن يَضَعۡنَ حَمۡلَهُنَّۚ وَمَن يَتَّقِ ٱللَّهَ يَجۡعَل لَّهُۥ مِنۡ أَمۡرِهِۦ يُسۡرٗا",
+        "translation": "And those who no longer expect menstruation among your women - if you doubt, then their period is three months, and [also for] those who have not menstruated. And for those who are pregnant, their term is until they give birth. And whoever fears Allah - He will make for him of his matter ease"
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "name": "التحريم",
+    "transliteration": "At-Tahrim",
+    "translation": "The Prohibition",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 4,
+        "text": "إِن تَتُوبَآ إِلَى ٱللَّهِ فَقَدۡ صَغَتۡ قُلُوبُكُمَاۖ وَإِن تَظَٰهَرَا عَلَيۡهِ فَإِنَّ ٱللَّهَ هُوَ مَوۡلَىٰهُ وَجِبۡرِيلُ وَصَٰلِحُ ٱلۡمُؤۡمِنِينَۖ وَٱلۡمَلَـٰٓئِكَةُ بَعۡدَ ذَٰلِكَ ظَهِيرٌ",
+        "translation": "If you two [wives] repent to Allah, [it is best], for your hearts have deviated. But if you cooperate against him - then indeed Allah is his protector, and Gabriel and the righteous of the believers and the angels, moreover, are [his] assistants"
+      },
+      {
+        "id": 10,
+        "text": "ضَرَبَ ٱللَّهُ مَثَلٗا لِّلَّذِينَ كَفَرُواْ ٱمۡرَأَتَ نُوحٖ وَٱمۡرَأَتَ لُوطٖۖ كَانَتَا تَحۡتَ عَبۡدَيۡنِ مِنۡ عِبَادِنَا صَٰلِحَيۡنِ فَخَانَتَاهُمَا فَلَمۡ يُغۡنِيَا عَنۡهُمَا مِنَ ٱللَّهِ شَيۡـٔٗا وَقِيلَ ٱدۡخُلَا ٱلنَّارَ مَعَ ٱلدَّـٰخِلِينَ",
+        "translation": "Allah presents an example of those who disbelieved: the wife of Noah and the wife of Lot. They were under two of Our righteous servants but betrayed them, so those prophets did not avail them from Allah at all, and it was said, \"Enter the Fire with those who enter"
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "name": "الملك",
+    "transliteration": "Al-Mulk",
+    "translation": "The Sovereignty",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 10,
+        "text": "وَقَالُواْ لَوۡ كُنَّا نَسۡمَعُ أَوۡ نَعۡقِلُ مَا كُنَّا فِيٓ أَصۡحَٰبِ ٱلسَّعِيرِ",
+        "translation": "And they will say, \"If only we had been listening or reasoning, we would not be among the companions of the Blaze"
+      },
+      {
+        "id": 28,
+        "text": "قُلۡ أَرَءَيۡتُمۡ إِنۡ أَهۡلَكَنِيَ ٱللَّهُ وَمَن مَّعِيَ أَوۡ رَحِمَنَا فَمَن يُجِيرُ ٱلۡكَٰفِرِينَ مِنۡ عَذَابٍ أَلِيمٖ",
+        "translation": "Say, [O Muhammad], \"Have you considered: whether Allah should cause my death and those with me or have mercy upon us, who can protect the disbelievers from a painful punishment"
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "name": "القلم",
+    "transliteration": "Al-Qalam",
+    "translation": "The Pen",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 30,
+        "text": "فَأَقۡبَلَ بَعۡضُهُمۡ عَلَىٰ بَعۡضٖ يَتَلَٰوَمُونَ",
+        "translation": "Then they approached one another, blaming each other"
+      },
+      {
+        "id": 46,
+        "text": "أَمۡ تَسۡـَٔلُهُمۡ أَجۡرٗا فَهُم مِّن مَّغۡرَمٖ مُّثۡقَلُونَ",
+        "translation": "Or do you ask of them a payment, so they are by debt burdened down"
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "name": "الحاقة",
+    "transliteration": "Al-Haqqah",
+    "translation": "The Reality",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 19,
+        "text": "فَأَمَّا مَنۡ أُوتِيَ كِتَٰبَهُۥ بِيَمِينِهِۦ فَيَقُولُ هَآؤُمُ ٱقۡرَءُواْ كِتَٰبِيَهۡ",
+        "translation": "So as for he who is given his record in his right hand, he will say, \"Here, read my record"
+      },
+      {
+        "id": 24,
+        "text": "كُلُواْ وَٱشۡرَبُواْ هَنِيٓـَٔۢا بِمَآ أَسۡلَفۡتُمۡ فِي ٱلۡأَيَّامِ ٱلۡخَالِيَةِ",
+        "translation": "[They will be told], \"Eat and drink in satisfaction for what you put forth in the days past"
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "name": "المعارج",
+    "transliteration": "Al-Ma'arij",
+    "translation": "The Ascending Stairways",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 11,
+        "text": "يُبَصَّرُونَهُمۡۚ يَوَدُّ ٱلۡمُجۡرِمُ لَوۡ يَفۡتَدِي مِنۡ عَذَابِ يَوۡمِئِذِۭ بِبَنِيهِ",
+        "translation": "They will be shown each other. The criminal will wish that he could be ransomed from the punishment of that Day by his children"
+      },
+      {
+        "id": 44,
+        "text": "خَٰشِعَةً أَبۡصَٰرُهُمۡ تَرۡهَقُهُمۡ ذِلَّةٞۚ ذَٰلِكَ ٱلۡيَوۡمُ ٱلَّذِي كَانُواْ يُوعَدُونَ",
+        "translation": "Their eyes humbled, humiliation will cover them. That is the Day which they had been promised"
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "name": "نوح",
+    "transliteration": "Nuh",
+    "translation": "Noah",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 10,
+        "text": "فَقُلۡتُ ٱسۡتَغۡفِرُواْ رَبَّكُمۡ إِنَّهُۥ كَانَ غَفَّارٗا",
+        "translation": "And said, 'Ask forgiveness of your Lord. Indeed, He is ever a Perpetual Forgiver"
+      },
+      {
+        "id": 26,
+        "text": "وَقَالَ نُوحٞ رَّبِّ لَا تَذَرۡ عَلَى ٱلۡأَرۡضِ مِنَ ٱلۡكَٰفِرِينَ دَيَّارًا",
+        "translation": "And Noah said, \"My Lord, do not leave upon the earth from among the disbelievers an inhabitant"
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "name": "الجن",
+    "transliteration": "Al-Jinn",
+    "translation": "The Jinn",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 9,
+        "text": "وَأَنَّا كُنَّا نَقۡعُدُ مِنۡهَا مَقَٰعِدَ لِلسَّمۡعِۖ فَمَن يَسۡتَمِعِ ٱلۡأٓنَ يَجِدۡ لَهُۥ شِهَابٗا رَّصَدٗا",
+        "translation": "And we used to sit therein in positions for hearing, but whoever listens now will find a burning flame lying in wait for him"
+      },
+      {
+        "id": 11,
+        "text": "وَأَنَّا مِنَّا ٱلصَّـٰلِحُونَ وَمِنَّا دُونَ ذَٰلِكَۖ كُنَّا طَرَآئِقَ قِدَدٗا",
+        "translation": "And among us are the righteous, and among us are [others] not so; we were [of] divided ways"
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "name": "المزمل",
+    "transliteration": "Al-Muzzammil",
+    "translation": "The Enshrouded One",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 2,
+        "text": "قُمِ ٱلَّيۡلَ إِلَّا قَلِيلٗا",
+        "translation": "Arise [to pray] the night, except for a little"
+      },
+      {
+        "id": 3,
+        "text": "نِّصۡفَهُۥٓ أَوِ ٱنقُصۡ مِنۡهُ قَلِيلًا",
+        "translation": "Half of it - or subtract from it a little"
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "name": "المدثر",
+    "transliteration": "Al-Muddaththir",
+    "translation": "The Cloaked One",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 19,
+        "text": "فَقُتِلَ كَيۡفَ قَدَّرَ",
+        "translation": "So may he be destroyed [for] how he deliberated"
+      },
+      {
+        "id": 20,
+        "text": "ثُمَّ قُتِلَ كَيۡفَ قَدَّرَ",
+        "translation": "Then may he be destroyed [for] how he deliberated"
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "name": "القيامة",
+    "transliteration": "Al-Qiyamah",
+    "translation": "The Resurrection",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 1,
+        "text": "لَآ أُقۡسِمُ بِيَوۡمِ ٱلۡقِيَٰمَةِ",
+        "translation": "I swear by the Day of Resurrection"
+      },
+      {
+        "id": 19,
+        "text": "ثُمَّ إِنَّ عَلَيۡنَا بَيَانَهُۥ",
+        "translation": "Then upon Us is its clarification [to you]"
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "name": "الانسان",
+    "transliteration": "Al-Insan",
+    "translation": "The Man",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 12,
+        "text": "وَجَزَىٰهُم بِمَا صَبَرُواْ جَنَّةٗ وَحَرِيرٗا",
+        "translation": "And will reward them for what they patiently endured [with] a garden [in Paradise] and silk [garments]"
+      },
+      {
+        "id": 20,
+        "text": "وَإِذَا رَأَيۡتَ ثَمَّ رَأَيۡتَ نَعِيمٗا وَمُلۡكٗا كَبِيرًا",
+        "translation": "And when you look there [in Paradise], you will see pleasure and great dominion"
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "name": "المرسلات",
+    "transliteration": "Al-Mursalat",
+    "translation": "The Emissaries",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 20,
+        "text": "أَلَمۡ نَخۡلُقكُّم مِّن مَّآءٖ مَّهِينٖ",
+        "translation": "Did We not create you from a liquid disdained"
+      },
+      {
+        "id": 26,
+        "text": "أَحۡيَآءٗ وَأَمۡوَٰتٗا",
+        "translation": "Of the living and the dead"
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "name": "النبإ",
+    "transliteration": "An-Naba",
+    "translation": "The Tidings",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 3,
+        "text": "ٱلَّذِي هُمۡ فِيهِ مُخۡتَلِفُونَ",
+        "translation": "That over which they are in disagreement"
+      },
+      {
+        "id": 35,
+        "text": "لَّا يَسۡمَعُونَ فِيهَا لَغۡوٗا وَلَا كِذَّـٰبٗا",
+        "translation": "No ill speech will they hear therein or any falsehood"
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "name": "النازعات",
+    "transliteration": "An-Nazi'at",
+    "translation": "Those who drag forth",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 38,
+        "text": "وَءَاثَرَ ٱلۡحَيَوٰةَ ٱلدُّنۡيَا",
+        "translation": "And preferred the life of the world"
+      },
+      {
+        "id": 43,
+        "text": "فِيمَ أَنتَ مِن ذِكۡرَىٰهَآ",
+        "translation": "In what [position] are you that you should mention it"
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "name": "عبس",
+    "transliteration": "'Abasa",
+    "translation": "He Frowned",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 14,
+        "text": "مَّرۡفُوعَةٖ مُّطَهَّرَةِۭ",
+        "translation": "Exalted and purified"
+      },
+      {
+        "id": 34,
+        "text": "يَوۡمَ يَفِرُّ ٱلۡمَرۡءُ مِنۡ أَخِيهِ",
+        "translation": "On the Day a man will flee from his brother"
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "name": "التكوير",
+    "transliteration": "At-Takwir",
+    "translation": "The Overthrowing",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 5,
+        "text": "وَإِذَا ٱلۡوُحُوشُ حُشِرَتۡ",
+        "translation": "And when the wild beasts are gathered"
+      },
+      {
+        "id": 11,
+        "text": "وَإِذَا ٱلسَّمَآءُ كُشِطَتۡ",
+        "translation": "And when the sky is stripped away"
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "name": "الإنفطار",
+    "transliteration": "Al-Infitar",
+    "translation": "The Cleaving",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 1,
+        "text": "إِذَا ٱلسَّمَآءُ ٱنفَطَرَتۡ",
+        "translation": "When the sky breaks apart"
+      },
+      {
+        "id": 19,
+        "text": "يَوۡمَ لَا تَمۡلِكُ نَفۡسٞ لِّنَفۡسٖ شَيۡـٔٗاۖ وَٱلۡأَمۡرُ يَوۡمَئِذٖ لِّلَّهِ",
+        "translation": "It is the Day when a soul will not possess for another soul [power to do] a thing; and the command, that Day, is [entirely] with Allah"
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "name": "المطففين",
+    "transliteration": "Al-Mutaffifin",
+    "translation": "The Defrauding",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 14,
+        "text": "كَلَّاۖ بَلۡۜ رَانَ عَلَىٰ قُلُوبِهِم مَّا كَانُواْ يَكۡسِبُونَ",
+        "translation": "No! Rather, the stain has covered their hearts of that which they were earning"
+      },
+      {
+        "id": 31,
+        "text": "وَإِذَا ٱنقَلَبُوٓاْ إِلَىٰٓ أَهۡلِهِمُ ٱنقَلَبُواْ فَكِهِينَ",
+        "translation": "And when they returned to their people, they would return jesting"
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "name": "الإنشقاق",
+    "transliteration": "Al-Inshiqaq",
+    "translation": "The Sundering",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 8,
+        "text": "فَسَوۡفَ يُحَاسَبُ حِسَابٗا يَسِيرٗا",
+        "translation": "He will be judged with an easy account"
+      },
+      {
+        "id": 25,
+        "text": "إِلَّا ٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّـٰلِحَٰتِ لَهُمۡ أَجۡرٌ غَيۡرُ مَمۡنُونِۭ",
+        "translation": "Except for those who believe and do righteous deeds. For them is a reward uninterrupted"
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "name": "البروج",
+    "transliteration": "Al-Buruj",
+    "translation": "The Mansions of the Stars",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 1,
+        "text": "وَٱلسَّمَآءِ ذَاتِ ٱلۡبُرُوجِ",
+        "translation": "By the sky containing great stars"
+      },
+      {
+        "id": 13,
+        "text": "إِنَّهُۥ هُوَ يُبۡدِئُ وَيُعِيدُ",
+        "translation": "Indeed, it is He who originates [creation] and repeats"
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "name": "الطارق",
+    "transliteration": "At-Tariq",
+    "translation": "The Nightcommer",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 1,
+        "text": "وَٱلسَّمَآءِ وَٱلطَّارِقِ",
+        "translation": "By the sky and the night comer"
+      },
+      {
+        "id": 4,
+        "text": "إِن كُلُّ نَفۡسٖ لَّمَّا عَلَيۡهَا حَافِظٞ",
+        "translation": "There is no soul but that it has over it a protector"
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "name": "الأعلى",
+    "transliteration": "Al-A'la",
+    "translation": "The Most High",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 12,
+        "text": "ٱلَّذِي يَصۡلَى ٱلنَّارَ ٱلۡكُبۡرَىٰ",
+        "translation": "[He] who will [enter and] burn in the greatest Fire"
+      },
+      {
+        "id": 14,
+        "text": "قَدۡ أَفۡلَحَ مَن تَزَكَّىٰ",
+        "translation": "He has certainly succeeded who purifies himself"
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "name": "الغاشية",
+    "transliteration": "Al-Ghashiyah",
+    "translation": "The Overwhelming",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 9,
+        "text": "لِّسَعۡيِهَا رَاضِيَةٞ",
+        "translation": "With their effort [they are] satisfied"
+      },
+      {
+        "id": 20,
+        "text": "وَإِلَى ٱلۡأَرۡضِ كَيۡفَ سُطِحَتۡ",
+        "translation": "And at the earth - how it is spread out"
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "name": "الفجر",
+    "transliteration": "Al-Fajr",
+    "translation": "The Dawn",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 8,
+        "text": "ٱلَّتِي لَمۡ يُخۡلَقۡ مِثۡلُهَا فِي ٱلۡبِلَٰدِ",
+        "translation": "The likes of whom had never been created in the land"
+      },
+      {
+        "id": 18,
+        "text": "وَلَا تَحَـٰٓضُّونَ عَلَىٰ طَعَامِ ٱلۡمِسۡكِينِ",
+        "translation": "And you do not encourage one another to feed the poor"
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "name": "البلد",
+    "transliteration": "Al-Balad",
+    "translation": "The City",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 7,
+        "text": "أَيَحۡسَبُ أَن لَّمۡ يَرَهُۥٓ أَحَدٌ",
+        "translation": "Does he think that no one has seen him"
+      },
+      {
+        "id": 9,
+        "text": "وَلِسَانٗا وَشَفَتَيۡنِ",
+        "translation": "And a tongue and two lips"
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "name": "الشمس",
+    "transliteration": "Ash-Shams",
+    "translation": "The Sun",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 2,
+        "text": "وَٱلۡقَمَرِ إِذَا تَلَىٰهَا",
+        "translation": "And [by] the moon when it follows it"
+      },
+      {
+        "id": 13,
+        "text": "فَقَالَ لَهُمۡ رَسُولُ ٱللَّهِ نَاقَةَ ٱللَّهِ وَسُقۡيَٰهَا",
+        "translation": "And the messenger of Allah [Salih] said to them, \"[Do not harm] the she-camel of Allah or [prevent her from] her drink"
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "name": "الليل",
+    "transliteration": "Al-Layl",
+    "translation": "The Night",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 4,
+        "text": "إِنَّ سَعۡيَكُمۡ لَشَتَّىٰ",
+        "translation": "Indeed, your efforts are diverse"
+      },
+      {
+        "id": 18,
+        "text": "ٱلَّذِي يُؤۡتِي مَالَهُۥ يَتَزَكَّىٰ",
+        "translation": "[He] who gives [from] his wealth to purify himself"
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "name": "الضحى",
+    "transliteration": "Ad-Duhaa",
+    "translation": "The Morning Hours",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 6,
+        "text": "أَلَمۡ يَجِدۡكَ يَتِيمٗا فَـَٔاوَىٰ",
+        "translation": "Did He not find you an orphan and give [you] refuge"
+      },
+      {
+        "id": 9,
+        "text": "فَأَمَّا ٱلۡيَتِيمَ فَلَا تَقۡهَرۡ",
+        "translation": "So as for the orphan, do not oppress [him]"
+      }
+    ]
+  },
+  {
+    "id": 94,
+    "name": "الشرح",
+    "transliteration": "Ash-Sharh",
+    "translation": "The Relief",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 4,
+        "text": "وَرَفَعۡنَا لَكَ ذِكۡرَكَ",
+        "translation": "And raised high for you your repute"
+      },
+      {
+        "id": 5,
+        "text": "فَإِنَّ مَعَ ٱلۡعُسۡرِ يُسۡرًا",
+        "translation": "For indeed, with hardship [will be] ease"
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "name": "التين",
+    "transliteration": "At-Tin",
+    "translation": "The Fig",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 7,
+        "text": "فَمَا يُكَذِّبُكَ بَعۡدُ بِٱلدِّينِ",
+        "translation": "So what yet causes you to deny the Recompense"
+      },
+      {
+        "id": 8,
+        "text": "أَلَيۡسَ ٱللَّهُ بِأَحۡكَمِ ٱلۡحَٰكِمِينَ",
+        "translation": "Is not Allah the most just of judges"
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "name": "العلق",
+    "transliteration": "Al-'Alaq",
+    "translation": "The Clot",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 5,
+        "text": "عَلَّمَ ٱلۡإِنسَٰنَ مَا لَمۡ يَعۡلَمۡ",
+        "translation": "Taught man that which he knew not"
+      },
+      {
+        "id": 13,
+        "text": "أَرَءَيۡتَ إِن كَذَّبَ وَتَوَلَّىٰٓ",
+        "translation": "Have you seen if he denies and turns away"
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "name": "القدر",
+    "transliteration": "Al-Qadr",
+    "translation": "The Power",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 2,
+        "text": "وَمَآ أَدۡرَىٰكَ مَا لَيۡلَةُ ٱلۡقَدۡرِ",
+        "translation": "And what can make you know what is the Night of Decree"
+      },
+      {
+        "id": 4,
+        "text": "تَنَزَّلُ ٱلۡمَلَـٰٓئِكَةُ وَٱلرُّوحُ فِيهَا بِإِذۡنِ رَبِّهِم مِّن كُلِّ أَمۡرٖ",
+        "translation": "The angels and the Spirit descend therein by permission of their Lord for every matter"
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "name": "البينة",
+    "transliteration": "Al-Bayyinah",
+    "translation": "The Clear Proof",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 1,
+        "text": "لَمۡ يَكُنِ ٱلَّذِينَ كَفَرُواْ مِنۡ أَهۡلِ ٱلۡكِتَٰبِ وَٱلۡمُشۡرِكِينَ مُنفَكِّينَ حَتَّىٰ تَأۡتِيَهُمُ ٱلۡبَيِّنَةُ",
+        "translation": "Those who disbelieved among the People of the Scripture and the polytheists were not to be parted [from misbelief] until there came to them clear evidence"
+      },
+      {
+        "id": 4,
+        "text": "وَمَا تَفَرَّقَ ٱلَّذِينَ أُوتُواْ ٱلۡكِتَٰبَ إِلَّا مِنۢ بَعۡدِ مَا جَآءَتۡهُمُ ٱلۡبَيِّنَةُ",
+        "translation": "Nor did those who were given the Scripture become divided until after there had come to them clear evidence"
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "name": "الزلزلة",
+    "transliteration": "Az-Zalzalah",
+    "translation": "The Earthquake",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 6,
+        "text": "يَوۡمَئِذٖ يَصۡدُرُ ٱلنَّاسُ أَشۡتَاتٗا لِّيُرَوۡاْ أَعۡمَٰلَهُمۡ",
+        "translation": "That Day, the people will depart separated [into categories] to be shown [the result of] their deeds"
+      },
+      {
+        "id": 8,
+        "text": "وَمَن يَعۡمَلۡ مِثۡقَالَ ذَرَّةٖ شَرّٗا يَرَهُۥ",
+        "translation": "And whoever does an atom's weight of evil will see it"
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "name": "العاديات",
+    "transliteration": "Al-'Adiyat",
+    "translation": "The Courser",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 1,
+        "text": "وَٱلۡعَٰدِيَٰتِ ضَبۡحٗا",
+        "translation": "By the racers, panting"
+      },
+      {
+        "id": 7,
+        "text": "وَإِنَّهُۥ عَلَىٰ ذَٰلِكَ لَشَهِيدٞ",
+        "translation": "And indeed, he is to that a witness"
+      }
+    ]
+  },
+  {
+    "id": 101,
+    "name": "القارعة",
+    "transliteration": "Al-Qari'ah",
+    "translation": "The Calamity",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 4,
+        "text": "يَوۡمَ يَكُونُ ٱلنَّاسُ كَٱلۡفَرَاشِ ٱلۡمَبۡثُوثِ",
+        "translation": "It is the Day when people will be like moths, dispersed"
+      },
+      {
+        "id": 6,
+        "text": "فَأَمَّا مَن ثَقُلَتۡ مَوَٰزِينُهُۥ",
+        "translation": "Then as for one whose scales are heavy [with good deeds]"
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "name": "التكاثر",
+    "transliteration": "At-Takathur",
+    "translation": "The Rivalry in world increase",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 2,
+        "text": "حَتَّىٰ زُرۡتُمُ ٱلۡمَقَابِرَ",
+        "translation": "Until you visit the graveyards"
+      },
+      {
+        "id": 8,
+        "text": "ثُمَّ لَتُسۡـَٔلُنَّ يَوۡمَئِذٍ عَنِ ٱلنَّعِيمِ",
+        "translation": "Then you will surely be asked that Day about pleasure"
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "name": "العصر",
+    "transliteration": "Al-'Asr",
+    "translation": "The Declining Day",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 2,
+        "text": "إِنَّ ٱلۡإِنسَٰنَ لَفِي خُسۡرٍ",
+        "translation": "Indeed, mankind is in loss"
+      },
+      {
+        "id": 3,
+        "text": "إِلَّا ٱلَّذِينَ ءَامَنُواْ وَعَمِلُواْ ٱلصَّـٰلِحَٰتِ وَتَوَاصَوۡاْ بِٱلۡحَقِّ وَتَوَاصَوۡاْ بِٱلصَّبۡرِ",
+        "translation": "Except for those who have believed and done righteous deeds and advised each other to truth and advised each other to patience"
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "name": "الهمزة",
+    "transliteration": "Al-Humazah",
+    "translation": "The Traducer",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 5,
+        "text": "وَمَآ أَدۡرَىٰكَ مَا ٱلۡحُطَمَةُ",
+        "translation": "And what can make you know what is the Crusher"
+      },
+      {
+        "id": 8,
+        "text": "إِنَّهَا عَلَيۡهِم مُّؤۡصَدَةٞ",
+        "translation": "Indeed, Hellfire will be closed down upon them"
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "name": "الفيل",
+    "transliteration": "Al-Fil",
+    "translation": "The Elephant",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 1,
+        "text": "أَلَمۡ تَرَ كَيۡفَ فَعَلَ رَبُّكَ بِأَصۡحَٰبِ ٱلۡفِيلِ",
+        "translation": "Have you not considered, [O Muhammad], how your Lord dealt with the companions of the elephant"
+      },
+      {
+        "id": 3,
+        "text": "وَأَرۡسَلَ عَلَيۡهِمۡ طَيۡرًا أَبَابِيلَ",
+        "translation": "And He sent against them birds in flocks"
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "name": "قريش",
+    "transliteration": "Quraysh",
+    "translation": "Quraysh",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 2,
+        "text": "إِۦلَٰفِهِمۡ رِحۡلَةَ ٱلشِّتَآءِ وَٱلصَّيۡفِ",
+        "translation": "Their accustomed security [in] the caravan of winter and summer"
+      },
+      {
+        "id": 4,
+        "text": "ٱلَّذِيٓ أَطۡعَمَهُم مِّن جُوعٖ وَءَامَنَهُم مِّنۡ خَوۡفِۭ",
+        "translation": "Who has fed them, [saving them] from hunger and made them safe, [saving them] from fear"
+      }
+    ]
+  },
+  {
+    "id": 107,
+    "name": "الماعون",
+    "transliteration": "Al-Ma'un",
+    "translation": "The Small kindnesses",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 1,
+        "text": "أَرَءَيۡتَ ٱلَّذِي يُكَذِّبُ بِٱلدِّينِ",
+        "translation": "Have you seen the one who denies the Recompense"
+      },
+      {
+        "id": 7,
+        "text": "وَيَمۡنَعُونَ ٱلۡمَاعُونَ",
+        "translation": "And withhold [simple] assistance"
+      }
+    ]
+  },
+  {
+    "id": 108,
+    "name": "الكوثر",
+    "transliteration": "Al-Kawthar",
+    "translation": "The Abundance",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 1,
+        "text": "إِنَّآ أَعۡطَيۡنَٰكَ ٱلۡكَوۡثَرَ",
+        "translation": "Indeed, We have granted you, [O Muhammad], al-Kawthar"
+      },
+      {
+        "id": 2,
+        "text": "فَصَلِّ لِرَبِّكَ وَٱنۡحَرۡ",
+        "translation": "So pray to your Lord and sacrifice [to Him alone]"
+      }
+    ]
+  },
+  {
+    "id": 109,
+    "name": "الكافرون",
+    "transliteration": "Al-Kafirun",
+    "translation": "The Disbelievers",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 2,
+        "text": "لَآ أَعۡبُدُ مَا تَعۡبُدُونَ",
+        "translation": "I do not worship what you worship"
+      },
+      {
+        "id": 3,
+        "text": "وَلَآ أَنتُمۡ عَٰبِدُونَ مَآ أَعۡبُدُ",
+        "translation": "Nor are you worshippers of what I worship"
+      }
+    ]
+  },
+  {
+    "id": 110,
+    "name": "النصر",
+    "transliteration": "An-Nasr",
+    "translation": "The Divine Support",
+    "type": "medinan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 1,
+        "text": "إِذَا جَآءَ نَصۡرُ ٱللَّهِ وَٱلۡفَتۡحُ",
+        "translation": "When the victory of Allah has come and the conquest"
+      },
+      {
+        "id": 3,
+        "text": "فَسَبِّحۡ بِحَمۡدِ رَبِّكَ وَٱسۡتَغۡفِرۡهُۚ إِنَّهُۥ كَانَ تَوَّابَۢا",
+        "translation": "Then exalt [Him] with praise of your Lord and ask forgiveness of Him. Indeed, He is ever Accepting of repentance"
+      }
+    ]
+  },
+  {
+    "id": 111,
+    "name": "المسد",
+    "transliteration": "Al-Masad",
+    "translation": "The Palm Fiber",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 3,
+        "text": "سَيَصۡلَىٰ نَارٗا ذَاتَ لَهَبٖ",
+        "translation": "He will [enter to] burn in a Fire of [blazing] flame"
+      },
+      {
+        "id": 5,
+        "text": "فِي جِيدِهَا حَبۡلٞ مِّن مَّسَدِۭ",
+        "translation": "Around her neck is a rope of [twisted] fiber"
+      }
+    ]
+  },
+  {
+    "id": 112,
+    "name": "الإخلاص",
+    "transliteration": "Al-Ikhlas",
+    "translation": "The Sincerity",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 1,
+        "text": "قُلۡ هُوَ ٱللَّهُ أَحَدٌ",
+        "translation": "Say, \"He is Allah, [who is] One"
+      },
+      {
+        "id": 4,
+        "text": "وَلَمۡ يَكُن لَّهُۥ كُفُوًا أَحَدُۢ",
+        "translation": "Nor is there to Him any equivalent"
+      }
+    ]
+  },
+  {
+    "id": 113,
+    "name": "الفلق",
+    "transliteration": "Al-Falaq",
+    "translation": "The Daybreak",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 4,
+        "text": "وَمِن شَرِّ ٱلنَّفَّـٰثَٰتِ فِي ٱلۡعُقَدِ",
+        "translation": "And from the evil of the blowers in knots"
+      },
+      {
+        "id": 5,
+        "text": "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ",
+        "translation": "And from the evil of an envier when he envies"
+      }
+    ]
+  },
+  {
+    "id": 114,
+    "name": "الناس",
+    "transliteration": "An-Nas",
+    "translation": "Mankind",
+    "type": "meccan",
+    "total_verses": 2,
+    "verses": [
+      {
+        "id": 4,
+        "text": "مِن شَرِّ ٱلۡوَسۡوَاسِ ٱلۡخَنَّاسِ",
+        "translation": "From the evil of the retreating whisperer"
+      },
+      {
+        "id": 6,
+        "text": "مِنَ ٱلۡجِنَّةِ وَٱلنَّاسِ",
+        "translation": "From among the jinn and mankind"
+      }
+    ]
+  }
+]

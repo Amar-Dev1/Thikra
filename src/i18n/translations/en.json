@@ -48,9 +48,19 @@
         "qibla": "Qibla (Soon)",
         "more": "More"
       },
-      "friday_hadith": "Allah's Messenger (ﷺ) said: \"There is an hour (opportune time) on Friday and if a Muslim gets it while praying and asks something from Allah, then Allah will definitely meet his demand.\"",
-      "ribat_hadith": "That is the Ribat, that is the Ribat",
-      "placeholder_ayah": "إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ تَتَنَزَّلُ عَلَيْهِمُ ٱلْمَلَٰٓئِكَةُ أَلَّا تَخَافُوا۟ وَلَا تَحْزَنُوا۟ وَأَبْشِرُوا۟ بِٱلْجَنَّةِ ٱلَّتِى كُنتُمْ تُوعَدُونَ"
+      "placeholder_ayah": "إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ تَتَنَزَّلُ عَلَيْهِمُ ٱلْمَلَٰٓئِكَةُ أَلَّا تَخَافُوا۟ وَلَا تَحْزَنُوا۟ وَأَبْشِرُوا۟ بِٱلْجَنَّةِ ٱلَّتِى كُنتُمْ تُوعَدُونَ",
+      "greeting_main": "Peace be upon you.",
+      "greeting_sub": "May your heart find rest in remembrance today.",
+      "tap_to_count": "TAP TO COUNT",
+      "reset": "Reset",
+      "change_dhikr": "Change Dhikr",
+      "ask_ai_sheikh": "Ask Al Sheikh",
+      "ai_sheikh_desc": "Seek guidance from our intelligent guide, who relies on The Quran and the Sunnah",
+      "start_chat": "Start Chat",
+      "verse_of_the_day": "VERSE OF THE DAY",
+      "subhanallah": "SUBHANALLAH",
+      "alhamdulillah": "ALHAMDULILLAH",
+      "allahu_akbar": "ALLAHU AKBAR"
     },
     "salah_times": {
       "title": "More",
