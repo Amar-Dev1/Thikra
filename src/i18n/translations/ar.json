@@ -98,16 +98,31 @@
       "about_desc": "نبذة عن التطبيق",
       "light": "Light",
       "dark": "Dark",
-      "system": "System (default)"
+      "system": "System (default)",
+      "preferences_header": "التفضيلات",
+      "general_header": "عام",
+      "support_header": "الدعم",
+      "language_title": "اللغة",
+      "language_desc": "التبديل بين العربية والإنجليزية",
+      "notifications_title": "الإشعارات",
+      "notifications_desc": "مواقيت الصلاة والتذكيرات اليومية",
+      "theme_title": "سمة التطبيق",
+      "theme_desc": "خصص تجربتك",
+      "about_thikra": "حول ذكرى",
+      "report_problem": "التبليغ عن مشكلة",
+      "version": "ذكرى",
+      "tagline": "تطوير الملاذ الرقمي",
+      "choose_theme": "اختر السمة",
+      "light_mode": "الوضع الفاتح",
+      "dark_mode": "الوضع الداكن",
+      "system_default": "تلقائي (حسب النظام)"
     },
     "about": {
       "title": "عن التطبيق",
-      "app_name_label": "- اسم التطبيق : ",
-      "app_name_value": "ذكرى - Thikra",
-      "about_label": "- نبذه : ",
-      "about_value": "هو تطبيق إسلامي لإعانة المسلم -",
-      "monotheist": "الموحّد لله عز و جل",
-      "description_rest": "- على تتبع أوقات الصلاة بناءاً على موقعه و قراءة الأذكار و الأدعية، بالإضافة لأشياء أخرى"
+      "app_name_label": "اسم التطبيق:",
+      "app_name_value": "ذكرى",
+      "about_label": "نبذة:",
+      "about_value": "ذكرى هو ملاذ رقمي للمسلم لمساعدته في تلبية احتياجاته الإسلامية اليومية وأسئلته وتوفير إجابات ذكية بناءً على القرآن والسنة."
     },
     "location": {
       "title": "الموقع",

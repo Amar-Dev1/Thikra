@@ -79,12 +79,10 @@
     },
     "about": {
       "title": "About",
-      "app_name_label": "- App Name:",
+      "app_name_label": "App Name:",
       "app_name_value": "Thikra",
-      "about_label": "- Description:",
-      "about_value": "An Islamic app to help Muslims - ",
-      "monotheist": "the monotheist ",
-      "description_rest": " - track prayer times based on location, read adhkar and dua, and more."
+      "about_label": "Description:",
+      "about_value": "Thikra is a digital sanctuary for Muslims to help them with their daily Islamic needs and questions and provide intelligent answers based on the Quran and Sunnah."
     },
     "saved": {
       "title": "Saved",
@@ -107,7 +105,24 @@
       "about_desc": "Brief overview of the app",
       "light": "Light",
       "dark": "Dark",
-      "system": "System (default)"
+      "system": "System (default)",
+      "preferences_header": "PREFERENCES",
+      "general_header": "GENERAL",
+      "support_header": "SUPPORT",
+      "language_title": "Language",
+      "language_desc": "Switch between Arabic and English",
+      "notifications_title": "Notifications",
+      "notifications_desc": "Prayer times and daily reminders",
+      "theme_title": "App Theme",
+      "theme_desc": "Customize your experience",
+      "about_thikra": "About Thikra",
+      "report_problem": "Report a Problem",
+      "version": "THIKRA",
+      "tagline": "Refining the digital sanctuary",
+      "choose_theme": "Choose Theme",
+      "light_mode": "Light Mode",
+      "dark_mode": "Dark Mode",
+      "system_default": "System Default"
     },
     "location": {
       "title": "Location",

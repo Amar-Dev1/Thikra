@@ -4,6 +4,7 @@ import { BellSvg } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
 import i18n from "@/src/i18n";
 import { requestPermission } from "@/src/utils/Notifications";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import { useState } from "react";
 import { ActivityIndicator, Modal, TouchableOpacity, View } from "react-native";
@@ -23,7 +24,8 @@ const AllowNotification = () => {
     try {
       setLoading(true);
       const allowed = await requestPermission();
-      // if (!allowed) return;
+      if (!allowed) return;
+      await AsyncStorage.setItem("notification_permission", "true");
       router.push("/onboarding/SetupAll");
     } catch (e) {
       console.warn(e);
