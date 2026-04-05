@@ -79,9 +79,7 @@
         }
       ],
       "expo-asset",
-      "expo-web-browser",
-      "expo-secure-store",
-      "expo-background-task"
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true,
