@@ -2,7 +2,6 @@ import BgWrapper from "@/src/components/BgWrapper";
 import ThemedText from "@/src/components/ThemedText";
 import { LocationSvg } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
-import i18n from "@/src/i18n";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Location from "expo-location";
 import { router } from "expo-router";
@@ -88,9 +87,9 @@ const EditLocation = () => {
     } catch (e) {
       console.error(e);
       Alert.alert(
-        i18n.t("common.location_service_title"),
-        i18n.t("common.location_service_desc"),
-        [{ text: i18n.t("common.ok"), style: "default" }]
+        "تفعيل خدمة الموقع",
+        "قم بتفعيل الموقع و الإنترنت رجاءاً ليعمل التطبيق ",
+        [{ text: "موافق", style: "default" }]
       );
     } finally {
       setLoading(false);
@@ -106,9 +105,9 @@ const EditLocation = () => {
 
       if (!cityData) {
         Alert.alert(
-          i18n.t("common.error"),
-          i18n.t("screens.location.city_not_found"),
-          [{ text: i18n.t("common.ok"), style: "default" }]
+          "خطأ",
+          "تعذر إيجاد المدينة",
+          [{ text: "موافق", style: "default" }]
         );
         throw new Error("Could not find city data");
       }
@@ -150,7 +149,7 @@ const EditLocation = () => {
           >
             <ActivityIndicator color={textColor} size={"large"} />
             <ThemedText className="font-cairo-bold text-lg opacity-65">
-              {i18n.t("screens.location.setting_location")}
+              جار ضبط الموقع
             </ThemedText>
           </View>
         </Modal>
@@ -162,11 +161,11 @@ const EditLocation = () => {
           >
             <View className="flex-row items-center gap-2">
               <ThemedText className="font-cairo-bold text-3xl my-5">
-                {i18n.t("screens.location.edit_title")}
+                تعديل الموقع
               </ThemedText>
             </View>
             <ThemedText className="font-cairo text-xl opacity-65">
-              {i18n.t("screens.location.desc")}
+              تفعيل الوصول للموقع ، لعرض مواقيت الصلاة بناءاً على موقعك الحالي
             </ThemedText>
 
             <View className="mt-5 gap-4">
@@ -184,13 +183,13 @@ const EditLocation = () => {
                   />
                   <View className="gap-2 flex-1">
                     <ThemedText className="font-cairo-bold text-lg">
-                      {i18n.t("screens.location.auto_detect")}{" "}
+                      تحديد الموقع تلقائياً{" "}
                       <ThemedText className="text-sm font-cairo opacity-60">
-                        {i18n.t("screens.location.recommended")}
+                        (موصى به)
                       </ThemedText>
                     </ThemedText>
                     <ThemedText className="font-cairo-bold text-sm opacity-55">
-                      {i18n.t("screens.location.auto_detect_desc")}
+                      سيتم تحديث مواقيت الصلاة تلقائياً
                     </ThemedText>
                   </View>
                 </View>
@@ -210,10 +209,10 @@ const EditLocation = () => {
                   />
                   <View className="gap-2 flex-1">
                     <ThemedText className="font-cairo-bold text-lg">
-                      {i18n.t("screens.location.manual_detect")}
+                      تحديد الموقع يدوياً
                     </ThemedText>
                     <ThemedText className="font-cairo-bold text-sm opacity-55">
-                      {i18n.t("screens.location.manual_detect_desc")}
+                      حدد البلد و المدينة يدوياً . عليك تحديث موقعك إذا غيرت المدينة
                     </ThemedText>
                   </View>
                 </View>
@@ -222,7 +221,7 @@ const EditLocation = () => {
               {expandedCountry && (
                 <View className="mt-3">
                   <ThemedText>
-                    {i18n.t("screens.location.choose_country")}
+                    اختار الدولة
                   </ThemedText>
                   <SelectList
                     data={countries}
@@ -240,7 +239,7 @@ const EditLocation = () => {
               {selectedCountry && (
                 <View className={`mt-3 mb-3`}>
                   <ThemedText>
-                    {i18n.t("screens.location.choose_city")}
+                    اختار المدينة
                   </ThemedText>
                   <SelectList
                     data={cityNames}
@@ -263,7 +262,7 @@ const EditLocation = () => {
                 onPress={locationManualDetect}
               >
                 <ThemedText className="text-lg font-cairo-bold text-center">
-                  {i18n.t("screens.location.apply")}
+                  تعيين
                 </ThemedText>
               </TouchableOpacity>
 
@@ -272,7 +271,7 @@ const EditLocation = () => {
                 onPress={() => router.push("/Settings")}
               >
                 <ThemedText className="text-lg font-cairo-bold text-center">
-                  {i18n.t("common.cancel")}
+                  إلغاء
                 </ThemedText>
               </TouchableOpacity>
             </View>

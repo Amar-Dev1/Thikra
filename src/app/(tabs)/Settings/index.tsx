@@ -5,7 +5,6 @@ import ThemedText from "@/src/components/ThemedText";
 import { RightAngleSvg } from "@/src/constants/icons";
 import { images } from "@/src/constants/images";
 import { useTheme } from "@/src/context/ThemeContext";
-import i18n from "@/src/i18n";
 import React, { useState } from "react";
 import {
   Dimensions,
@@ -36,11 +35,11 @@ const Index = () => {
 
   return (
     <BgWrapper className="px-5 gap-3 bg-bgColor">
-      <ScreenTitle title={i18n.t("screens.settings.title")} />
+      <ScreenTitle title="الإعدادات" />
       <ScrollView showsVerticalScrollIndicator={false} className="flex-1">
         {settingsElements.map((item, index) => {
           const onPress =
-            item.title === i18n.t("screens.settings.theme_modal_title")
+            item.title === "السمات"
               ? () => setThemeModalVisible(true)
               : item.onPress;
           return (
@@ -68,10 +67,10 @@ const Index = () => {
             } `}
           />
           <Text className="text-light font-cairo-bold text-xl text-center">
-            {i18n.t("screens.settings.verse")}
+            وَذَكِّرْ فَإِنَّ الذِّكْرَى تَنْفَعُ الْمُؤْمِنِينَ
           </Text>
           <Text className="text-light font-cairo text-xs text-center mt-5">
-            {i18n.t("screens.settings.verse_source")}
+            [ الذاريات: 55]
           </Text>
         </ImageBackground>
       </Animated.View>

@@ -4,8 +4,6 @@ import notifee, {
   EventType,
 } from "@notifee/react-native";
 import { Platform } from "react-native";
-import i18n from "../i18n";
-// @ts-ignore
 
 export const initializeNotifications = async () => {
   notifee.onForegroundEvent(async ({ type, detail }) => {
@@ -20,7 +18,7 @@ export const initializeNotifications = async () => {
     // create channel for salah times
     notifee.createChannel({
       id: "salah_channel",
-      name: i18n.t("channels.prayer"),
+      name: "أوقات الصلاة",
       importance: AndroidImportance.HIGH,
       vibration: true,
       vibrationPattern: [100, 250, 100, 250],
@@ -31,7 +29,7 @@ export const initializeNotifications = async () => {
 
     notifee.createChannel({
       id: "adhkar_channel",
-      name: i18n.t("channels.adhkar"),
+      name: "أذكار الصباح والمساء",
       importance: AndroidImportance.DEFAULT,
       sound: "default",
       visibility: AndroidVisibility.PUBLIC,

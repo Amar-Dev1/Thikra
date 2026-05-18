@@ -4,7 +4,6 @@ import React from "react";
 const _layout = () => {
   return (
     <Stack screenOptions={{ headerShown: false}}>
-      <Stack.Screen name="language" options={{headerShown:false}}/>
       <Stack.Screen name="AllowNotification" options={{headerShown:false}}/>
       <Stack.Screen name="AccessLocation" options={{headerShown:false}}/>
       <Stack.Screen name="SetupAll" options={{headerShown:false}}/>

@@ -5,7 +5,6 @@ import notifee, {
   TimestampTrigger,
   TriggerType,
 } from "@notifee/react-native";
-import i18n from "../i18n";
 import { convertToHHMM } from "./parseTime";
 
 const createTriggerDate = (
@@ -45,10 +44,8 @@ export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
 
       await notifee.createTriggerNotification(
         {
-          title: i18n.t("notifications.prayer_time_title", {
-            name: prayer.name,
-          }),
-          body: i18n.t("notifications.prayer_time_body"),
+          title: "حان الآن وقت صلاة " + prayer.name,
+          body: "لا تنسى أن تصلي!",
           android: {
             channelId: "salah_channel",
             importance: AndroidImportance.HIGH,
@@ -100,8 +97,8 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
 
       await notifee.createTriggerNotification(
         {
-          title: i18n.t("notifications.morning_adhkar_title"),
-          body: i18n.t("notifications.morning_adhkar_body"),
+          title: "أذكار الصباح",
+          body: "لا تنسى أن تقرأ أذكار الصباح",
           android: {
             channelId: "adhkar_channel",
             pressAction: { id: "default" },
@@ -134,8 +131,8 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
 
       await notifee.createTriggerNotification(
         {
-          title: i18n.t("notifications.evening_adhkar_title"),
-          body: i18n.t("notifications.evening_adhkar_body"),
+          title: "أذكار المساء",
+          body: "لا تنسى أن تقرأ أذكار المساء",
           android: {
             channelId: "adhkar_channel",
             pressAction: { id: "default" },

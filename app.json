@@ -10,7 +10,6 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "ExpoLocalization_supportsRTL": true,
         "ITSAppUsesNonExemptEncryption": false
       },
       "bundleIdentifier": "com.amardev1.Thikra",
@@ -80,26 +79,7 @@
             ]
           }
         }
-      ],
-      [
-        "expo-localization",
-        {
-          "supportedLocales": {
-            "ios": [
-              "ar",
-              "en"
-            ],
-            "android": [
-              "ar",
-              "en"
-            ]
-          }
-        }
-      ],
-      "expo-asset",
-      "expo-web-browser",
-      "expo-secure-store",
-      "expo-background-task"
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

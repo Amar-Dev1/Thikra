@@ -1,5 +1,4 @@
 import { ILocation } from "@/src/interfaces";
-import i18n from "../i18n";
 import { CONFIG } from "./config";
 
 export const fetchPrayerTimes = async (location: ILocation) => {
@@ -8,7 +7,7 @@ export const fetchPrayerTimes = async (location: ILocation) => {
 
     const res = await fetch(apiUrl, { method: "GET", headers: CONFIG.HEADERS });
     if (!res) {
-      throw new Error(i18n.t("services.prayer_times.initialization_error"));
+      throw new Error("حدث خطأ أثناء جلب أوقات الصلاة");
     }
     const data = await res.json();
     return data?.data?.timings;

@@ -4,8 +4,6 @@ import notifee, {
 } from "@notifee/react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert, Platform } from "react-native";
-import i18n from "../i18n";
-
 export const accessNotifications = async (): Promise<boolean> => {
   const FLAG = "notifications_allowed";
   try {
@@ -20,8 +18,8 @@ export const accessNotifications = async (): Promise<boolean> => {
     if (!granted) {
       await notifee.cancelAllNotifications();
       Alert.alert(
-        i18n.t("common.permission_denied"),
-        i18n.t("common.permission_denied_desc")
+        "إذن مرفوض",
+        "تطبيقنا يحتاج إلى إذن لإرسال الإشعارات إليك. يرجى تمكينها في إعداداتك."
       );
       await AsyncStorage.removeItem(FLAG);
       return false;
@@ -33,12 +31,12 @@ export const accessNotifications = async (): Promise<boolean> => {
       const alarmSettings = await notifee.getNotificationSettings();
       if (alarmSettings.android.alarm !== AndroidNotificationSetting.ENABLED) {
         Alert.alert(
-          i18n.t("common.permission_required"),
-          i18n.t("common.permission_required_desc"),
+          "إذن مطلوب",
+          "تطبيقنا يحتاج إلى إذن لإرسال الإشعارات إليك. يرجى تمكينها في إعداداتك.",
           [
-            { text: i18n.t("common.later"), style: "cancel" },
+            { text: "لاحقاً", style: "cancel" },
             {
-              text: i18n.t("common.open_settings"),
+              text: "فتح الإعدادات",
               // open settings page!
               onPress: () => notifee.openAlarmPermissionSettings(),
             },
@@ -53,8 +51,8 @@ export const accessNotifications = async (): Promise<boolean> => {
   } catch (e) {
     console.error("Notification permission check failed:", e);
     Alert.alert(
-      i18n.t("common.error"),
-      i18n.t("common.notification_setup_error")
+      "خطأ",
+      "حدث خطأ أثناء إعداد الإشعارات"
     );
     return false;
   }

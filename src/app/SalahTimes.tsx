@@ -3,7 +3,6 @@ import SalahItem from "@/src/components/SalahItem";
 import ScreenTitle from "@/src/components/ScreenTitle";
 import { RightAngleSvg } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
-import i18n from "@/src/i18n";
 import { IPrayerDetails } from "@/src/interfaces";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
@@ -40,11 +39,11 @@ const SalahTimes = () => {
       } catch (e) {
         console.error(e);
         Alert.alert(
-          i18n.t("common.error"),
-          i18n.t("screens.salah_times.error_desc"),
+          "خطأ",
+          "حدث خطأ أثناء جلب أوقات الصلاة. يرجى التأكد من اتصالك بالإنترنت.",
           [
             {
-              text: i18n.t("screens.index.title"),
+              text: "الرئيسية",
               onPress: () => router.push("/"),
             },
           ]
@@ -59,7 +58,7 @@ const SalahTimes = () => {
   return (
     <BgWrapper className="px-5">
       <ScreenTitle
-        title={i18n.t("screens.salah_times.title")}
+        title={"أوقات الصلاة"}
         className="flex-row items-center py-4"
       >
         <TouchableOpacity

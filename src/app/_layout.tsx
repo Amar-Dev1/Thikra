@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { I18nManager, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "../global.css";
-import i18n from "../i18n";
 import { scheduleAllNotifications } from "../utils/notificationServices";
 import { accessNotifications } from "../utils/accessNotifications";
 import { initializeNotifications } from "../utils/initializeNotifications";
@@ -16,11 +15,8 @@ import { IPrayerDetails } from "../interfaces";
 
 SplashScreen.preventAutoHideAsync();
 
-if (i18n.locale === "ar") {
-  I18nManager.allowRTL(true);
-  I18nManager.forceRTL(true);
-}
-
+I18nManager.allowRTL(true);
+I18nManager.forceRTL(true);
 export default function RootLayout() {
   const router = useRouter();
 
@@ -46,18 +42,10 @@ export default function RootLayout() {
   useEffect(() => {
     async function prepareApp() {
       try {
-        const storedLang = await AsyncStorage.getItem("userLanguage");
-        if (storedLang) {
-          i18n.locale = storedLang;
-          const isRTL = storedLang === "ar";
-          if (I18nManager.isRTL !== isRTL) {
-            I18nManager.allowRTL(isRTL);
-            I18nManager.forceRTL(isRTL);
-            // On some platforms, you might need Updates.reloadAsync()
-            // but we'll try without it first for simplicity.
-          }
+        if (!I18nManager.isRTL) {
+          I18nManager.allowRTL(true);
+          I18nManager.forceRTL(true);
         }
-
         const storedValue = await AsyncStorage.getItem("onboardingCompleted");
 
         if (storedValue === null || storedValue === undefined) {
@@ -106,7 +94,7 @@ export default function RootLayout() {
     }
 
     if (!completedOnboarding) {
-      router.replace("/onboarding/Language");
+      router.replace("/onboarding/AccessLocation");
     }
 
     // If completedOnboarding is true, this effect does nothing,

@@ -6,7 +6,6 @@ import {
   ShareSvg,
   ThemeSvg,
 } from "@/src/constants/icons";
-import i18n from "@/src/i18n";
 import { Linking, Share } from "react-native";
 
 const onShare = async () => {
@@ -32,31 +31,31 @@ const onReport = () => {
 
 export const settingsElements: ISettingsElement[] = [
   {
-    title: i18n.t("screens.location.title"),
-    desc: i18n.t("screens.location.edit_title"),
+    title: "الموقع",
+    desc: "تعديل الموقع",
     route: "/Settings/EditLocation",
     Icon: LocationSvg,
   },
   {
-    title: i18n.t("screens.settings.theme_modal_title"),
-    desc: i18n.t("screens.settings.theme_modal_desc"),
+    title: "السمات",
+    desc: "تغيير لون التطبيق",
     Icon: ThemeSvg,
   },
   {
-    title: i18n.t("screens.settings.share_app"),
-    desc: i18n.t("screens.settings.share_app_desc"),
+    title: "مشاركة التطبيق",
+    desc: " كن شريكاً في الأجر",
     Icon: ShareSvg,
     onPress: async () => onShare(),
   },
   {
-    title: i18n.t("screens.settings.report_issue"),
-    desc: i18n.t("screens.settings.contact_developer"),
+    title: "التبليغ عن مشاكل في التطبيق",
+    desc: "تواصل مع المطور",
     Icon: ContactSvg,
     onPress: () => onReport(),
   },
   {
-    title: i18n.t("screens.settings.about_title"),
-    desc: i18n.t("screens.settings.about_desc"),
+    title: "حول التطبيق",
+    desc: "نبذة عن التطبيق",
     route: "/Settings/About",
     Icon: InfoSvg,
   },

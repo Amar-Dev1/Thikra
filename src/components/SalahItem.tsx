@@ -1,6 +1,5 @@
 import { BellSvg } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
-import i18n from "@/src/i18n";
 import { IPrayerDetails } from "@/src/interfaces";
 import { convert24To12 } from "@/src/utils/parseTime";
 import React from "react";
@@ -49,7 +48,7 @@ const SalahItem = ({ name, time, to, className }: props) => {
             </ThemedText>
             <ThemedText className="font-cairo text-xs opacity-55">
               {convert24To12(time)}{" "}
-              {i18n.t("components.salah_item.notification_at")}
+              {"إشعار في"}
             </ThemedText>
           </View>
         </View>

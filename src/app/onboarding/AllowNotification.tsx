@@ -2,7 +2,6 @@ import BgWrapper from "@/src/components/BgWrapper";
 import ThemedText from "@/src/components/ThemedText";
 import { BellSvg } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
-import i18n from "@/src/i18n";
 import { accessNotifications } from "@/src/utils/accessNotifications";
 import { router } from "expo-router";
 import { useState } from "react";
@@ -47,7 +46,7 @@ const AllowNotification = () => {
           >
             <ActivityIndicator color={textColor} size={"large"} />
             <ThemedText className="font-cairo-bold text-lg opacity-65">
-              {i18n.t("common.wait")}
+              يرجى الإنتظار
             </ThemedText>
           </View>
         </Modal>
@@ -55,12 +54,12 @@ const AllowNotification = () => {
         <>
           <View className="flex-row items-center gap-2">
             <ThemedText className="font-cairo-bold text-3xl my-5">
-              {i18n.t("common.notification_permission_title")}
+              تفعيل الإشعارات
             </ThemedText>
             <BellSvg width={30} height={30} stroke={textColor} />
           </View>
           <ThemedText className="font-cairo text-xl opacity-65">
-            {i18n.t("common.notification_permission_desc")}
+            الرجاء تفعيل اللإشعارات ، لكي تصلك مواقيت الصلاة ، و باقي الأذكار
           </ThemedText>
 
           <View className="flex-row items-center mt-auto">
@@ -72,7 +71,7 @@ const AllowNotification = () => {
               style={{ backgroundColor: bg }}
             >
               <ThemedText className="text-lg font-cairo-bold text-center">
-                {i18n.t("common.allow")}
+                سماح
               </ThemedText>
             </TouchableOpacity>
           </View>
