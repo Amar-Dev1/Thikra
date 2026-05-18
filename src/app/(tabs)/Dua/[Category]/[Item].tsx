@@ -53,18 +53,11 @@ const ItemDetails = () => {
       const checkIfSaved = async () => {
         const data = await AsyncStorage.getItem("Saved");
         const saved: ISavedCategory[] = data ? JSON.parse(data) : [];
-        const category = saved.find(
-          (cat) => cat.name === "الأدعية و الأذكار"
-        );
-
-        if (category) {
-          const itemExists = category.items.some(
-            (item) => String(item.id) === String(itemId)
-          );
-          setIsSaved(itemExists);
-        } else {
-          setIsSaved(false);
-        }
+        
+        // Search all items in case the state hasn't been consolidated yet
+        const allItems = saved.flatMap(cat => cat.items || []);
+        const itemExists = allItems.some((item) => String(item.id) === String(itemId));
+        setIsSaved(itemExists);
       };
 
       checkIfSaved();
@@ -73,45 +66,7 @@ const ItemDetails = () => {
     }, [itemId])
   );
 
-  useFocusEffect(
-    useCallback(() => {
-      const tabLayoutBorder = currentTheme === "dark" ? "#333333" : "#FFFDF8";
 
-      const restoredTabBarStyle: ViewStyle = {
-        backgroundColor: bg,
-        borderTopWidth: 0.05,
-        borderTopColor: tabLayoutBorder,
-        minHeight: 60,
-        position: "absolute",
-        overflow: "hidden",
-      };
-
-      const restoredTabBarItemStyle: ViewStyle = {
-        paddingTop: 5,
-      };
-
-      // @ts-ignore
-      const tabsParent = navigation.getParent()?.getParent("/(tabs)");
-
-      // hide the tab bar
-      if (tabsParent) {
-        tabsParent.setOptions({
-          tabBarStyle: { display: "none" },
-          tabBarItemStyle: { display: "none" },
-        });
-      }
-
-      // The cleanup function
-      return () => {
-        if (tabsParent) {
-          tabsParent.setOptions({
-            tabBarStyle: restoredTabBarStyle,
-            tabBarItemStyle: restoredTabBarItemStyle,
-          });
-        }
-      };
-    }, [navigation, currentTheme, bg])
-  );
 
   const toggleSave = async () => {
     if (!currentItem) return;
@@ -119,38 +74,32 @@ const ItemDetails = () => {
     try {
       setLoading(true);
       const data = await AsyncStorage.getItem("Saved");
-      const saved: ISavedCategory[] = data ? JSON.parse(data) : [];
+      let saved: ISavedCategory[] = data ? JSON.parse(data) : [];
 
-      const category = saved.find(
-        (cat) => cat.name === "الأدعية و الأذكار"
+      // Consolidate all categories into a single one to clean up bad state
+      const allItems = saved.flatMap(cat => cat.items || []);
+      // Remove duplicates
+      const uniqueItems = Array.from(new Map(allItems.map(item => [String(item.id), item])).values());
+      
+      saved = [{
+        id: 1,
+        name: "أدعية وأذكار",
+        items: uniqueItems
+      }];
+
+      const category = saved[0];
+      const itemIndex = category.items.findIndex(
+        (item) => String(item.id) === String(currentItem?.id)
       );
 
-      if (category) {
-        const itemIndex = category.items.findIndex(
-          (item) => String(item.id) === String(currentItem?.id)
-        );
-        if (itemIndex > -1) {
-          category.items.splice(itemIndex, 1);
-          setIsSaved(false);
-        } else {
-          category.items.push({
-            id: currentItem?.id,
-            route: `/Dua/${categoryId}/${currentItem.id}`,
-            name: currentItem?.name,
-          });
-          setIsSaved(true);
-        }
+      if (itemIndex > -1) {
+        category.items.splice(itemIndex, 1);
+        setIsSaved(false);
       } else {
-        saved.push({
-          id: 1,
-          name: "الأدعية و الأذكار",
-          items: [
-            {
-              id: currentItem?.id,
-              route: `/Dua/${categoryId}/${currentItem?.id}`,
-              name: currentItem?.name,
-            },
-          ],
+        category.items.push({
+          id: currentItem?.id,
+          route: `/Dua/${categoryId}/${currentItem.id}`,
+          name: currentItem?.name,
         });
         setIsSaved(true);
       }

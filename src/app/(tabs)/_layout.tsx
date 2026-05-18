@@ -5,7 +5,7 @@ import {
   UnSavedSvg,
 } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
-import { Tabs } from "expo-router";
+import { Tabs, useSegments } from "expo-router";
 import React from "react";
 import { ViewStyle } from "react-native";
 import { SvgProps } from "react-native-svg";
@@ -19,6 +19,9 @@ interface ITabIcon {
 const TabsLayout = () => {
   // @ts-ignore
   const { currentTheme } = useTheme();
+  const segments = useSegments();
+  // @ts-ignore
+  const hideTabBar = segments.includes("[Item]");
 
   const TabIcon = ({ focused, Icon, name }: ITabIcon) => {
     const themeColor = currentTheme === "dark" ? "#ffffff" : "#111111";
@@ -36,24 +39,21 @@ const TabsLayout = () => {
 
   return (
     <Tabs
-      screenOptions={() => {
-        const bg = currentTheme === "dark" ? "#222222" : "#ffffff";
-        const tabBarStyle: ViewStyle = {
-          backgroundColor: bg,
+      screenOptions={{
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: currentTheme === "dark" ? "#222222" : "#ffffff",
           borderTopWidth: 0.05,
           borderTopColor: currentTheme === "dark" ? "#333333" : "#FFFDF8",
           minHeight: 60,
           position: "absolute",
           overflow: "hidden",
-        };
-
-        return {
-          tabBarShowLabel: false,
-          tabBarStyle: tabBarStyle,
-          tabBarItemStyle: {
-            paddingTop: 5,
-          },
-        };
+          display: hideTabBar ? "none" : "flex",
+        },
+        tabBarItemStyle: {
+          paddingTop: 5,
+          display: hideTabBar ? "none" : "flex",
+        },
       }}
     >
       <Tabs.Screen

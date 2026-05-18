@@ -102,10 +102,10 @@ const Saved = () => {
               currentTheme === "dark" ? "bg-[#222222]" : "bg-primary"
             }  px-5`}
           >
-            {saved.map((cat) => (
+            {saved.map((cat, index) => (
               <TouchableOpacity
                 className="relative py-5"
-                key={cat.id}
+                key={`${cat.id}-${index}`}
                 onPress={() => setSelectedCat(cat.id)}
               >
                 <ThemedText className="font-cairo">{cat.name}</ThemedText>
@@ -119,7 +119,7 @@ const Saved = () => {
           <View className="flex-1">
             {Array.isArray(SavedItems) && SavedItems.length > 0 ? (
               <ScrollView showsVerticalScrollIndicator={false}>
-                {SavedItems.reverse().map((item, index) => {
+                {[...SavedItems].reverse().map((item, index) => {
                   const isLast = index === SavedItems.length - 1;
                   return (
                     <View
@@ -130,7 +130,7 @@ const Saved = () => {
                       }
                       ${isLast && "mb-16"}
                       `}
-                      key={item.id}
+                      key={`${item.id}-${index}`}
                     >
                       <View className="flex-row items-center gap-2">
                         <UnSavedSvg
