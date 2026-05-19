@@ -18,8 +18,7 @@ import {
   Alert,
   FlatList,
   TouchableOpacity,
-  View,
-  ViewStyle,
+  View
 } from "react-native";
 import Animated, { FadeInRight } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -53,20 +52,20 @@ const ItemDetails = () => {
       const checkIfSaved = async () => {
         const data = await AsyncStorage.getItem("Saved");
         const saved: ISavedCategory[] = data ? JSON.parse(data) : [];
-        
+
         // Search all items in case the state hasn't been consolidated yet
-        const allItems = saved.flatMap(cat => cat.items || []);
-        const itemExists = allItems.some((item) => String(item.id) === String(itemId));
+        const allItems = saved.flatMap((cat) => cat.items || []);
+        const itemExists = allItems.some(
+          (item) => String(item.id) === String(itemId),
+        );
         setIsSaved(itemExists);
       };
 
       checkIfSaved();
 
       return () => {};
-    }, [itemId])
+    }, [itemId]),
   );
-
-
 
   const toggleSave = async () => {
     if (!currentItem) return;
@@ -77,19 +76,23 @@ const ItemDetails = () => {
       let saved: ISavedCategory[] = data ? JSON.parse(data) : [];
 
       // Consolidate all categories into a single one to clean up bad state
-      const allItems = saved.flatMap(cat => cat.items || []);
+      const allItems = saved.flatMap((cat) => cat.items || []);
       // Remove duplicates
-      const uniqueItems = Array.from(new Map(allItems.map(item => [String(item.id), item])).values());
-      
-      saved = [{
-        id: 1,
-        name: "أدعية وأذكار",
-        items: uniqueItems
-      }];
+      const uniqueItems = Array.from(
+        new Map(allItems.map((item) => [String(item.id), item])).values(),
+      );
+
+      saved = [
+        {
+          id: 1,
+          name: "أدعية وأذكار",
+          items: uniqueItems,
+        },
+      ];
 
       const category = saved[0];
       const itemIndex = category.items.findIndex(
-        (item) => String(item.id) === String(currentItem?.id)
+        (item) => String(item.id) === String(currentItem?.id),
       );
 
       if (itemIndex > -1) {
@@ -108,9 +111,7 @@ const ItemDetails = () => {
       // DeviceEventEmitter.emit('SavedUpdated')
     } catch (e) {
       console.log(e);
-      Alert.alert("خطأ", "لم يتم الحفظ", [
-        { text: "موافق", style: "default" },
-      ]);
+      Alert.alert("خطأ", "لم يتم الحفظ", [{ text: "موافق", style: "default" }]);
     } finally {
       setLoading(false);
     }
@@ -192,7 +193,7 @@ const ItemDetails = () => {
                 </ThemedText>
                 {item.count != null && (
                   <ThemedText className="opacity-60 text-xs mt-5">
-                    عدد المرات:  {item.count}
+                    عدد المرات: {item.count}
                   </ThemedText>
                 )}
               </Animated.View>
