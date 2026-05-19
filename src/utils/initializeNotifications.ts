@@ -23,7 +23,7 @@ export const initializeNotifications = async () => {
       vibration: true,
       vibrationPattern: [100, 250, 100, 250],
       lightColor: "#FF231F7C",
-      sound: "sound",
+      sound: "default",
       visibility: AndroidVisibility.PUBLIC,
     });
 

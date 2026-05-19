@@ -52,9 +52,6 @@ export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
             pressAction: { id: "default" },
             showTimestamp: true,
           },
-          ios: {
-            sound: "sound",
-          },
         },
         trigger
       );
@@ -104,9 +101,6 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
             pressAction: { id: "default" },
             showTimestamp: true,
           },
-          ios: {
-            sound: "default",
-          },
         },
         trigger
       );
@@ -137,9 +131,6 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
             channelId: "adhkar_channel",
             pressAction: { id: "default" },
             showTimestamp: true,
-          },
-          ios: {
-            sound: "default",
           },
         },
         trigger

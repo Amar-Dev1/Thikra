@@ -74,6 +74,8 @@
         "expo-build-properties",
         {
           "android": {
+            "enableProguardInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true,
             "extraMavenRepos": [
               "../../node_modules/@notifee/react-native/android/libs"
             ]

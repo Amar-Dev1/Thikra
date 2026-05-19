@@ -16,7 +16,8 @@
       "android": {
         "image": "auto",
         "buildType": "apk"
-      }
+      },
+      "developmentClient":false
     },
     "production": {
       "autoIncrement": true,
