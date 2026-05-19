@@ -10,6 +10,7 @@ import { scheduleAllNotifications } from "../utils/notificationServices";
 import { accessNotifications } from "../utils/accessNotifications";
 import { initializeNotifications } from "../utils/initializeNotifications";
 import { IPrayerDetails } from "../interfaces";
+import { UpdateNotification } from "../components/UpdateNotification";
 (RNText as any).defaultProps = (RNText as any).defaultProps || {};
 (RNText as any).defaultProps.style = [{ fontFamily: "Cairo-Regular" }];
 
@@ -113,6 +114,7 @@ export default function RootLayout() {
   return (
     <ThemeProvider>
       <SafeAreaProvider>
+        <UpdateNotification />
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="GreatNames" options={{ headerShown: false }} />
