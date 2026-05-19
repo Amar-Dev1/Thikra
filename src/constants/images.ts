@@ -16,6 +16,8 @@ import icon from "../../assets/images/icon.png";
 import splashIcon from "../../assets/images/splash-icon.png";
 // @ts-ignore
 import more from "../../assets/images/more.png";
+// @ts-ignore
+import sheikhna from "../../assets/images/sheikh.png";
 
 
 export const images = {
@@ -27,5 +29,6 @@ export const images = {
   settingsImg,
   icon,
   splashIcon,
-  more
+  more,
+  sheikhna
 };

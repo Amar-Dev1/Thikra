@@ -28,9 +28,9 @@
   },
   {
     "id": 5,
-    "title": "القبلة ( قريباً )",
-    "titleKey": "screens.index.discover.qibla",
-    "image": "kabaaBg"
+    "title": "الشيخ ( قريباً )",
+    "titleKey": "screens.index.discover.sheikhna",
+    "image": "sheikhna"
   },
   {
     "id": 6,

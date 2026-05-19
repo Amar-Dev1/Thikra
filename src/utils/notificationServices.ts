@@ -45,7 +45,7 @@ export const schedulePrayerNotification = async (prayers: IPrayerDetails[]) => {
       await notifee.createTriggerNotification(
         {
           title: "حان الآن وقت صلاة " + prayer.name,
-          body: "لا تنسى أن تصلي!",
+          body: "العهدُ الذي بينَنا وبينَهم الصلاةُ، فمَن تركَها فقد كفرَ",
           android: {
             channelId: "salah_channel",
             importance: AndroidImportance.HIGH,
@@ -97,8 +97,8 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
 
       await notifee.createTriggerNotification(
         {
-          title: "أذكار الصباح",
-          body: "لا تنسى أن تقرأ أذكار الصباح",
+          title: "حان الآن وقت أذكار الصباح",
+          body: "لا تغفل عن أذكار الصباح",
           android: {
             channelId: "adhkar_channel",
             pressAction: { id: "default" },
@@ -131,8 +131,8 @@ export const scheduleAdhkar = async (timings: IPrayerDetails[]) => {
 
       await notifee.createTriggerNotification(
         {
-          title: "أذكار المساء",
-          body: "لا تنسى أن تقرأ أذكار المساء",
+          title: "حان الآن وقت أذكار المساء",
+          body: "لا تغفل عن أذكار المساء",
           android: {
             channelId: "adhkar_channel",
             pressAction: { id: "default" },
