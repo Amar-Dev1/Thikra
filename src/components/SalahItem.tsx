@@ -47,7 +47,8 @@ const SalahItem = ({ name, time, to, className }: props) => {
               {parsedTime}
             </ThemedText>
             <ThemedText className="font-cairo text-xs opacity-55">
-              {convert24To12(time)} إشعار في
+              {convert24To12(time)}{" "}
+              {"إشعار في"}
             </ThemedText>
           </View>
         </View>

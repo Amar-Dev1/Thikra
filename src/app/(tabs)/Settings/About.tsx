@@ -15,7 +15,7 @@ const About = () => {
         <View className="items-center gap-3">
           <Image
             source={images.icon}
-            className="size-32"
+            className="size-32 rounded-2xl"
             resizeMode="contain"
           />
           <ThemedText className="font-cairo-bold opacity-65 text-md">
@@ -24,22 +24,20 @@ const About = () => {
         </View>
         <View className="flex-row items-center gap-3 ">
           <ThemedText className="font-cairo opacity-75">
-            - اسم التطبيق :{" "}
+            - اسم التطبيق : 
           </ThemedText>
-          <ThemedText className="font-cairo-bold">ذكرى - Thikra</ThemedText>
+          <ThemedText className="font-cairo-bold">
+            ذكرى - Thikra
+          </ThemedText>
         </View>
 
         <View className="flex-row items-center gap-3">
           <ThemedText className="font-cairo opacity-75 mb-auto">
-            - نبذه :{" "}
+            - نبذه : 
           </ThemedText>
           <ThemedText className="font-cairo-bold flex-1 opacity-65">
-            هو تطبيق إسلامي لإعانة المسلم -
-            <Text className="font-cairo-bold text-green-700">
-              الموحّد لله عز و جل{" "}
-            </Text>
-            - على تتبع أوقات الصلاة بناءاً على موقعه و قراءة الأذكار و الأدعية،
-            بالإضافة لأشياء أخرى
+            هو تطبيق إسلامي لإعانة المسلم على تتبع أوقات الصلاة بناءاً على
+            موقعه و قراءة الأذكار و الأدعية، بالإضافة لأشياء أخرى.
           </ThemedText>
         </View>
       </View>

@@ -1,8 +1,15 @@
+import ayat from "@/assets/data/ayat.json";
+import discoverCards from "@/assets/data/discoverSection.json";
 import BgWrapper from "@/src/components/BgWrapper";
 import DiscoverCard from "@/src/components/DiscoverCard";
 import ScreenTitle from "@/src/components/ScreenTitle";
 import ThemedText from "@/src/components/ThemedText";
-import { ClockSvg, KabaaSvg, LocationSvg, RefreshSvg } from "@/src/constants/icons";
+import {
+  ClockSvg,
+  KabaaSvg,
+  LocationSvg,
+  RefreshSvg,
+} from "@/src/constants/icons";
 import { images } from "@/src/constants/images";
 import { useTheme } from "@/src/context/ThemeContext";
 import { ILocation, IPrayerDetails } from "@/src/interfaces";
@@ -26,8 +33,6 @@ import {
 } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import ayat from "@/assets/data/ayat.json";
-import discoverCards from "@/assets/data/discoverSection.json";
 
 const Index = () => {
   const insets = useSafeAreaInsets();
@@ -38,7 +43,7 @@ const Index = () => {
   const textColor = currentTheme === "dark" ? "#ffffff" : "#222222";
 
   const [currentLocation, setCurrentLocation] = useState<ILocation | null>(
-    null,
+    null
   );
 
   const [loading, setLoading] = useState(false);
@@ -51,7 +56,13 @@ const Index = () => {
     { key: 1, name: "الفجر", enName: "Fajr", time: "", to: "" },
     { key: 2, name: "الظهر", enName: "Dhuhr", time: "", to: "" },
     { key: 3, name: "العصر", enName: "Asr", time: "", to: "" },
-    { key: 4, name: "المغرب", enName: "Maghrib", time: "", to: "" },
+    {
+      key: 4,
+      name: "المغرب",
+      enName: "Maghrib",
+      time: "",
+      to: "",
+    },
     { key: 5, name: "العشاء", enName: "Isha", time: "", to: "" },
   ]);
 
@@ -65,14 +76,13 @@ const Index = () => {
         setCurrentLocation(location);
 
         const date = new Date();
-
         const formatedDate = date.toLocaleDateString(
-          "ar-SA-u-ca-islamic-umalqura",
+          "ar-EG-u-ca-islamic-umalqura",
           {
             year: "numeric",
             month: "long",
             day: "numeric",
-          },
+          }
         );
         setToday(formatedDate);
 
@@ -123,7 +133,7 @@ const Index = () => {
       // @ts-ignore
       const timings: IPrayerDetails[] = await refreshTimings(
         currentLocation!,
-        prayersDetails,
+        prayersDetails
       );
       await initializeNotifications();
       const granted = await accessNotifications();
@@ -133,10 +143,11 @@ const Index = () => {
       console.log("updated timings manually ✅");
     } catch (e) {
       console.warn("faild to manual update timings", e);
+      setLoading(false);
       Alert.alert(
         "خطأ",
         "حدث خطأ أثناء تحديث المواقيت، تأكد من إتصالك بالإنترنت",
-        [{ text: "موافق", style: "default" }],
+        [{ text: "موافق", style: "default" }]
       );
     } finally {
       setLoading(false);
@@ -159,15 +170,18 @@ const Index = () => {
               paddingBottom: insets.bottom,
             }}
           >
+            <ActivityIndicator color={textColor} size={"large"} />
             <ThemedText className="font-cairo-bold text-sm">
               يتم تحديث المواقيت
             </ThemedText>
-            <ActivityIndicator color={textColor} size={"large"} />
           </View>
         </Modal>
       ) : (
         <View className="flex-1 px-5">
-          <ScreenTitle title="الصفحة الرئيسية" className="justify-between">
+          <ScreenTitle
+            title="الصفحة الرئيسية"
+            className="justify-between"
+          >
             <TouchableOpacity
               className={`flex flex-row items-center px-2 py-1 gap-1  ${
                 currentTheme === "dark"
@@ -260,12 +274,7 @@ const Index = () => {
                     </ThemedText>
                   </View>
                   <ThemedText className="font-amiri">
-                    عَن أبي هريرة أَنَّ رَسُولَ اللَّهِ ﷺ ذَكَرَ يَوْمَ
-                    الجُمُعَةِ، فَقَالَ:{" "}
-                    <ThemedText className="font-amiri-bold">
-                      فِيه سَاعَةٌ لا يُوَافِقها عَبْدٌ مُسلِمٌ، وَهُو قَائِمٌ
-                      يُصَلِّي يسأَلُ اللَّه شَيْئًا، إِلاَّ أَعْطَاهُ إِيَّاه .
-                    </ThemedText>
+                    عَن أبي هريرة أَنَّ رَسُولَ اللَّهِ ﷺ ذَكَرَ يَوْمَ الجُمُعَةِ، فَقَالَ: فِيه سَاعَةٌ لا يُوَافِقها عَبْدٌ مُسلِمٌ، وَهُو قَائِمٌ يُصَلِّي يسأَلُ اللَّه شَيْئًا، إِلاَّ أَعْطَاهُ إِيَّاه .
                   </ThemedText>
                   <ThemedText className="font-amiri ml-auto">
                     متفق عليه
@@ -283,6 +292,7 @@ const Index = () => {
                       <DiscoverCard
                         key={card.id}
                         {...card}
+                        title={card.title}
                         image={(images as any)[card.image]}
                         className={`min-w-[48%] flex-1`}
                         route={card.route}
@@ -347,8 +357,7 @@ const Index = () => {
                   الآية اليومية
                 </ThemedText>
                 <ThemedText className="text-md text- font-amiri-bold">
-                  {randomAyah ||
-                    "إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ تَتَنَزَّلُ عَلَيْهِمُ ٱلْمَلَٰٓئِكَةُ أَلَّا تَخَافُوا۟ وَلَا تَحْزَنُوا۟ وَأَبْشِرُوا۟ بِٱلْجَنَّةِ ٱلَّتِى كُنتُمْ تُوعَدُونَ"}
+                  {randomAyah || "\"إِنَّ ٱلَّذِينَ قَالُوا۟ رَبُّنَا ٱللَّهُ ثُمَّ ٱسْتَقَٰمُوا۟ تَتَنَزَّلُ عَلَيْهِمُ ٱلْمَلَٰٓئِكَةُ أَلَّا تَخَافُوا۟ وَلَا تَحْزَنُوا۟ وَأَبْشِرُوا۟ بِٱلْجَنَّةِ ٱلَّتِى كُنتُمْ تُوعَدُونَ\""}
                 </ThemedText>
               </View>
             </View>

@@ -22,7 +22,7 @@ const ShareDua = ({ duaName, ref, firstDua, count }: props) => {
             {firstDua}
           </Text>
           <Text className="text-[8px] font-cairo text-light opacity-65">
-            المرات : {count}
+            {"المرات : "} {count}
           </Text>
         </View>
         <View className="gap-3 items-center">

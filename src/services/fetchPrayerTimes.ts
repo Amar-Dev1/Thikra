@@ -7,7 +7,7 @@ export const fetchPrayerTimes = async (location: ILocation) => {
 
     const res = await fetch(apiUrl, { method: "GET", headers: CONFIG.HEADERS });
     if (!res) {
-      throw new Error("خطأ في التهيئة. الرجاء التأكد من تشغيل الإنترنت");
+      throw new Error("حدث خطأ أثناء جلب أوقات الصلاة");
     }
     const data = await res.json();
     return data?.data?.timings;

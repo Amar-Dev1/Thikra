@@ -64,9 +64,9 @@ const SetupAll = () => {
     } catch (e: any) {
       console.error(e);
       Alert.alert(
-        "تفعيل خدمة الموقع",
-        "قم بتفعيل الموقع و الإنترنت رجاءاً ليعمل التطبيق ",
-        [{ text: "موافق", style: "default" }],
+        "خدمة الموقع",
+        "تطبيقنا يحتاج إلى إذن موقعك. يرجى تمكينه في إعداداتك.",
+        [{ text: "حسنا", style: "default" }]
       );
     } finally {
       setLoading(false);
@@ -77,7 +77,11 @@ const SetupAll = () => {
     try {
       if (!(await AsyncStorage.getItem("Saved"))) {
         const initialValues: ISavedCategory[] = [
-          { id: 1, name: "الأدعية و الأذكار", items: [] },
+          {
+            id: 1,
+            name: "أدعية وأذكار",
+            items: [],
+          },
         ];
         await AsyncStorage.setItem("Saved", JSON.stringify(initialValues));
       }
@@ -100,7 +104,7 @@ const SetupAll = () => {
         <>
           <ActivityIndicator size={"large"} color={textColor} />
           <ThemedText className="font-cairo-bold text-lg opacity-65">
-            يتم تهيئة التطبيق...
+            {"جاري تهيئة التطبيق..."}
           </ThemedText>
         </>
       )}

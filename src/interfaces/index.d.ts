@@ -6,7 +6,7 @@ export interface ILocation {
   country?: string;
   latitude: number;
   longitude: number;
-  method?:string;
+  method?: string;
 }
 
 export interface IPrayerDetails {
@@ -43,7 +43,7 @@ export interface IDuaCategoryItem {
 // saved screen consist of categories (Quran,Dua,...etc)
 export interface ISavedCategory {
   id?: any;
-  name: "القرآن" | "الأدعية و الأذكار";
+  name: string;
   items: ISavedCategoryItem[];
 }
 

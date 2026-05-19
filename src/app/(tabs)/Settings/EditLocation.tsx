@@ -34,7 +34,7 @@ const EditLocation = () => {
   const countries = locations.map((c) => c.country);
 
   const selectedCountryData = locations.find(
-    (c) => c.country === selectedCountry,
+    (c) => c.country === selectedCountry
   );
 
   const cities = selectedCountryData ? selectedCountryData.cities : [];
@@ -76,7 +76,7 @@ const EditLocation = () => {
               city: city,
               country: country,
               method: "auto",
-            }),
+            })
           );
 
           router.push("/onboarding/SetupAll");
@@ -88,8 +88,8 @@ const EditLocation = () => {
       console.error(e);
       Alert.alert(
         "تفعيل خدمة الموقع",
-        "قم بتفعيل الموقع رجاءاً قم بتفعيل الموقع ليعمل التطبيق ",
-        [{ text: "موافق", style: "default" }],
+        "قم بتفعيل الموقع و الإنترنت رجاءاً ليعمل التطبيق ",
+        [{ text: "موافق", style: "default" }]
       );
     } finally {
       setLoading(false);
@@ -104,9 +104,11 @@ const EditLocation = () => {
       const cityData = cities.find((c) => c.name === selectedCity);
 
       if (!cityData) {
-        Alert.alert("خطأ", "تعذر إيجاد المدينة", [
-          { text: "موافق", style: "default" },
-        ]);
+        Alert.alert(
+          "خطأ",
+          "تعذر إيجاد المدينة",
+          [{ text: "موافق", style: "default" }]
+        );
         throw new Error("Could not find city data");
       }
 
@@ -118,7 +120,7 @@ const EditLocation = () => {
           city: cityData.name,
           country: selectedCountry,
           method: "manual",
-        }),
+        })
       );
       router.push("/onboarding/SetupAll");
     } catch (e) {
@@ -210,8 +212,7 @@ const EditLocation = () => {
                       تحديد الموقع يدوياً
                     </ThemedText>
                     <ThemedText className="font-cairo-bold text-sm opacity-55">
-                      حدد البلد و المدينة يدوياً . عليك تحديث موقعك إذا غيرت
-                      المدينة
+                      حدد البلد و المدينة يدوياً . عليك تحديث موقعك إذا غيرت المدينة
                     </ThemedText>
                   </View>
                 </View>
@@ -219,7 +220,9 @@ const EditLocation = () => {
 
               {expandedCountry && (
                 <View className="mt-3">
-                  <ThemedText>اختار الدولة</ThemedText>
+                  <ThemedText>
+                    اختار الدولة
+                  </ThemedText>
                   <SelectList
                     data={countries}
                     setSelected={(value: string) => {
@@ -235,7 +238,9 @@ const EditLocation = () => {
 
               {selectedCountry && (
                 <View className={`mt-3 mb-3`}>
-                  <ThemedText>اختار المدينة</ThemedText>
+                  <ThemedText>
+                    اختار المدينة
+                  </ThemedText>
                   <SelectList
                     data={cityNames}
                     setSelected={(value: string) => setSelectedCity(value)}

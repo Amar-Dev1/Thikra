@@ -14,7 +14,6 @@ const onShare = async () => {
       message:
         "Check out Thikra app !,  Download it here:\nhttps://thikra.netlify.app",
       url: "https://thikra.netlify.app",
-      
     });
   } catch (e) {
     console.log("faild to share app", e);

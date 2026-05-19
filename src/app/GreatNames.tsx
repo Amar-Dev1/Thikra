@@ -49,7 +49,7 @@ const GreatNames = () => {
   return (
     <BgWrapper className="px-5">
       <ScreenTitle
-        title="أسماء الله الحسنى"
+        title={"أسماء الله الحسنى"}
         className="flex-row items-center py-4"
       >
         <TouchableOpacity

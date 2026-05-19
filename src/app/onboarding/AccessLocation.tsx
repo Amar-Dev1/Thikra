@@ -34,7 +34,7 @@ const AccessLocation = () => {
   const countries = locations.map((c) => c.country);
 
   const selectedCountryData = locations.find(
-    (c) => c.country === selectedCountry,
+    (c) => c.country === selectedCountry
   );
 
   const cities = selectedCountryData ? selectedCountryData.cities : [];
@@ -76,7 +76,7 @@ const AccessLocation = () => {
               city: city,
               country: country,
               method: "auto",
-            }),
+            })
           );
 
           router.push("/onboarding/SetupAll");
@@ -87,9 +87,9 @@ const AccessLocation = () => {
     } catch (e) {
       console.error(e);
       Alert.alert(
-        "تفعيل خدمة الموقع",
-        "قم بتفعيل الموقع رجاءاً قم بتفعيل الموقع ليعمل التطبيق ",
-        [{ text: "موافق", style: "default" }],
+        "خدمة الموقع",
+        "تطبيقنا يحتاج إلى إذن موقعك. يرجى تمكينه في إعداداتك.",
+        [{ text: "حسنا", style: "default" }]
       );
     } finally {
       setLoading(false);
@@ -104,9 +104,11 @@ const AccessLocation = () => {
       const cityData = cities.find((c) => c.name === selectedCity);
 
       if (!cityData) {
-        Alert.alert("خطأ", "تعذر إيجاد المدينة", [
-          { text: "موافق", style: "default" },
-        ]);
+        Alert.alert(
+          "خطأ",
+          "لم نتمكن من العثور على المدينة المحددة.",
+          [{ text: "حسنا", style: "default" }]
+        );
         throw new Error("Could not find city data");
       }
 
@@ -118,7 +120,7 @@ const AccessLocation = () => {
           city: cityData.name,
           country: selectedCountry,
           method: "manual",
-        }),
+        })
       );
       router.push("/onboarding/SetupAll");
     } catch (e) {
@@ -147,7 +149,7 @@ const AccessLocation = () => {
           >
             <ActivityIndicator color={textColor} size={"large"} />
             <ThemedText className="font-cairo-bold text-lg opacity-65">
-              جار ضبط الموقع
+              {"جاري إعداد الموقع..."}
             </ThemedText>
           </View>
         </Modal>
@@ -156,11 +158,11 @@ const AccessLocation = () => {
           <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
             <View className="flex-row items-center gap-2">
               <ThemedText className="font-cairo-bold text-3xl my-5">
-                الموقع
+                {"تحديد الموقع"}
               </ThemedText>
             </View>
             <ThemedText className="font-cairo text-xl opacity-65">
-              تفعيل الوصول للموقع ، لعرض مواقيت الصلاة بناءاً على موقعك الحالي
+              {"اختر موقعك بدقة"}
             </ThemedText>
 
             <View className="mt-5 gap-4">
@@ -180,13 +182,13 @@ const AccessLocation = () => {
                   />
                   <View className="gap-2 flex-1">
                     <ThemedText className="font-cairo-bold text-lg">
-                      تحديد الموقع تلقائياً{" "}
+                      {"تحديد تلقائي"}{" "}
                       <ThemedText className="text-sm font-cairo opacity-60">
-                        (موصى به)
+                        {"موصى به"}
                       </ThemedText>
                     </ThemedText>
                     <ThemedText className="font-cairo-bold text-sm opacity-55">
-                      سيتم تحديث مواقيت الصلاة تلقائياً
+                      {"نستخدم نظام تحديد المواقع العالمي (GPS) لتحديد موقعك"}
                     </ThemedText>
                   </View>
                 </View>
@@ -208,11 +210,10 @@ const AccessLocation = () => {
                   />
                   <View className="gap-2 flex-1">
                     <ThemedText className="font-cairo-bold text-lg">
-                      تحديد الموقع يدوياً
+                      {"تحديد يدوي"}
                     </ThemedText>
                     <ThemedText className="font-cairo-bold text-sm opacity-55">
-                      حدد البلد و المدينة يدوياً . عليك تحديث موقعك إذا غيرت
-                      المدينة
+                      {"اختر مدينتك من القائمة"}
                     </ThemedText>
                   </View>
                 </View>
@@ -220,7 +221,9 @@ const AccessLocation = () => {
 
               {expandedCountry && (
                 <View className="mt-3">
-                  <ThemedText>اختار الدولة</ThemedText>
+                  <ThemedText>
+                    {"اختر الدولة"}
+                  </ThemedText>
                   <SelectList
                     data={countries}
                     setSelected={(value: string) => {
@@ -236,7 +239,9 @@ const AccessLocation = () => {
 
               {selectedCountry && (
                 <View className={`mt-3 mb-3`}>
-                  <ThemedText>اختار المدينة</ThemedText>
+                  <ThemedText>
+                    {"اختر المدينة"}
+                  </ThemedText>
                   <SelectList
                     data={cityNames}
                     setSelected={(value: string) => setSelectedCity(value)}
@@ -259,7 +264,7 @@ const AccessLocation = () => {
               style={{ backgroundColor: bg }}
             >
               <ThemedText className="text-lg font-cairo-bold text-center">
-                التالي
+                {"التالي"}
               </ThemedText>
             </TouchableOpacity>
 
@@ -268,7 +273,7 @@ const AccessLocation = () => {
               onPress={router.back}
             >
               <ThemedText className="text-lg font-cairo-bold text-center">
-                الرجوع
+                {"رجوع"}
               </ThemedText>
             </TouchableOpacity>
           </View>

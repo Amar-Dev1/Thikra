@@ -11,7 +11,10 @@ import discoverCards from "../../assets/data/discoverSection.json";
 const More = () => {
   return (
     <BgWrapper className="px-5">
-      <ScreenTitle title="المزيد" className="flex-row items-center py-4">
+      <ScreenTitle
+        title={"المزيد"}
+        className="flex-row items-center py-4"
+      >
         <TouchableOpacity
           className="absolute left-0 w-10 h-10 flex justify-center items-center bg-light border border-gray-300 rounded-full"
           onPress={router.back}

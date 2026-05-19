@@ -10,7 +10,6 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "ExpoLocalization_supportsRTL": true,
         "ITSAppUsesNonExemptEncryption": false
       },
       "bundleIdentifier": "com.amardev1.Thikra",
@@ -47,7 +46,7 @@
       "PLAY_STORE_STATUS_URL": "https://thikraworker.thikraworker1.workers.dev",
       "router": {},
       "eas": {
-        "projectId": "359d9ac7-b411-4673-89b4-382173a12e60"
+        "projectId": "3159d32c-831d-4249-a4c4-aedbdc6b7cbc"
       }
     },
     "plugins": [
@@ -75,21 +74,19 @@
         "expo-build-properties",
         {
           "android": {
+            "enableProguardInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true,
             "extraMavenRepos": [
               "../../node_modules/@notifee/react-native/android/libs"
             ]
           }
         }
-      ],
-      "expo-asset",
-      "expo-web-browser",
-      "expo-localization",
-      "expo-secure-store"
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
     },
-    "owner": "amar-dev1"
+    "owner": "amar-dev2"
   }
 }

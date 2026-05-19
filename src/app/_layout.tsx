@@ -1,30 +1,22 @@
 import { ThemeProvider } from "@/src/context/ThemeContext";
-import { IPrayerDetails } from "@/src/interfaces";
-import { fetchPlayStoreStatus } from "@/src/services/fetchPlayStoreStatus";
-import { accessNotifications } from "@/src/utils/accessNotifications";
-import { initializeNotifications } from "@/src/utils/initializeNotifications";
-import { scheduleAllNotifications } from "@/src/utils/notificationServices";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
-import { getLocales } from "expo-localization";
 import { SplashScreen, Stack, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { Alert, I18nManager, Linking, Text as RNText } from "react-native";
+import { I18nManager, Text as RNText } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "../global.css";
+import { scheduleAllNotifications } from "../utils/notificationServices";
+import { accessNotifications } from "../utils/accessNotifications";
+import { initializeNotifications } from "../utils/initializeNotifications";
+import { IPrayerDetails } from "../interfaces";
 (RNText as any).defaultProps = (RNText as any).defaultProps || {};
 (RNText as any).defaultProps.style = [{ fontFamily: "Cairo-Regular" }];
 
 SplashScreen.preventAutoHideAsync();
 
-const deviceLanguage = getLocales()[0].languageCode;
-console.log(deviceLanguage);
-
-if (!I18nManager.isRTL) {
-  I18nManager.allowRTL(true);
-  I18nManager.forceRTL(true);
-}
-
+I18nManager.allowRTL(true);
+I18nManager.forceRTL(true);
 export default function RootLayout() {
   const router = useRouter();
 
@@ -50,8 +42,10 @@ export default function RootLayout() {
   useEffect(() => {
     async function prepareApp() {
       try {
-        // await AsyncStorage.removeItem("onboardingCompleted"); // for testing
-
+        if (!I18nManager.isRTL) {
+          I18nManager.allowRTL(true);
+          I18nManager.forceRTL(true);
+        }
         const storedValue = await AsyncStorage.getItem("onboardingCompleted");
 
         if (storedValue === null || storedValue === undefined) {
@@ -69,6 +63,7 @@ export default function RootLayout() {
 
     prepareApp();
   }, []);
+
 
   // register notficiations
   useEffect(() => {
@@ -99,41 +94,13 @@ export default function RootLayout() {
     }
 
     if (!completedOnboarding) {
-      router.replace("/onboarding/AllowNotification");
+      router.replace("/onboarding/AccessLocation");
     }
 
     // If completedOnboarding is true, this effect does nothing,
     // and the app will just render the <Stack> as intended.
   }, [isReady, completedOnboarding, router]);
 
-  useEffect(() => {
-    const fetchStatus = async () => {
-      const playStoreStatus = await fetchPlayStoreStatus();
-
-      if (!playStoreStatus || typeof playStoreStatus.isPublished !== "boolean")
-        return;
-
-      if (playStoreStatus.isPublished) {
-        const storeUrl =
-          playStoreStatus.url && playStoreStatus.url !== "null"
-            ? playStoreStatus.url
-            : "https://thikra.netlify.app";
-
-        Alert.alert("أخبار سارة !", "نم نشر التطبيق في متجر غوغل بلاي !", [
-          {
-            text: "الق نظرة",
-            style: "default",
-            onPress: () => Linking.openURL(storeUrl),
-          },
-          {
-            text: "غير مهتم",
-            style: "cancel",
-          },
-        ]);
-      }
-    };
-    fetchStatus();
-  }, []);
 
   if (
     !(fontLoaded && fontError === null) ||

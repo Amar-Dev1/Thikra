@@ -1,10 +1,9 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Alert, Platform } from "react-native";
 import notifee, {
   AndroidNotificationSetting,
   AuthorizationStatus,
 } from "@notifee/react-native";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Alert, Platform } from "react-native";
 export const accessNotifications = async (): Promise<boolean> => {
   const FLAG = "notifications_allowed";
   try {
@@ -15,12 +14,12 @@ export const accessNotifications = async (): Promise<boolean> => {
     });
 
     const granted =
-    settings.authorizationStatus === AuthorizationStatus.AUTHORIZED;
+      settings.authorizationStatus === AuthorizationStatus.AUTHORIZED;
     if (!granted) {
       await notifee.cancelAllNotifications();
       Alert.alert(
-        "لم يتم السماح",
-        "لن نتمكن من إرسال التنبيهات لك إلا بعد السماح بالإشعارات."
+        "إذن مرفوض",
+        "تطبيقنا يحتاج إلى إذن لإرسال الإشعارات إليك. يرجى تمكينها في إعداداتك."
       );
       await AsyncStorage.removeItem(FLAG);
       return false;
@@ -32,8 +31,8 @@ export const accessNotifications = async (): Promise<boolean> => {
       const alarmSettings = await notifee.getNotificationSettings();
       if (alarmSettings.android.alarm !== AndroidNotificationSetting.ENABLED) {
         Alert.alert(
-          "الإذن مطلوب",
-          "لضمان عمل تنبيهات الصلاة في وقتها تماماً حتى إذا كان التطبيق مغلقاً، يرجى تفعيل إذن 'التنبيهات والمذكرات' من الإعدادات.",
+          "إذن مطلوب",
+          "تطبيقنا يحتاج إلى إذن لإرسال الإشعارات إليك. يرجى تمكينها في إعداداتك.",
           [
             { text: "لاحقاً", style: "cancel" },
             {
@@ -51,7 +50,10 @@ export const accessNotifications = async (): Promise<boolean> => {
     return true;
   } catch (e) {
     console.error("Notification permission check failed:", e);
-    Alert.alert("حدث خطأ", "حدث خطأ أثناء إعداد الإشعارات.");
+    Alert.alert(
+      "خطأ",
+      "حدث خطأ أثناء إعداد الإشعارات"
+    );
     return false;
   }
 };

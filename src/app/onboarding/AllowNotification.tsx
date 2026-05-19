@@ -1,17 +1,11 @@
 import BgWrapper from "@/src/components/BgWrapper";
 import ThemedText from "@/src/components/ThemedText";
-import { images } from "@/src/constants/images";
+import { BellSvg } from "@/src/constants/icons";
 import { useTheme } from "@/src/context/ThemeContext";
 import { accessNotifications } from "@/src/utils/accessNotifications";
 import { router } from "expo-router";
 import { useState } from "react";
-import {
-  ActivityIndicator,
-  Image,
-  Modal,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ActivityIndicator, Modal, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const AllowNotification = () => {
@@ -62,7 +56,7 @@ const AllowNotification = () => {
             <ThemedText className="font-cairo-bold text-3xl my-5">
               تفعيل الإشعارات
             </ThemedText>
-            <Image source={images.bell} className="size-10" />
+            <BellSvg width={30} height={30} stroke={textColor} />
           </View>
           <ThemedText className="font-cairo text-xl opacity-65">
             الرجاء تفعيل اللإشعارات ، لكي تصلك مواقيت الصلاة ، و باقي الأذكار
@@ -71,7 +65,7 @@ const AllowNotification = () => {
           <View className="flex-row items-center mt-auto">
             <TouchableOpacity
               className={`rounded-2xl py-2 flex-1 border ${
-                currentTheme === "dark" ? "border-light/10" : "borde-dark/10"
+                currentTheme === "dark" ? "border-light/10" : "border-dark/50"
               }`}
               onPress={handleAllow}
               style={{ backgroundColor: bg }}

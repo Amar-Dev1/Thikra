@@ -54,8 +54,8 @@ const Saved = () => {
       setSelectedItem(null);
     } catch (e) {
       console.log(e);
-      Alert.alert(" خطأ !", "حدث خطأ، يرجى إعادة التحميل ", [
-        { text: "موافق", style: "default" },
+      Alert.alert("خطأ", "حدث خطأ، يرجى إعادة التحميل ", [
+        { text: "حسنا", style: "default" },
       ]);
     } finally {
       setLoading(false);
@@ -72,9 +72,11 @@ const Saved = () => {
           if (Array.isArray(saved)) setSaved(saved);
         } catch (e) {
           console.log(e);
-          Alert.alert(" خطأ !", "حدث خطأ، يرجى إعادة التحميل ", [
-            { text: "موافق", style: "default" },
-          ]);
+          Alert.alert(
+            "خطأ",
+            "حدث خطأ، يرجى إعادة التحميل ",
+            [{ text: "حسنا", style: "default" }]
+          );
         } finally {
           setLoading(false);
           console.log("saved array : ", saved);
@@ -88,7 +90,7 @@ const Saved = () => {
 
   return (
     <BgWrapper>
-      <ScreenTitle title="المحفوظات" />
+      <ScreenTitle title={"المحفوظات"} />
       {loading ? (
         <View className="flex-1 items-center justify-center">
           <ActivityIndicator size={"large"} color={textColor} />
@@ -100,10 +102,10 @@ const Saved = () => {
               currentTheme === "dark" ? "bg-[#222222]" : "bg-primary"
             }  px-5`}
           >
-            {saved.map((cat) => (
+            {saved.map((cat, index) => (
               <TouchableOpacity
                 className="relative py-5"
-                key={cat.id}
+                key={`${cat.id}-${index}`}
                 onPress={() => setSelectedCat(cat.id)}
               >
                 <ThemedText className="font-cairo">{cat.name}</ThemedText>
@@ -117,7 +119,7 @@ const Saved = () => {
           <View className="flex-1">
             {Array.isArray(SavedItems) && SavedItems.length > 0 ? (
               <ScrollView showsVerticalScrollIndicator={false}>
-                {SavedItems.reverse().map((item, index) => {
+                {[...SavedItems].reverse().map((item, index) => {
                   const isLast = index === SavedItems.length - 1;
                   return (
                     <View
@@ -128,7 +130,7 @@ const Saved = () => {
                       }
                       ${isLast && "mb-16"}
                       `}
-                      key={item.id}
+                      key={`${item.id}-${index}`}
                     >
                       <View className="flex-row items-center gap-2">
                         <UnSavedSvg
@@ -173,7 +175,7 @@ const Saved = () => {
               <View className="flex-1 justify-center items-center gap-3 opacity-65">
                 <QuranSvg width={32} height={32} stroke={textColor} />
                 <ThemedText className="font-cairo">
-                  لا توجد محفوظات حتى الآن
+                  {"لا توجد محفوظات حتى الآن"}
                 </ThemedText>
               </View>
             )}
@@ -191,7 +193,7 @@ const Saved = () => {
         <View className="p-5 gap-5 bg-light rounded-2xl">
           <View className="items-center">
             <Text className="font-cairo-bold text-md">
-              هل أنت متأكد من حذف هذه العلامة المرجعية ؟
+              {"هل أنت متأكد من حذف هذه العلامة المرجعية ؟"}
             </Text>
           </View>
           <View className="flex-row items-center gap-4">
@@ -200,7 +202,7 @@ const Saved = () => {
               onPress={handleRemove}
             >
               <Text className="font-cairo-bold text-md text-red-500 text-center">
-                حذف
+                {"حذف"}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -208,7 +210,7 @@ const Saved = () => {
               onPress={() => setVisible(false)}
             >
               <Text className="font-cairo-bold text-md text-light text-center">
-                إلغاء
+                {"إلغاء"}
               </Text>
             </TouchableOpacity>
           </View>
